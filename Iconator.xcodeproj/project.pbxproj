@@ -14,6 +14,7 @@
 		AD12701A2023D1510068531A /* IconatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270192023D1510068531A /* IconatorTests.swift */; };
 		AD1270252023D1510068531A /* IconatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270242023D1510068531A /* IconatorUITests.swift */; };
 		AD1270362023DADA0068531A /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270352023DADA0068531A /* DragView.swift */; };
+		AD1270382024050C0068531A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270372024050C0068531A /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		AD1270262023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD1270352023DADA0068531A /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
+		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +102,10 @@
 		AD1270052023D1510068531A /* Iconator */ = {
 			isa = PBXGroup;
 			children = (
-				AD1270062023D1510068531A /* AppDelegate.swift */,
 				AD1270082023D1510068531A /* DragViewController.swift */,
+				AD1270372024050C0068531A /* OptionsViewController.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
+				AD1270062023D1510068531A /* AppDelegate.swift */,
 				AD12700A2023D1510068531A /* Assets.xcassets */,
 				AD12700C2023D1510068531A /* Main.storyboard */,
 				AD12700F2023D1510068531A /* Info.plist */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD1270092023D1510068531A /* DragViewController.swift in Sources */,
+				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
 				AD1270362023DADA0068531A /* DragView.swift in Sources */,
 			);

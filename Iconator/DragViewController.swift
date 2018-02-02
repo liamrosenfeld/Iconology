@@ -15,6 +15,8 @@ class DragViewController: NSViewController {
     @IBOutlet weak var staticLabel: NSTextField!
     @IBOutlet weak var dragView: DragView!
     
+    var imageURL: NSURL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dragView.delegate = self
@@ -29,7 +31,20 @@ class DragViewController: NSViewController {
 }
 
 extension DragViewController: DragViewDelegate {
-    func dragView(didDragFileWith URL: NSURL) {
-        print(URL.absoluteString)
+    // Save image URL one drag is complete
+    func dragView(didDragFileWith url: NSURL) {
+        imageURL = url
+        print(url)
+        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toOptions"), sender: Any?.self)
     }
+    
+    
+    // TODO: - Prepare for segue and send imageURL to imageURL in OptionsViewController()
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if (segue.identifier!.rawValue == "toOptions") {
+            let destination = segue.destinationController as! OptionsViewController;
+            destination.imageURL = imageURL!
+        }
+    }
+    
 }
