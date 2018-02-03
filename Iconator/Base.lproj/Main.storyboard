@@ -766,31 +766,21 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI">
-                                <rect key="frame" x="144" y="205" width="78" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="iOS Version:" id="sh3-KH-4vf">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdE-Hv-F4c" userLabel="iOS Selector">
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdE-Hv-F4c" userLabel="Version Selector">
                                 <rect key="frame" x="226" y="198" width="76" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="11" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HCq-QF-na8" id="bth-S6-fr6">
+                                <popUpButtonCell key="cell" type="push" title="9" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HCq-QF-na8" id="bth-S6-fr6">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="hcu-Rj-yTY">
                                         <items>
-                                            <menuItem title="11" state="on" id="HCq-QF-na8"/>
-                                            <menuItem title="10" id="fFW-7L-nbh"/>
-                                            <menuItem title="9" id="Cpd-t8-Zxl"/>
+                                            <menuItem title="9" state="on" id="HCq-QF-na8"/>
+                                            <menuItem title="8" id="fFW-7L-nbh"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17q-k7-cHo">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17q-k7-cHo" userLabel="&quot;Devices:&quot; Label">
                                 <rect key="frame" x="199" y="157" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Devices:" id="JGM-ib-WWB">
@@ -826,12 +816,30 @@
                                     <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
+                                <rect key="frame" x="191" y="93" width="48" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Mac" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI" userLabel="&quot;Xcode Version:&quot; Label">
+                                <rect key="frame" x="127" y="203" width="95" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Xcode Version:" id="sh3-KH-4vf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="iPadToggle" destination="Wdz-Bn-Vdu" id="Ogi-3t-QIt"/>
                         <outlet property="iPhoneToggle" destination="yYq-sc-jMw" id="8nx-Oq-4Pe"/>
-                        <outlet property="iosVersion" destination="WdE-Hv-F4c" id="NcW-2E-r7u"/>
+                        <outlet property="macToggle" destination="UfM-cf-2Fw" id="nwL-Nb-Atq"/>
+                        <outlet property="xcodeVersionSelector" destination="WdE-Hv-F4c" id="2rr-4J-331"/>
                     </connections>
                 </viewController>
                 <customObject id="0DN-fa-hGa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

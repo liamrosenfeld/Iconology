@@ -11,9 +11,10 @@ import Cocoa
 class OptionsViewController: NSViewController {
     
     // Setup
-    @IBOutlet weak var iosVersion: NSPopUpButton!
+    @IBOutlet weak var xcodeVersionSelector: NSPopUpButton!
     @IBOutlet weak var iPhoneToggle: NSButton!
     @IBOutlet weak var iPadToggle: NSButton!
+    @IBOutlet weak var macToggle: NSButton!
     
     var imageURL: NSURL?
     
@@ -24,29 +25,29 @@ class OptionsViewController: NSViewController {
     
     // Actions
     @IBAction func convert(_ sender: Any) {
-        let iosVersionString = iosVersion.titleOfSelectedItem!
+        let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
         let iPhoneEnabled = iPhoneToggle.state.rawValue
         let iPadEnabled = iPadToggle.state.rawValue
+        let macEnabled = macToggle.state.rawValue
         
-        if iosVersionString == "11" {
+        if xcodeVersion == "9" {
             if iPhoneEnabled == 1 {
                 
             }
             if iPadEnabled == 1 {
                 
             }
-        } else if iosVersionString == "10" {
+            if macEnabled == 1 {
+                
+            }
+        } else if xcodeVersion == "8" {
             if iPhoneEnabled == 1 {
                 
             }
             if iPadEnabled == 1 {
                 
             }
-        } else if iosVersionString == "11" {
-            if iPhoneEnabled == 1 {
-                
-            }
-            if iPadEnabled == 1 {
+            if macEnabled == 1 {
                 
             }
         }
