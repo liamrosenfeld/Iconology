@@ -10,7 +10,7 @@ import Cocoa
 
 class OptionsViewController: NSViewController {
     
-    // Setup
+    // MARK: - Setup
     @IBOutlet weak var xcodeVersionSelector: NSPopUpButton!
     @IBOutlet weak var iPhoneToggle: NSButton!
     @IBOutlet weak var iPadToggle: NSButton!
@@ -23,7 +23,7 @@ class OptionsViewController: NSViewController {
         print(imageURL!)
     }
     
-    // Actions
+    // MARK: - Actions
     @IBAction func convert(_ sender: Any) {
         let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
         let iPhoneEnabled = iPhoneToggle.state.rawValue
@@ -32,6 +32,12 @@ class OptionsViewController: NSViewController {
         
         let imageToConvert = urlToImage(url: imageURL!)
         
+        // Select where to save
+        let chosenFolder = selectFolder()
+        print(chosenFolder)
+        createFolder(directory: chosenFolder)
+        
+        // Convert and Save
         if xcodeVersion == "9" {
             if iPhoneEnabled == 1 {
                 xcode9_iPhone(image: imageToConvert)
@@ -55,8 +61,9 @@ class OptionsViewController: NSViewController {
         }
         
     }
+   
     
-    // Convert NSurl to NSImage
+    // MARK: - Convert Between URL, Data, and Image
     func urlToImage(url: NSURL) -> NSImage {
         do {
             let imageData = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
@@ -66,6 +73,27 @@ class OptionsViewController: NSViewController {
         }
         // Probally should change the backup return sometime
         return #imageLiteral(resourceName: "uploadIcon")
+    }
+    
+    // MARK: - Save
+    func selectFolder() -> URL {
+        let selectPanel = NSOpenPanel()
+        selectPanel.title = "Select a folder to save your icons"
+        selectPanel.showsResizeIndicator = true
+        selectPanel.canChooseDirectories = true
+        selectPanel.canChooseFiles = false
+        selectPanel.allowsMultipleSelection = false
+        selectPanel.canCreateDirectories = true
+        selectPanel.delegate = self as? NSOpenSavePanelDelegate
+        
+        selectPanel.runModal()
+        
+        return selectPanel.url!
+    }
+    
+    func createFolder(directory: URL) {
+     
+
     }
     
 }
