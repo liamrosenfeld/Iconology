@@ -8,116 +8,118 @@
 
 import Cocoa
 
-// Called in OptionViewController
+// MARK: - Sizes
+
+// Xcode 9
 func xcode9_iPhone (image: NSImage){
-    var AppStore: NSImage?
+    resize(name: "iPhoneNotification2x", image: image, w: 40, h: 40)
+    resize(name: "iPhoneNotification3x", image: image, w: 60, h: 60)
     
-    let iPhoneNotification2x = resize(image: image, w: 40, h: 40)
-    let iPhoneNotification3x = resize(image: image, w: 60, h: 60)
+    resize(name: "iPhoneSettings2x", image: image, w: 58, h: 58)
+    resize(name: "iPhoneSettings3x", image: image, w: 87, h: 87)
     
-    let iPhoneSettings2x = resize(image: image, w: 58, h: 58)
-    let iPhoneSettings3x = resize(image: image, w: 87, h: 87)
+    resize(name: "iPhoneSpotlight2x", image: image, w: 80, h: 80)
+    resize(name: "iPhoneSpotlight3x", image: image, w: 120, h: 120)
     
-    let iPhoneSpotlight2x = resize(image: image, w: 80, h: 80)
-    let iPhoneSpotlight3x = resize(image: image, w: 120, h: 120)
+    resize(name: "iPhoneApp2x", image: image, w: 120, h: 120)
+    resize(name: "iPhoneApp3x", image: image, w: 180, h: 180)
     
-    let iPhoneApp2x = resize(image: image, w: 120, h: 120)
-    let iPhoneApp3x = resize(image: image, w: 180, h: 180)
-    
-    AppStore = resize(image: image, w: 1280, h: 1280)
+    resize(name: "AppStore_iOS", image: image, w: 1280, h: 1280)
 }
 
 func xcode9_iPad (image: NSImage){
-    var AppStore: NSImage?
+    resize(name: "iPadNotification2x", image: image, w: 40, h: 40)
+    resize(name: "iPadNotification3x", image: image, w: 60, h: 60)
     
-    let iPadNotification2x = resize(image: image, w: 40, h: 40)
-    let iPadNotification3x = resize(image: image, w: 60, h: 60)
+    resize(name: "iPadSettings2x", image: image, w: 58, h: 58)
+    resize(name: "iPadSettings3x", image: image, w: 87, h: 87)
     
-    let iPadSettings2x = resize(image: image, w: 58, h: 58)
-    let iPadSettings3x = resize(image: image, w: 87, h: 87)
+    resize(name: "iPadSpotlight2x", image: image, w: 80, h: 80)
+    resize(name: "iPadSpotlight3x", image: image, w: 120, h: 120)
     
-    let iPadSpotlight2x = resize(image: image, w: 80, h: 80)
-    let iPadSpotlight3x = resize(image: image, w: 120, h: 120)
+    resize(name: "iPadApp2x", image: image, w: 120, h: 120)
+    resize(name: "iPadApp3x", image: image, w: 180, h: 180)
     
-    let iPadApp2x = resize(image: image, w: 120, h: 120)
-    let iPadApp3x = resize(image: image, w: 180, h: 180)
-    
-    if AppStore != nil {
-        AppStore = resize(image: image, w: 1280, h: 1280)
-    }
+    resize(name: "AppStore_iOS", image: image, w: 1280, h: 1280)
 }
 
 func xcode9_mac (image: NSImage){
-    let mac16pt1x = resize(image: image, w: 16, h: 16)
-    let mac16pt2x = resize(image: image, w: 32, h: 32)
+    resize(name: "mac16pt1x", image: image, w: 16, h: 16)
+    resize(name: "mac16pt2x", image: image, w: 32, h: 32)
     
-    let mac32pt1x = resize(image: image, w: 32, h: 32)
-    let mac32pt2x = resize(image: image, w: 64, h: 64)
+    resize(name: "mac32pt1x", image: image, w: 32, h: 32)
+    resize(name: "mac32pt2x", image: image, w: 64, h: 64)
     
-    let mac128pt1x = resize(image: image, w: 128, h: 128)
-    let mac128pt2x = resize(image: image, w: 64, h: 64)
+    resize(name: "mac128pt1x", image: image, w: 128, h: 128)
+    resize(name: "mac128pt2x", image: image, w: 64, h: 64)
     
-    let mac256pt1x = resize(image: image, w: 256, h: 256)
-    let mac256pt2x = resize(image: image, w: 512, h: 512)
+    resize(name: "mac256pt1x", image: image, w: 256, h: 256)
+    resize(name: "mac256pt2x", image: image, w: 512, h: 512)
     
-    let mac512pt1x = resize(image: image, w: 512, h: 512)
-    let mac512pt2x = resize(image: image, w: 1024, h: 1024)
+    resize(name: "mac512pt1x", image: image, w: 512, h: 512)
+    resize(name: "mac512pt2x", image: image, w: 1024, h: 1024)
 }
 
+// Xcode 8
 func xcode8_iPhone (image: NSImage){
-    let iPhoneNotification2x = resize(image: image, w: 40, h: 40)
-    let iPhoneNotification3x = resize(image: image, w: 60, h: 60)
+    resize(name: "iPhoneNotification2x", image: image, w: 40, h: 40)
+    resize(name: "iPhoneNotification3x", image: image, w: 60, h: 60)
     
-    let iPhoneSettings2x = resize(image: image, w: 58, h: 58)
-    let iPhoneSettings3x = resize(image: image, w: 87, h: 87)
+    resize(name: "iPhoneSettings2x", image: image, w: 58, h: 58)
+    resize(name: "iPhoneSettings3x", image: image, w: 87, h: 87)
     
-    let iPhoneSpotlight2x = resize(image: image, w: 80, h: 80)
-    let iPhoneSpotlight3x = resize(image: image, w: 120, h: 120)
+    resize(name: "iPhoneSpotlight2x", image: image, w: 80, h: 80)
+    resize(name: "iPhoneSpotlight3x", image: image, w: 120, h: 120)
     
-    let iPhoneApp2x = resize(image: image, w: 120, h: 120)
-    let iPhoneApp3x = resize(image: image, w: 180, h: 180)
+    resize(name: "iPhoneApp2x", image: image, w: 120, h: 120)
+    resize(name: "iPhoneApp3x", image: image, w: 180, h: 180)
 }
 
 func xcode8_iPad (image: NSImage){
-    let iPadNotification2x = resize(image: image, w: 40, h: 40)
-    let iPadNotification3x = resize(image: image, w: 60, h: 60)
+    resize(name: "iPadNotification2x", image: image, w: 40, h: 40)
+    resize(name: "iPadNotification3x", image: image, w: 60, h: 60)
     
-    let iPadSettings2x = resize(image: image, w: 58, h: 58)
-    let iPadSettings3x = resize(image: image, w: 87, h: 87)
+    resize(name: "iPadSettings2x", image: image, w: 58, h: 58)
+    resize(name: "iPadSettings3x", image: image, w: 87, h: 87)
     
-    let iPadSpotlight2x = resize(image: image, w: 80, h: 80)
-    let iPadSpotlight3x = resize(image: image, w: 120, h: 120)
+    resize(name: "iPadSpotlight2x", image: image, w: 80, h: 80)
+    resize(name: "iPadSpotlight3x", image: image, w: 120, h: 120)
     
-    let iPadApp2x = resize(image: image, w: 120, h: 120)
-    let iPadApp3x = resize(image: image, w: 180, h: 180)
-    let iPadProApp2x = resize(image: image, w: 167, h: 167)
+    resize(name: "iPadApp2x", image: image, w: 120, h: 120)
+    resize(name: "iPadApp3x", image: image, w: 180, h: 180)
+    resize(name: "iPadProApp2x", image: image, w: 167, h: 167)
 }
 
 func xcode8_mac (image: NSImage){
-    let mac16pt1x = resize(image: image, w: 16, h: 16)
-    let mac16pt2x = resize(image: image, w: 32, h: 32)
+    resize(name: "mac16pt1x", image: image, w: 16, h: 16)
+    resize(name: "mac16pt2x", image: image, w: 32, h: 32)
     
-    let mac32pt1x = resize(image: image, w: 32, h: 32)
-    let mac32pt2x = resize(image: image, w: 64, h: 64)
+    resize(name: "mac32pt1x", image: image, w: 32, h: 32)
+    resize(name: "mac32pt2x", image: image, w: 64, h: 64)
     
-    let mac128pt1x = resize(image: image, w: 128, h: 128)
-    let mac128pt2x = resize(image: image, w: 64, h: 64)
+    resize(name: "mac128pt1x", image: image, w: 128, h: 128)
+    resize(name: "mac128pt2x", image: image, w: 64, h: 64)
     
-    let mac256pt1x = resize(image: image, w: 256, h: 256)
-    let mac256pt2x = resize(image: image, w: 512, h: 512)
+    resize(name: "mac256pt1x", image: image, w: 256, h: 256)
+    resize(name: "mac256pt2x", image: image, w: 512, h: 512)
     
-    let mac512pt1x = resize(image: image, w: 512, h: 512)
-    let mac512pt2x = resize(image: image, w: 1024, h: 1024)
+    resize(name: "mac512pt1x", image: image, w: 512, h: 512)
+    resize(name: "mac512pt2x", image: image, w: 1024, h: 1024)
 }
 
-
-// Actual Resizing Code
-func resize(image: NSImage, w: Int, h: Int) -> NSImage {
+// MARK: - Resize and Save
+func resize(name: String, image: NSImage, w: Int, h: Int) {
     let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
     let newImage = NSImage(size: destSize)
     newImage.lockFocus()
     image.draw(in: NSMakeRect(0, 0, destSize.width, destSize.height), from: NSMakeRect(0, 0, image.size.width, image.size.height), operation: NSCompositingOperation.sourceOver, fraction: CGFloat(1))
     newImage.unlockFocus()
     newImage.size = destSize
-    return NSImage(data: newImage.tiffRepresentation!)!
+    
+    let imageData = newImage.tiffRepresentation! as NSData
+    save(name: name, data: imageData, directory: "STILL NEEDS")
+}
+
+func save(name: String, data: NSData, directory: String) {
+    
 }
