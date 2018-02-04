@@ -25,17 +25,21 @@ class OptionsViewController: NSViewController {
     
     // MARK: - Actions
     @IBAction func convert(_ sender: Any) {
+        // Check User Options
         let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
         let iPhoneEnabled = iPhoneToggle.state.rawValue
         let iPadEnabled = iPadToggle.state.rawValue
         let macEnabled = macToggle.state.rawValue
         
+        // Get Imnage from URL
         let imageToConvert = urlToImage(url: imageURL!)
         
-        // Select where to save
+        // Where to save
         let chosenFolder = selectFolder()
-        print(chosenFolder)
-        createFolder(directory: chosenFolder)
+        if chosenFolder == "canceled" { return }
+        let saveDirectory = URL(string: "\(chosenFolder)Icons/")
+        print(saveDirectory!)
+        createFolder(directory: saveDirectory!)
         
         // Convert and Save
         if xcodeVersion == "9" {
@@ -69,14 +73,14 @@ class OptionsViewController: NSViewController {
             let imageData = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
             return NSImage(data: imageData as Data)!
         } catch {
-            print(error)
+            print("URL to Image Error: \(error)")
         }
-        // Probally should change the backup return sometime
+        // TODO: - Change the backup return (currently the upload icon)
         return #imageLiteral(resourceName: "uploadIcon")
     }
     
     // MARK: - Save
-    func selectFolder() -> URL {
+    func selectFolder() -> String {
         let selectPanel = NSOpenPanel()
         selectPanel.title = "Select a folder to save your icons"
         selectPanel.showsResizeIndicator = true
@@ -88,11 +92,21 @@ class OptionsViewController: NSViewController {
         
         selectPanel.runModal()
         
-        return selectPanel.url!
+        if selectPanel.url != nil {
+            return String(describing: selectPanel.url!)
+        } else {
+            return "canceled"
+        }
+        
+        
     }
     
     func createFolder(directory: URL) {
-     
+        do {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            print("Folder Creation Error: \(error.localizedDescription)")
+        }
 
     }
     
