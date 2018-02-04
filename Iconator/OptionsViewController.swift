@@ -17,10 +17,18 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var macToggle: NSButton!
     
     var imageURL: NSURL?
+    var saveDirectory: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(imageURL!)
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if (segue.identifier!.rawValue == "toSaved") {
+            let destination = segue.destinationController as! SavedViewController;
+            destination.savedDirectory = saveDirectory!
+        }
     }
     
     // MARK: - Actions
@@ -37,7 +45,7 @@ class OptionsViewController: NSViewController {
         // Where to save
         let chosenFolder = selectFolder()
         if chosenFolder == "canceled" { return }
-        let saveDirectory = URL(string: "\(chosenFolder)Icons/")
+        saveDirectory = URL(string: "\(chosenFolder)Icons/")
         print(saveDirectory!)
         createFolder(directory: saveDirectory!)
         
@@ -63,6 +71,8 @@ class OptionsViewController: NSViewController {
                 xcode8_mac(image: imageToConvert, url: saveDirectory!)
             }
         }
+        
+        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toSaved"), sender: Any?.self)
         
     }
    

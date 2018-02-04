@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */; };
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
 		AD1270092023D1510068531A /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* DragViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD1270082023D1510068531A /* DragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				AD1270082023D1510068531A /* DragViewController.swift */,
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
+				AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */,
 				AD8CF9AC20264699008077B6 /* Resize.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
 				AD1270062023D1510068531A /* AppDelegate.swift */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */,
 				AD8CF9AD20264699008077B6 /* Resize.swift in Sources */,
 				AD1270092023D1510068531A /* DragViewController.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,

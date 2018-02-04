@@ -840,11 +840,48 @@
                         <outlet property="iPhoneToggle" destination="yYq-sc-jMw" id="8nx-Oq-4Pe"/>
                         <outlet property="macToggle" destination="UfM-cf-2Fw" id="nwL-Nb-Atq"/>
                         <outlet property="xcodeVersionSelector" destination="WdE-Hv-F4c" id="2rr-4J-331"/>
+                        <segue destination="uTk-f7-YUC" kind="show" identifier="toSaved" id="Imn-VS-oY7"/>
                     </connections>
                 </viewController>
                 <customObject id="0DN-fa-hGa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="613" y="655"/>
+        </scene>
+        <!--Saved View Controller-->
+        <scene sceneID="ygH-fi-udU">
+            <objects>
+                <viewController title="Saved View Controller" showSeguePresentationStyle="single" id="uTk-f7-YUC" customClass="SavedViewController" customModule="Iconator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="MWb-Gt-sHb">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1c-Ve-e3a">
+                                <rect key="frame" x="30" y="141" width="407" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Saved to _______" id="IlV-rZ-wGk">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jp8-1K-Y6q">
+                                <rect key="frame" x="188" y="187" width="75" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Done!" id="fg5-z7-zio">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="savedText" destination="a1c-Ve-e3a" id="3fb-cs-OdY"/>
+                    </connections>
+                </viewController>
+                <customObject id="exI-2p-feE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1191" y="655"/>
         </scene>
     </scenes>
     <resources>
