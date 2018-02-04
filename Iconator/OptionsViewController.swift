@@ -44,23 +44,23 @@ class OptionsViewController: NSViewController {
         // Convert and Save
         if xcodeVersion == "9" {
             if iPhoneEnabled == 1 {
-                xcode9_iPhone(image: imageToConvert)
+                xcode9_iPhone(image: imageToConvert, url: saveDirectory!)
             }
             if iPadEnabled == 1 {
-                xcode9_iPad(image: imageToConvert)
+                xcode9_iPad(image: imageToConvert, url: saveDirectory!)
             }
             if macEnabled == 1 {
-                xcode9_mac(image: imageToConvert)
+                xcode9_mac(image: imageToConvert, url: saveDirectory!)
             }
         } else if xcodeVersion == "8" {
             if iPhoneEnabled == 1 {
-                xcode8_iPhone(image: imageToConvert)
+                xcode8_iPhone(image: imageToConvert, url: saveDirectory!)
             }
             if iPadEnabled == 1 {
-                xcode8_iPad(image: imageToConvert)
+                xcode8_iPad(image: imageToConvert, url: saveDirectory!)
             }
             if macEnabled == 1 {
-                xcode8_mac(image: imageToConvert)
+                xcode8_mac(image: imageToConvert, url: saveDirectory!)
             }
         }
         

@@ -8,10 +8,13 @@
 
 import Cocoa
 
-// MARK: - Sizes
+var directory: URL?
 
+// MARK: - Sizes
 // Xcode 9
-func xcode9_iPhone (image: NSImage){
+func xcode9_iPhone (image: NSImage, url: URL) {
+    directory = url
+        
     resize(name: "iPhoneNotification2x", image: image, w: 40, h: 40)
     resize(name: "iPhoneNotification3x", image: image, w: 60, h: 60)
     
@@ -27,7 +30,9 @@ func xcode9_iPhone (image: NSImage){
     resize(name: "AppStore_iOS", image: image, w: 1280, h: 1280)
 }
 
-func xcode9_iPad (image: NSImage){
+func xcode9_iPad (image: NSImage, url: URL) {
+    directory = url
+    
     resize(name: "iPadNotification2x", image: image, w: 40, h: 40)
     resize(name: "iPadNotification3x", image: image, w: 60, h: 60)
     
@@ -43,7 +48,9 @@ func xcode9_iPad (image: NSImage){
     resize(name: "AppStore_iOS", image: image, w: 1280, h: 1280)
 }
 
-func xcode9_mac (image: NSImage){
+func xcode9_mac (image: NSImage, url: URL) {
+    directory = url
+    
     resize(name: "mac16pt1x", image: image, w: 16, h: 16)
     resize(name: "mac16pt2x", image: image, w: 32, h: 32)
     
@@ -61,7 +68,9 @@ func xcode9_mac (image: NSImage){
 }
 
 // Xcode 8
-func xcode8_iPhone (image: NSImage){
+func xcode8_iPhone (image: NSImage, url: URL) {
+    directory = url
+    
     resize(name: "iPhoneNotification2x", image: image, w: 40, h: 40)
     resize(name: "iPhoneNotification3x", image: image, w: 60, h: 60)
     
@@ -75,7 +84,9 @@ func xcode8_iPhone (image: NSImage){
     resize(name: "iPhoneApp3x", image: image, w: 180, h: 180)
 }
 
-func xcode8_iPad (image: NSImage){
+func xcode8_iPad (image: NSImage, url: URL) {
+    directory = url
+    
     resize(name: "iPadNotification2x", image: image, w: 40, h: 40)
     resize(name: "iPadNotification3x", image: image, w: 60, h: 60)
     
@@ -90,7 +101,9 @@ func xcode8_iPad (image: NSImage){
     resize(name: "iPadProApp2x", image: image, w: 167, h: 167)
 }
 
-func xcode8_mac (image: NSImage){
+func xcode8_mac (image: NSImage, url: URL) {
+    directory = url
+    
     resize(name: "mac16pt1x", image: image, w: 16, h: 16)
     resize(name: "mac16pt2x", image: image, w: 32, h: 32)
     
@@ -117,9 +130,10 @@ func resize(name: String, image: NSImage, w: Int, h: Int) {
     newImage.size = destSize
     
     let imageData = newImage.tiffRepresentation! as NSData
-    save(name: name, data: imageData, directory: "STILL NEEDS")
+    save(name: name, data: imageData, directory: directory!)
 }
 
-func save(name: String, data: NSData, directory: String) {
-    
+func save(name: String, data: NSData, directory: URL) {
+    let filename = directory.appendingPathComponent("\(name).png")
+    try? data.write(to: filename)
 }
