@@ -12,8 +12,6 @@
 		AD1270092023D1510068531A /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* DragViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
 		AD12700E2023D1510068531A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD12700C2023D1510068531A /* Main.storyboard */; };
-		AD12701A2023D1510068531A /* IconatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270192023D1510068531A /* IconatorTests.swift */; };
-		AD1270252023D1510068531A /* IconatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270242023D1510068531A /* IconatorUITests.swift */; };
 		AD1270362023DADA0068531A /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270352023DADA0068531A /* DragView.swift */; };
 		AD1270382024050C0068531A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270372024050C0068531A /* OptionsViewController.swift */; };
 		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
@@ -46,11 +44,7 @@
 		AD12700F2023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270102023D1510068531A /* Iconator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconator.entitlements; sourceTree = "<group>"; };
 		AD1270152023D1510068531A /* IconatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IconatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD1270192023D1510068531A /* IconatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconatorTests.swift; sourceTree = "<group>"; };
-		AD12701B2023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270202023D1510068531A /* IconatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IconatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD1270242023D1510068531A /* IconatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconatorUITests.swift; sourceTree = "<group>"; };
-		AD1270262023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD1270352023DADA0068531A /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
@@ -87,8 +81,6 @@
 			children = (
 				AD1270322023D3250068531A /* README.md */,
 				AD1270052023D1510068531A /* Iconator */,
-				AD1270182023D1510068531A /* IconatorTests */,
-				AD1270232023D1510068531A /* IconatorUITests */,
 				AD1270042023D1510068531A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,30 +104,12 @@
 				AD8CF9AC20264699008077B6 /* Resize.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
 				AD1270062023D1510068531A /* AppDelegate.swift */,
-				AD12700A2023D1510068531A /* Assets.xcassets */,
 				AD12700C2023D1510068531A /* Main.storyboard */,
+				AD12700A2023D1510068531A /* Assets.xcassets */,
 				AD12700F2023D1510068531A /* Info.plist */,
 				AD1270102023D1510068531A /* Iconator.entitlements */,
 			);
 			path = Iconator;
-			sourceTree = "<group>";
-		};
-		AD1270182023D1510068531A /* IconatorTests */ = {
-			isa = PBXGroup;
-			children = (
-				AD1270192023D1510068531A /* IconatorTests.swift */,
-				AD12701B2023D1510068531A /* Info.plist */,
-			);
-			path = IconatorTests;
-			sourceTree = "<group>";
-		};
-		AD1270232023D1510068531A /* IconatorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AD1270242023D1510068531A /* IconatorUITests.swift */,
-				AD1270262023D1510068531A /* Info.plist */,
-			);
-			path = IconatorUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD12701A2023D1510068531A /* IconatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD1270252023D1510068531A /* IconatorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
