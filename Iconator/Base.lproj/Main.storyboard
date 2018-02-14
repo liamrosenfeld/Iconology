@@ -685,7 +685,7 @@
             <objects>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Iconator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -723,10 +723,10 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="Works Best...">
                                 <rect key="frame" x="146" y="50" width="188" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Works best with 1536x1536)" id="Ugq-SZ-O2r">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Works best with 1280 × 1280)" id="Ugq-SZ-O2r">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -742,7 +742,6 @@
                         <outlet property="dragView" destination="5O0-uM-ocT" id="aEs-GY-TxW"/>
                         <outlet property="imageView" destination="PC6-60-NOh" id="e6J-7B-h0i"/>
                         <outlet property="staticLabel" destination="1q5-gH-9bI" id="Ts2-Qq-68e"/>
-                        <segue destination="qum-VO-ymn" kind="show" identifier="toOptions" id="rJV-yl-cN7"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -752,13 +751,13 @@
         <!--Options View Controller-->
         <scene sceneID="tzM-X4-iIV">
             <objects>
-                <viewController title="Options View Controller" showSeguePresentationStyle="single" id="qum-VO-ymn" customClass="OptionsViewController" customModule="Iconator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Options View Controller" storyboardIdentifier="OptionsViewController" showSeguePresentationStyle="single" id="qum-VO-ymn" customClass="OptionsViewController" customModule="Iconator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pxR-gr-RuL">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAh-Pp-Dq8" userLabel="Title">
-                                <rect key="frame" x="171" y="232" width="109" height="48"/>
+                                <rect key="frame" x="171" y="202" width="109" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Options:" id="Kd6-NF-AVP">
                                     <font key="font" metaFont="system" size="25"/>
@@ -767,7 +766,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdE-Hv-F4c" userLabel="Version Selector">
-                                <rect key="frame" x="226" y="198" width="76" height="26"/>
+                                <rect key="frame" x="226" y="168" width="76" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="9" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HCq-QF-na8" id="bth-S6-fr6">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -781,7 +780,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17q-k7-cHo" userLabel="&quot;Devices:&quot; Label">
-                                <rect key="frame" x="199" y="157" width="56" height="17"/>
+                                <rect key="frame" x="199" y="127" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Devices:" id="JGM-ib-WWB">
                                     <font key="font" metaFont="system"/>
@@ -790,7 +789,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYq-sc-jMw">
-                                <rect key="frame" x="191" y="133" width="64" height="18"/>
+                                <rect key="frame" x="191" y="103" width="64" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="iPhone" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xeK-C6-7Dh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -798,15 +797,32 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdz-Bn-Vdu">
-                                <rect key="frame" x="191" y="113" width="49" height="18"/>
+                                <rect key="frame" x="191" y="83" width="49" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="iPad" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bKE-Hl-dcf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
+                                <rect key="frame" x="191" y="63" width="48" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Mac" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI" userLabel="&quot;Xcode Version:&quot; Label">
+                                <rect key="frame" x="127" y="173" width="95" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Xcode Version:" id="sh3-KH-4vf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
-                                <rect key="frame" x="351" y="13" width="89" height="32"/>
+                                <rect key="frame" x="377" y="13" width="89" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w0k-0Z-8mk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -816,23 +832,6 @@
                                     <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
-                                <rect key="frame" x="191" y="93" width="48" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Mac" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI" userLabel="&quot;Xcode Version:&quot; Label">
-                                <rect key="frame" x="127" y="203" width="95" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Xcode Version:" id="sh3-KH-4vf">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -840,7 +839,6 @@
                         <outlet property="iPhoneToggle" destination="yYq-sc-jMw" id="8nx-Oq-4Pe"/>
                         <outlet property="macToggle" destination="UfM-cf-2Fw" id="nwL-Nb-Atq"/>
                         <outlet property="xcodeVersionSelector" destination="WdE-Hv-F4c" id="2rr-4J-331"/>
-                        <segue destination="uTk-f7-YUC" kind="show" identifier="toSaved" id="Imn-VS-oY7"/>
                     </connections>
                 </viewController>
                 <customObject id="0DN-fa-hGa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -850,13 +848,13 @@
         <!--Saved View Controller-->
         <scene sceneID="ygH-fi-udU">
             <objects>
-                <viewController title="Saved View Controller" showSeguePresentationStyle="single" id="uTk-f7-YUC" customClass="SavedViewController" customModule="Iconator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Saved View Controller" storyboardIdentifier="SavedViewController" showSeguePresentationStyle="single" id="uTk-f7-YUC" customClass="SavedViewController" customModule="Iconator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="MWb-Gt-sHb">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1c-Ve-e3a">
-                                <rect key="frame" x="30" y="141" width="407" height="17"/>
+                                <rect key="frame" x="30" y="111" width="407" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Saved to _______" id="IlV-rZ-wGk">
                                     <font key="font" metaFont="system"/>
@@ -865,7 +863,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jp8-1K-Y6q">
-                                <rect key="frame" x="188" y="187" width="75" height="37"/>
+                                <rect key="frame" x="188" y="157" width="75" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Done!" id="fg5-z7-zio">
                                     <font key="font" metaFont="system" size="25"/>

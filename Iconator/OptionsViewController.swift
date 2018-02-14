@@ -24,11 +24,10 @@ class OptionsViewController: NSViewController {
         print(imageURL!)
     }
     
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if (segue.identifier!.rawValue == "toSaved") {
-            let destination = segue.destinationController as! SavedViewController;
-            destination.savedDirectory = saveDirectory!
-        }
+    func toSavedVC() {
+        let savedViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SavedViewController")) as? SavedViewController
+        savedViewController?.savedDirectory = saveDirectory!
+        view.window?.contentViewController = savedViewController
     }
     
     // MARK: - Actions
@@ -72,7 +71,7 @@ class OptionsViewController: NSViewController {
             }
         }
         
-        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toSaved"), sender: Any?.self)
+        toSavedVC()
         
     }
    

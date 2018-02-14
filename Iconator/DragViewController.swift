@@ -27,6 +27,12 @@ class DragViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    func toOptionsVC() {
+        let optionsViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "OptionsViewController")) as? OptionsViewController
+        optionsViewController?.imageURL = imageURL!
+        view.window?.contentViewController = optionsViewController
+    }
 
 }
 
@@ -35,16 +41,7 @@ extension DragViewController: DragViewDelegate {
     func dragView(didDragFileWith url: NSURL) {
         imageURL = url
         print(url)
-        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toOptions"), sender: Any?.self)
-    }
-    
-    
-    // TODO: - Prepare for segue and send imageURL to imageURL in OptionsViewController()
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if (segue.identifier!.rawValue == "toOptions") {
-            let destination = segue.destinationController as! OptionsViewController;
-            destination.imageURL = imageURL!
-        }
+        toOptionsVC()
     }
     
 }
