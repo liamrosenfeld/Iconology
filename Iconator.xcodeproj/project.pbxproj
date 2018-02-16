@@ -17,23 +17,6 @@
 		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AD1270162023D1510068531A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AD126FFB2023D1510068531A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD1270022023D1510068531A;
-			remoteInfo = Iconator;
-		};
-		AD1270212023D1510068531A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AD126FFB2023D1510068531A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD1270022023D1510068531A;
-			remoteInfo = Iconator;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,8 +26,6 @@
 		AD12700D2023D1510068531A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD12700F2023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270102023D1510068531A /* Iconator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconator.entitlements; sourceTree = "<group>"; };
-		AD1270152023D1510068531A /* IconatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IconatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD1270202023D1510068531A /* IconatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IconatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD1270352023DADA0068531A /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
@@ -53,20 +34,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		AD1270002023D1510068531A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD1270122023D1510068531A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD12701D2023D1510068531A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -89,8 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				AD1270032023D1510068531A /* Iconator.app */,
-				AD1270152023D1510068531A /* IconatorTests.xctest */,
-				AD1270202023D1510068531A /* IconatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,42 +97,6 @@
 			productReference = AD1270032023D1510068531A /* Iconator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AD1270142023D1510068531A /* IconatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD12702C2023D1510068531A /* Build configuration list for PBXNativeTarget "IconatorTests" */;
-			buildPhases = (
-				AD1270112023D1510068531A /* Sources */,
-				AD1270122023D1510068531A /* Frameworks */,
-				AD1270132023D1510068531A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AD1270172023D1510068531A /* PBXTargetDependency */,
-			);
-			name = IconatorTests;
-			productName = IconatorTests;
-			productReference = AD1270152023D1510068531A /* IconatorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AD12701F2023D1510068531A /* IconatorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD12702F2023D1510068531A /* Build configuration list for PBXNativeTarget "IconatorUITests" */;
-			buildPhases = (
-				AD12701C2023D1510068531A /* Sources */,
-				AD12701D2023D1510068531A /* Frameworks */,
-				AD12701E2023D1510068531A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AD1270222023D1510068531A /* PBXTargetDependency */,
-			);
-			name = IconatorUITests;
-			productName = IconatorUITests;
-			productReference = AD1270202023D1510068531A /* IconatorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -181,16 +110,6 @@
 					AD1270022023D1510068531A = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
-					};
-					AD1270142023D1510068531A = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = AD1270022023D1510068531A;
-					};
-					AD12701F2023D1510068531A = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = AD1270022023D1510068531A;
 					};
 				};
 			};
@@ -208,8 +127,6 @@
 			projectRoot = "";
 			targets = (
 				AD1270022023D1510068531A /* Iconator */,
-				AD1270142023D1510068531A /* IconatorTests */,
-				AD12701F2023D1510068531A /* IconatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,20 +138,6 @@
 			files = (
 				AD12700B2023D1510068531A /* Assets.xcassets in Resources */,
 				AD12700E2023D1510068531A /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD1270132023D1510068531A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD12701E2023D1510068531A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,34 +157,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD1270112023D1510068531A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD12701C2023D1510068531A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AD1270172023D1510068531A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD1270022023D1510068531A /* Iconator */;
-			targetProxy = AD1270162023D1510068531A /* PBXContainerItemProxy */;
-		};
-		AD1270222023D1510068531A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD1270022023D1510068531A /* Iconator */;
-			targetProxy = AD1270212023D1510068531A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AD12700C2023D1510068531A /* Main.storyboard */ = {
@@ -433,72 +309,6 @@
 			};
 			name = Release;
 		};
-		AD12702D2023D1510068531A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = IconatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.IconatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Iconator.app/Contents/MacOS/Iconator";
-			};
-			name = Debug;
-		};
-		AD12702E2023D1510068531A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = IconatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.IconatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Iconator.app/Contents/MacOS/Iconator";
-			};
-			name = Release;
-		};
-		AD1270302023D1510068531A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = IconatorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.IconatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = Iconator;
-			};
-			name = Debug;
-		};
-		AD1270312023D1510068531A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = IconatorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.IconatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = Iconator;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -516,24 +326,6 @@
 			buildConfigurations = (
 				AD12702A2023D1510068531A /* Debug */,
 				AD12702B2023D1510068531A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD12702C2023D1510068531A /* Build configuration list for PBXNativeTarget "IconatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD12702D2023D1510068531A /* Debug */,
-				AD12702E2023D1510068531A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD12702F2023D1510068531A /* Build configuration list for PBXNativeTarget "IconatorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD1270302023D1510068531A /* Debug */,
-				AD1270312023D1510068531A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
