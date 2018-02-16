@@ -723,8 +723,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="Works Best...">
-                                <rect key="frame" x="146" y="50" width="188" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="SubText">
+                                <rect key="frame" x="137" y="50" width="207" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Works best with 1280 × 1280)" id="Ugq-SZ-O2r">
                                     <font key="font" metaFont="system"/>
@@ -739,9 +739,10 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="1q5-gH-9bI" id="0tU-tL-ajx"/>
                         <outlet property="dragView" destination="5O0-uM-ocT" id="aEs-GY-TxW"/>
                         <outlet property="imageView" destination="PC6-60-NOh" id="e6J-7B-h0i"/>
-                        <outlet property="staticLabel" destination="1q5-gH-9bI" id="Ts2-Qq-68e"/>
+                        <outlet property="subText" destination="j3M-1A-3zn" id="f2U-2H-Yih"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,8 @@ import Cocoa
 
 
 protocol DragViewDelegate {
+    func dragViewDidHover()
+    func dragViewMouseExited()
     func dragView(didDragFileWith URL: NSURL)
 }
 
@@ -19,6 +21,7 @@ class DragView: NSView {
     
     // Help push forward only the right file format of our images
     private var fileTypeIsOk = false
+    // TODO: - Add PSD Support
     private var acceptedFileExtensions = ["png"]
     
     required init?(coder: NSCoder) {
@@ -29,6 +32,12 @@ class DragView: NSView {
     // Check if Image is Allowed
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         fileTypeIsOk = checkExtension(drag: sender)
+        
+        // Trigger funtion in DragViewController if file type is ok
+        if fileTypeIsOk {
+            delegate?.dragViewDidHover()
+        }
+        
         return []
     }
     
@@ -37,7 +46,7 @@ class DragView: NSView {
         return fileTypeIsOk ? .copy : []
     }
     
-    // Pass URL on mouse
+    // Pass URL on mouse release
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         guard let draggedFileURL = sender.draggedFileURL else {
             return false
@@ -58,6 +67,11 @@ class DragView: NSView {
         }
         
         return acceptedFileExtensions.contains(fileExtension)
+    }
+    
+    // Notify DragViewController if drag leaves without drop
+    override func draggingExited(_ sender: NSDraggingInfo?) {
+        delegate?.dragViewMouseExited()
     }
     
 }
