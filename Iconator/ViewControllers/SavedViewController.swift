@@ -10,6 +10,7 @@ import Cocoa
 
 class SavedViewController: NSViewController {
     
+    // Setup
     var savedDirectory: URL?
     
     @IBOutlet weak var savedText: NSTextField!
@@ -18,6 +19,12 @@ class SavedViewController: NSViewController {
         super.viewDidLoad()
         let directoryString = directory!.path
         self.savedText.stringValue = "Saved to \(directoryString)"
+    }
+    
+    // Actions
+    @IBAction func another(_ sender: Any) {
+        let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DragViewController")) as? DragViewController
+        view.window?.contentViewController = dragViewController
     }
     
 }
