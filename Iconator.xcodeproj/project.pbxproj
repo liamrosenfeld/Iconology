@@ -63,18 +63,42 @@
 		AD1270052023D1510068531A /* Iconator */ = {
 			isa = PBXGroup;
 			children = (
+				ADEE32A72039194800AE0566 /* ViewControllers */,
+				ADEE32A820391A7B00AE0566 /* Functionality */,
+				AD12700C2023D1510068531A /* Main.storyboard */,
+				ADEE32A62039192500AE0566 /* SupportFiles */,
+			);
+			path = Iconator;
+			sourceTree = "<group>";
+		};
+		ADEE32A62039192500AE0566 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				AD1270062023D1510068531A /* AppDelegate.swift */,
+				AD12700F2023D1510068531A /* Info.plist */,
+				AD12700A2023D1510068531A /* Assets.xcassets */,
+				AD1270102023D1510068531A /* Iconator.entitlements */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		ADEE32A72039194800AE0566 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				AD1270082023D1510068531A /* DragViewController.swift */,
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
 				AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADEE32A820391A7B00AE0566 /* Functionality */ = {
+			isa = PBXGroup;
+			children = (
 				AD8CF9AC20264699008077B6 /* Resize.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
-				AD1270062023D1510068531A /* AppDelegate.swift */,
-				AD12700C2023D1510068531A /* Main.storyboard */,
-				AD12700A2023D1510068531A /* Assets.xcassets */,
-				AD12700F2023D1510068531A /* Info.plist */,
-				AD1270102023D1510068531A /* Iconator.entitlements */,
 			);
-			path = Iconator;
+			path = Functionality;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,11 +305,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Iconator/Iconator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Iconator/SupportFiles/Iconator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = Iconator/Info.plist;
+				INFOPLIST_FILE = Iconator/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -297,11 +321,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Iconator/Iconator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Iconator/SupportFiles/Iconator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = Iconator/Info.plist;
+				INFOPLIST_FILE = Iconator/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
