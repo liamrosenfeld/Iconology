@@ -12,8 +12,7 @@ class OptionsViewController: NSViewController {
     
     // MARK: - Setup
     @IBOutlet weak var xcodeVersionSelector: NSPopUpButton!
-    @IBOutlet weak var iPhoneToggle: NSButton!
-    @IBOutlet weak var iPadToggle: NSButton!
+    @IBOutlet weak var iOSToggle: NSButton!
     @IBOutlet weak var macToggle: NSButton!
     
     var imageURL: NSURL?
@@ -34,11 +33,10 @@ class OptionsViewController: NSViewController {
     @IBAction func convert(_ sender: Any) {
         // Check User Options
         let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
-        let iPhoneEnabled = iPhoneToggle.state.rawValue
-        let iPadEnabled = iPadToggle.state.rawValue
+        let iOSEnabled = iOSToggle.state.rawValue
         let macEnabled = macToggle.state.rawValue
         
-        // Get Imnage from URL
+        // Get Image from URL
         let imageToConvert = urlToImage(url: imageURL!)
         
         // Where to save
@@ -50,21 +48,15 @@ class OptionsViewController: NSViewController {
         
         // Convert and Save
         if xcodeVersion == "9" {
-            if iPhoneEnabled == 1 {
-                xcode9_iPhone(image: imageToConvert, url: saveDirectory!)
-            }
-            if iPadEnabled == 1 {
-                xcode9_iPad(image: imageToConvert, url: saveDirectory!)
+            if iOSEnabled == 1 {
+                xcode9_iOS(image: imageToConvert, url: saveDirectory!)
             }
             if macEnabled == 1 {
                 xcode9_mac(image: imageToConvert, url: saveDirectory!)
             }
         } else if xcodeVersion == "8" {
-            if iPhoneEnabled == 1 {
-                xcode8_iPhone(image: imageToConvert, url: saveDirectory!)
-            }
-            if iPadEnabled == 1 {
-                xcode8_iPad(image: imageToConvert, url: saveDirectory!)
+            if iOSEnabled == 1 {
+                xcode8_iOS(image: imageToConvert, url: saveDirectory!)
             }
             if macEnabled == 1 {
                 xcode8_mac(image: imageToConvert, url: saveDirectory!)

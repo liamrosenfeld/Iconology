@@ -12,7 +12,7 @@ var directory: URL?
 
 // MARK: - Sizes
 // Xcode 9
-func xcode9_iPhone (image: NSImage, url: URL) {
+func xcode9_iOS (image: NSImage, url: URL) {
     directory = url
         
     resize(name: "iPhoneNotification2x", image: image, w: 40, h: 40)
@@ -26,12 +26,6 @@ func xcode9_iPhone (image: NSImage, url: URL) {
     
     resize(name: "iPhoneApp2x", image: image, w: 120, h: 120)
     resize(name: "iPhoneApp3x", image: image, w: 180, h: 180)
-    
-    resize(name: "AppStore_iOS", image: image, w: 1280, h: 1280)
-}
-
-func xcode9_iPad (image: NSImage, url: URL) {
-    directory = url
     
     resize(name: "iPadNotification2x", image: image, w: 40, h: 40)
     resize(name: "iPadNotification3x", image: image, w: 60, h: 60)
@@ -68,7 +62,7 @@ func xcode9_mac (image: NSImage, url: URL) {
 }
 
 // Xcode 8
-func xcode8_iPhone (image: NSImage, url: URL) {
+func xcode8_iOS (image: NSImage, url: URL) {
     directory = url
     
     resize(name: "iPhoneNotification2x", image: image, w: 40, h: 40)
@@ -82,10 +76,6 @@ func xcode8_iPhone (image: NSImage, url: URL) {
     
     resize(name: "iPhoneApp2x", image: image, w: 120, h: 120)
     resize(name: "iPhoneApp3x", image: image, w: 180, h: 180)
-}
-
-func xcode8_iPad (image: NSImage, url: URL) {
-    directory = url
     
     resize(name: "iPadNotification2x", image: image, w: 40, h: 40)
     resize(name: "iPadNotification3x", image: image, w: 60, h: 60)
@@ -99,6 +89,7 @@ func xcode8_iPad (image: NSImage, url: URL) {
     resize(name: "iPadApp2x", image: image, w: 120, h: 120)
     resize(name: "iPadApp3x", image: image, w: 180, h: 180)
     resize(name: "iPadProApp2x", image: image, w: 167, h: 167)
+    
 }
 
 func xcode8_mac (image: NSImage, url: URL) {
