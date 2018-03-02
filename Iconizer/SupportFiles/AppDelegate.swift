@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Iconator
+//  Iconizer
 //
 //  Created by Liam Rosenfeld on 2/1/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.

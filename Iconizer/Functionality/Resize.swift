@@ -1,6 +1,6 @@
 //
 //  resize.swift
-//  Iconator
+//  Iconizer
 //
 //  Created by Liam Rosenfeld on 2/3/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.
