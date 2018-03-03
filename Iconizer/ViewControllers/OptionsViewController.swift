@@ -14,6 +14,7 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var xcodeVersionSelector: NSPopUpButton!
     @IBOutlet weak var iOSToggle: NSButton!
     @IBOutlet weak var macToggle: NSButton!
+    @IBOutlet weak var iMessageToggle: NSButton!
     @IBOutlet weak var watchToggle: NSButton!
     
     var imageURL: NSURL?
@@ -36,6 +37,7 @@ class OptionsViewController: NSViewController {
         let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
         let iOSEnabled = iOSToggle.state.rawValue
         let macEnabled = macToggle.state.rawValue
+        let iMessageEnabled = iMessageToggle.state.rawValue
         let watchEnabled = watchToggle.state.rawValue
         
         // Get Image from URL
@@ -56,6 +58,9 @@ class OptionsViewController: NSViewController {
             if macEnabled == 1 {
                 xcode9_mac(image: imageToConvert, url: saveDirectory!)
             }
+            if iMessageEnabled == 1 {
+                xcode9_iMessage(image: imageToConvert, url: saveDirectory!)
+            }
             if watchEnabled == 1 {
                 xcode9_watch(image: imageToConvert, url: saveDirectory!)
             }
@@ -66,7 +71,10 @@ class OptionsViewController: NSViewController {
             if macEnabled == 1 {
                 xcode8_mac(image: imageToConvert, url: saveDirectory!)
             }
-            if macEnabled == 1 {
+            if iMessageEnabled == 1 {
+                xcode8_iMessage(image: imageToConvert, url: saveDirectory!)
+            }
+            if watchEnabled == 1 {
                 xcode8_watch(image: imageToConvert, url: saveDirectory!)
             }
         }

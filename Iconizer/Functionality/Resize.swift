@@ -61,6 +61,26 @@ func xcode9_mac (image: NSImage, url: URL) {
     resize(name: "mac512pt2x", image: image, w: 1024, h: 1024)
 }
 
+func xcode9_iMessage (image: NSImage, url: URL) {
+    directory = url
+    
+    resize(name: "iMessage-iPhoneMessages2x", image: image, w: 120, h: 90)
+    resize(name: "iMessage-iPhoneMessages3x", image: image, w: 180, h: 135)
+    
+    resize(name: "iMessage-iPadMessages2x", image: image, w: 134, h: 100)
+    resize(name: "iMessage-iPadProMessages2x", image: image, w: 148, h: 110)
+    
+    resize(name: "iMessage-Messages-27x20-2x", image: image, w: 54, h: 40)
+    resize(name: "iMessage-Messages-27x20-3x", image: image, w: 81, h: 60)
+    
+    resize(name: "iMessage-Messages-32x24-2x", image: image, w: 64, h: 48)
+    resize(name: "iMessage-Messages-32x24-3x", image: image, w: 96, h: 72)
+    
+    resize(name: "iMessage-AppStore", image: image, w: 1024, h: 768)
+    
+}
+
+
 func xcode9_watch (image: NSImage, url: URL) {
     directory = url
     
@@ -128,6 +148,25 @@ func xcode8_mac (image: NSImage, url: URL) {
     
     resize(name: "mac512pt1x", image: image, w: 512, h: 512)
     resize(name: "mac512pt2x", image: image, w: 1024, h: 1024)
+}
+
+func xcode8_iMessage (image: NSImage, url: URL) {
+    directory = url
+    
+    resize(name: "iMessage-iPhoneMessages2x", image: image, w: 120, h: 90)
+    resize(name: "iMessage-iPhoneMessages3x", image: image, w: 180, h: 135)
+    
+    resize(name: "iMessage-iPadMessages2x", image: image, w: 134, h: 100)
+    resize(name: "iMessage-iPadProMessages2x", image: image, w: 148, h: 110)
+    
+    resize(name: "iMessage-Messages-27x20-2x", image: image, w: 54, h: 40)
+    resize(name: "iMessage-Messages-27x20-3x", image: image, w: 81, h: 60)
+    
+    resize(name: "iMessage-Messages-32x24-2x", image: image, w: 64, h: 48)
+    resize(name: "iMessage-Messages-32x24-3x", image: image, w: 96, h: 72)
+    
+    resize(name: "iMessage-AppStore", image: image, w: 1024, h: 768)
+    
 }
 
 func xcode8_watch (image: NSImage, url: URL) {

@@ -724,9 +724,18 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="SubText">
-                                <rect key="frame" x="137" y="50" width="207" height="17"/>
+                                <rect key="frame" x="54" y="50" width="397" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Works best with 1280 × 1280)" id="Ugq-SZ-O2r">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(1280 × 1280 reccomended for iOS, watchOS and macOS)" id="Ugq-SZ-O2r">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-hl-Pxe">
+                                <rect key="frame" x="42" y="34" width="409" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(1280 x 768 reccomended for iMessage)" id="whj-2N-F6x">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -797,6 +806,14 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
+                                <rect key="frame" x="191" y="83" width="66" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="macOS" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI" userLabel="&quot;Xcode Version:&quot; Label">
                                 <rect key="frame" x="127" y="173" width="95" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -817,18 +834,18 @@
                                     <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLG-uF-VCy">
-                                <rect key="frame" x="191" y="63" width="77" height="18"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erb-2E-o1a">
+                                <rect key="frame" x="191" y="63" width="149" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="watchOS" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jkt-Uk-fPA">
+                                <buttonCell key="cell" type="check" title="iMessage Extension" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WQW-v1-5Xa">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
-                                <rect key="frame" x="191" y="83" width="66" height="18"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLG-uF-VCy">
+                                <rect key="frame" x="191" y="43" width="77" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="macOS" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
+                                <buttonCell key="cell" type="check" title="watchOS" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jkt-Uk-fPA">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -836,6 +853,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="iMessageToggle" destination="Erb-2E-o1a" id="s9L-Na-6Yr"/>
                         <outlet property="iOSToggle" destination="yYq-sc-jMw" id="Zpe-Dx-rzq"/>
                         <outlet property="macToggle" destination="UfM-cf-2Fw" id="nwL-Nb-Atq"/>
                         <outlet property="watchToggle" destination="QLG-uF-VCy" id="h7E-fT-l8v"/>
