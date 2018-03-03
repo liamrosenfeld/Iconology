@@ -39,7 +39,7 @@ func xcode9_iOS (image: NSImage, url: URL) {
     resize(name: "iPadApp2x", image: image, w: 120, h: 120)
     resize(name: "iPadApp3x", image: image, w: 180, h: 180)
     
-    resize(name: "AppStore_iOS", image: image, w: 1280, h: 1280)
+    resize(name: "iOSAppStore", image: image, w: 1280, h: 1280)
 }
 
 func xcode9_mac (image: NSImage, url: URL) {
@@ -59,6 +59,25 @@ func xcode9_mac (image: NSImage, url: URL) {
     
     resize(name: "mac512pt1x", image: image, w: 512, h: 512)
     resize(name: "mac512pt2x", image: image, w: 1024, h: 1024)
+}
+
+func xcode9_watch (image: NSImage, url: URL) {
+    directory = url
+    
+    resize(name: "watchNotification30mm", image: image, w: 48, h: 48)
+    resize(name: "watchNotification42mm", image: image, w: 55, h: 55)
+    
+    resize(name: "watchCompanion2x", image: image, w: 58, h: 58)
+    resize(name: "watchCompanion3x", image: image, w: 87, h: 87)
+    
+    resize(name: "watchHomeAll", image: image, w: 40, h: 40)
+    
+    resize(name: "watchLong42mm", image: image, w: 88, h: 88)
+    
+    resize(name: "watchShort38mm", image: image, w: 172, h: 172)
+    resize(name: "watchShort42mm", image: image, w: 196, h: 196)
+    
+    resize(name: "watchAppStore", image: image, w: 1024, h: 1024)
 }
 
 // Xcode 8
@@ -109,6 +128,23 @@ func xcode8_mac (image: NSImage, url: URL) {
     
     resize(name: "mac512pt1x", image: image, w: 512, h: 512)
     resize(name: "mac512pt2x", image: image, w: 1024, h: 1024)
+}
+
+func xcode8_watch (image: NSImage, url: URL) {
+    directory = url
+    
+    resize(name: "watchNotification30mm", image: image, w: 48, h: 48)
+    resize(name: "watchNotification42mm", image: image, w: 55, h: 55)
+    
+    resize(name: "watchCompanion2x", image: image, w: 58, h: 58)
+    resize(name: "watchCompanion3x", image: image, w: 87, h: 87)
+    
+    resize(name: "watchHomeAll", image: image, w: 40, h: 40)
+    
+    resize(name: "watchLong42mm", image: image, w: 88, h: 88)
+    
+    resize(name: "watchShort38mm", image: image, w: 172, h: 172)
+    resize(name: "watchShort42mm", image: image, w: 196, h: 196)
 }
 
 // MARK: - Resize and Save

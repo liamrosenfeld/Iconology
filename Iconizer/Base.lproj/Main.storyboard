@@ -817,10 +817,18 @@
                                     <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
-                                <rect key="frame" x="191" y="83" width="48" height="18"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLG-uF-VCy">
+                                <rect key="frame" x="191" y="63" width="77" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Mac" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
+                                <buttonCell key="cell" type="check" title="watchOS" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jkt-Uk-fPA">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-cf-2Fw">
+                                <rect key="frame" x="191" y="83" width="66" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="macOS" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Laf-Zs-0ux">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -830,6 +838,7 @@
                     <connections>
                         <outlet property="iOSToggle" destination="yYq-sc-jMw" id="Zpe-Dx-rzq"/>
                         <outlet property="macToggle" destination="UfM-cf-2Fw" id="nwL-Nb-Atq"/>
+                        <outlet property="watchToggle" destination="QLG-uF-VCy" id="h7E-fT-l8v"/>
                         <outlet property="xcodeVersionSelector" destination="WdE-Hv-F4c" id="2rr-4J-331"/>
                     </connections>
                 </viewController>

@@ -14,6 +14,7 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var xcodeVersionSelector: NSPopUpButton!
     @IBOutlet weak var iOSToggle: NSButton!
     @IBOutlet weak var macToggle: NSButton!
+    @IBOutlet weak var watchToggle: NSButton!
     
     var imageURL: NSURL?
     var saveDirectory: URL?
@@ -35,6 +36,7 @@ class OptionsViewController: NSViewController {
         let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
         let iOSEnabled = iOSToggle.state.rawValue
         let macEnabled = macToggle.state.rawValue
+        let watchEnabled = watchToggle.state.rawValue
         
         // Get Image from URL
         let imageToConvert = urlToImage(url: imageURL!)
@@ -54,12 +56,18 @@ class OptionsViewController: NSViewController {
             if macEnabled == 1 {
                 xcode9_mac(image: imageToConvert, url: saveDirectory!)
             }
+            if watchEnabled == 1 {
+                xcode9_watch(image: imageToConvert, url: saveDirectory!)
+            }
         } else if xcodeVersion == "8" {
             if iOSEnabled == 1 {
                 xcode8_iOS(image: imageToConvert, url: saveDirectory!)
             }
             if macEnabled == 1 {
                 xcode8_mac(image: imageToConvert, url: saveDirectory!)
+            }
+            if macEnabled == 1 {
+                xcode8_watch(image: imageToConvert, url: saveDirectory!)
             }
         }
         
