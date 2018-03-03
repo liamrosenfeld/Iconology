@@ -717,26 +717,26 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-gH-9bI" userLabel="Description">
                                 <rect key="frame" x="129" y="75" width="240" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Drag and Drop a .png image file here" id="m4o-5g-Eg5" userLabel="Drag and Drop a .png image file here">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Drag and Drop an image file here" id="m4o-5g-Eg5" userLabel="Drag and Drop a .png image file here">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="SubText">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="Main SubText">
                                 <rect key="frame" x="54" y="50" width="397" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(1280 × 1280 reccomended for iOS, watchOS and macOS)" id="Ugq-SZ-O2r">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-hl-Pxe">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-hl-Pxe" userLabel="iMessage SubText">
                                 <rect key="frame" x="42" y="34" width="409" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(1280 x 768 reccomended for iMessage)" id="whj-2N-F6x">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -751,7 +751,8 @@
                         <outlet property="descriptionLabel" destination="1q5-gH-9bI" id="0tU-tL-ajx"/>
                         <outlet property="dragView" destination="5O0-uM-ocT" id="aEs-GY-TxW"/>
                         <outlet property="imageView" destination="PC6-60-NOh" id="e6J-7B-h0i"/>
-                        <outlet property="subText" destination="j3M-1A-3zn" id="f2U-2H-Yih"/>
+                        <outlet property="mainSubText" destination="j3M-1A-3zn" id="ctC-We-2fV"/>
+                        <outlet property="messageSubText" destination="Qbf-hl-Pxe" id="lVo-RA-hkw"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
