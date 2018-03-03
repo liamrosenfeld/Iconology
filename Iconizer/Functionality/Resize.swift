@@ -1,5 +1,5 @@
 //
-//  resize.swift
+//  Resize.swift
 //  Iconizer
 //
 //  Created by Liam Rosenfeld on 2/3/18.
