@@ -25,10 +25,16 @@ class OptionsViewController: NSViewController {
         print(imageURL!)
     }
     
-    func toSavedVC() {
-        let savedViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SavedViewController")) as? SavedViewController
-        savedViewController?.savedDirectory = saveDirectory!
-        view.window?.contentViewController = savedViewController
+    func segue(to: String) {
+        if (to == "SavedVC"){
+            let savedViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SavedViewController")) as? SavedViewController
+            savedViewController?.savedDirectory = saveDirectory!
+            view.window?.contentViewController = savedViewController
+        }
+        else if (to == "DragVC") {
+            let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DragViewController")) as? DragViewController
+            view.window?.contentViewController = dragViewController
+        }
     }
     
     // MARK: - Actions
@@ -79,10 +85,14 @@ class OptionsViewController: NSViewController {
             }
         }
         
-        toSavedVC()
+        segue(to: "SavedVC")
         
     }
    
+    @IBAction func back(_ sender: Any) {
+        segue(to: "DragVC")
+    }
+    
     
     // MARK: - Convert Between URL, Data, and Image
     func urlToImage(url: NSURL) -> NSImage {
