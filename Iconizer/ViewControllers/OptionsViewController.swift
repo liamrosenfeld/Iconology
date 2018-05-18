@@ -17,7 +17,7 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var iMessageToggle: NSButton!
     @IBOutlet weak var watchToggle: NSButton!
     
-    var imageURL: NSURL?
+    var imageURL: URL?
     var saveDirectory: URL?
     
     override func viewDidLoad() {
@@ -95,9 +95,9 @@ class OptionsViewController: NSViewController {
     
     
     // MARK: - Convert Between URL, Data, and Image
-    func urlToImage(url: NSURL) -> NSImage {
+    func urlToImage(url: URL) -> NSImage {
         do {
-            let imageData = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
+            let imageData = try NSData(contentsOf: url, options: NSData.ReadingOptions())
             return NSImage(data: imageData as Data)!
         } catch {
             print("URL to Image Error: \(error)")

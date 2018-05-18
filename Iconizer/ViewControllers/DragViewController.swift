@@ -18,7 +18,7 @@ class DragViewController: NSViewController {
     @IBOutlet weak var messageSubText: NSTextField!
     
     
-    var imageURL: NSURL?
+    var imageURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,7 @@ extension DragViewController: DragViewDelegate {
     }
     
     func dragView(didDragFileWith url: NSURL) {
-        imageURL = url
+        imageURL = url as URL
         print(url)
         toOptionsVC()
     }
