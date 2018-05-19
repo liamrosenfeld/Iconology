@@ -11,13 +11,16 @@
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
 		AD1270092023D1510068531A /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* DragViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
-		AD12700E2023D1510068531A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD12700C2023D1510068531A /* Main.storyboard */; };
 		AD1270362023DADA0068531A /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270352023DADA0068531A /* DragView.swift */; };
 		AD1270382024050C0068531A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270372024050C0068531A /* OptionsViewController.swift */; };
 		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
 		ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* Presets.swift */; };
 		ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* DefaultPresets.swift */; };
 		ADF8879820AFAA9B00E60C19 /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF8879620AFAA9B00E60C19 /* PresetViewController.swift */; };
+		ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A420B07CE500E60C19 /* Main.storyboard */; };
+		ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887AC20B07FAA00E60C19 /* Presets.storyboard */; };
+		ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */; };
+		ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +29,6 @@
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD1270082023D1510068531A /* DragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragViewController.swift; sourceTree = "<group>"; };
 		AD12700A2023D1510068531A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AD12700D2023D1510068531A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD12700F2023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270102023D1510068531A /* Iconizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconizer.entitlements; sourceTree = "<group>"; };
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -36,6 +38,10 @@
 		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Presets.swift; path = Iconizer/Functionality/Presets.swift; sourceTree = SOURCE_ROOT; };
 		ADA070E620AF709F00A2A69F /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
 		ADF8879620AFAA9B00E60C19 /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
+		ADF887A520B07CE500E60C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		ADF887AC20B07FAA00E60C19 /* Presets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
+		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectPresetViewController.swift; path = Iconizer/ViewControllers/SelectPresetViewController.swift; sourceTree = SOURCE_ROOT; };
+		ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditPresetViewController.swift; path = Iconizer/ViewControllers/EditPresetViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +75,7 @@
 		AD1270052023D1510068531A /* Iconizer */ = {
 			isa = PBXGroup;
 			children = (
-				AD12700C2023D1510068531A /* Main.storyboard */,
+				ADF887A120B07CE500E60C19 /* Stroryboards */,
 				ADEE32A72039194800AE0566 /* ViewControllers */,
 				ADEE32A820391A7B00AE0566 /* Functionality */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
@@ -96,6 +102,8 @@
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
 				AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */,
 				ADF8879620AFAA9B00E60C19 /* PresetViewController.swift */,
+				ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */,
+				ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -110,6 +118,15 @@
 			);
 			name = Functionality;
 			path = ../Iconizer/Functionality;
+			sourceTree = "<group>";
+		};
+		ADF887A120B07CE500E60C19 /* Stroryboards */ = {
+			isa = PBXGroup;
+			children = (
+				ADF887A420B07CE500E60C19 /* Main.storyboard */,
+				ADF887AC20B07FAA00E60C19 /* Presets.storyboard */,
+			);
+			path = Stroryboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,8 +188,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */,
 				AD12700B2023D1510068531A /* Assets.xcassets in Resources */,
-				AD12700E2023D1510068531A /* Main.storyboard in Resources */,
+				ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,12 +203,14 @@
 			files = (
 				AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */,
 				AD8CF9AD20264699008077B6 /* Resize.swift in Sources */,
+				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
 				ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */,
 				AD1270092023D1510068531A /* DragViewController.swift in Sources */,
 				ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
 				ADF8879820AFAA9B00E60C19 /* PresetViewController.swift in Sources */,
+				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
 				AD1270362023DADA0068531A /* DragView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,13 +218,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AD12700C2023D1510068531A /* Main.storyboard */ = {
+		ADF887A420B07CE500E60C19 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AD12700D2023D1510068531A /* Base */,
+				ADF887A520B07CE500E60C19 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ../Iconizer;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

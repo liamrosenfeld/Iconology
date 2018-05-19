@@ -687,7 +687,7 @@
                     <window key="window" title="Iconizer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="500" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -706,16 +706,16 @@
             <objects>
                 <viewController title="Drag View Controller" storyboardIdentifier="DragViewController" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="DragViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PC6-60-NOh" userLabel="imageView">
-                                <rect key="frame" x="178" y="100" width="125" height="125"/>
+                                <rect key="frame" x="178" y="130" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="uploadIcon" id="iAT-p3-Pff"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-gH-9bI" userLabel="Description">
-                                <rect key="frame" x="129" y="75" width="240" height="17"/>
+                                <rect key="frame" x="129" y="105" width="240" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Drag and Drop an image file here" id="m4o-5g-Eg5" userLabel="Drag and Drop a .png image file here">
                                     <font key="font" metaFont="system"/>
@@ -724,7 +724,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="Sub-Text">
-                                <rect key="frame" x="54" y="50" width="397" height="17"/>
+                                <rect key="frame" x="54" y="80" width="397" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Input a high-res photo of the same aspect ratio)" id="Ugq-SZ-O2r" userLabel="(Input a high-res photo of the same aspect ratio)">
                                     <font key="font" metaFont="smallSystem"/>
@@ -733,7 +733,7 @@
                                 </textFieldCell>
                             </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5O0-uM-ocT" userLabel="dragView" customClass="DragView" customModule="Iconizer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                         </subviews>
@@ -754,11 +754,11 @@
             <objects>
                 <viewController title="Options View Controller" storyboardIdentifier="OptionsViewController" showSeguePresentationStyle="single" id="qum-VO-ymn" customClass="OptionsViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pxR-gr-RuL">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAh-Pp-Dq8" userLabel="&quot;Options:&quot; Label">
-                                <rect key="frame" x="171" y="202" width="109" height="48"/>
+                                <rect key="frame" x="171" y="232" width="109" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Options:" id="Kd6-NF-AVP">
                                     <font key="font" metaFont="system" size="25"/>
@@ -767,7 +767,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
-                                <rect key="frame" x="377" y="13" width="89" height="32"/>
+                                <rect key="frame" x="397" y="13" width="89" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w0k-0Z-8mk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -777,27 +777,19 @@
                                     <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cwC-k9-YHU">
-                                <rect key="frame" x="20" y="13" width="70" height="32"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ">
+                                <rect key="frame" x="355" y="189" width="113" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tn7-He-yDO">
+                                <buttonCell key="cell" type="push" title="Edit Presets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="back:" target="qum-VO-ymn" id="OP0-Ph-3Jc"/>
+                                    <segue destination="6Pe-AA-jty" kind="popover" popoverAnchorView="jg6-hC-HQZ" popoverBehavior="t" preferredEdge="maxY" id="6bb-W8-5bF"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ">
-                                <rect key="frame" x="356" y="159" width="110" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="New Preset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="285-wd-4lQ">
-                                <rect key="frame" x="135" y="36" width="210" height="113"/>
+                            <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="285-wd-4lQ" userLabel="Prefix View">
+                                <rect key="frame" x="135" y="66" width="210" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESR-YL-SYI">
@@ -830,7 +822,7 @@
                                 </subviews>
                             </customView>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-aF-gp0">
-                                <rect key="frame" x="194" y="163" width="154" height="26"/>
+                                <rect key="frame" x="194" y="193" width="154" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Removed on Run" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -843,7 +835,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI" userLabel="&quot;Preset:&quot; Label">
-                                <rect key="frame" x="133" y="170" width="47" height="17"/>
+                                <rect key="frame" x="133" y="200" width="47" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Preset:" id="sh3-KH-4vf">
                                     <font key="font" metaFont="system"/>
@@ -851,6 +843,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cwC-k9-YHU">
+                                <rect key="frame" x="14" y="13" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tn7-He-yDO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="back:" target="qum-VO-ymn" id="OP0-Ph-3Jc"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -866,11 +869,11 @@
             <objects>
                 <viewController title="Saved View Controller" storyboardIdentifier="SavedViewController" showSeguePresentationStyle="single" id="uTk-f7-YUC" customClass="SavedViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="MWb-Gt-sHb">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1c-Ve-e3a">
-                                <rect key="frame" x="30" y="111" width="407" height="17"/>
+                                <rect key="frame" x="47" y="141" width="407" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Saved to _______" id="IlV-rZ-wGk">
                                     <font key="font" metaFont="system"/>
@@ -879,7 +882,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jp8-1K-Y6q">
-                                <rect key="frame" x="188" y="157" width="75" height="37"/>
+                                <rect key="frame" x="213" y="189" width="75" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Done!" id="fg5-z7-zio">
                                     <font key="font" metaFont="system" size="25"/>
@@ -888,7 +891,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkU-bm-JPA">
-                                <rect key="frame" x="164" y="13" width="140" height="32"/>
+                                <rect key="frame" x="180" y="54" width="140" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Convert Another" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VNB-vX-vS3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -908,40 +911,13 @@
             </objects>
             <point key="canvasLocation" x="1191" y="655"/>
         </scene>
-        <!--Presets View Controller-->
-        <scene sceneID="o71-j8-3RI">
+        <!--SelectPresetViewController-->
+        <scene sceneID="y92-oW-mjw">
             <objects>
-                <viewController title="Presets View Controller" storyboardIdentifier="OptionsViewController" showSeguePresentationStyle="single" id="QPr-fk-66f" customClass="PresetViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Ip6-bB-oxv">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="054-Gr-FuR">
-                                <rect key="frame" x="387" y="13" width="57" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cw5-Jk-ZRH">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="okClicked:" target="QPr-fk-66f" id="Gbo-OU-3iz"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sie-RU-QzF">
-                                <rect key="frame" x="171" y="126" width="177" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Preset Creation Will Go Here" id="akF-xw-ayM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="dp0-Au-mU5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardIdentifier="SelectPresetViewController" storyboardName="Presets" referencedIdentifier="SelectPresetViewController" id="6Pe-AA-jty" sceneMemberID="viewController"/>
+                <customObject id="URt-kr-dde" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="1056"/>
+            <point key="canvasLocation" x="614" y="930"/>
         </scene>
     </scenes>
     <resources>
