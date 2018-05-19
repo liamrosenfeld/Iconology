@@ -12,13 +12,14 @@ class Presets {
     struct Preset: Hashable {
         var name: String
         var sizes: [String : Array<Int>] // 0 = X  &  1 = Y
+        var usePrefix: Bool
         var hashValue: Int { return name.hashValue }
     }
     
     static var presets : [Preset] = []
     
-    static func addPreset(name: String, sizes: Dictionary<String, Array<Int>>) {
-        presets.append(Preset(name: name, sizes: sizes))
+    static func addPreset(name: String, sizes: Dictionary<String, Array<Int>>, usePrefix: Bool) {
+        presets.append(Preset(name: name, sizes: sizes, usePrefix: usePrefix))
     }
     
 }

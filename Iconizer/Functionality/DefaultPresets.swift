@@ -11,9 +11,11 @@ import Foundation
 class DefaultPresets {
     // MARK: - Functions
     func addDefaults() {
-        Presets.addPreset(name: "Xcode iOS", sizes: xcodeiOS)
-        Presets.addPreset(name: "Xcode Mac", sizes: xcodeMac)
-        Presets.addPreset(name: "Xcode iMessage", sizes: xcodeiMessage)
+        Presets.addPreset(name: "Xcode iOS", sizes: xcodeiOS, usePrefix: false)
+        Presets.addPreset(name: "Xcode Mac", sizes: xcodeMac, usePrefix: false)
+        Presets.addPreset(name: "Xcode iMessage", sizes: xcodeiMessage, usePrefix: false)
+        Presets.addPreset(name: "Xcode Apple Watch", sizes: xcodeWatch, usePrefix: false)
+        Presets.addPreset(name: "Test", sizes: xcodeiOS, usePrefix: true)
     }
     
     

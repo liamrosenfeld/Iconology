@@ -12,12 +12,17 @@ class OptionsViewController: NSViewController {
     
     // MARK: - Setup
     @IBOutlet weak var presetSelector: NSPopUpButton!
+    @IBOutlet weak var prefixView: NSView!
+    @IBOutlet weak var prefixTextBox: NSTextField!
     
     var imageURL: URL?
     var saveDirectory: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        prefixView.isHidden = true
+        
         presetSelector.removeAllItems()
         if Presets.presets.isEmpty {
             DefaultPresets().addDefaults()
@@ -42,6 +47,17 @@ class OptionsViewController: NSViewController {
     }
     
     // MARK: - Actions
+    @IBAction func selectedPreset(_ sender: Any) {
+        let selectedPreset = presetSelector.indexOfSelectedItem
+        
+        if Presets.presets[selectedPreset].usePrefix {
+            prefixView.isHidden = false
+        }
+        else {
+            prefixView.isHidden = true
+        }
+    }
+    
     @IBAction func convert(_ sender: Any) {
         // Check User Options
         let selectedPreset = presetSelector.indexOfSelectedItem

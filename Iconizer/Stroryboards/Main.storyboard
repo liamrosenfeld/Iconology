@@ -833,6 +833,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectedPreset:" target="qum-VO-ymn" id="E3t-VB-mDC"/>
+                                </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Py-lHI" userLabel="&quot;Preset:&quot; Label">
                                 <rect key="frame" x="133" y="200" width="47" height="17"/>
@@ -857,6 +860,8 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="5yy-uB-gvA"/>
+                        <outlet property="prefixView" destination="285-wd-4lQ" id="JJZ-AJ-DF7"/>
                         <outlet property="presetSelector" destination="YUM-aF-gp0" id="BMU-QQ-2gb"/>
                     </connections>
                 </viewController>
