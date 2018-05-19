@@ -11,17 +11,21 @@ import Cocoa
 class OptionsViewController: NSViewController {
     
     // MARK: - Setup
-    @IBOutlet weak var xcodeVersionSelector: NSPopUpButton!
-    @IBOutlet weak var iOSToggle: NSButton!
-    @IBOutlet weak var macToggle: NSButton!
-    @IBOutlet weak var iMessageToggle: NSButton!
-    @IBOutlet weak var watchToggle: NSButton!
+    @IBOutlet weak var presetSelector: NSPopUpButton!
     
     var imageURL: URL?
     var saveDirectory: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presetSelector.removeAllItems()
+        if Presets.presets.isEmpty {
+            DefaultPresets().addDefaults()
+        }
+        for preset in Presets.presets {
+            print(preset.name)
+            presetSelector.addItem(withTitle: preset.name)
+        }
         print(imageURL!)
     }
     
@@ -40,11 +44,7 @@ class OptionsViewController: NSViewController {
     // MARK: - Actions
     @IBAction func convert(_ sender: Any) {
         // Check User Options
-        let xcodeVersion = xcodeVersionSelector.titleOfSelectedItem!
-        let iOSEnabled = iOSToggle.state.rawValue
-        let macEnabled = macToggle.state.rawValue
-        let iMessageEnabled = iMessageToggle.state.rawValue
-        let watchEnabled = watchToggle.state.rawValue
+        let selectedPreset = presetSelector.indexOfSelectedItem
         
         // Get Image from URL
         let imageToConvert = urlToImage(url: imageURL!)
@@ -57,32 +57,8 @@ class OptionsViewController: NSViewController {
         createFolder(directory: saveDirectory!)
         
         // Convert and Save
-        if xcodeVersion == "9" {
-            if iOSEnabled == 1 {
-                xcode9_iOS(image: imageToConvert, url: saveDirectory!)
-            }
-            if macEnabled == 1 {
-                xcode9_mac(image: imageToConvert, url: saveDirectory!)
-            }
-            if iMessageEnabled == 1 {
-                xcode9_iMessage(image: imageToConvert, url: saveDirectory!)
-            }
-            if watchEnabled == 1 {
-                xcode9_watch(image: imageToConvert, url: saveDirectory!)
-            }
-        } else if xcodeVersion == "8" {
-            if iOSEnabled == 1 {
-                xcode8_iOS(image: imageToConvert, url: saveDirectory!)
-            }
-            if macEnabled == 1 {
-                xcode8_mac(image: imageToConvert, url: saveDirectory!)
-            }
-            if iMessageEnabled == 1 {
-                xcode8_iMessage(image: imageToConvert, url: saveDirectory!)
-            }
-            if watchEnabled == 1 {
-                xcode8_watch(image: imageToConvert, url: saveDirectory!)
-            }
+        for (name, size) in Presets.presets[selectedPreset].sizes {
+            resize(name: name, image: imageToConvert, w: size[0], h: size[1], saveTo: saveDirectory!)
         }
         
         segue(to: "SavedVC")

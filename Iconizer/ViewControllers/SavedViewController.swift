@@ -10,18 +10,18 @@ import Cocoa
 
 class SavedViewController: NSViewController {
     
-    // Setup
+    // MARK: - Setup
     var savedDirectory: URL?
     
     @IBOutlet weak var savedText: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let directoryString = directory!.path
+        let directoryString = savedDirectory!.path
         self.savedText.stringValue = "Saved to \(directoryString)"
     }
     
-    // Actions
+    // MARK: - Actions
     @IBAction func another(_ sender: Any) {
         let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DragViewController")) as? DragViewController
         view.window?.contentViewController = dragViewController

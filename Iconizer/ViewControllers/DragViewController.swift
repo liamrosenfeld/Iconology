@@ -10,12 +10,10 @@ import Cocoa
 
 class DragViewController: NSViewController {
     
-    // Setup
     @IBOutlet weak var dragView: DragView!
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var descriptionLabel: NSTextField!
-    @IBOutlet weak var mainSubText: NSTextField!
-    @IBOutlet weak var messageSubText: NSTextField!
+    @IBOutlet weak var subText: NSTextField!
     
     
     var imageURL: URL?
@@ -43,14 +41,12 @@ extension DragViewController: DragViewDelegate {
     
     func dragViewDidHover() {
         self.descriptionLabel.stringValue = "That would work!"
-        self.mainSubText.stringValue = ""
-        self.messageSubText.stringValue = ""
+        self.subText.stringValue = ""
     }
     
     func dragViewMouseExited(){
         self.descriptionLabel.stringValue = "Drag and Drop an image file here"
-        self.mainSubText.stringValue = "(1280 × 1280 reccomended for iOS, watchOS and macOS)"
-        self.messageSubText.stringValue = "(1280 x 768 reccomended for iMessage)"
+        self.subText.stringValue = "(Input a high-res photo of the same aspect ratio)"
     }
     
     func dragView(didDragFileWith url: NSURL) {
