@@ -678,7 +678,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="88" y="-79"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -699,7 +699,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="75" y="168"/>
         </scene>
         <!--Drag View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -785,7 +785,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="6Pe-AA-jty" kind="popover" popoverAnchorView="jg6-hC-HQZ" popoverBehavior="t" preferredEdge="maxY" id="6bb-W8-5bF"/>
+                                    <segue destination="6Pe-AA-jty" kind="sheet" id="6bb-W8-5bF"/>
                                 </connections>
                             </button>
                             <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="285-wd-4lQ" userLabel="Prefix View">
@@ -922,7 +922,7 @@
                 <controllerPlaceholder storyboardIdentifier="SelectPresetViewController" storyboardName="Presets" referencedIdentifier="SelectPresetViewController" id="6Pe-AA-jty" sceneMemberID="viewController"/>
                 <customObject id="URt-kr-dde" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="930"/>
+            <point key="canvasLocation" x="613" y="961"/>
         </scene>
     </scenes>
     <resources>

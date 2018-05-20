@@ -8,7 +8,7 @@
         <!--Select Preset View Controller-->
         <scene sceneID="ytd-jC-ssi">
             <objects>
-                <viewController title="Select Preset View Controller" storyboardIdentifier="SelectPresetViewController" showSeguePresentationStyle="single" id="f6h-eg-IFK" customClass="SelectPresetViewController" sceneMemberID="viewController">
+                <viewController title="Select Preset View Controller" storyboardIdentifier="SelectPresetViewController" showSeguePresentationStyle="single" id="f6h-eg-IFK" customClass="SelectPresetViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="INU-p3-AA7">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -22,16 +22,27 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdP-bH-tdy">
-                                <rect key="frame" x="14" y="13" width="82" height="32"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G27-hY-INk">
+                                <rect key="frame" x="216" y="114" width="69" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UMO-zF-ESV">
+                                <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hN3-Hj-O3a">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="next:" target="f6h-eg-IFK" id="jsz-Tv-CJc"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTU-H1-Asc">
+                                <rect key="frame" x="410" y="13" width="72" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cAr-uZ-hls">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="done:" target="f6h-eg-IFK" id="7dS-H1-OfC"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -43,7 +54,7 @@ Gw
         <!--Edit Preset View Controller-->
         <scene sceneID="Axp-8B-xFW">
             <objects>
-                <viewController title="Edit Preset View Controller" storyboardIdentifier="SelectPresetViewController" showSeguePresentationStyle="single" id="GQO-ND-OnX" customClass="EditPresetViewController" sceneMemberID="viewController">
+                <viewController title="Edit Preset View Controller" storyboardIdentifier="EditPresetViewController" showSeguePresentationStyle="single" id="GQO-ND-OnX" customClass="EditPresetViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fpB-Wz-mOm">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -58,26 +69,32 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N8-ri-EFv">
-                                <rect key="frame" x="20" y="13" width="70" height="32"/>
+                                <rect key="frame" x="14" y="13" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lfn-Dx-6Bq">
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lfn-Dx-6Bq">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancel:" target="GQO-ND-OnX" id="h7b-Nf-UrA"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESQ-j0-m1G">
-                                <rect key="frame" x="415" y="13" width="72" height="32"/>
+                                <rect key="frame" x="416" y="13" width="70" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kc5-I4-1hu">
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kc5-I4-1hu">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="save:" target="GQO-ND-OnX" id="OkV-gY-hLV"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>

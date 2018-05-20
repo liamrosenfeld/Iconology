@@ -15,4 +15,12 @@ class SelectPresetViewController: NSViewController {
         // Do view setup here.
     }
     
+    @IBAction func next(_ sender: Any) {
+        let EditPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPresetViewController")) as? EditPresetViewController
+        view.window?.contentViewController = EditPresetViewController
+    }
+    
+    @IBAction func done(_ sender: Any) {
+        self.view.window!.close()
+    }
 }

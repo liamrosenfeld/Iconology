@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DragViewController.swift
 //  Iconizer
 //
 //  Created by Liam Rosenfeld on 2/1/18.
