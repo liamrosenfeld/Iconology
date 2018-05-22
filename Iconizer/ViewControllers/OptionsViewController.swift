@@ -74,7 +74,7 @@ class OptionsViewController: NSViewController {
         
         // Convert and Save
         for (name, size) in Presets.presets[selectedPreset].sizes {
-            resize(name: name, image: imageToConvert, w: size[0], h: size[1], saveTo: saveDirectory!)
+            resize(name: name, image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
         }
         
         segue(to: "SavedVC")
