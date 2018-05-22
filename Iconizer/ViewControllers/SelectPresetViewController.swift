@@ -9,18 +9,52 @@
 import Cocoa
 
 class SelectPresetViewController: NSViewController {
-
+    
+    @IBOutlet weak var presetTable: NSTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        presetTable.delegate = self
+        presetTable.dataSource = self
     }
     
-    @IBAction func next(_ sender: Any) {
-        let EditPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPresetViewController")) as? EditPresetViewController
-        view.window?.contentViewController = EditPresetViewController
+    @IBAction func presetListClicked(_ sender: Any) {
+        let clicked = presetTable.clickedRow
+        
+        if clicked >= 0 {
+            let presetSelected = presetTable.clickedRow
+            print(Presets.presets[presetSelected].name)
+            
+            let editPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPresetViewController")) as? EditPresetViewController
+            editPresetViewController?.presetSelected = presetSelected
+            view.window?.contentViewController = editPresetViewController
+        }
+
     }
     
     @IBAction func done(_ sender: Any) {
         self.view.window!.close()
     }
+    
+}
+
+extension SelectPresetViewController: NSTableViewDataSource {
+    
+    func numberOfRows(in presetList: NSTableView) -> Int {
+        return Presets.presets.count
+    }
+    
+}
+
+extension SelectPresetViewController: NSTableViewDelegate {
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let item = Presets.presets[row]
+        let text = item.name
+
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "selectTextCell"), owner: self) as? NSTableCellView
+        cell?.textField?.stringValue = text
+        return cell
+    }
+    
 }

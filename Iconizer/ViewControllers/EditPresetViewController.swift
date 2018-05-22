@@ -10,7 +10,7 @@ import Cocoa
 
 class EditPresetViewController: NSViewController {
     
-    var window: NSWindow?
+    var presetSelected: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
