@@ -66,10 +66,10 @@ extension EditPresetViewController: NSTableViewDelegate {
             text = name
             cellIdentifier = CellIdentifiers.nameCell
         } else if tableColumn == presetTable.tableColumns[1] {
-            text = String(sizes![0])
+            text = String(sizes!.x)
             cellIdentifier = CellIdentifiers.xCell
         } else if tableColumn == presetTable.tableColumns[2] {
-            text = String(sizes![1])
+            text = String(sizes!.y)
             cellIdentifier = CellIdentifiers.yCell
         } else {
             print("Somthing went wrong... \(String(describing: tableColumn))")

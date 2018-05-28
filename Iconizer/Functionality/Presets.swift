@@ -8,56 +8,77 @@
 
 import Foundation
 
-class Preset: NSObject, NSCoding {
+struct Preset: Codable {
     
     var name: String
-    var sizes: [String : [Int]]  // 0 = x  &  1 = y
+    var sizes: [String : size]
     var usePrefix: Bool
     
-    init(name: String, sizes: Dictionary<String, [Int]>, usePrefix: Bool) {
+    enum CodingKeys: String, CodingKey {
+        case name
+        case sizes
+        case usePrefix
+    }
+    
+    init(name: String, sizes: [String : size], usePrefix: Bool) {
         self.name = name
         self.sizes = sizes
         self.usePrefix = usePrefix
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
-        self.sizes = aDecoder.decodeObject(forKey: "sizes") as? Dictionary<String, [Int]> ?? ["ERROR": [1, 1]]
-        self.usePrefix = aDecoder.decodeObject(forKey: "usePrefix") as? Bool ?? false
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(sizes, forKey: .sizes)
+        try container.encode(usePrefix, forKey: .usePrefix)
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(sizes, forKey: "sizes")
-        aCoder.encode(usePrefix, forKey: "usePrefix")
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        sizes = try container.decode(Dictionary.self, forKey: .sizes)
+        usePrefix = try container.decode(Bool.self, forKey: .usePrefix)
     }
-    
+}
+
+struct size: Codable {
+    var x: Int
+    var y: Int
 }
 
 class UserPresets {
     
     static var presets: [Preset] = []
     
-    static func addPreset(name: String, sizes: Dictionary<String, [Int]>, usePrefix: Bool) {
+    static func addPreset(name: String, sizes: Dictionary<String, size>, usePrefix: Bool) {
         presets.append(Preset(name: name, sizes: sizes, usePrefix: usePrefix))
     }
     
+    static var filePath: String {
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
+        print("Document Directory: \(String(describing: url!))")
+        return (url!.appendingPathComponent("Data").path)
+    }
+    
     static func savePresets() {
-        let prefixData = NSKeyedArchiver.archivedData(withRootObject: presets)
-        UserDefaults.standard.set(prefixData, forKey: "presets")
+        do {
+            let data = try PropertyListEncoder().encode(presets)
+            let success = NSKeyedArchiver.archiveRootObject(data, toFile: filePath)
+            print(success ? "Successful save" : "Save Failed")
+        } catch {
+            print("Save Failed")
+        }
     }
     
     static func loadPresets() {
-        guard let presetsData = UserDefaults.standard.object(forKey: "presets") as? NSData else {
-            print("presets not found")
-            return
+        guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Data else { return }
+        do {
+            let retrievedPresets = try PropertyListDecoder().decode([Preset].self, from: data)
+            presets = retrievedPresets
+        } catch {
+            print("Retrieve Failed")
         }
-        
-        guard let presetsRetrieved = NSKeyedUnarchiver.unarchiveObject(with: presetsData as Data) as? [Preset] else {
-            print("Could not unarchive from placesData")
-            return
-        }
-        
-        presets = presetsRetrieved
     }
 }
+
