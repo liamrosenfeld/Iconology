@@ -18,18 +18,15 @@ class SelectPresetViewController: NSViewController {
         presetTable.dataSource = self
     }
     
-    @IBAction func presetListClicked(_ sender: Any) {
-        let clicked = presetTable.clickedRow
-        
-        if clicked >= 0 {
-            let presetSelected = presetTable.clickedRow
+    @IBAction func next(_ sender: Any) {
+        let presetSelected = presetTable.selectedRow
+        if presetSelected >= 0 {
             print(UserPresets.presets[presetSelected].name)
             
             let editPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPresetViewController")) as? EditPresetViewController
             editPresetViewController?.presetSelected = presetSelected
             view.window?.contentViewController = editPresetViewController
         }
-
     }
     
     @IBAction func done(_ sender: Any) {

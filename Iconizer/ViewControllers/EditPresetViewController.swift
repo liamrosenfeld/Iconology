@@ -10,18 +10,21 @@ import Cocoa
 
 class EditPresetViewController: NSViewController {
     
-    @IBOutlet weak var presetTable: NSTableView!
     var presetSelected: Int?
+    
+    @IBOutlet weak var presetTable: NSTableView!
+    @IBOutlet weak var titleLabel: NSTextFieldCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
         presetTable.delegate = self
         presetTable.dataSource = self
     }
     
     
     @IBAction func save(_ sender: Any) {
-        back()
+        self.view.window!.close()
     }
     
     @IBAction func cancel(_ sender: Any) {
