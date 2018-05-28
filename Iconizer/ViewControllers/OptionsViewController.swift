@@ -74,8 +74,15 @@ class OptionsViewController: NSViewController {
         createFolder(directory: saveDirectory!)
         
         // Convert and Save
-        for (name, size) in UserPresets.presets[selectedPreset].sizes {
-            resize(name: name, image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
+        if UserPresets.presets[selectedPreset].usePrefix {
+            for (name, size) in UserPresets.presets[selectedPreset].sizes {
+                resize(name: "\(prefixTextBox.stringValue)\(name)", image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
+            }
+        }
+        else {
+            for (name, size) in UserPresets.presets[selectedPreset].sizes {
+                resize(name: name, image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
+            }
         }
         
         segue(to: "SavedVC")

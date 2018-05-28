@@ -15,7 +15,7 @@ class DefaultPresets {
         UserPresets.addPreset(name: "Xcode Mac", sizes: xcodeMac, usePrefix: false)
         UserPresets.addPreset(name: "Xcode iMessage", sizes: xcodeiMessage, usePrefix: false)
         UserPresets.addPreset(name: "Xcode Apple Watch", sizes: xcodeWatch, usePrefix: false)
-        UserPresets.addPreset(name: "Test", sizes: xcodeiOS, usePrefix: true)
+        UserPresets.addPreset(name: "QT", sizes: qt, usePrefix: true)
         UserPresets.savePresets()
     }
     
@@ -98,5 +98,18 @@ class DefaultPresets {
         "watchShort42mm": size(x: 196, y: 196),
         
         "watchAppStore": size(x: 1024, y: 1024)
+    ]
+    
+    let qt = [
+        "16": size(x: 16, y: 16),
+        "24": size(x: 24, y: 24),
+        "32": size(x: 32, y: 32),
+        "48": size(x: 48, y: 48),
+        "64": size(x: 64, y: 64),
+        "96": size(x: 96, y: 96),
+        "128": size(x: 128, y: 128),
+        "512": size(x: 512, y: 512),
+        "1024": size(x: 1024, y: 1024),
+        "2048": size(x: 2048, y: 2048)
     ]
 }
