@@ -38,7 +38,7 @@ class EditPresetViewController: NSViewController {
 extension EditPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        return Presets.presets[presetSelected!].sizes.count
+        return UserPresets.presets[presetSelected!].sizes.count
     }
     
 }
@@ -52,7 +52,7 @@ extension EditPresetViewController: NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let item = Presets.presets[presetSelected!].sizes
+        let item = UserPresets.presets[presetSelected!].sizes
         var text = ""
         var cellIdentifier = ""
         let sortedKeys = Array(item.keys).sorted()
@@ -63,10 +63,10 @@ extension EditPresetViewController: NSTableViewDelegate {
             text = name
             cellIdentifier = CellIdentifiers.nameCell
         } else if tableColumn == presetTable.tableColumns[1] {
-            text = String(sizes!.x)
+            text = String(sizes![0])
             cellIdentifier = CellIdentifiers.xCell
         } else if tableColumn == presetTable.tableColumns[2] {
-            text = String(sizes!.y)
+            text = String(sizes![1])
             cellIdentifier = CellIdentifiers.yCell
         } else {
             print("Somthing went wrong... \(String(describing: tableColumn))")

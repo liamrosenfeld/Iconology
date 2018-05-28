@@ -21,17 +21,18 @@ class OptionsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // UI Stuff
         prefixView.isHidden = true
-        
         presetSelector.removeAllItems()
-        if Presets.presets.isEmpty {
+        
+        // Presets
+        UserPresets.loadPresets()
+        if UserPresets.presets.isEmpty {
             DefaultPresets().addDefaults()
         }
-        for preset in Presets.presets {
-            print(preset.name)
+        for preset in UserPresets.presets {
             presetSelector.addItem(withTitle: preset.name)
         }
-        print(imageURL!)
     }
     
     func segue(to: String) {
@@ -50,7 +51,7 @@ class OptionsViewController: NSViewController {
     @IBAction func selectedPreset(_ sender: Any) {
         let selectedPreset = presetSelector.indexOfSelectedItem
         
-        if Presets.presets[selectedPreset].usePrefix {
+        if UserPresets.presets[selectedPreset].usePrefix {
             prefixView.isHidden = false
         }
         else {
@@ -73,8 +74,8 @@ class OptionsViewController: NSViewController {
         createFolder(directory: saveDirectory!)
         
         // Convert and Save
-        for (name, size) in Presets.presets[selectedPreset].sizes {
-            resize(name: name, image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
+        for (name, size) in UserPresets.presets[selectedPreset].sizes {
+            resize(name: name, image: imageToConvert, w: size[0], h: size[1], saveTo: saveDirectory!)
         }
         
         segue(to: "SavedVC")

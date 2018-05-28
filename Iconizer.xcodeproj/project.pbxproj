@@ -16,7 +16,6 @@
 		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
 		ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* Presets.swift */; };
 		ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* DefaultPresets.swift */; };
-		ADF8879820AFAA9B00E60C19 /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF8879620AFAA9B00E60C19 /* PresetViewController.swift */; };
 		ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A420B07CE500E60C19 /* Main.storyboard */; };
 		ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887AC20B07FAA00E60C19 /* Presets.storyboard */; };
 		ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */; };
@@ -37,7 +36,6 @@
 		AD8CF9AC20264699008077B6 /* Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resize.swift; sourceTree = "<group>"; };
 		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Presets.swift; path = Iconizer/Functionality/Presets.swift; sourceTree = SOURCE_ROOT; };
 		ADA070E620AF709F00A2A69F /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
-		ADF8879620AFAA9B00E60C19 /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
 		ADF887A520B07CE500E60C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		ADF887AC20B07FAA00E60C19 /* Presets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
 		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectPresetViewController.swift; path = Iconizer/ViewControllers/SelectPresetViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -101,7 +99,6 @@
 				AD1270082023D1510068531A /* DragViewController.swift */,
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
 				AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */,
-				ADF8879620AFAA9B00E60C19 /* PresetViewController.swift */,
 				ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */,
 				ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */,
 			);
@@ -209,7 +206,6 @@
 				ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
-				ADF8879820AFAA9B00E60C19 /* PresetViewController.swift in Sources */,
 				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
 				AD1270362023DADA0068531A /* DragView.swift in Sources */,
 			);

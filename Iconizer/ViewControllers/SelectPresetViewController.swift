@@ -23,7 +23,7 @@ class SelectPresetViewController: NSViewController {
         
         if clicked >= 0 {
             let presetSelected = presetTable.clickedRow
-            print(Presets.presets[presetSelected].name)
+            print(UserPresets.presets[presetSelected].name)
             
             let editPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPresetViewController")) as? EditPresetViewController
             editPresetViewController?.presetSelected = presetSelected
@@ -41,7 +41,7 @@ class SelectPresetViewController: NSViewController {
 extension SelectPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        return Presets.presets.count
+        return UserPresets.presets.count
     }
     
 }
@@ -49,7 +49,7 @@ extension SelectPresetViewController: NSTableViewDataSource {
 extension SelectPresetViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let item = Presets.presets[row]
+        let item = UserPresets.presets[row]
         let text = item.name
 
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "selectTextCell"), owner: self) as? NSTableCellView
