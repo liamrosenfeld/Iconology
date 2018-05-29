@@ -142,7 +142,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="cancel:" target="GQO-ND-OnX" id="h7b-Nf-UrA"/>
+                                    <action selector="backButton:" target="GQO-ND-OnX" id="7Il-2E-SRS"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESQ-j0-m1G">
@@ -156,7 +156,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="save:" target="GQO-ND-OnX" id="OkV-gY-hLV"/>
+                                    <action selector="saveButton:" target="GQO-ND-OnX" id="OkV-gY-hLV"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-Wc-wm3">

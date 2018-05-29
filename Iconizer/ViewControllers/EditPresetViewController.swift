@@ -10,6 +10,7 @@ import Cocoa
 
 class EditPresetViewController: NSViewController {
     
+    // MARK: - Setup
     var presetSelected: Int?
     
     @IBOutlet weak var presetTable: NSTableView!
@@ -22,22 +23,42 @@ class EditPresetViewController: NSViewController {
         presetTable.dataSource = self
     }
     
-    
-    @IBAction func save(_ sender: Any) {
+    // MARK: - Actions
+    @IBAction func saveButton(_ sender: Any) {
+        save()
         self.view.window!.close()
     }
     
-    @IBAction func cancel(_ sender: Any) {
+    @IBAction func backButton(_ sender: Any) {
         back()
+    }
+    
+    // MARK: - Functions
+    func save() {
+        let tableColumns = presetTable.tableColumns
+        let rowCount = UserPresets.presets[presetSelected!].sizes.count - 1
+        var sizesTemp = [String : size]()
+        
+        for n in (0...rowCount) {
+            let nameCell = tableView(presetTable, viewFor: tableColumns[0], row: n) as! NSTableCellView
+            let xCell = tableView(presetTable, viewFor: tableColumns[1], row: n) as! NSTableCellView
+            let yCell = tableView(presetTable, viewFor: tableColumns[2], row: n) as! NSTableCellView
+            
+            let name = nameCell.textField?.stringValue
+            let xValue = Int((xCell.textField?.stringValue)!)
+            let yValue = Int((yCell.textField?.stringValue)!)
+            
+            sizesTemp[name!] = size(x: xValue!, y: yValue!)
+        }
     }
     
     func back() {
         let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SelectPresetViewController")) as? SelectPresetViewController
         view.window?.contentViewController = SelectPresetViewController
     }
-    
 }
 
+// MARK: - Table Setup
 extension EditPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
@@ -79,5 +100,5 @@ extension EditPresetViewController: NSTableViewDelegate {
         cell?.textField?.stringValue = text
         return cell
     }
-    
+
 }
