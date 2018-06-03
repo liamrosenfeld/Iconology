@@ -40,8 +40,7 @@ class OptionsViewController: NSViewController {
             let savedViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SavedViewController")) as? SavedViewController
             savedViewController?.savedDirectory = saveDirectory!
             view.window?.contentViewController = savedViewController
-        }
-        else if (to == "DragVC") {
+        } else if (to == "DragVC") {
             let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DragViewController")) as? DragViewController
             view.window?.contentViewController = dragViewController
         }
@@ -53,8 +52,7 @@ class OptionsViewController: NSViewController {
         
         if UserPresets.presets[selectedPreset].usePrefix {
             prefixView.isHidden = false
-        }
-        else {
+        } else {
             prefixView.isHidden = true
         }
     }
@@ -64,7 +62,7 @@ class OptionsViewController: NSViewController {
         let selectedPreset = presetSelector.indexOfSelectedItem
         
         // Get Image from URL
-        let imageToConvert = urlToImage(url: imageURL!)
+        let imageToConvert = urlToImage(url: imageURL!)!
         
         // Where to save
         let chosenFolder = selectFolder()
@@ -78,8 +76,7 @@ class OptionsViewController: NSViewController {
             for (name, size) in UserPresets.presets[selectedPreset].sizes {
                 resize(name: "\(prefixTextBox.stringValue)\(name)", image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
             }
-        }
-        else {
+        } else {
             for (name, size) in UserPresets.presets[selectedPreset].sizes {
                 resize(name: name, image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
             }
@@ -95,15 +92,14 @@ class OptionsViewController: NSViewController {
     
     
     // MARK: - Convert Between URL, Data, and Image
-    func urlToImage(url: URL) -> NSImage {
+    func urlToImage(url: URL) -> NSImage? {
         do {
             let imageData = try NSData(contentsOf: url, options: NSData.ReadingOptions())
             return NSImage(data: imageData as Data)!
         } catch {
             print("URL to Image Error: \(error)")
         }
-        // TODO: - Change the backup return (currently the upload icon)
-        return #imageLiteral(resourceName: "uploadIcon")
+        return nil
     }
     
     // MARK: - Save

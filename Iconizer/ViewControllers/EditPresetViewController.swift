@@ -36,10 +36,9 @@ class EditPresetViewController: NSViewController {
     // MARK: - Functions
     func save() {
         let tableColumns = presetTable.tableColumns
-        let rowCount = UserPresets.presets[presetSelected!].sizes.count - 1
         var sizesTemp = [String : size]()
         
-        for n in (0...rowCount) {
+        for n in (0 ..< numberOfRows(in: presetTable)) {
             let nameCell = tableView(presetTable, viewFor: tableColumns[0], row: n) as! NSTableCellView
             let xCell = tableView(presetTable, viewFor: tableColumns[1], row: n) as! NSTableCellView
             let yCell = tableView(presetTable, viewFor: tableColumns[2], row: n) as! NSTableCellView
@@ -50,6 +49,10 @@ class EditPresetViewController: NSViewController {
             
             sizesTemp[name!] = size(x: xValue!, y: yValue!)
         }
+        
+        UserPresets.presets[presetSelected!].sizes = sizesTemp
+        print(UserPresets.presets[presetSelected!].sizes)
+        UserPresets.savePresets()
     }
     
     func back() {
