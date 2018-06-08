@@ -56,7 +56,7 @@ class EditPresetViewController: NSViewController {
     }
     
     func back() {
-        let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SelectPresetViewController")) as? SelectPresetViewController
+        let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SelectPresetViewController")) as? SelectPresetViewController
         view.window?.contentViewController = SelectPresetViewController
     }
 }

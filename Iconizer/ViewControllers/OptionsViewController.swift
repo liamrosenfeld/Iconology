@@ -37,11 +37,11 @@ class OptionsViewController: NSViewController {
     
     func segue(to: String) {
         if (to == "SavedVC"){
-            let savedViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SavedViewController")) as? SavedViewController
+            let savedViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SavedViewController")) as? SavedViewController
             savedViewController?.savedDirectory = saveDirectory!
             view.window?.contentViewController = savedViewController
         } else if (to == "DragVC") {
-            let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DragViewController")) as? DragViewController
+            let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("DragViewController")) as? DragViewController
             view.window?.contentViewController = dragViewController
         }
     }

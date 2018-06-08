@@ -79,7 +79,7 @@ class DragView: NSView {
 // Extend NSDraggingInfo
 extension NSDraggingInfo {
     var draggedFileURL: NSURL? {
-        let filenames = draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String]
+        let filenames = draggingPasteboard.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String]
         let path = filenames?.first
         
         return path.map(NSURL.init)

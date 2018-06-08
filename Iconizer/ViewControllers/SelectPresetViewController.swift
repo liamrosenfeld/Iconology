@@ -23,7 +23,7 @@ class SelectPresetViewController: NSViewController {
         if presetSelected >= 0 {
             print(UserPresets.presets[presetSelected].name)
             
-            let editPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPresetViewController")) as? EditPresetViewController
+            let editPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditPresetViewController")) as? EditPresetViewController
             editPresetViewController?.presetSelected = presetSelected
             view.window?.contentViewController = editPresetViewController
         }

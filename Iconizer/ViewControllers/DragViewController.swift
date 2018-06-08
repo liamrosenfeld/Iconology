@@ -30,7 +30,7 @@ class DragViewController: NSViewController {
     }
     
     func toOptionsVC() {
-        let optionsViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "OptionsViewController")) as? OptionsViewController
+        let optionsViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("OptionsViewController")) as? OptionsViewController
         optionsViewController?.imageURL = imageURL!
         view.window?.contentViewController = optionsViewController
     }
