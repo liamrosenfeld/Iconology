@@ -46,7 +46,7 @@ struct size: Codable {
     var y: Int
 }
 
-class UserPresets {
+struct UserPresets {
     
     static var presets: [Preset] = []
     
@@ -76,6 +76,7 @@ class UserPresets {
         do {
             let retrievedPresets = try PropertyListDecoder().decode([Preset].self, from: data)
             presets = retrievedPresets
+            print("Successful Retrieve")
         } catch {
             print("Retrieve Failed")
         }
