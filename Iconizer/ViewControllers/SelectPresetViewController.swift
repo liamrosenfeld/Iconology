@@ -18,6 +18,7 @@ class SelectPresetViewController: NSViewController {
         presetTable.dataSource = self
     }
     
+    // MARK: - Actions
     @IBAction func next(_ sender: Any) {
         let presetSelected = presetTable.selectedRow
         if presetSelected >= 0 {
@@ -43,9 +44,9 @@ class SelectPresetViewController: NSViewController {
         
         UserPresets.savePresets()
     }
-    
 }
 
+// MARK: - Table Setup
 extension SelectPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {

@@ -102,35 +102,4 @@ class OptionsViewController: NSViewController {
         return nil
     }
     
-    // MARK: - Save
-    func selectFolder() -> String {
-        let selectPanel = NSOpenPanel()
-        selectPanel.title = "Select a folder to save your icons"
-        selectPanel.showsResizeIndicator = true
-        selectPanel.canChooseDirectories = true
-        selectPanel.canChooseFiles = false
-        selectPanel.allowsMultipleSelection = false
-        selectPanel.canCreateDirectories = true
-        selectPanel.delegate = self as? NSOpenSavePanelDelegate
-        
-        selectPanel.runModal()
-        
-        if selectPanel.url != nil {
-            return String(describing: selectPanel.url!)
-        } else {
-            return "canceled"
-        }
-        
-        
-    }
-    
-    func createFolder(directory: URL) {
-        do {
-            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
-        } catch let error as NSError {
-            print("Folder Creation Error: \(error.localizedDescription)")
-        }
-
-    }
-    
 }
