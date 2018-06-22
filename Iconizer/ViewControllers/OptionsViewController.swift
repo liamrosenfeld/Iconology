@@ -14,6 +14,7 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var presetSelector: NSPopUpButton!
     @IBOutlet weak var prefixView: NSView!
     @IBOutlet weak var prefixTextBox: NSTextField!
+    @IBOutlet weak var prefixPreview: NSTextField!
     
     var imageURL: URL?
     var saveDirectory: URL?
@@ -33,6 +34,7 @@ class OptionsViewController: NSViewController {
         for preset in UserPresets.presets {
             presetSelector.addItem(withTitle: preset.name)
         }
+        selectedPreset(self)
         
         // Notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name:NSNotification.Name(rawValue: "DismissSheet"), object: nil)
@@ -60,6 +62,16 @@ class OptionsViewController: NSViewController {
         }
     }
     
+    @IBAction func prefixTextEdited(_ sender: Any) {
+        // TODO: End text editing on clickaway not just enter
+        let sizes = UserPresets.presets[presetSelector.indexOfSelectedItem].sizes
+        let prefix = prefixTextBox.stringValue
+        let root = Array(sizes)[Int(arc4random_uniform(UInt32(sizes.count)))].key  // Get random key from sizes
+        
+        prefixPreview.stringValue = "Ex: \(prefix)\(root)"
+    }
+    
+    
     @IBAction func convert(_ sender: Any) {
         // Check User Options
         let selectedPreset = presetSelector.indexOfSelectedItem
@@ -86,7 +98,6 @@ class OptionsViewController: NSViewController {
         }
         
         segue(to: "SavedVC")
-        
     }
    
     @IBAction func back(_ sender: Any) {
