@@ -12,15 +12,21 @@ class EditPresetViewController: NSViewController {
     
     // MARK: - Setup
     var presetSelected: Int?
+    var tempSave: Preset?
+    var names = [String]()
     
     @IBOutlet weak var presetTable: NSTableView!
     @IBOutlet weak var titleLabel: NSTextFieldCell!
+    @IBOutlet weak var prefixCheckBox: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
         presetTable.delegate = self
         presetTable.dataSource = self
+        
+        tempSave = UserPresets.presets[presetSelected!]
+        names = Array(UserPresets.presets[presetSelected!].sizes.keys).sorted()
     }
     
     // MARK: - Actions
@@ -33,25 +39,42 @@ class EditPresetViewController: NSViewController {
         back()
     }
     
+    @IBAction func textFieldFinishEdit(sender: NSTextField) {
+        let selectedRow = presetTable.selectedRow
+        let column = presetTable.column(for: sender)
+        let value = sender.stringValue
+        
+        if selectedRow != -1 {
+            switch column {
+            case 0:
+                let oldName = names[selectedRow]
+                tempSave?.sizes.changeKey(from: oldName, to: value)
+                names[selectedRow] = value
+            case 1:
+                let name = names[selectedRow]
+                tempSave?.sizes[name]?.x = Int(value)!
+            case 2:
+                let name = names[selectedRow]
+                tempSave?.sizes[name]?.y = Int(value)!
+            default:
+                print("ERR: Column not found")
+            }
+        }
+    }
+    
     // MARK: - Functions
     func save() {
-        let tableColumns = presetTable.tableColumns
-        var sizesTemp = [String : size]()
-        
-        for n in (0 ..< numberOfRows(in: presetTable)) {
-            let nameCell = tableView(presetTable, viewFor: tableColumns[0], row: n) as! NSTableCellView
-            let xCell = tableView(presetTable, viewFor: tableColumns[1], row: n) as! NSTableCellView
-            let yCell = tableView(presetTable, viewFor: tableColumns[2], row: n) as! NSTableCellView
-            
-            let name = nameCell.textField?.stringValue
-            let xValue = Int((xCell.textField?.stringValue)!)
-            let yValue = Int((yCell.textField?.stringValue)!)
-            
-            sizesTemp[name!] = size(x: xValue!, y: yValue!)
+        switch prefixCheckBox.state {
+        case .on:
+            tempSave?.usePrefix = true
+        case .off:
+            tempSave?.usePrefix = false
+        default:
+            print("ERR: Wrong Button State")
         }
         
-        UserPresets.presets[presetSelected!].sizes = sizesTemp
-        print(UserPresets.presets[presetSelected!].sizes)
+        UserPresets.presets[presetSelected!] = tempSave!
+        print(UserPresets.presets[presetSelected!])
         UserPresets.savePresets()
     }
     
@@ -60,6 +83,7 @@ class EditPresetViewController: NSViewController {
         view.window?.contentViewController = SelectPresetViewController
     }
 }
+
 
 // MARK: - Table Setup
 extension EditPresetViewController: NSTableViewDataSource {
@@ -77,14 +101,13 @@ extension EditPresetViewController: NSTableViewDelegate {
         static let xCell = "xCellID"
         static let yCell = "yCellID"
     }
-
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let item = UserPresets.presets[presetSelected!].sizes
         var text = ""
         var cellIdentifier = ""
-        let sortedKeys = Array(item.keys).sorted()
-        let name = sortedKeys[row]
-        let sizes = item[sortedKeys[row]]
+        let name = names[row]
+        let sizes = item[name]
         
         if tableColumn == presetTable.tableColumns[0] {
             text = name

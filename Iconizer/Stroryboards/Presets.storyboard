@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,7 +48,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="318" minWidth="40" maxWidth="1000" id="Yl4-sg-QrF">
+                                                <tableColumn width="318" minWidth="40" maxWidth="1000" id="Yl4-sg-QrF">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Removed on Run">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -167,7 +168,7 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ur-th-U9Z">
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ur-th-U9Z" userLabel="Table View">
                                 <rect key="frame" x="56" y="80" width="402" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="47c-uy-8U7">
@@ -181,7 +182,7 @@ Gw
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="200" minWidth="40" maxWidth="1000" id="bIw-NN-Xyb">
+                                                <tableColumn width="200" minWidth="40" maxWidth="1000" id="bIw-NN-Xyb">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -206,6 +207,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="hjT-Yu-rK5"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -214,7 +218,7 @@ Gw
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="" width="95" minWidth="40" maxWidth="1000" id="nap-KT-2Oo">
+                                                <tableColumn width="95" minWidth="40" maxWidth="1000" id="nap-KT-2Oo">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="x Sixe">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -239,6 +243,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="Wdt-0H-i4A"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -247,7 +254,7 @@ Gw
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="" width="96" minWidth="10" maxWidth="3.4028234663852886e+38" id="qhn-li-nM4">
+                                                <tableColumn width="96" minWidth="10" maxWidth="3.4028234663852886e+38" id="qhn-li-nM4">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="y size">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -272,6 +279,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="3dS-r2-fNf"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -309,6 +319,7 @@ Gw
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="prefixCheckBox" destination="RQc-Wc-wm3" id="zth-MB-0i5"/>
                         <outlet property="presetTable" destination="3gw-DB-Dpd" id="5xK-rv-PqQ"/>
                         <outlet property="titleLabel" destination="4gZ-OT-VhN" id="EaY-Eg-yXc"/>
                     </connections>
