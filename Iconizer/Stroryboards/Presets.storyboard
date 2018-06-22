@@ -97,6 +97,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-uj-cfV" userLabel="Title">
+                                <rect key="frame" x="170" y="245" width="142" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double Click To Edit Name" id="OLl-eR-oGr">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frd-f4-j46">
                                 <rect key="frame" x="411" y="13" width="69" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -108,15 +117,6 @@
                                     <action selector="next:" target="f6h-eg-IFK" id="V8k-9R-s9I"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-uj-cfV" userLabel="Title">
-                                <rect key="frame" x="170" y="245" width="142" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Double Click To Edit Name" id="OLl-eR-oGr">
-                                    <font key="font" metaFont="system" size="10"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -146,7 +146,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="backButton:" target="GQO-ND-OnX" id="7Il-2E-SRS"/>
+                                    <action selector="save:" target="GQO-ND-OnX" id="7Il-2E-SRS"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESQ-j0-m1G">
@@ -160,7 +160,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="saveButton:" target="GQO-ND-OnX" id="OkV-gY-hLV"/>
+                                    <action selector="save:" target="GQO-ND-OnX" id="OkV-gY-hLV"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-Wc-wm3">
@@ -211,7 +211,7 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="hjT-Yu-rK5"/>
+                                                                        <action selector="save:" target="GQO-ND-OnX" id="hjT-Yu-rK5"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -247,7 +247,7 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="Wdt-0H-i4A"/>
+                                                                        <action selector="save:" target="GQO-ND-OnX" id="Wdt-0H-i4A"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -283,7 +283,7 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="3dS-r2-fNf"/>
+                                                                        <action selector="save:" target="GQO-ND-OnX" id="3dS-r2-fNf"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>

@@ -31,6 +31,7 @@ class SelectPresetViewController: NSViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DismissSheet"), object: nil)
         self.view.window!.close()
     }
     

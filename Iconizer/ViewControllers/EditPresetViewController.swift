@@ -21,23 +21,49 @@ class EditPresetViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
         
+        // Set Vars
         tempSave = UserPresets.presets[presetSelected!]
         names = Array(UserPresets.presets[presetSelected!].sizes.keys).sorted()
         
+        // Add Delegates
         presetTable.delegate = self
         presetTable.dataSource = self
+        
+        // Prep UI
+        titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
+        switch tempSave?.usePrefix {
+        case true:
+            prefixCheckBox.state = .on
+        case false:
+            prefixCheckBox.state = .off
+        default:
+            print("ERR: Wrong 'usePrefix' Value")
+        }
     }
     
     // MARK: - Actions
-    @IBAction func saveButton(_ sender: Any) {
-        save()
+    @IBAction func save(_ sender: Any) {
+        switch prefixCheckBox.state {
+        case .on:
+            tempSave?.usePrefix = true
+        case .off:
+            tempSave?.usePrefix = false
+        default:
+            print("ERR: Wrong Button State")
+        }
+        
+        UserPresets.presets[presetSelected!] = tempSave!
+        print(UserPresets.presets[presetSelected!])
+        UserPresets.savePresets()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DismissSheet"), object: nil)
         self.view.window!.close()
     }
     
     @IBAction func backButton(_ sender: Any) {
-        back()
+        let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SelectPresetViewController")) as? SelectPresetViewController
+        view.window?.contentViewController = SelectPresetViewController
     }
     
     @IBAction func textFieldFinishEdit(sender: NSTextField) {
@@ -61,27 +87,6 @@ class EditPresetViewController: NSViewController {
                 print("ERR: Column not found")
             }
         }
-    }
-    
-    // MARK: - Functions
-    func save() {
-        switch prefixCheckBox.state {
-        case .on:
-            tempSave?.usePrefix = true
-        case .off:
-            tempSave?.usePrefix = false
-        default:
-            print("ERR: Wrong Button State")
-        }
-        
-        UserPresets.presets[presetSelected!] = tempSave!
-        print(UserPresets.presets[presetSelected!])
-        UserPresets.savePresets()
-    }
-    
-    func back() {
-        let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SelectPresetViewController")) as? SelectPresetViewController
-        view.window?.contentViewController = SelectPresetViewController
     }
 }
 

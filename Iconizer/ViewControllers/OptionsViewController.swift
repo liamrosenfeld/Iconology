@@ -33,6 +33,9 @@ class OptionsViewController: NSViewController {
         for preset in UserPresets.presets {
             presetSelector.addItem(withTitle: preset.name)
         }
+        
+        // Notification
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name:NSNotification.Name(rawValue: "DismissSheet"), object: nil)
     }
     
     func segue(to: String) {
@@ -90,8 +93,15 @@ class OptionsViewController: NSViewController {
         segue(to: "DragVC")
     }
     
+    // MARK: - Extra
+    @objc func reload() {
+        presetSelector.removeAllItems()
+        for preset in UserPresets.presets {
+            presetSelector.addItem(withTitle: preset.name)
+        }
+        selectedPreset(self)
+    }
     
-    // MARK: - Convert Between URL, Data, and Image
     func urlToImage(url: URL) -> NSImage? {
         do {
             let imageData = try NSData(contentsOf: url, options: NSData.ReadingOptions())
