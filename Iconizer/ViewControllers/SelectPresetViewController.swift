@@ -33,6 +33,17 @@ class SelectPresetViewController: NSViewController {
         self.view.window!.close()
     }
     
+    @IBAction func textFieldFinishEdit(sender: NSTextField) {
+        let selectedRow = presetTable.selectedRow
+        let value = sender.stringValue
+        
+        if selectedRow != -1 {
+            UserPresets.presets[selectedRow].name = value
+        }
+        
+        UserPresets.savePresets()
+    }
+    
 }
 
 extension SelectPresetViewController: NSTableViewDataSource {

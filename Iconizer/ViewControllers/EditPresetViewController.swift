@@ -22,11 +22,12 @@ class EditPresetViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
-        presetTable.delegate = self
-        presetTable.dataSource = self
         
         tempSave = UserPresets.presets[presetSelected!]
         names = Array(UserPresets.presets[presetSelected!].sizes.keys).sorted()
+        
+        presetTable.delegate = self
+        presetTable.dataSource = self
     }
     
     // MARK: - Actions
