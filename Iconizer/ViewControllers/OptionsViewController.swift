@@ -37,7 +37,7 @@ class OptionsViewController: NSViewController {
         selectedPreset(self)
         
         // Notification
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name:NSNotification.Name(rawValue: "DismissSheet"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: NSNotification.Name(rawValue: "DismissSheet"), object: nil)
     }
     
     func segue(to: String) {
@@ -55,10 +55,12 @@ class OptionsViewController: NSViewController {
     @IBAction func selectedPreset(_ sender: Any) {
         let selectedPreset = presetSelector.indexOfSelectedItem
         
-        if UserPresets.presets[selectedPreset].usePrefix {
-            prefixView.isHidden = false
-        } else {
-            prefixView.isHidden = true
+        if selectedPreset != -1 {
+            if UserPresets.presets[selectedPreset].usePrefix {
+                prefixView.isHidden = false
+            } else {
+                prefixView.isHidden = true
+            }
         }
     }
     
@@ -75,6 +77,11 @@ class OptionsViewController: NSViewController {
     @IBAction func convert(_ sender: Any) {
         // Check User Options
         let selectedPreset = presetSelector.indexOfSelectedItem
+        if selectedPreset == -1 {
+            // TODO: UI Popup
+            print("ERR: Invalid Preset")
+            return
+        }
         
         // Get Image from URL
         let imageToConvert = urlToImage(url: imageURL!)!
