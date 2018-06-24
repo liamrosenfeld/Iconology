@@ -31,7 +31,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="done:" target="f6h-eg-IFK" id="7dS-H1-OfC"/>
+                                    <action selector="done:" target="f6h-eg-IFK" id="gig-VA-916"/>
                                 </connections>
                             </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cI-Fn-ki0" userLabel="Preset Table">
@@ -74,7 +74,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="textFieldFinishEditWithSender:" target="f6h-eg-IFK" id="6AJ-M6-xxI"/>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="f6h-eg-IFK" id="zqK-wq-wwD"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -105,7 +105,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="next:" target="f6h-eg-IFK" id="V8k-9R-s9I"/>
+                                    <action selector="next:" target="f6h-eg-IFK" id="SJc-a1-Eey"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-uj-cfV" userLabel="Title">
@@ -125,18 +125,18 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="addElement:" target="f6h-eg-IFK" id="sTE-Ax-CgO"/>
+                                    <action selector="newRow:" target="f6h-eg-IFK" id="sTE-Ax-CgO"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ag-ja-vHg">
-                                <rect key="frame" x="122" y="39" width="47" height="32"/>
+                                <rect key="frame" x="119" y="39" width="47" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VlR-5d-XJI">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="removeElement:" target="f6h-eg-IFK" id="dir-w4-FzS"/>
+                                    <action selector="removeRow:" target="f6h-eg-IFK" id="WBf-nq-h21"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -168,7 +168,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="save:" target="GQO-ND-OnX" id="7Il-2E-SRS"/>
+                                    <action selector="backButton:" target="GQO-ND-OnX" id="bnH-0E-NdI"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESQ-j0-m1G">
@@ -233,7 +233,7 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="save:" target="GQO-ND-OnX" id="hjT-Yu-rK5"/>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="TbX-Vu-Fhi"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -269,7 +269,7 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="save:" target="GQO-ND-OnX" id="Wdt-0H-i4A"/>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="uYB-Cd-z3W"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -305,7 +305,7 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="save:" target="GQO-ND-OnX" id="3dS-r2-fNf"/>
+                                                                        <action selector="textFieldFinishEditWithSender:" target="GQO-ND-OnX" id="eux-2c-NdB"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -341,6 +341,28 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8wg-Gz-C90">
+                                <rect key="frame" x="50" y="53" width="49" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Pg-S9-FG8">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="newRow:" target="GQO-ND-OnX" id="XUB-kP-gHQ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHM-Ok-TiN">
+                                <rect key="frame" x="86" y="53" width="47" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Von-9L-g3u">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeRow:" target="GQO-ND-OnX" id="cNf-uq-Jfb"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>

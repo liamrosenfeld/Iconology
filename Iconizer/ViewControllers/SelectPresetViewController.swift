@@ -20,6 +20,7 @@ class SelectPresetViewController: NSViewController {
     
     // MARK: - Actions
     @IBAction func next(_ sender: Any) {
+        forceSaveText()
         let presetSelected = presetTable.selectedRow
         if presetSelected >= 0 {
             print(UserPresets.presets[presetSelected].name)
@@ -31,23 +32,15 @@ class SelectPresetViewController: NSViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        forceSaveText()
         UserPresets.savePresets()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DismissSheet"), object: nil)
         self.view.window!.close()
     }
     
-    @IBAction func textFieldFinishEdit(sender: NSTextField) {
-        let selectedRow = presetTable.selectedRow
-        let value = sender.stringValue
-        
-        if selectedRow != -1 {
-            UserPresets.presets[selectedRow].name = value
-        }
-        
-        UserPresets.savePresets()
-    }
     
-    @IBAction func addElement(_ sender: Any) {
+    
+    @IBAction func newRow(_ sender: Any) {
         // Generate Name
         var name = "New Preset"
         var n = 1
@@ -74,7 +67,7 @@ class SelectPresetViewController: NSViewController {
         presetTable.endUpdates()
     }
     
-    @IBAction func removeElement(_ sender: Any) {
+    @IBAction func removeRow(_ sender: Any) {
         let selectedRow = presetTable!.selectedRow
         if selectedRow != -1 {
             // Update Data
@@ -83,6 +76,25 @@ class SelectPresetViewController: NSViewController {
             // Update Table
             presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
             presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+        }
+    }
+    
+    // MARK: - Textbox Management
+    func forceSaveText() {
+        let selectedColumn = presetTable.selectedColumn
+        let selectedRow = presetTable.selectedRow
+        if selectedRow != -1 {
+            let selected = presetTable.view(atColumn: selectedColumn, row: selectedRow, makeIfNecessary: false) as! NSTableCellView
+            textFieldFinishEdit(sender: selected.textField!)
+        }
+    }
+    
+    @IBAction func textFieldFinishEdit(sender: NSTextField) {
+        let selectedRow = presetTable.selectedRow
+        let value = sender.stringValue
+        
+        if selectedRow != -1 {
+            UserPresets.presets[selectedRow].name = value
         }
     }
 }

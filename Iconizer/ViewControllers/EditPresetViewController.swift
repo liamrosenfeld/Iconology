@@ -44,6 +44,9 @@ class EditPresetViewController: NSViewController {
     
     // MARK: - Actions
     @IBAction func save(_ sender: Any) {
+        forceSaveText()
+        
+        // Set Prefix Bool
         switch prefixCheckBox.state {
         case .on:
             tempSave?.usePrefix = true
@@ -53,10 +56,12 @@ class EditPresetViewController: NSViewController {
             print("ERR: Wrong Button State")
         }
         
+        // Save Presets
         UserPresets.presets[presetSelected!] = tempSave!
         print(UserPresets.presets[presetSelected!])
         UserPresets.savePresets()
         
+        // Close Sheet
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DismissSheet"), object: nil)
         self.view.window!.close()
     }
@@ -64,6 +69,59 @@ class EditPresetViewController: NSViewController {
     @IBAction func backButton(_ sender: Any) {
         let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SelectPresetViewController")) as? SelectPresetViewController
         view.window?.contentViewController = SelectPresetViewController
+    }
+    
+    
+    
+    @IBAction func newRow(_ sender: Any) {
+        // Generate Name
+        var name = "New Size"
+        var n = 1
+        while true {
+            var state = "good"
+            for size in tempSave!.sizes {
+                if name == size.key {
+                    state = "fail"
+                }
+            }
+            if state != "fail" {
+                break
+            }
+            name = "New Size \(n)"
+            n += 1
+        }
+        
+        // Update Data
+        tempSave?.sizes[name] = size(x: 1, y: 1)
+        names.append(name)
+        
+        // Update Table
+        presetTable.beginUpdates()
+        presetTable.insertRows(at: IndexSet(integer: tempSave!.sizes.count-1), withAnimation: .effectFade)
+        presetTable.endUpdates()
+    }
+    
+    @IBAction func removeRow(_ sender: Any) {
+        let selectedRow = presetTable!.selectedRow
+        if selectedRow != -1 {
+            // Update Data
+            tempSave?.sizes.removeValue(forKey: names[selectedRow])
+            names.remove(at: selectedRow)
+            
+            // Update Table
+            presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
+            presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+        }
+    }
+    
+    // MARK: - Textbox Management
+    func forceSaveText() {
+        let selectedColumn = presetTable.selectedColumn
+        let selectedRow = presetTable.selectedRow
+        if selectedRow != -1 {
+            let selected = presetTable.view(atColumn: selectedColumn, row: selectedRow, makeIfNecessary: false) as! NSTableCellView
+            textFieldFinishEdit(sender: selected.textField!)
+        }
     }
     
     @IBAction func textFieldFinishEdit(sender: NSTextField) {
@@ -109,11 +167,10 @@ extension EditPresetViewController: NSTableViewDelegate {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let item = UserPresets.presets[presetSelected!].sizes
         var text = ""
         var cellIdentifier = ""
         let name = names[row]
-        let sizes = item[name]
+        let sizes = tempSave?.sizes[name]
         
         if tableColumn == presetTable.tableColumns[0] {
             text = name
