@@ -11,6 +11,7 @@ import Cocoa
 class SelectPresetViewController: NSViewController {
     
     @IBOutlet weak var presetTable: NSTableView!
+    @IBOutlet weak var manageRowsButton: NSSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,17 @@ class SelectPresetViewController: NSViewController {
         self.view.window!.close()
     }
     
+    @IBAction func manageRows(_ sender: Any) {
+        if manageRowsButton.selectedSegment == 0 {
+            newRow()
+        } else if manageRowsButton.selectedSegment == 1 {
+            removeRow()
+        }
+    }
     
     
-    @IBAction func newRow(_ sender: Any) {
+    // MARK: - Table Updates
+    func newRow() {
         // Generate Name
         var name = "New Preset"
         var n = 1
@@ -62,12 +71,11 @@ class SelectPresetViewController: NSViewController {
         UserPresets.presets.append(Preset(name: name, sizes: [String : size](), usePrefix: false))
         
         // Update Table
-        presetTable.beginUpdates()
         presetTable.insertRows(at: IndexSet(integer: UserPresets.presets.count-1), withAnimation: .effectFade)
-        presetTable.endUpdates()
+        presetTable.selectRowIndexes(IndexSet(integer: UserPresets.presets.count-1), byExtendingSelection: false)
     }
     
-    @IBAction func removeRow(_ sender: Any) {
+    func removeRow() {
         let selectedRow = presetTable!.selectedRow
         if selectedRow != -1 {
             // Update Data
@@ -75,7 +83,11 @@ class SelectPresetViewController: NSViewController {
         
             // Update Table
             presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
-            presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+            if selectedRow > UserPresets.presets.count - 1{
+                presetTable.selectRowIndexes(IndexSet(integer: selectedRow-1), byExtendingSelection: false)
+            } else {
+                presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+            }
         }
     }
     

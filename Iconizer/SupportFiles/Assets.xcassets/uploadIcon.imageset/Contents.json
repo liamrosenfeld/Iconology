@@ -1,17 +1,28 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "mac",
+      "filename" : "upload-2.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "mac",
       "filename" : "upload.png",
-      "scale" : "2x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "mac",
+      "filename" : "upload-4.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

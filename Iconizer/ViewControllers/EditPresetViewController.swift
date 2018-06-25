@@ -18,6 +18,7 @@ class EditPresetViewController: NSViewController {
     @IBOutlet weak var presetTable: NSTableView!
     @IBOutlet weak var titleLabel: NSTextFieldCell!
     @IBOutlet weak var prefixCheckBox: NSButton!
+    @IBOutlet weak var manageRowsButton: NSSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +72,16 @@ class EditPresetViewController: NSViewController {
         view.window?.contentViewController = SelectPresetViewController
     }
     
+    @IBAction func manageRows(_ sender: Any) {
+        if manageRowsButton.selectedSegment == 0 {
+            newRow()
+        } else if manageRowsButton.selectedSegment == 1 {
+            removeRow()
+        }
+    }
     
-    
-    @IBAction func newRow(_ sender: Any) {
+    // MARK: - Table Updates
+    func newRow() {
         // Generate Name
         var name = "New Size"
         var n = 1
@@ -96,12 +104,11 @@ class EditPresetViewController: NSViewController {
         names.append(name)
         
         // Update Table
-        presetTable.beginUpdates()
         presetTable.insertRows(at: IndexSet(integer: tempSave!.sizes.count-1), withAnimation: .effectFade)
-        presetTable.endUpdates()
+        presetTable.selectRowIndexes(IndexSet(integer: tempSave!.sizes.count-1), byExtendingSelection: false)
     }
     
-    @IBAction func removeRow(_ sender: Any) {
+    func removeRow() {
         let selectedRow = presetTable!.selectedRow
         if selectedRow != -1 {
             // Update Data
@@ -110,9 +117,14 @@ class EditPresetViewController: NSViewController {
             
             // Update Table
             presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
-            presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+            if selectedRow > tempSave!.sizes.count - 1{
+                presetTable.selectRowIndexes(IndexSet(integer: selectedRow-1), byExtendingSelection: false)
+            } else {
+                presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+            }
         }
     }
+    
     
     // MARK: - Textbox Management
     func forceSaveText() {
