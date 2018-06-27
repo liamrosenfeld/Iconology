@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CF5BC2A20E32A0200F2A57C /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* Save.swift */; };
 		AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */; };
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
 		AD1270092023D1510068531A /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* DragViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
 		AD1270362023DADA0068531A /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270352023DADA0068531A /* DragView.swift */; };
 		AD1270382024050C0068531A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270372024050C0068531A /* OptionsViewController.swift */; };
-		AD8CF9AD20264699008077B6 /* ResizeAndSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* ResizeAndSave.swift */; };
+		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
 		ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* Presets.swift */; };
 		ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* DefaultPresets.swift */; };
 		ADA6933320DC8AA00049907B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6933220DC8AA00049907B /* Extensions.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CF5BC2920E32A0200F2A57C /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +36,7 @@
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD1270352023DADA0068531A /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
-		AD8CF9AC20264699008077B6 /* ResizeAndSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeAndSave.swift; sourceTree = "<group>"; };
+		AD8CF9AC20264699008077B6 /* Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resize.swift; sourceTree = "<group>"; };
 		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Presets.swift; path = Iconizer/Functionality/Presets.swift; sourceTree = SOURCE_ROOT; };
 		ADA070E620AF709F00A2A69F /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
 		ADA6933220DC8AA00049907B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -112,7 +114,8 @@
 			children = (
 				ADA070E420AF6F8900A2A69F /* Presets.swift */,
 				ADA070E620AF709F00A2A69F /* DefaultPresets.swift */,
-				AD8CF9AC20264699008077B6 /* ResizeAndSave.swift */,
+				AD8CF9AC20264699008077B6 /* Resize.swift */,
+				0CF5BC2920E32A0200F2A57C /* Save.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
 				ADA6933220DC8AA00049907B /* Extensions.swift */,
 			);
@@ -202,8 +205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CF5BC2A20E32A0200F2A57C /* Save.swift in Sources */,
 				AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */,
-				AD8CF9AD20264699008077B6 /* ResizeAndSave.swift in Sources */,
+				AD8CF9AD20264699008077B6 /* Resize.swift in Sources */,
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
 				ADA6933320DC8AA00049907B /* Extensions.swift in Sources */,
 				ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */,

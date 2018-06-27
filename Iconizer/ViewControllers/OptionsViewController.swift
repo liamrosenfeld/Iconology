@@ -36,8 +36,14 @@ class OptionsViewController: NSViewController {
         }
         selectedPreset(self)
         
-        // Notification
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: NSNotification.Name(rawValue: "DismissSheet"), object: nil)
+        // Set Reload Notification
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("DismissSheet"), object: nil, queue: nil) { notification in
+            self.presetSelector.removeAllItems()
+            for preset in UserPresets.presets {
+                self.presetSelector.addItem(withTitle: preset.name)
+            }
+            self.selectedPreset(self)
+        }
     }
     
     func segue(to: String) {
@@ -72,7 +78,6 @@ class OptionsViewController: NSViewController {
         
         prefixPreview.stringValue = "Ex: \(prefix)\(root)"
     }
-    
     
     @IBAction func convert(_ sender: Any) {
         // Check User Options
@@ -111,15 +116,8 @@ class OptionsViewController: NSViewController {
         segue(to: "DragVC")
     }
     
-    // MARK: - Extra
-    @objc func reload() {
-        presetSelector.removeAllItems()
-        for preset in UserPresets.presets {
-            presetSelector.addItem(withTitle: preset.name)
-        }
-        selectedPreset(self)
-    }
     
+    // MARK: - Extra
     func urlToImage(url: URL) -> NSImage? {
         do {
             let imageData = try NSData(contentsOf: url, options: NSData.ReadingOptions())
