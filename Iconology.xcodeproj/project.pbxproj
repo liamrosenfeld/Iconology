@@ -27,23 +27,23 @@
 /* Begin PBXFileReference section */
 		0CF5BC2920E32A0200F2A57C /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
-		AD1270032023D1510068531A /* Iconizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD1270032023D1510068531A /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD1270082023D1510068531A /* DragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragViewController.swift; sourceTree = "<group>"; };
 		AD12700A2023D1510068531A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD12700F2023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD1270102023D1510068531A /* Iconizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconizer.entitlements; sourceTree = "<group>"; };
+		AD1270102023D1510068531A /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD1270352023DADA0068531A /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		AD8CF9AC20264699008077B6 /* Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resize.swift; sourceTree = "<group>"; };
-		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Presets.swift; path = Iconizer/Functionality/Presets.swift; sourceTree = SOURCE_ROOT; };
+		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		ADA070E620AF709F00A2A69F /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
 		ADA6933220DC8AA00049907B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ADF887A520B07CE500E60C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		ADF887AC20B07FAA00E60C19 /* Presets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
-		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectPresetViewController.swift; path = Iconizer/ViewControllers/SelectPresetViewController.swift; sourceTree = SOURCE_ROOT; };
-		ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditPresetViewController.swift; path = Iconizer/ViewControllers/EditPresetViewController.swift; sourceTree = SOURCE_ROOT; };
+		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPresetViewController.swift; sourceTree = "<group>"; };
+		ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CF5BC2D20E32D0B00F2A57C /* Functionality */ = {
+			isa = PBXGroup;
+			children = (
+				ADA070E420AF6F8900A2A69F /* Presets.swift */,
+				ADA070E620AF709F00A2A69F /* DefaultPresets.swift */,
+				AD8CF9AC20264699008077B6 /* Resize.swift */,
+				0CF5BC2920E32A0200F2A57C /* Save.swift */,
+				AD1270352023DADA0068531A /* DragView.swift */,
+				ADA6933220DC8AA00049907B /* Extensions.swift */,
+			);
+			path = Functionality;
+			sourceTree = "<group>";
+		};
 		AD126FFA2023D1510068531A = {
 			isa = PBXGroup;
 			children = (
 				AD1270322023D3250068531A /* README.md */,
-				AD1270052023D1510068531A /* Iconizer */,
+				AD1270052023D1510068531A /* Iconology */,
 				AD1270042023D1510068531A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,20 +82,20 @@
 		AD1270042023D1510068531A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD1270032023D1510068531A /* Iconizer.app */,
+				AD1270032023D1510068531A /* Iconology.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AD1270052023D1510068531A /* Iconizer */ = {
+		AD1270052023D1510068531A /* Iconology */ = {
 			isa = PBXGroup;
 			children = (
 				ADF887A120B07CE500E60C19 /* Stroryboards */,
 				ADEE32A72039194800AE0566 /* ViewControllers */,
-				ADEE32A820391A7B00AE0566 /* Functionality */,
+				0CF5BC2D20E32D0B00F2A57C /* Functionality */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
 			);
-			path = Iconizer;
+			path = Iconology;
 			sourceTree = "<group>";
 		};
 		ADEE32A62039192500AE0566 /* SupportFiles */ = {
@@ -91,10 +104,9 @@
 				AD1270062023D1510068531A /* AppDelegate.swift */,
 				AD12700F2023D1510068531A /* Info.plist */,
 				AD12700A2023D1510068531A /* Assets.xcassets */,
-				AD1270102023D1510068531A /* Iconizer.entitlements */,
+				AD1270102023D1510068531A /* Iconology.entitlements */,
 			);
-			name = SupportFiles;
-			path = ../Iconizer/SupportFiles;
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		ADEE32A72039194800AE0566 /* ViewControllers */ = {
@@ -109,20 +121,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		ADEE32A820391A7B00AE0566 /* Functionality */ = {
-			isa = PBXGroup;
-			children = (
-				ADA070E420AF6F8900A2A69F /* Presets.swift */,
-				ADA070E620AF709F00A2A69F /* DefaultPresets.swift */,
-				AD8CF9AC20264699008077B6 /* Resize.swift */,
-				0CF5BC2920E32A0200F2A57C /* Save.swift */,
-				AD1270352023DADA0068531A /* DragView.swift */,
-				ADA6933220DC8AA00049907B /* Extensions.swift */,
-			);
-			name = Functionality;
-			path = ../Iconizer/Functionality;
-			sourceTree = "<group>";
-		};
 		ADF887A120B07CE500E60C19 /* Stroryboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,9 +133,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD1270022023D1510068531A /* Iconizer */ = {
+		AD1270022023D1510068531A /* Iconology */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD1270292023D1510068531A /* Build configuration list for PBXNativeTarget "Iconizer" */;
+			buildConfigurationList = AD1270292023D1510068531A /* Build configuration list for PBXNativeTarget "Iconology" */;
 			buildPhases = (
 				AD126FFF2023D1510068531A /* Sources */,
 				AD1270002023D1510068531A /* Frameworks */,
@@ -147,9 +145,9 @@
 			);
 			dependencies = (
 			);
-			name = Iconizer;
+			name = Iconology;
 			productName = Iconator;
-			productReference = AD1270032023D1510068531A /* Iconizer.app */;
+			productReference = AD1270032023D1510068531A /* Iconology.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +167,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AD126FFE2023D1510068531A /* Build configuration list for PBXProject "Iconizer" */;
+			buildConfigurationList = AD126FFE2023D1510068531A /* Build configuration list for PBXProject "Iconology" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -182,7 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD1270022023D1510068531A /* Iconizer */,
+				AD1270022023D1510068531A /* Iconology */,
 			);
 		};
 /* End PBXProject section */
@@ -352,13 +350,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Iconizer/SupportFiles/Iconizer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Iconology/SupportFiles/Iconology.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = Iconizer/SupportFiles/Info.plist;
+				INFOPLIST_FILE = Iconology/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconizer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -368,13 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Iconizer/SupportFiles/Iconizer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Iconology/SupportFiles/Iconology.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
-				INFOPLIST_FILE = Iconizer/SupportFiles/Info.plist;
+				INFOPLIST_FILE = Iconology/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconizer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -383,7 +381,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD126FFE2023D1510068531A /* Build configuration list for PBXProject "Iconizer" */ = {
+		AD126FFE2023D1510068531A /* Build configuration list for PBXProject "Iconology" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD1270272023D1510068531A /* Debug */,
@@ -392,7 +390,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD1270292023D1510068531A /* Build configuration list for PBXNativeTarget "Iconizer" */ = {
+		AD1270292023D1510068531A /* Build configuration list for PBXNativeTarget "Iconology" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD12702A2023D1510068531A /* Debug */,

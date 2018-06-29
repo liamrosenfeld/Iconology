@@ -1,6 +1,6 @@
 //
 //  Save.swift
-//  Iconizer
+//  Iconology
 //
 //  Created by Liam on 6/26/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.

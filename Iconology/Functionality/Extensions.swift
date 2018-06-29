@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  Iconizer
+//  Iconology
 //
 //  Created by Liam Rosenfeld on 6/21/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.
