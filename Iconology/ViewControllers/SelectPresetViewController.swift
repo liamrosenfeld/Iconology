@@ -105,6 +105,16 @@ class SelectPresetViewController: NSViewController {
         let selectedRow = presetTable.selectedRow
         let value = sender.stringValue
         
+        // Check Not Duplicate
+        for preset in UserPresets.presets {
+            if value == preset.name {
+                // TODO: Warning Popup
+                sender.stringValue = UserPresets.presets[selectedRow].name
+                print("ERR: Preset Name Already Exists")
+                return
+            }
+        }
+        
         if selectedRow != -1 {
             UserPresets.presets[selectedRow].name = value
         }

@@ -12,7 +12,7 @@ class EditPresetViewController: NSViewController {
     
     // MARK: - Setup
     var presetSelected: Int?
-    var tempSave: Preset?
+    var tempSave: Preset!
     var names = [String]()
     
     @IBOutlet weak var presetTable: NSTableView!
@@ -33,13 +33,11 @@ class EditPresetViewController: NSViewController {
         
         // Prep UI
         titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
-        switch tempSave?.usePrefix {
+        switch tempSave.usePrefix {
         case true:
             prefixCheckBox.state = .on
         case false:
             prefixCheckBox.state = .off
-        default:
-            print("ERR: Wrong 'usePrefix' Value")
         }
     }
     
@@ -50,15 +48,15 @@ class EditPresetViewController: NSViewController {
         // Set Prefix Bool
         switch prefixCheckBox.state {
         case .on:
-            tempSave?.usePrefix = true
+            tempSave.usePrefix = true
         case .off:
-            tempSave?.usePrefix = false
+            tempSave.usePrefix = false
         default:
             print("ERR: Wrong Button State")
         }
         
         // Save Presets
-        UserPresets.presets[presetSelected!] = tempSave!
+        UserPresets.presets[presetSelected!] = tempSave
         print(UserPresets.presets[presetSelected!])
         UserPresets.savePresets()
         
@@ -87,7 +85,7 @@ class EditPresetViewController: NSViewController {
         var n = 1
         while true {
             var state = "good"
-            for size in tempSave!.sizes {
+            for size in tempSave.sizes {
                 if name == size.key {
                     state = "fail"
                 }
@@ -100,24 +98,24 @@ class EditPresetViewController: NSViewController {
         }
         
         // Update Data
-        tempSave?.sizes[name] = size(x: 1, y: 1)
+        tempSave.sizes[name] = size(x: 1, y: 1)
         names.append(name)
         
         // Update Table
-        presetTable.insertRows(at: IndexSet(integer: tempSave!.sizes.count-1), withAnimation: .effectFade)
-        presetTable.selectRowIndexes(IndexSet(integer: tempSave!.sizes.count-1), byExtendingSelection: false)
+        presetTable.insertRows(at: IndexSet(integer: tempSave.sizes.count-1), withAnimation: .effectFade)
+        presetTable.selectRowIndexes(IndexSet(integer: tempSave.sizes.count-1), byExtendingSelection: false)
     }
     
     func removeRow() {
         let selectedRow = presetTable!.selectedRow
         if selectedRow != -1 {
             // Update Data
-            tempSave?.sizes.removeValue(forKey: names[selectedRow])
+            tempSave.sizes.removeValue(forKey: names[selectedRow])
             names.remove(at: selectedRow)
             
             // Update Table
             presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
-            if selectedRow > tempSave!.sizes.count - 1{
+            if selectedRow > tempSave.sizes.count - 1{
                 presetTable.selectRowIndexes(IndexSet(integer: selectedRow-1), byExtendingSelection: false)
             } else {
                 presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
@@ -145,14 +143,34 @@ class EditPresetViewController: NSViewController {
             switch column {
             case 0:
                 let oldName = names[selectedRow]
-                tempSave?.sizes.changeKey(from: oldName, to: value)
+                for size in tempSave.sizes {
+                    if value == size.key {
+                        // TODO: Warning Popup
+                        print("ERR: Name Already Exists")
+                        sender.stringValue = oldName
+                        return
+                    }
+                }
+                tempSave.sizes.changeKey(from: oldName, to: value)
                 names[selectedRow] = value
             case 1:
                 let name = names[selectedRow]
-                tempSave?.sizes[name]?.x = Int(value)!
+                if let intValue = Int(value) {
+                    tempSave.sizes[name]?.x = intValue
+                } else {
+                    // TODO: Warning Popup
+                    print("ERR: Non-Integer Inputed")
+                    sender.stringValue = String(tempSave.sizes[names[selectedRow]]!.x)
+                }
             case 2:
                 let name = names[selectedRow]
-                tempSave?.sizes[name]?.y = Int(value)!
+                if let intValue = Int(value) {
+                    tempSave.sizes[name]?.y = intValue
+                } else {
+                    // TODO: Warning Popup
+                    print("ERR: Non-Integer Inputed")
+                    sender.stringValue = String(tempSave.sizes[names[selectedRow]]!.y)
+                }
             default:
                 print("ERR: Column not found")
             }
@@ -182,7 +200,7 @@ extension EditPresetViewController: NSTableViewDelegate {
         var text = ""
         var cellIdentifier = ""
         let name = names[row]
-        let sizes = tempSave?.sizes[name]
+        let sizes = tempSave.sizes[name]
         
         if tableColumn == presetTable.tableColumns[0] {
             text = name

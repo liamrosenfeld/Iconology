@@ -89,7 +89,14 @@ class OptionsViewController: NSViewController {
         }
         
         // Get Image from URL
-        let imageToConvert = urlToImage(url: imageURL!)!
+        var imageToConvert: NSImage!
+        if let image = urlToImage(url: imageURL!) {
+            imageToConvert = image
+        } else {
+            // TODO: Warning Popup
+            print("ERR: File Could No Longer Be Found")
+            return
+        }
         
         // Where to save
         let chosenFolder = selectFolder()

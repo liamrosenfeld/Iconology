@@ -21,7 +21,6 @@ class DragView: NSView {
     
     // Help push forward only the right file format of our images
     private var fileTypeIsOk = false
-    // TODO: - Add PSD Support
     private var acceptedFileExtensions = ["png", "jpg", "ai", "psd", "pdf"]
     
     required init?(coder: NSCoder) {
