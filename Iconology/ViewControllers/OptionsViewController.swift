@@ -72,7 +72,7 @@ class OptionsViewController: NSViewController {
     
     @IBAction func prefixTextEdited(_ sender: Any) {
         // TODO: End text editing on clickaway not just enter
-        let sizes = UserPresets.presets[presetSelector.indexOfSelectedItem].sizes
+        let sizes = UserPresets.presets[presetSelector.indexOfSelectedItem].sizes // TODO: Add Saftey in case no presets exist
         let prefix = prefixTextBox.stringValue
         let root = Array(sizes)[Int(arc4random_uniform(UInt32(sizes.count)))].key  // Get random key from sizes
         
@@ -83,7 +83,7 @@ class OptionsViewController: NSViewController {
         // Check User Options
         let selectedPreset = presetSelector.indexOfSelectedItem
         if selectedPreset == -1 {
-            // TODO: UI Popup
+            // TODO: Warning Popup
             print("ERR: Invalid Preset")
             return
         }

@@ -34,19 +34,21 @@ class DefaultPresets {
         "iPhoneApp2x": size(x: 120, y: 120),
         "iPhoneApp3x": size(x: 180, y: 180),
         
+        "iPadNotification1x": size(x: 20, y: 20),
         "iPadNotification2x": size(x: 40, y: 40),
-        "iPadNotification3x": size(x: 60, y: 60),
         
+        "iPadSettings1x": size(x: 29, y: 29),
         "iPadSettings2x": size(x: 58, y: 58),
-        "iPadSettings3x": size(x: 87, y: 87),
         
+        "iPadSpotlight1x": size(x: 40, y: 40),
         "iPadSpotlight2x": size(x: 80, y: 80),
-        "iPadSpotlight3x": size(x: 120, y: 120),
         
-        "iPadApp2x": size(x: 120, y: 120),
-        "iPadApp3x": size(x: 180, y: 180),
+        "iPadApp1x": size(x: 76, y: 76),
+        "iPadApp2x": size(x: 152, y: 152),
         
-        "iOSAppStore": size(x: 1280, y: 1280)
+        "iPadProApp2x": size(x: 167, y: 167),
+        
+        "iOSAppStore": size(x: 1024, y: 1024)
     ]
     
     
