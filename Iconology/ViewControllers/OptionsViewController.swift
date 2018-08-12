@@ -67,16 +67,27 @@ class OptionsViewController: NSViewController {
             } else {
                 prefixView.isHidden = true
             }
+        } else {
+            prefixView.isHidden = true
         }
     }
     
     @IBAction func prefixTextEdited(_ sender: Any) {
-        // TODO: End text editing on clickaway not just enter
-        let sizes = UserPresets.presets[presetSelector.indexOfSelectedItem].sizes // TODO: Add Saftey in case no presets exist
-        let prefix = prefixTextBox.stringValue
-        let root = Array(sizes)[Int(arc4random_uniform(UInt32(sizes.count)))].key  // Get random key from sizes
-        
-        prefixPreview.stringValue = "Ex: \(prefix)\(root)"
+        // TODO: Update On Type
+        if presetSelector.indexOfSelectedItem < UserPresets.presets.count && presetSelector.indexOfSelectedItem != -1 {
+            let sizes = UserPresets.presets[presetSelector.indexOfSelectedItem].sizes
+            let prefix = prefixTextBox.stringValue
+            if sizes.count > 0 {
+                let root = Array(sizes)[Int(arc4random_uniform(UInt32(sizes.count)))].key  // Get random key from sizes
+                prefixPreview.stringValue = "Ex: \(prefix)\(root)"
+            } else {
+                let prefix = prefixTextBox.stringValue
+                prefixPreview.stringValue = "Ex: \(prefix)root"
+            }
+        } else {
+            let prefix = prefixTextBox.stringValue
+            prefixPreview.stringValue = "Ex: \(prefix)root"
+        }
     }
     
     @IBAction func convert(_ sender: Any) {
