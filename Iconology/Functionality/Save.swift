@@ -8,10 +8,12 @@
 
 import Cocoa
 
-func save(to: URL, name: String, image: NSImage) {
-    let data: Data = image.tiffRepresentation!
-    let filename = to.appendingPathComponent("\(name).png")
-    try? data.write(to: filename)
+func save(to url: URL, name: String, image: NSImage) {
+    let tiffRepresentation = image.tiffRepresentation!
+    let bitmapImage = NSBitmapImageRep(data: tiffRepresentation)
+    let data = bitmapImage!.representation(using: .png, properties: [:])
+    let url = url.appendingPathComponent("\(name).png")
+    try? data!.write(to: url)
 }
 
 func selectFolder(_ callingClass: String = #function) -> String {
