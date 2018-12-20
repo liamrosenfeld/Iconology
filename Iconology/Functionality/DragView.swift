@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 protocol DragViewDelegate {
     func dragViewDidHover()
     func dragViewMouseExited()
