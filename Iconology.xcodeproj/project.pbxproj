@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C8D9E2E21CD6EAC00520AC8 /* Dictionary+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */; };
 		0C8D9E2F21CD6EAC00520AC8 /* URL+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */; };
-		0CF5BC2A20E32A0200F2A57C /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* Save.swift */; };
+		0C8D9E3921CD73E500520AC8 /* UserPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3821CD73E500520AC8 /* UserPresets.swift */; };
+		0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */; };
+		0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3C21CD815100520AC8 /* Preset.swift */; };
+		0C8D9E3F21CD977200520AC8 /* ExamplePresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3E21CD977200520AC8 /* ExamplePresets.swift */; };
+		0C8D9E4221CD988400520AC8 /* ImgSetPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4121CD988400520AC8 /* ImgSetPreset.swift */; };
+		0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */; };
+		0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */; };
+		0C8D9E9321CF155700520AC8 /* NSImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9221CF155700520AC8 /* NSImage+Util.swift */; };
+		0C8D9E9721CF169900520AC8 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* Folders.swift */; };
+		0CC9E7E721CF434600E37482 /* Double+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Double+Util.swift */; };
+		0CC9E81121CF645B00E37482 /* SaveXcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81021CF645B00E37482 /* SaveXcode.swift */; };
+		0CC9E81321CF647200E37482 /* SaveFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81221CF647200E37482 /* SaveFile.swift */; };
+		0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81421CFF56300E37482 /* IconsetSizes.swift */; };
+		0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81621D0830E00E37482 /* CollectionPreset.swift */; };
+		0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81821D0842600E37482 /* SaveCollection.swift */; };
+		0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* SavePng.swift */; };
 		AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */; };
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
 		AD1270092023D1510068531A /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* DragViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
 		AD1270362023DADA0068531A /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270352023DADA0068531A /* DragView.swift */; };
 		AD1270382024050C0068531A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270372024050C0068531A /* OptionsViewController.swift */; };
-		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
-		ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* Presets.swift */; };
-		ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* DefaultPresets.swift */; };
+		ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* CustomPreset.swift */; };
+		ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* XcodeSizes.swift */; };
 		ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A420B07CE500E60C19 /* Main.storyboard */; };
 		ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887AC20B07FAA00E60C19 /* Presets.storyboard */; };
 		ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */; };
@@ -26,9 +39,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Presets.swift"; sourceTree = "<group>"; };
 		0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+NSImage.swift"; sourceTree = "<group>"; };
-		0CF5BC2920E32A0200F2A57C /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
+		0C8D9E3821CD73E500520AC8 /* UserPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresets.swift; sourceTree = "<group>"; };
+		0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
+		0C8D9E3C21CD815100520AC8 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
+		0C8D9E3E21CD977200520AC8 /* ExamplePresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePresets.swift; sourceTree = "<group>"; };
+		0C8D9E4121CD988400520AC8 /* ImgSetPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgSetPreset.swift; sourceTree = "<group>"; };
+		0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePreset.swift; sourceTree = "<group>"; };
+		0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreset.swift; sourceTree = "<group>"; };
+		0C8D9E9221CF155700520AC8 /* NSImage+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Util.swift"; sourceTree = "<group>"; };
+		0C8D9E9621CF169900520AC8 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
+		0CC9E7E621CF434600E37482 /* Double+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Util.swift"; sourceTree = "<group>"; };
+		0CC9E81021CF645B00E37482 /* SaveXcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveXcode.swift; sourceTree = "<group>"; };
+		0CC9E81221CF647200E37482 /* SaveFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFile.swift; sourceTree = "<group>"; };
+		0CC9E81421CFF56300E37482 /* IconsetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsetSizes.swift; sourceTree = "<group>"; };
+		0CC9E81621D0830E00E37482 /* CollectionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreset.swift; sourceTree = "<group>"; };
+		0CC9E81821D0842600E37482 /* SaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCollection.swift; sourceTree = "<group>"; };
+		0CF5BC2920E32A0200F2A57C /* SavePng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePng.swift; sourceTree = "<group>"; };
 		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,9 +66,8 @@
 		AD1270322023D3250068531A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD1270352023DADA0068531A /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
-		AD8CF9AC20264699008077B6 /* Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resize.swift; sourceTree = "<group>"; };
-		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
-		ADA070E620AF709F00A2A69F /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
+		ADA070E420AF6F8900A2A69F /* CustomPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPreset.swift; sourceTree = "<group>"; };
+		ADA070E620AF709F00A2A69F /* XcodeSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeSizes.swift; sourceTree = "<group>"; };
 		ADF887A520B07CE500E60C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		ADF887AC20B07FAA00E60C19 /* Presets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
 		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPresetViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */,
-				0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */,
+				0C8D9E9221CF155700520AC8 /* NSImage+Util.swift */,
+				0CC9E7E621CF434600E37482 /* Double+Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -76,20 +103,56 @@
 			path = Extra;
 			sourceTree = "<group>";
 		};
-		0C8D9E3521CD725200520AC8 /* Images */ = {
+		0C8D9E3621CD73B500520AC8 /* Default */ = {
 			isa = PBXGroup;
 			children = (
-				AD8CF9AC20264699008077B6 /* Resize.swift */,
-				0CF5BC2920E32A0200F2A57C /* Save.swift */,
+				ADA070E620AF709F00A2A69F /* XcodeSizes.swift */,
+				0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */,
+				0CC9E81421CFF56300E37482 /* IconsetSizes.swift */,
 			);
-			path = Images;
+			path = Default;
+			sourceTree = "<group>";
+		};
+		0C8D9E3721CD73C000520AC8 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				ADA070E420AF6F8900A2A69F /* CustomPreset.swift */,
+				0C8D9E3821CD73E500520AC8 /* UserPresets.swift */,
+				0C8D9E3E21CD977200520AC8 /* ExamplePresets.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		0C8D9E4021CD984900520AC8 /* PresetTypes */ = {
+			isa = PBXGroup;
+			children = (
+				0C8D9E3C21CD815100520AC8 /* Preset.swift */,
+				0C8D9E4121CD988400520AC8 /* ImgSetPreset.swift */,
+				0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */,
+				0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */,
+				0CC9E81621D0830E00E37482 /* CollectionPreset.swift */,
+			);
+			path = PresetTypes;
+			sourceTree = "<group>";
+		};
+		0C8D9E9521CF167600520AC8 /* Saving */ = {
+			isa = PBXGroup;
+			children = (
+				0CF5BC2920E32A0200F2A57C /* SavePng.swift */,
+				0CC9E81021CF645B00E37482 /* SaveXcode.swift */,
+				0CC9E81221CF647200E37482 /* SaveFile.swift */,
+				0CC9E81821D0842600E37482 /* SaveCollection.swift */,
+				0C8D9E9621CF169900520AC8 /* Folders.swift */,
+			);
+			path = Saving;
 			sourceTree = "<group>";
 		};
 		0CF5BC2D20E32D0B00F2A57C /* Presets */ = {
 			isa = PBXGroup;
 			children = (
-				ADA070E420AF6F8900A2A69F /* Presets.swift */,
-				ADA070E620AF709F00A2A69F /* DefaultPresets.swift */,
+				0C8D9E3621CD73B500520AC8 /* Default */,
+				0C8D9E3721CD73C000520AC8 /* Custom */,
+				0C8D9E4021CD984900520AC8 /* PresetTypes */,
 			);
 			path = Presets;
 			sourceTree = "<group>";
@@ -117,7 +180,7 @@
 				ADF887A120B07CE500E60C19 /* Storyboards */,
 				ADEE32A72039194800AE0566 /* ViewControllers */,
 				0C8D9E2821CD696C00520AC8 /* Extensions */,
-				0C8D9E3521CD725200520AC8 /* Images */,
+				0C8D9E9521CF167600520AC8 /* Saving */,
 				0CF5BC2D20E32D0B00F2A57C /* Presets */,
 				0C8D9E3421CD724400520AC8 /* Extra */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
@@ -230,19 +293,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CF5BC2A20E32A0200F2A57C /* Save.swift in Sources */,
+				0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */,
 				AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */,
-				AD8CF9AD20264699008077B6 /* Resize.swift in Sources */,
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
-				ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */,
+				0CC9E7E721CF434600E37482 /* Double+Util.swift in Sources */,
+				0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */,
+				ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */,
+				0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */,
+				0C8D9E9321CF155700520AC8 /* NSImage+Util.swift in Sources */,
+				0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */,
+				0C8D9E9721CF169900520AC8 /* Folders.swift in Sources */,
+				0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */,
 				AD1270092023D1510068531A /* DragViewController.swift in Sources */,
-				ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */,
+				ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
+				0C8D9E3F21CD977200520AC8 /* ExamplePresets.swift in Sources */,
+				0C8D9E4221CD988400520AC8 /* ImgSetPreset.swift in Sources */,
+				0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */,
 				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
 				0C8D9E2F21CD6EAC00520AC8 /* URL+NSImage.swift in Sources */,
-				0C8D9E2E21CD6EAC00520AC8 /* Dictionary+Presets.swift in Sources */,
+				0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */,
+				0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */,
+				0CC9E81321CF647200E37482 /* SaveFile.swift in Sources */,
 				AD1270362023DADA0068531A /* DragView.swift in Sources */,
+				0CC9E81121CF645B00E37482 /* SaveXcode.swift in Sources */,
+				0C8D9E3921CD73E500520AC8 /* UserPresets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

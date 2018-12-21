@@ -68,7 +68,7 @@ class SelectPresetViewController: NSViewController {
         }
         
         // Update Data
-        UserPresets.presets.append(Preset(name: name, sizes: [String : size](), usePrefix: false))
+        UserPresets.addPreset(name: name, sizes: [ImgSetPreset.ImgSetSize](), usePrefix: false)
         
         // Update Table
         presetTable.insertRows(at: IndexSet(integer: UserPresets.presets.count-1), withAnimation: .effectFade)

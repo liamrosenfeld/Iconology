@@ -1,22 +1,14 @@
 //
-//  Save.swift
+//  Folders.swift
 //  Iconology
 //
-//  Created by Liam on 6/26/18.
+//  Created by Liam on 12/22/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 
-func save(at url: URL, name: String, image: NSImage) {
-    let tiffRepresentation = image.tiffRepresentation!
-    let bitmapImage = NSBitmapImageRep(data: tiffRepresentation)
-    let data = bitmapImage!.representation(using: .png, properties: [:])
-    let url = url.appendingPathComponent("\(name).png")
-    try? data!.write(to: url)
-}
-
-func selectFolder(_ callingClass: String = #function) -> String {
+func selectFolder(_ callingClass: String = #function) -> URL? {
     let selectPanel = NSOpenPanel()
     selectPanel.title = "Select a folder to save your icons"
     selectPanel.showsResizeIndicator = true
@@ -28,11 +20,11 @@ func selectFolder(_ callingClass: String = #function) -> String {
     
     selectPanel.runModal()
     
-    if selectPanel.url != nil {
-        return String(describing: selectPanel.url!)
-    } else {
-        return "canceled"
+    guard let url = selectPanel.url else {
+        return nil
     }
+    
+    return url
 }
 
 func createFolder(directory: URL) {
