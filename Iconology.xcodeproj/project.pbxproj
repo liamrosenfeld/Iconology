@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C8D9E2B21CD69BF00520AC8 /* URL+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2A21CD69BF00520AC8 /* URL+NSImage.swift */; };
 		0C8D9E2E21CD6EAC00520AC8 /* Dictionary+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */; };
 		0C8D9E2F21CD6EAC00520AC8 /* URL+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */; };
 		0CF5BC2A20E32A0200F2A57C /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* Save.swift */; };
@@ -69,16 +68,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0CF5BC2D20E32D0B00F2A57C /* Functionality */ = {
+		0C8D9E3421CD724400520AC8 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				AD1270352023DADA0068531A /* DragView.swift */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		0C8D9E3521CD725200520AC8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AD8CF9AC20264699008077B6 /* Resize.swift */,
+				0CF5BC2920E32A0200F2A57C /* Save.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		0CF5BC2D20E32D0B00F2A57C /* Presets */ = {
 			isa = PBXGroup;
 			children = (
 				ADA070E420AF6F8900A2A69F /* Presets.swift */,
 				ADA070E620AF709F00A2A69F /* DefaultPresets.swift */,
-				AD8CF9AC20264699008077B6 /* Resize.swift */,
-				0CF5BC2920E32A0200F2A57C /* Save.swift */,
-				AD1270352023DADA0068531A /* DragView.swift */,
 			);
-			path = Functionality;
+			path = Presets;
 			sourceTree = "<group>";
 		};
 		AD126FFA2023D1510068531A = {
@@ -104,7 +117,9 @@
 				ADF887A120B07CE500E60C19 /* Storyboards */,
 				ADEE32A72039194800AE0566 /* ViewControllers */,
 				0C8D9E2821CD696C00520AC8 /* Extensions */,
-				0CF5BC2D20E32D0B00F2A57C /* Functionality */,
+				0C8D9E3521CD725200520AC8 /* Images */,
+				0CF5BC2D20E32D0B00F2A57C /* Presets */,
+				0C8D9E3421CD724400520AC8 /* Extra */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
 			);
 			path = Iconology;
