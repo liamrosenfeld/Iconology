@@ -119,11 +119,13 @@ class OptionsViewController: NSViewController {
         // Convert and Save
         if UserPresets.presets[selectedPreset].usePrefix {
             for (name, size) in UserPresets.presets[selectedPreset].sizes {
-                resize(name: "\(prefixTextBox.stringValue)\(name)", image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
+                let resizedImage = resize(image: imageToConvert, w: size.x, h: size.y)
+                save(at: saveDirectory!, name: "\(prefixTextBox.stringValue)\(name)", image: resizedImage)
             }
         } else {
             for (name, size) in UserPresets.presets[selectedPreset].sizes {
-                resize(name: name, image: imageToConvert, w: size.x, h: size.y, saveTo: saveDirectory!)
+                let resizedImage = resize(image: imageToConvert, w: size.x, h: size.y)
+                save(at: saveDirectory!, name: name, image: resizedImage)
             }
         }
         

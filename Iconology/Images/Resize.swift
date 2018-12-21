@@ -8,7 +8,7 @@
 
 import Cocoa
 
-func resize(name: String, image: NSImage, w: Int, h: Int, saveTo: URL) {
+func resize(image: NSImage, w: Int, h: Int) -> NSImage {
     let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
     
     let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(destSize.width), pixelsHigh: Int(destSize.height), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .calibratedRGB, bytesPerRow: 0, bitsPerPixel: 0)
@@ -23,5 +23,5 @@ func resize(name: String, image: NSImage, w: Int, h: Int, saveTo: URL) {
     if let aRep = rep {
         newImage.addRepresentation(aRep)
     }
-    save(at: saveTo, name: name, image: newImage)
+    return newImage
 }
