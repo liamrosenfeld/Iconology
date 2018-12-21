@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  Dictionary+Presets.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 6/21/18.

@@ -101,9 +101,9 @@ class OptionsViewController: NSViewController {
         
         // Get Image from URL
         var imageToConvert: NSImage!
-        if let image = urlToImage(url: imageURL!) {
-            imageToConvert = image
-        } else {
+        do {
+            imageToConvert = try imageURL?.toImage()
+        } catch {
             // TODO: Warning Popup
             print("ERR: File Could No Longer Be Found")
             return
@@ -134,16 +134,5 @@ class OptionsViewController: NSViewController {
         segue(to: "DragVC")
     }
     
-    
-    // MARK: - Extra
-    func urlToImage(url: URL) -> NSImage? {
-        do {
-            let imageData = try NSData(contentsOf: url, options: NSData.ReadingOptions())
-            return NSImage(data: imageData as Data)!
-        } catch {
-            print("URL to Image Error: \(error)")
-        }
-        return nil
-    }
     
 }
