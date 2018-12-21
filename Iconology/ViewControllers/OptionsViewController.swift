@@ -12,26 +12,40 @@ class OptionsViewController: NSViewController {
     
     // MARK: - Setup
     @IBOutlet weak var presetSelector: NSPopUpButton!
+    @IBOutlet weak var presetGroupSelector: NSPopUpButton!
     @IBOutlet weak var prefixView: NSView!
     @IBOutlet weak var prefixTextBox: NSTextField!
     @IBOutlet weak var prefixPreview: NSTextField!
     
     var imageURL: URL?
     var saveDirectory: URL?
+    var presets = [PresetGroup]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // UI Preperation
         prefixView.isHidden = true
+        presetGroupSelector.removeAllItems()
         presetSelector.removeAllItems()
         
-        // Presets
-        UserPresets.loadPresets()
+        // Load Presets
         if UserPresets.presets.isEmpty {
-            DefaultPresets().addDefaults()
+            print("adding example custom presets...")
+            ExamplePresets.addExamplePresets()
         }
-        for preset in UserPresets.presets {
+        let customPresets = PresetGroup(title: "Custom", presets: UserPresets.presets)
+        
+        // Combine Presets
+        presets.append(contentsOf: DefaultPresets.presets)
+        presets.append(customPresets)
+        
+        // Display Presets
+        for presetGroup in presets {
+            presetGroupSelector.addItem(withTitle: presetGroup.title)
+        }
+        let selectedGroup = presetGroupSelector.indexOfSelectedItem
+        for preset in presets[selectedGroup].presets {
             presetSelector.addItem(withTitle: preset.name)
         }
         selectedPreset(self)
@@ -39,7 +53,8 @@ class OptionsViewController: NSViewController {
         // Set Reload Notification
         NotificationCenter.default.addObserver(forName: NSNotification.Name("DismissSheet"), object: nil, queue: nil) { notification in
             self.presetSelector.removeAllItems()
-            for preset in UserPresets.presets {
+            let group = self.presets[self.presetGroupSelector.indexOfSelectedItem]
+            for preset in group.presets {
                 self.presetSelector.addItem(withTitle: preset.name)
             }
             self.selectedPreset(self)
@@ -58,11 +73,21 @@ class OptionsViewController: NSViewController {
     }
     
     // MARK: - Actions
+    @IBAction func selectedPresetGroup(_ sender: Any) {
+        presetSelector.removeAllItems()
+        let selectedGroup = presetGroupSelector.indexOfSelectedItem
+        for preset in presets[selectedGroup].presets {
+            presetSelector.addItem(withTitle: preset.name)
+        }
+        selectedPreset(self)
+    }
+    
     @IBAction func selectedPreset(_ sender: Any) {
+        let selectedGroup = presetGroupSelector.indexOfSelectedItem
         let selectedPreset = presetSelector.indexOfSelectedItem
         
         if selectedPreset != -1 {
-            if UserPresets.presets[selectedPreset].usePrefix {
+            if presets[selectedGroup].presets[selectedPreset].usePrefix {
                 prefixView.isHidden = false
             } else {
                 prefixView.isHidden = true
@@ -73,20 +98,16 @@ class OptionsViewController: NSViewController {
     }
     
     @IBAction func prefixTextEdited(_ sender: Any) {
+        let group = presets[presetGroupSelector.indexOfSelectedItem]
         // TODO: Update On Type
-        if presetSelector.indexOfSelectedItem < UserPresets.presets.count && presetSelector.indexOfSelectedItem != -1 {
-            let sizes = UserPresets.presets[presetSelector.indexOfSelectedItem].sizes
+        if presetSelector.indexOfSelectedItem < group.presets.count && presetSelector.indexOfSelectedItem != -1 {
+            // TODO: Get Example Of Root File Name
+            let root = "root"
             let prefix = prefixTextBox.stringValue
-            if sizes.count > 0 {
-                let root = Array(sizes)[Int(arc4random_uniform(UInt32(sizes.count)))].key  // Get random key from sizes
-                prefixPreview.stringValue = "Ex: \(prefix)\(root)"
-            } else {
-                let prefix = prefixTextBox.stringValue
-                prefixPreview.stringValue = "Ex: \(prefix)root"
-            }
+            prefixPreview.stringValue = "Ex: \(prefix)\(root).type"
         } else {
             let prefix = prefixTextBox.stringValue
-            prefixPreview.stringValue = "Ex: \(prefix)root"
+            prefixPreview.stringValue = "Ex: \(prefix)root.type"
         }
     }
     
@@ -109,25 +130,19 @@ class OptionsViewController: NSViewController {
             return
         }
         
-        // Where to save
-        let chosenFolder = selectFolder()
-        if chosenFolder == "canceled" { return }
-        saveDirectory = URL(string: "\(chosenFolder)Icons/")
+        // Convert and Save
+        let group = presets[presetGroupSelector.indexOfSelectedItem]
+        let preset = group.presets[presetSelector.indexOfSelectedItem]
+        
+        // Where to Save
+        let folder = selectFolder()
+        guard let chosenFolder = folder else { return }
+        saveDirectory = chosenFolder.appendingPathComponent(preset.folderName)
         print(saveDirectory!)
         createFolder(directory: saveDirectory!)
         
-        // Convert and Save
-        if UserPresets.presets[selectedPreset].usePrefix {
-            for (name, size) in UserPresets.presets[selectedPreset].sizes {
-                let resizedImage = resize(image: imageToConvert, w: size.x, h: size.y)
-                save(at: saveDirectory!, name: "\(prefixTextBox.stringValue)\(name)", image: resizedImage)
-            }
-        } else {
-            for (name, size) in UserPresets.presets[selectedPreset].sizes {
-                let resizedImage = resize(image: imageToConvert, w: size.x, h: size.y)
-                save(at: saveDirectory!, name: name, image: resizedImage)
-            }
-        }
+        // Save
+        preset.save(imageToConvert, at: saveDirectory!, with: prefixTextBox.stringValue)
         
         segue(to: "SavedVC")
     }
