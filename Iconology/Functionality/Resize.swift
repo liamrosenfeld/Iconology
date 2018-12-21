@@ -23,5 +23,5 @@ func resize(name: String, image: NSImage, w: Int, h: Int, saveTo: URL) {
     if let aRep = rep {
         newImage.addRepresentation(aRep)
     }
-    save(to: saveTo, name: name, image: newImage)
+    save(at: saveTo, name: name, image: newImage)
 }

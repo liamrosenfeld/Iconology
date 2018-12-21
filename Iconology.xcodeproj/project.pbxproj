@@ -90,7 +90,7 @@
 		AD1270052023D1510068531A /* Iconology */ = {
 			isa = PBXGroup;
 			children = (
-				ADF887A120B07CE500E60C19 /* Stroryboards */,
+				ADF887A120B07CE500E60C19 /* Storyboards */,
 				ADEE32A72039194800AE0566 /* ViewControllers */,
 				0CF5BC2D20E32D0B00F2A57C /* Functionality */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
@@ -121,13 +121,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		ADF887A120B07CE500E60C19 /* Stroryboards */ = {
+		ADF887A120B07CE500E60C19 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				ADF887A420B07CE500E60C19 /* Main.storyboard */,
 				ADF887AC20B07FAA00E60C19 /* Presets.storyboard */,
 			);
-			path = Stroryboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,7 +355,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = Iconology/SupportFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -371,7 +374,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DSGCBGBHJN;
 				INFOPLIST_FILE = Iconology/SupportFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
