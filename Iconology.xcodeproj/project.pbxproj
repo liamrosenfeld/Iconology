@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8D9E2B21CD69BF00520AC8 /* URL+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2A21CD69BF00520AC8 /* URL+NSImage.swift */; };
+		0C8D9E2E21CD6EAC00520AC8 /* Dictionary+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */; };
+		0C8D9E2F21CD6EAC00520AC8 /* URL+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */; };
 		0CF5BC2A20E32A0200F2A57C /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* Save.swift */; };
 		AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */; };
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
@@ -17,7 +20,6 @@
 		AD8CF9AD20264699008077B6 /* Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF9AC20264699008077B6 /* Resize.swift */; };
 		ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* Presets.swift */; };
 		ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* DefaultPresets.swift */; };
-		ADA6933320DC8AA00049907B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6933220DC8AA00049907B /* Extensions.swift */; };
 		ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A420B07CE500E60C19 /* Main.storyboard */; };
 		ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887AC20B07FAA00E60C19 /* Presets.storyboard */; };
 		ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Presets.swift"; sourceTree = "<group>"; };
+		0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+NSImage.swift"; sourceTree = "<group>"; };
 		0CF5BC2920E32A0200F2A57C /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,7 +43,6 @@
 		AD8CF9AC20264699008077B6 /* Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resize.swift; sourceTree = "<group>"; };
 		ADA070E420AF6F8900A2A69F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		ADA070E620AF709F00A2A69F /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
-		ADA6933220DC8AA00049907B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ADF887A520B07CE500E60C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		ADF887AC20B07FAA00E60C19 /* Presets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
 		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPresetViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C8D9E2821CD696C00520AC8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C8D9E2D21CD6EAC00520AC8 /* URL+NSImage.swift */,
+				0C8D9E2C21CD6EAC00520AC8 /* Dictionary+Presets.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0CF5BC2D20E32D0B00F2A57C /* Functionality */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +77,6 @@
 				AD8CF9AC20264699008077B6 /* Resize.swift */,
 				0CF5BC2920E32A0200F2A57C /* Save.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
-				ADA6933220DC8AA00049907B /* Extensions.swift */,
 			);
 			path = Functionality;
 			sourceTree = "<group>";
@@ -92,6 +103,7 @@
 			children = (
 				ADF887A120B07CE500E60C19 /* Storyboards */,
 				ADEE32A72039194800AE0566 /* ViewControllers */,
+				0C8D9E2821CD696C00520AC8 /* Extensions */,
 				0CF5BC2D20E32D0B00F2A57C /* Functionality */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
 			);
@@ -207,13 +219,14 @@
 				AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */,
 				AD8CF9AD20264699008077B6 /* Resize.swift in Sources */,
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
-				ADA6933320DC8AA00049907B /* Extensions.swift in Sources */,
 				ADA070E720AF709F00A2A69F /* DefaultPresets.swift in Sources */,
 				AD1270092023D1510068531A /* DragViewController.swift in Sources */,
 				ADA070E520AF6F8900A2A69F /* Presets.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
 				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
+				0C8D9E2F21CD6EAC00520AC8 /* URL+NSImage.swift in Sources */,
+				0C8D9E2E21CD6EAC00520AC8 /* Dictionary+Presets.swift in Sources */,
 				AD1270362023DADA0068531A /* DragView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
