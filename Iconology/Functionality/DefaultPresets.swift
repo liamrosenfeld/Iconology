@@ -15,7 +15,7 @@ class DefaultPresets {
         UserPresets.addPreset(name: "Xcode Mac", sizes: xcodeMac, usePrefix: false)
         UserPresets.addPreset(name: "Xcode iMessage", sizes: xcodeiMessage, usePrefix: false)
         UserPresets.addPreset(name: "Xcode Apple Watch", sizes: xcodeWatch, usePrefix: false)
-        UserPresets.addPreset(name: "QT", sizes: qt, usePrefix: true)
+        UserPresets.addPreset(name: "Powers of Two", sizes: powersOfTwo, usePrefix: true)
         UserPresets.savePresets()
     }
     
@@ -102,7 +102,7 @@ class DefaultPresets {
         "watchAppStore": size(x: 1024, y: 1024)
     ]
     
-    let qt = [
+    let powersOfTwo = [
         "16": size(x: 16, y: 16),
         "24": size(x: 24, y: 24),
         "32": size(x: 32, y: 32),

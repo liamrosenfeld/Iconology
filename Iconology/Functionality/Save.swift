@@ -8,7 +8,7 @@
 
 import Cocoa
 
-func save(to url: URL, name: String, image: NSImage) {
+func save(at url: URL, name: String, image: NSImage) {
     let tiffRepresentation = image.tiffRepresentation!
     let bitmapImage = NSBitmapImageRep(data: tiffRepresentation)
     let data = bitmapImage!.representation(using: .png, properties: [:])
