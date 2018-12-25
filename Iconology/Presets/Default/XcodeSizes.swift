@@ -13,7 +13,7 @@ struct XcodeSizes {
         var presets = [XcodePreset]()
         presets.append(XcodePreset(name: "iOS", sizes: iosSizes, folderName: "AppIcon.appiconset"))
         presets.append(XcodePreset(name: "MacOS", sizes: macSizes, folderName: "AppIcon.appiconset"))
-        presets.append(XcodePreset(name: "iMessage", sizes: messageSizes, folderName: "Messages Icon.stickersiconset"))
+        presets.append(XcodePreset(name: "iMessage", sizes: messageSizes, folderName: "Messages Icon.stickersiconset", aspect: Aspect(w: 4, h: 3)))
         presets.append(XcodePreset(name: "Watch", sizes: watchSizes, folderName: "AppIcon.appiconset"))
         return presets
     }

@@ -29,8 +29,8 @@ final class CustomPreset: ImgSetPreset, Codable {
         super.init(name: name, sizes: sizes, usePrefix: usePrefix)
     }
     
-    override init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool) {
-        super.init(name: name, sizes: sizes, usePrefix: usePrefix)
+    override init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: Aspect? = nil) {
+        super.init(name: name, sizes: sizes, usePrefix: usePrefix, aspect: aspect)
     }
 }
 
