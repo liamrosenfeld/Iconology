@@ -23,7 +23,7 @@ class SavedViewController: NSViewController {
     
     // MARK: - Actions
     @IBAction func another(_ sender: Any) {
-        let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("DragViewController")) as? DragViewController
+        let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("HomeViewController")) as? HomeViewController
         view.window?.contentViewController = dragViewController
     }
     

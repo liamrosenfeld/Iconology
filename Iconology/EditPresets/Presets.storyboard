@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="f6h-eg-IFK">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="f6h-eg-IFK">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Select Preset View Controller-->
         <scene sceneID="ytd-jC-ssi">
             <objects>
-                <viewController title="Select Preset View Controller" storyboardIdentifier="SelectPresetViewController" showSeguePresentationStyle="single" id="f6h-eg-IFK" customClass="SelectPresetViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Select Preset View Controller" storyboardIdentifier="SelectPresetViewController" showSeguePresentationStyle="single" id="f6h-eg-IFK" customClass="SelectPresetViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="INU-p3-AA7">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -153,7 +153,7 @@
         <!--Edit Preset View Controller-->
         <scene sceneID="Axp-8B-xFW">
             <objects>
-                <viewController title="Edit Preset View Controller" storyboardIdentifier="EditPresetViewController" showSeguePresentationStyle="single" id="GQO-ND-OnX" customClass="EditPresetViewController" customModule="Iconizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit Preset View Controller" storyboardIdentifier="EditPresetViewController" showSeguePresentationStyle="single" id="GQO-ND-OnX" customClass="EditPresetViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fpB-Wz-mOm">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -348,14 +348,6 @@ Gw
                                     <action selector="manageRows:" target="GQO-ND-OnX" id="O21-Q3-m1j"/>
                                 </connections>
                             </segmentedControl>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tjp-Rw-K2n" userLabel="Filler Button">
-                                <rect key="frame" x="221" y="59" width="237" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" enabled="NO" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rmm-TL-Z81">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-Wc-wm3">
                                 <rect key="frame" x="116" y="61" width="103" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -364,9 +356,55 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIa-Uz-FDR">
+                                <rect key="frame" x="285" y="62" width="51" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Aspect:" id="sNk-8N-yK8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpt-As-QxQ">
+                                <rect key="frame" x="337" y="57" width="28" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="VJo-nF-6ge">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="ldB-vX-Vqf"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="aspectSelected:" target="GQO-ND-OnX" id="c06-qZ-60b"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA9-kg-9Ng">
+                                <rect key="frame" x="366" y="60" width="8" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title=":" id="usW-Lw-mt6">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGI-ZQ-8Ay">
+                                <rect key="frame" x="373" y="57" width="26" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="2qX-94-dnq">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="qs5-T8-6TO"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="aspectSelected:" target="GQO-ND-OnX" id="PZT-AA-aZ9"/>
+                                </connections>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="aspectH" destination="bGI-ZQ-8Ay" id="oNI-6T-VbN"/>
+                        <outlet property="aspectW" destination="xpt-As-QxQ" id="OT4-BF-FRG"/>
                         <outlet property="manageRowsButton" destination="ZQI-S1-Eav" id="FKq-PW-AG6"/>
                         <outlet property="prefixCheckBox" destination="RQc-Wc-wm3" id="zth-MB-0i5"/>
                         <outlet property="presetTable" destination="3gw-DB-Dpd" id="5xK-rv-PqQ"/>

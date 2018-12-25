@@ -18,6 +18,8 @@ class EditPresetViewController: NSViewController {
     @IBOutlet weak var titleLabel: NSTextFieldCell!
     @IBOutlet weak var prefixCheckBox: NSButton!
     @IBOutlet weak var manageRowsButton: NSSegmentedControl!
+    @IBOutlet weak var aspectW: NSTextField!
+    @IBOutlet weak var aspectH: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ class EditPresetViewController: NSViewController {
         case false:
             prefixCheckBox.state = .off
         }
+        aspectW.stringValue = String(tempSave.aspect.w)
+        aspectH.stringValue = String(tempSave.aspect.h)
     }
     
     // MARK: - Actions
@@ -75,6 +79,22 @@ class EditPresetViewController: NSViewController {
             removeRow()
         }
     }
+    
+    @IBAction func aspectSelected(_ sender: Any) {
+        var w = aspectW.doubleValue
+        var h = aspectH.doubleValue
+        
+        if w == 0 {
+            w = 1
+        }
+        if h == 0 {
+            h = 1
+        }
+        
+        let aspect = Aspect(w: w, h: h)
+        tempSave.aspect = aspect
+    }
+    
     
     // MARK: - Table Updates
     func newRow() {

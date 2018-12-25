@@ -13,15 +13,17 @@ final class XcodePreset: Preset {
     var sizes: [XcodeSizes]
     var usePrefix = false
     var folderName: String
+    var aspect: Aspect
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {
         saveXcode(image, at: url, in: sizes)
     }
     
-    init(name: String, sizes: [XcodeSizes], folderName: String) {
+    init(name: String, sizes: [XcodeSizes], folderName: String, aspect: Aspect? = nil) {
         self.name = name
         self.sizes = sizes
         self.folderName = folderName
+        self.aspect = aspect ?? Aspect(w: 1, h: 1)
     }
     
     final class XcodeSizes: Size {
