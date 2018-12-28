@@ -21,7 +21,7 @@ protocol Size {
     var name: String { get }
 }
 
-struct Aspect {
-    var w: Double
-    var h: Double
+struct Aspect: Codable {
+    var w: Int
+    var h: Int
 }

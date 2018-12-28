@@ -17,15 +17,20 @@
 		0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */; };
 		0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */; };
 		0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */; };
-		0C8D9E9721CF169900520AC8 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* Folders.swift */; };
+		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
 		0CC9E7E721CF434600E37482 /* Double+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Double+Util.swift */; };
 		0CC9E81121CF645B00E37482 /* SaveXcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81021CF645B00E37482 /* SaveXcode.swift */; };
 		0CC9E81321CF647200E37482 /* SaveFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81221CF647200E37482 /* SaveFile.swift */; };
 		0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81421CFF56300E37482 /* IconsetSizes.swift */; };
 		0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81621D0830E00E37482 /* CollectionPreset.swift */; };
 		0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81821D0842600E37482 /* SaveCollection.swift */; };
+		0CE8558321D6E9B800F22403 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE8558221D6E9B800F22403 /* Preferences.storyboard */; };
+		0CE8558521D6F69A00F22403 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */; };
+		0CE8558721D6F81800F22403 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558621D6F81800F22403 /* PreferencesViewController.swift */; };
+		0CE8558921D6FDAA00F22403 /* PresetsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558821D6FDAA00F22403 /* PresetsWindowController.swift */; };
+		0CE8558B21D7111300F22403 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558A21D7111300F22403 /* Alerts.swift */; };
+		0CE8558E21D858DC00F22403 /* AllowedFileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */; };
 		0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* SavePng.swift */; };
-		AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */; };
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
 		AD1270092023D1510068531A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* HomeViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
@@ -50,15 +55,20 @@
 		0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePreset.swift; sourceTree = "<group>"; };
 		0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreset.swift; sourceTree = "<group>"; };
 		0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PNG.swift"; sourceTree = "<group>"; };
-		0C8D9E9621CF169900520AC8 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
+		0C8D9E9621CF169900520AC8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		0CC9E7E621CF434600E37482 /* Double+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Util.swift"; sourceTree = "<group>"; };
 		0CC9E81021CF645B00E37482 /* SaveXcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveXcode.swift; sourceTree = "<group>"; };
 		0CC9E81221CF647200E37482 /* SaveFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFile.swift; sourceTree = "<group>"; };
 		0CC9E81421CFF56300E37482 /* IconsetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsetSizes.swift; sourceTree = "<group>"; };
 		0CC9E81621D0830E00E37482 /* CollectionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreset.swift; sourceTree = "<group>"; };
 		0CC9E81821D0842600E37482 /* SaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCollection.swift; sourceTree = "<group>"; };
+		0CE8558221D6E9B800F22403 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		0CE8558621D6F81800F22403 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		0CE8558821D6FDAA00F22403 /* PresetsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsWindowController.swift; sourceTree = "<group>"; };
+		0CE8558A21D7111300F22403 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowedFileTypes.swift; sourceTree = "<group>"; };
 		0CF5BC2920E32A0200F2A57C /* SavePng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePng.swift; sourceTree = "<group>"; };
-		AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD1270082023D1510068531A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +103,6 @@
 				ADF887A420B07CE500E60C19 /* Main.storyboard */,
 				0C05611021D1FD8A005E5D4A /* Home */,
 				0C05611121D1FD98005E5D4A /* Options */,
-				0C05611221D1FDAB005E5D4A /* Saved */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -102,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				ADF887AC20B07FAA00E60C19 /* Presets.storyboard */,
+				0CE8558821D6FDAA00F22403 /* PresetsWindowController.swift */,
 				0C05611321D1FDCB005E5D4A /* Select */,
 				0C05611421D1FDDD005E5D4A /* Edit */,
 			);
@@ -123,14 +133,6 @@
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
 			);
 			path = Options;
-			sourceTree = "<group>";
-		};
-		0C05611221D1FDAB005E5D4A /* Saved */ = {
-			isa = PBXGroup;
-			children = (
-				AD0FF5112027B65A00FB8DD2 /* SavedViewController.swift */,
-			);
-			path = Saved;
 			sourceTree = "<group>";
 		};
 		0C05611321D1FDCB005E5D4A /* Select */ = {
@@ -199,9 +201,38 @@
 				0CC9E81021CF645B00E37482 /* SaveXcode.swift */,
 				0CC9E81221CF647200E37482 /* SaveFile.swift */,
 				0CC9E81821D0842600E37482 /* SaveCollection.swift */,
-				0C8D9E9621CF169900520AC8 /* Folders.swift */,
 			);
 			path = Saving;
+			sourceTree = "<group>";
+		};
+		0CE8558021D6E96A00F22403 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				0C05610E21D1FCF7005E5D4A /* Main */,
+				0C05610F21D1FD07005E5D4A /* EditPresets */,
+				0CE8558121D6E98200F22403 /* Preferences */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		0CE8558121D6E98200F22403 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				0CE8558221D6E9B800F22403 /* Preferences.storyboard */,
+				0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */,
+				0CE8558621D6F81800F22403 /* PreferencesViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		0CE8558C21D7121700F22403 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0CE8558A21D7111300F22403 /* Alerts.swift */,
+				0C8D9E9621CF169900520AC8 /* FileHandler.swift */,
+				0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		0CF5BC2D20E32D0B00F2A57C /* Presets */ = {
@@ -210,6 +241,7 @@
 				0C8D9E3621CD73B500520AC8 /* Default */,
 				0C8D9E3721CD73C000520AC8 /* Custom */,
 				0C8D9E4021CD984900520AC8 /* PresetTypes */,
+				0C8D9E9521CF167600520AC8 /* Saving */,
 			);
 			path = Presets;
 			sourceTree = "<group>";
@@ -234,10 +266,9 @@
 		AD1270052023D1510068531A /* Iconology */ = {
 			isa = PBXGroup;
 			children = (
-				0C05610E21D1FCF7005E5D4A /* Main */,
-				0C05610F21D1FD07005E5D4A /* EditPresets */,
+				0CE8558021D6E96A00F22403 /* Windows */,
+				0CE8558C21D7121700F22403 /* Util */,
 				0C8D9E2821CD696C00520AC8 /* Extensions */,
-				0C8D9E9521CF167600520AC8 /* Saving */,
 				0CF5BC2D20E32D0B00F2A57C /* Presets */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
 			);
@@ -318,6 +349,7 @@
 				ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */,
 				AD12700B2023D1510068531A /* Assets.xcassets in Resources */,
 				ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */,
+				0CE8558321D6E9B800F22403 /* Preferences.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,23 +362,27 @@
 			files = (
 				0C05610D21D1EB93005E5D4A /* NSImage+Edit.swift in Sources */,
 				0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */,
-				AD0FF5122027B65A00FB8DD2 /* SavedViewController.swift in Sources */,
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
 				0CC9E7E721CF434600E37482 /* Double+Util.swift in Sources */,
+				0CE8558921D6FDAA00F22403 /* PresetsWindowController.swift in Sources */,
 				0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */,
 				ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */,
 				0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */,
 				0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */,
 				0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */,
-				0C8D9E9721CF169900520AC8 /* Folders.swift in Sources */,
+				0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */,
 				0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */,
 				AD1270092023D1510068531A /* HomeViewController.swift in Sources */,
 				ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */,
+				0CE8558E21D858DC00F22403 /* AllowedFileTypes.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
+				0CE8558B21D7111300F22403 /* Alerts.swift in Sources */,
+				0CE8558521D6F69A00F22403 /* PreferencesWindowController.swift in Sources */,
 				0C8D9E3F21CD977200520AC8 /* ExamplePresets.swift in Sources */,
 				0C8D9E4221CD988400520AC8 /* ImgSetPreset.swift in Sources */,
 				0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */,
+				0CE8558721D6F81800F22403 /* PreferencesViewController.swift in Sources */,
 				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
 				0C7B55BE21D40B22009FE959 /* NSImageView+AddImage.swift in Sources */,
 				0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */,

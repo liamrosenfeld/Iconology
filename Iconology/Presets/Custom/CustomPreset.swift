@@ -13,12 +13,15 @@ final class CustomPreset: ImgSetPreset, Codable {
         case name
         case sizes
         case usePrefix
+        case aspect
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(sizes, forKey: .sizes)
+        try container.encode(usePrefix, forKey: .usePrefix)
+        try container.encode(aspect, forKey: .aspect)
     }
     
     init(from decoder: Decoder) throws {
@@ -26,7 +29,8 @@ final class CustomPreset: ImgSetPreset, Codable {
         let name = try container.decode(String.self, forKey: .name)
         let sizes = try container.decode([ImgSetPreset.ImgSetSize].self, forKey: .sizes)
         let usePrefix = try container.decode(Bool.self, forKey: .usePrefix)
-        super.init(name: name, sizes: sizes, usePrefix: usePrefix)
+        let aspect = try container.decode(Aspect.self, forKey: .aspect)
+        super.init(name: name, sizes: sizes, usePrefix: usePrefix, aspect: aspect)
     }
     
     override init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: Aspect? = nil) {

@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "Asset 7-1.png",
+      "filename" : "Iconology_Black-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "Asset 7.png",
+      "filename" : "Iconology_Black.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -18,7 +18,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "Asset 8.png",
+      "filename" : "Iconology_White.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -29,12 +29,12 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "Asset 7@2x-1.png",
+      "filename" : "Iconology_Black-3.png",
       "scale" : "2x"
     },
     {
       "idiom" : "mac",
-      "filename" : "Asset 7@2x.png",
+      "filename" : "Iconology_Black-1.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -45,7 +45,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "Asset 8@2x.png",
+      "filename" : "Iconology_White-1.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
