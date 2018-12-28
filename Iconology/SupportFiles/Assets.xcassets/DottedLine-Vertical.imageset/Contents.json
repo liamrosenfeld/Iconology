@@ -1,0 +1,32 @@
+{
+  "images" : [
+    {
+      "idiom" : "mac",
+      "filename" : "DottedLine_blackv1.png"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "DottedLine_blackv1-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "DottedLine_whitev1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

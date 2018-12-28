@@ -27,9 +27,9 @@ struct UserPresets {
         do {
             let data = try PropertyListEncoder().encode(presets)
             let success = NSKeyedArchiver.archiveRootObject(data, toFile: filePath)
-            print(success ? "Successful save" : "Save Failed")
+            print(success ? "Successful save" : "ERR: Save Failed")
         } catch {
-            print("Save Failed")
+            print("ERR: Save Failed -- \(error)")
         }
     }
     
@@ -40,7 +40,17 @@ struct UserPresets {
             presets = retrievedPresets
             print("Successful Retrieve")
         } catch {
-            print("Retrieve Failed")
+            print("ERR: Retrieve Failed -- \(error)")
         }
     }
+    
+    static func deleteAllPreset() {
+        do {
+            try FileManager.default.removeItem(atPath: filePath)
+            print("Sucessful Delete")
+        } catch {
+            print("ERR: Delete Failed -- \(error)")
+        }
+    }
+    
 }

@@ -10,15 +10,16 @@ import AppKit
 
 extension NSImageView {
     func resize(to image: NSImage) {
+        // Get Image Size
         let inputBitmap = NSBitmapImageRep(data: image.tiffRepresentation!)!
         let imageSize = NSSize(width: inputBitmap.pixelsWide, height: inputBitmap.pixelsHigh)
         let w: CGFloat = imageSize.width
         let h: CGFloat = imageSize.height
         
-        let max: CGFloat = 350
+        let max: CGFloat = 500
         
+        // Get Mod Image Size
         var size = NSSize(width: 0, height: 0)
-        
         if w > h {
             if w > max {
                 size.width = max
@@ -45,9 +46,13 @@ extension NSImageView {
             }
         }
         
-        let origin = NSPoint(x: 20, y: 220)
-        let rect = NSRect(origin: origin, size: size)
+        // Get Origin
+        let x = 510 - (size.width / 2)
+        let y = 380 - (size.height / 2)
+        let origin = NSPoint(x: x, y: y)
         
+        // Resize
+        let rect = NSRect(origin: origin, size: size)
         self.frame = rect
     }
     

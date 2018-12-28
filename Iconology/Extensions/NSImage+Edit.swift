@@ -174,9 +174,11 @@ extension NSImage {
         return newImage
     }
     
-    func applyAspect(w: Double, h: Double) -> NSImage {
+    func applyAspect(w: Int, h: Int) -> NSImage {
         // get the size of the original image
         let inputBitmap = NSBitmapImageRep(data: self.tiffRepresentation!)!
+        let w = Double(w)
+        let h = Double(h)
         let x = Double(inputBitmap.pixelsWide)
         let y = Double(inputBitmap.pixelsHigh)
         let imageSize = NSSize(width: x, height: y)
