@@ -91,9 +91,11 @@ class EditPresetViewController: NSViewController {
         
         if w == 0 {
             w = 1
+            aspectW.stringValue = "1"
         }
         if h == 0 {
             h = 1
+            aspectH.stringValue = "1"
         }
         
         let aspect = Aspect(w: w, h: h)
@@ -121,7 +123,7 @@ class EditPresetViewController: NSViewController {
         }
         
         // Update Data
-        tempSave.sizes.append(ImgSetPreset.ImgSetSize(name: name, x: 1, y: 1))
+        tempSave.sizes.append(ImgSetPreset.ImgSetSize(name: name, x: tempSave.aspect.w, y: tempSave.aspect.h))
         
         // Update Table
         presetTable.insertRows(at: IndexSet(integer: tempSave.sizes.count-1), withAnimation: .effectFade)
@@ -174,21 +176,21 @@ class EditPresetViewController: NSViewController {
                 }
                 tempSave.sizes[selectedRow].name = value
             case 1:
-                if let intValue = Int(value) {
-                    tempSave.sizes[selectedRow].x = intValue
-                } else {
+                guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
                     print("WARN: Non-Integer Inputed")
                     sender.stringValue = String(tempSave.sizes[selectedRow].x)
+                    return
                 }
+                tempSave.sizes[selectedRow].x = intValue
             case 2:
-                if let intValue = Int(value) {
-                    tempSave.sizes[selectedRow].y = intValue
-                } else {
+                guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
                     print("WARN: Non-Integer Inputed")
                     sender.stringValue = String(tempSave.sizes[selectedRow].y)
+                    return
                 }
+                tempSave.sizes[selectedRow].y = intValue
             default:
                 print("ERR: Column not found")
             }
@@ -208,10 +210,10 @@ extension EditPresetViewController: NSTableViewDataSource {
 
 extension EditPresetViewController: NSTableViewDelegate {
     
-    fileprivate enum CellIdentifiers {
-        static let nameCell = "nameCellID"
-        static let xCell = "xCellID"
-        static let yCell = "yCellID"
+    fileprivate enum CellIdentifiers: String {
+        case nameCell = "nameCellID"
+        case xCell = "xCellID"
+        case yCell = "yCellID"
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -221,13 +223,13 @@ extension EditPresetViewController: NSTableViewDelegate {
         
         if tableColumn == presetTable.tableColumns[0] {
             text = sizes.name
-            cellIdentifier = CellIdentifiers.nameCell
+            cellIdentifier = CellIdentifiers.nameCell.rawValue
         } else if tableColumn == presetTable.tableColumns[1] {
             text = String(sizes.x)
-            cellIdentifier = CellIdentifiers.xCell
+            cellIdentifier = CellIdentifiers.xCell.rawValue
         } else if tableColumn == presetTable.tableColumns[2] {
             text = String(sizes.y)
-            cellIdentifier = CellIdentifiers.yCell
+            cellIdentifier = CellIdentifiers.yCell.rawValue
         } else {
             print("Somthing went wrong... \(String(describing: tableColumn))")
         }
