@@ -58,7 +58,7 @@ extension NSImageView {
     
     func addImage(_ image: NSImage) {
         let size = self.frame.size
-        let image = image.resize(w: Int(size.width), h: Int(size.height))
+        let image = image.resize(to: size)
         self.image = image
     }
 }

@@ -29,11 +29,11 @@ final class CustomPreset: ImgSetPreset, Codable {
         let name = try container.decode(String.self, forKey: .name)
         let sizes = try container.decode([ImgSetPreset.ImgSetSize].self, forKey: .sizes)
         let usePrefix = try container.decode(Bool.self, forKey: .usePrefix)
-        let aspect = try container.decode(Aspect.self, forKey: .aspect)
+        let aspect = try container.decode(NSSize.self, forKey: .aspect)
         super.init(name: name, sizes: sizes, usePrefix: usePrefix, aspect: aspect)
     }
     
-    override init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: Aspect? = nil) {
+    override init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: NSSize? = nil) {
         super.init(name: name, sizes: sizes, usePrefix: usePrefix, aspect: aspect)
     }
 }

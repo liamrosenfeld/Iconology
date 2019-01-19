@@ -39,8 +39,8 @@ class EditPresetViewController: NSViewController {
         case false:
             prefixCheckBox.state = .off
         }
-        aspectW.stringValue = String(tempSave.aspect.w)
-        aspectH.stringValue = String(tempSave.aspect.h)
+        aspectW.stringValue = tempSave.aspect.width.clean
+        aspectH.stringValue = tempSave.aspect.height.clean
     }
     
     // MARK: - Actions
@@ -98,7 +98,7 @@ class EditPresetViewController: NSViewController {
             aspectH.stringValue = "1"
         }
         
-        let aspect = Aspect(w: w, h: h)
+        let aspect = NSSize(width: w, height: h)
         tempSave.aspect = aspect
     }
     
@@ -123,7 +123,7 @@ class EditPresetViewController: NSViewController {
         }
         
         // Update Data
-        tempSave.sizes.append(ImgSetPreset.ImgSetSize(name: name, x: tempSave.aspect.w, y: tempSave.aspect.h))
+        tempSave.sizes.append(ImgSetPreset.ImgSetSize(name: name, size: tempSave.aspect))
         
         // Update Table
         presetTable.insertRows(at: IndexSet(integer: tempSave.sizes.count-1), withAnimation: .effectFade)
@@ -179,18 +179,18 @@ class EditPresetViewController: NSViewController {
                 guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
                     print("WARN: Non-Integer Inputed")
-                    sender.stringValue = String(tempSave.sizes[selectedRow].x)
+                    sender.stringValue = tempSave.sizes[selectedRow].size.width.description
                     return
                 }
-                tempSave.sizes[selectedRow].x = intValue
+                tempSave.sizes[selectedRow].size.width = CGFloat(intValue)
             case 2:
                 guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
                     print("WARN: Non-Integer Inputed")
-                    sender.stringValue = String(tempSave.sizes[selectedRow].y)
+                    sender.stringValue = tempSave.sizes[selectedRow].size.width.description
                     return
                 }
-                tempSave.sizes[selectedRow].y = intValue
+                tempSave.sizes[selectedRow].size.width = CGFloat(intValue)
             default:
                 print("ERR: Column not found")
             }
@@ -225,10 +225,10 @@ extension EditPresetViewController: NSTableViewDelegate {
             text = sizes.name
             cellIdentifier = CellIdentifiers.nameCell.rawValue
         } else if tableColumn == presetTable.tableColumns[1] {
-            text = String(sizes.x)
+            text = sizes.size.width.clean
             cellIdentifier = CellIdentifiers.xCell.rawValue
         } else if tableColumn == presetTable.tableColumns[2] {
-            text = String(sizes.y)
+            text = sizes.size.height.clean
             cellIdentifier = CellIdentifiers.yCell.rawValue
         } else {
             print("Somthing went wrong... \(String(describing: tableColumn))")

@@ -12,16 +12,11 @@ protocol Preset {
     var name: String { get }
     var folderName: String { get }
     var usePrefix: Bool { get }
-    var aspect: Aspect { get }
+    var aspect: NSSize { get }
     
     func save(_ image: NSImage, at url: URL, with prefix: String)
 }
 
 protocol Size {
     var name: String { get }
-}
-
-struct Aspect: Codable {
-    var w: Int
-    var h: Int
 }

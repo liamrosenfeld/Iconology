@@ -265,9 +265,9 @@ class OptionsViewController: NSViewController {
         scaleToggled(self)
     }
     
-    func setAspect(_ aspect: Aspect) {
+    func setAspect(_ aspect: NSSize) {
         mods.aspect = aspect
-        aspectRatioLabel.stringValue = "Aspect: \(aspect.w):\(aspect.h)"
+        aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
         imageToConvert = mods.apply(on: origImage)
         imageView.resize(to: imageToConvert)
         imageView.addImage(imageToConvert)
@@ -287,17 +287,13 @@ class OptionsViewController: NSViewController {
         var verticalShift: CGFloat = 0
         var horizontalShift: CGFloat = 0
         var scale: CGFloat = 1
-        var aspect: Aspect = Aspect(w: 1, h: 1)
+        var aspect: NSSize = NSSize(width: 1, height: 1)
         
         
         func apply(on image: NSImage) -> NSImage {
             var modImage = image
             
-            if scale != 1 {
-                modImage = modImage.scale(scale)
-            }
-            
-            modImage = modImage.applyAspect(w: aspect.w, h: aspect.h)
+            modImage = modImage.scale(aspect: aspect, scale: scale)
             
             if verticalShift != 0 || horizontalShift != 0 {
                 modImage = modImage.shift(x: horizontalShift, y: verticalShift)
