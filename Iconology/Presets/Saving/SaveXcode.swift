@@ -10,11 +10,12 @@ import AppKit
 
 func saveXcode(_ image: NSImage, at url: URL, in sizes: [XcodePreset.XcodeSizes]) {
     // Generate + Save Images
-    for size in sizes {
-        let x = Int(size.x * Double(exactly: size.scale)!)
-        let y = Int(size.y * Double(exactly: size.scale)!)
-        let resizedImage = image.resize(w: x, h: y)
-        let url = url.appendingPathComponent("\(size.name).png")
+    for xcodeSize in sizes {
+        let w = xcodeSize.size.width * CGFloat(xcodeSize.scale)
+        let h = xcodeSize.size.width * CGFloat(xcodeSize.scale)
+        let destSize = NSSize(width: w, height: h)
+        let resizedImage = image.resize(to: destSize)
+        let url = url.appendingPathComponent("\(xcodeSize.name).png")
         do {
             try resizedImage.savePng(to: url)
         } catch {
@@ -24,8 +25,8 @@ func saveXcode(_ image: NSImage, at url: URL, in sizes: [XcodePreset.XcodeSizes]
     
     // Generate Contents.json
     var jsonSizes = [XcodeJson.XcodeSizesJson]()
-    for size in sizes {
-        jsonSizes.append(XcodeJson.XcodeSizesJson(size: size))
+    for xcodeSize in sizes {
+        jsonSizes.append(XcodeJson.XcodeSizesJson(XcodeSize: xcodeSize))
     }
     let fullJson = XcodeJson.XcodeFullJson(sizes: jsonSizes)
     var jsonString: String?
@@ -56,14 +57,14 @@ private struct XcodeJson {
         var role: String?
         var subtype: String?
         
-        init(size: XcodePreset.XcodeSizes) {
-            self.filename = "\(size.name).png"
-            self.size = "\(size.x.clean)x\(size.y.clean)"
-            self.scale = "\(size.scale)x"
-            self.idiom = size.idiom
-            self.platform = size.platform
-            self.role = size.role
-            self.subtype = size.subtype
+        init(XcodeSize: XcodePreset.XcodeSizes) {
+            self.filename = "\(XcodeSize.name).png"
+            self.size = "\(XcodeSize.size.width.clean)x\(XcodeSize.size.width.clean)"
+            self.scale = "\(XcodeSize.scale)x"
+            self.idiom = XcodeSize.idiom
+            self.platform = XcodeSize.platform
+            self.role = XcodeSize.role
+            self.subtype = XcodeSize.subtype
         }
     }
     

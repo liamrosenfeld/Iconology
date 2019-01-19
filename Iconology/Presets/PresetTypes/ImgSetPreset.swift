@@ -13,23 +13,32 @@ class ImgSetPreset: Preset {
     var sizes: [ImgSetSize]
     var folderName = "Icons"
     var usePrefix: Bool
-    var aspect: Aspect
+    var aspect: NSSize
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {
         savePng(image, at: url, with: prefix, in: sizes)
     }
     
-    init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: Aspect? = nil) {
+    init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: NSSize? = nil) {
         self.name = name
         self.sizes = sizes
         self.usePrefix = usePrefix
-        self.aspect = aspect ?? Aspect(w: 1, h: 1)
+        self.aspect = aspect ?? NSSize(width: 1, height: 1)
     }
     
     struct ImgSetSize: Size, Codable {
         var name: String
-        var x: Int
-        var y: Int
+        var size: NSSize
+        
+        init(name: String, x: Int, y: Int) {
+            self.name = name
+            self.size = NSSize(width: x, height: y)
+        }
+        
+        init(name: String, size: NSSize) {
+            self.name = name
+            self.size = size
+        }
     }
 }
 
