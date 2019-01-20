@@ -31,8 +31,8 @@ extension NSImage {
         
         // draw the image
         let rect = imageRect as NSRect
-        let x = (aspectSize.width / 2) - (resizedSize.width / 2) + shift.width
-        let y = (aspectSize.height / 2) - (resizedSize.height / 2) + shift.height
+        let x = ((aspectSize.width / 2) - (resizedSize.width / 2)) + (shift.width * (aspectSize.width / 100))
+        let y = ((aspectSize.height / 2) - (resizedSize.height / 2)) + (shift.height * (aspectSize.height / 100))
         let point = NSPoint(x: x, y: y)
         resizedImage.draw(at: point, from: rect, operation: .overlay, fraction: 1)
         
