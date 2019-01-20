@@ -224,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D9e-db-h9i" userLabel="Preset Group Selector">
-                                <rect key="frame" x="60" y="551" width="119" height="25"/>
+                                <rect key="frame" x="46" y="551" width="156" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Group" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fjl-Oa-D3I" id="LUV-cs-74S">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -240,7 +240,7 @@
                                 </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-aF-gp0">
-                                <rect key="frame" x="69" y="468" width="110" height="26"/>
+                                <rect key="frame" x="46" y="481" width="156" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Preset" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -256,7 +256,7 @@
                                 </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ">
-                                <rect key="frame" x="56" y="384" width="163" height="32"/>
+                                <rect key="frame" x="30" y="418" width="163" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Edit Custom Presets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -314,7 +314,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
-                                <rect key="frame" x="784" y="606" width="22" height="18"/>
+                                <rect key="frame" x="784" y="607" width="22" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -325,7 +325,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ern-Fd-nbt">
-                                <rect key="frame" x="784" y="475" width="22" height="18"/>
+                                <rect key="frame" x="784" y="486" width="22" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gYI-dl-9bx">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -336,23 +336,15 @@
                                 </connections>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYv-rb-AXw">
-                                <rect key="frame" x="821" y="435" width="96" height="19"/>
+                                <rect key="frame" x="816" y="459" width="138" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eXG-VA-yHS"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eXG-VA-yHS"/>
                                 <connections>
                                     <action selector="horizontalShiftSelected:" target="qum-VO-ymn" id="siy-LJ-C1E"/>
                                 </connections>
                             </slider>
-                            <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-Sz-v41">
-                                <rect key="frame" x="845" y="296" width="19" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="CW9-Jm-gdf"/>
-                                <connections>
-                                    <action selector="verticalShiftSelected:" target="qum-VO-ymn" id="mX6-D4-xBi"/>
-                                </connections>
-                            </slider>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-g8-VZT">
-                                <rect key="frame" x="784" y="538" width="22" height="18"/>
+                                <rect key="frame" x="784" y="544" width="22" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="n00-yR-1cF">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -363,9 +355,9 @@
                                 </connections>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-iu-pSq">
-                                <rect key="frame" x="821" y="512" width="96" height="19"/>
+                                <rect key="frame" x="816" y="515" width="138" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="0.10000000000000001" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="pOI-dp-j9v"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="pOI-dp-j9v"/>
                                 <connections>
                                     <action selector="scaleSelected:" target="qum-VO-ymn" id="FKf-RO-kmj"/>
                                 </connections>
@@ -387,7 +379,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPA-WV-fgy">
-                                <rect key="frame" x="807" y="605" width="150" height="22"/>
+                                <rect key="frame" x="804" y="605" width="150" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Background Color" id="Cf5-Gn-EOB">
                                     <font key="font" metaFont="system" size="18"/>
@@ -410,7 +402,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-C1-ZlC">
-                                <rect key="frame" x="64" y="583" width="114" height="28"/>
+                                <rect key="frame" x="34" y="583" width="114" height="28"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Group" id="VdE-tK-6Sc">
                                     <font key="font" metaFont="system" size="18"/>
@@ -419,7 +411,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ec-59-VEr">
-                                <rect key="frame" x="64" y="501" width="114" height="28"/>
+                                <rect key="frame" x="34" y="513" width="114" height="28"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Preset" id="hEJ-XZ-EHb">
                                     <font key="font" metaFont="system" size="18"/>
@@ -428,7 +420,7 @@
                                 </textFieldCell>
                             </textField>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmA-KJ-UH6">
-                                <rect key="frame" x="847" y="574" width="44" height="23"/>
+                                <rect key="frame" x="818" y="574" width="44" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -436,7 +428,7 @@
                                 </connections>
                             </colorWell>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-WA-5J6">
-                                <rect key="frame" x="804" y="536" width="49" height="22"/>
+                                <rect key="frame" x="804" y="540" width="49" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="K7V-tR-isF">
                                     <font key="font" metaFont="system" size="18"/>
@@ -445,7 +437,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-RZ-btC">
-                                <rect key="frame" x="804" y="473" width="85" height="22"/>
+                                <rect key="frame" x="804" y="484" width="85" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="X Position" id="vNW-oR-Cdq">
                                     <font key="font" metaFont="system" size="18"/>
@@ -454,7 +446,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpE-V8-cPy">
-                                <rect key="frame" x="784" y="408" width="22" height="18"/>
+                                <rect key="frame" x="784" y="427" width="22" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="G8l-sQ-KM4">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -465,7 +457,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUa-zj-oea">
-                                <rect key="frame" x="804" y="406" width="85" height="22"/>
+                                <rect key="frame" x="804" y="425" width="85" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Y Position" id="UIO-qG-nBA">
                                     <font key="font" metaFont="system" size="18"/>
@@ -487,6 +479,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DottedLine-Vertical" id="BtV-qK-wr0"/>
                             </imageView>
+                            <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-Sz-v41">
+                                <rect key="frame" x="845" y="323" width="19" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="CW9-Jm-gdf"/>
+                                <connections>
+                                    <action selector="verticalShiftSelected:" target="qum-VO-ymn" id="mX6-D4-xBi"/>
+                                </connections>
+                            </slider>
                         </subviews>
                     </view>
                     <connections>
