@@ -1,5 +1,5 @@
 //
-//  Image+Scale.swift
+//  Image+Transform.swift
 //  Iconology
 //
 //  Created by Liam on 1/18/19.
@@ -9,7 +9,7 @@
 import AppKit
 
 extension NSImage {
-    func scale(aspect: NSSize, scale: CGFloat) -> NSImage {
+    func transform(aspect: NSSize, scale: CGFloat, shift: NSSize) -> NSImage {
         // Make Rep
         let imageSize = self.size
         let aspectSize = findAspectSize(aspectSize: aspect, imageSize: imageSize)
@@ -31,8 +31,8 @@ extension NSImage {
         
         // draw the image
         let rect = imageRect as NSRect
-        let x = (aspectSize.width / 2) - (resizedSize.width / 2)
-        let y = (aspectSize.height / 2) - (resizedSize.height / 2)
+        let x = (aspectSize.width / 2) - (resizedSize.width / 2) + shift.width
+        let y = (aspectSize.height / 2) - (resizedSize.height / 2) + shift.height
         let point = NSPoint(x: x, y: y)
         resizedImage.draw(at: point, from: rect, operation: .overlay, fraction: 1)
         
@@ -84,19 +84,5 @@ extension NSImage {
             }
         }
         return fullSize
-    }
-    
-    private func makeRep(at size: NSSize) -> NSBitmapImageRep {
-        let rep = NSBitmapImageRep(bitmapDataPlanes: nil,
-                                   pixelsWide: Int(size.width),
-                                   pixelsHigh: Int(size.height),
-                                   bitsPerSample: 8,
-                                   samplesPerPixel: 4,
-                                   hasAlpha: true,
-                                   isPlanar: false,
-                                   colorSpaceName: .calibratedRGB,
-                                   bytesPerRow: 0,
-                                   bitsPerPixel: 0)
-        return rep!
     }
 }
