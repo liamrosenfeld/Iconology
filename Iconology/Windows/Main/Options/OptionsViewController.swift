@@ -215,9 +215,9 @@ class OptionsViewController: NSViewController {
         case .on:
             let raw = horizontalShift.doubleValue
             let adjusted = (raw - 50) * 2
-            mods.horizontalShift = CGFloat(adjusted)
+            mods.shift.width = CGFloat(adjusted)
         case .off:
-            mods.horizontalShift = 0
+            mods.shift.width = 0
         default:
             print("ERR: Wrong Button State")
         }
@@ -234,9 +234,9 @@ class OptionsViewController: NSViewController {
         case .on:
             let raw = verticalShift.doubleValue
             let adjusted = (raw - 50) * 2
-            mods.verticalShift = CGFloat(adjusted)
+            mods.shift.height = CGFloat(adjusted)
         case .off:
-            mods.verticalShift = 0
+            mods.shift.height = 0
         default:
             print("ERR: Wrong Button State")
         }
@@ -284,8 +284,7 @@ class OptionsViewController: NSViewController {
     
     struct ImageModifications {
         var background: NSColor?
-        var verticalShift: CGFloat = 0
-        var horizontalShift: CGFloat = 0
+        var shift: NSSize = NSSize(width: 0, height: 0)
         var scale: CGFloat = 1
         var aspect: NSSize = NSSize(width: 1, height: 1)
         
@@ -293,11 +292,7 @@ class OptionsViewController: NSViewController {
         func apply(on image: NSImage) -> NSImage {
             var modImage = image
             
-            modImage = modImage.scale(aspect: aspect, scale: scale)
-            
-            if verticalShift != 0 || horizontalShift != 0 {
-                modImage = modImage.shift(x: horizontalShift, y: verticalShift)
-            }
+            modImage = modImage.transform(aspect: aspect, scale: scale, shift: shift)
             
             if let backgroundColor = background {
                 modImage = modImage.addBackground(backgroundColor)

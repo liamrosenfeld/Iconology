@@ -25,9 +25,8 @@
 		0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81621D0830E00E37482 /* CollectionPreset.swift */; };
 		0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81821D0842600E37482 /* SaveCollection.swift */; };
 		0CD58C5E21F2D1DC006CDC79 /* NSImage+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD58C5D21F2D1DC006CDC79 /* NSImage+Background.swift */; };
-		0CD58C6021F2D23A006CDC79 /* NSImage+Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD58C5F21F2D23A006CDC79 /* NSImage+Shift.swift */; };
 		0CD58C6221F2D26B006CDC79 /* ImageEditUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD58C6121F2D26B006CDC79 /* ImageEditUtil.swift */; };
-		0CD58C6421F2D37E006CDC79 /* Image+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD58C6321F2D37E006CDC79 /* Image+Scale.swift */; };
+		0CD58C6421F2D37E006CDC79 /* Image+Tramsform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD58C6321F2D37E006CDC79 /* Image+Tramsform.swift */; };
 		0CE8558321D6E9B800F22403 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE8558221D6E9B800F22403 /* Preferences.storyboard */; };
 		0CE8558521D6F69A00F22403 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */; };
 		0CE8558721D6F81800F22403 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558621D6F81800F22403 /* PreferencesViewController.swift */; };
@@ -67,9 +66,8 @@
 		0CC9E81621D0830E00E37482 /* CollectionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreset.swift; sourceTree = "<group>"; };
 		0CC9E81821D0842600E37482 /* SaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCollection.swift; sourceTree = "<group>"; };
 		0CD58C5D21F2D1DC006CDC79 /* NSImage+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Background.swift"; sourceTree = "<group>"; };
-		0CD58C5F21F2D23A006CDC79 /* NSImage+Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Shift.swift"; sourceTree = "<group>"; };
 		0CD58C6121F2D26B006CDC79 /* ImageEditUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditUtil.swift; sourceTree = "<group>"; };
-		0CD58C6321F2D37E006CDC79 /* Image+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Scale.swift"; sourceTree = "<group>"; };
+		0CD58C6321F2D37E006CDC79 /* Image+Tramsform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Tramsform.swift"; sourceTree = "<group>"; };
 		0CE8558221D6E9B800F22403 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		0CE8558621D6F81800F22403 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
@@ -217,9 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				0C05610C21D1EB93005E5D4A /* NSImage+Resize.swift */,
-				0CD58C5F21F2D23A006CDC79 /* NSImage+Shift.swift */,
 				0CD58C5D21F2D1DC006CDC79 /* NSImage+Background.swift */,
-				0CD58C6321F2D37E006CDC79 /* Image+Scale.swift */,
+				0CD58C6321F2D37E006CDC79 /* Image+Tramsform.swift */,
 				0CD58C6121F2D26B006CDC79 /* ImageEditUtil.swift */,
 			);
 			path = ImageEditing;
@@ -397,10 +394,9 @@
 				ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */,
 				0CE8558E21D858DC00F22403 /* AllowedFileTypes.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
-				0CD58C6021F2D23A006CDC79 /* NSImage+Shift.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
 				0CE8558B21D7111300F22403 /* Alerts.swift in Sources */,
-				0CD58C6421F2D37E006CDC79 /* Image+Scale.swift in Sources */,
+				0CD58C6421F2D37E006CDC79 /* Image+Tramsform.swift in Sources */,
 				0CD58C6221F2D26B006CDC79 /* ImageEditUtil.swift in Sources */,
 				0CE8558521D6F69A00F22403 /* PreferencesWindowController.swift in Sources */,
 				0C8D9E3F21CD977200520AC8 /* ExamplePresets.swift in Sources */,
