@@ -186,10 +186,13 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var scaleSlider: NSSlider!
     
     @IBOutlet weak var horizontalToggle: NSButton!
-    @IBOutlet weak var horizontalShift: NSSlider!
+    @IBOutlet weak var hShiftSlider: NSSlider!
     
     @IBOutlet weak var verticalToggle: NSButton!
-    @IBOutlet weak var verticalShift: NSSlider!
+    @IBOutlet weak var vShiftSlider: NSSlider!
+    
+    @IBOutlet weak var roundToggle: NSButton!
+    @IBOutlet weak var roundSlider: NSSlider!
     
     var mods = ImageModifications()
     
@@ -213,7 +216,7 @@ class OptionsViewController: NSViewController {
     @IBAction func horizontalToggled(_ sender: Any) {
         switch horizontalToggle.state {
         case .on:
-            let raw = horizontalShift.doubleValue
+            let raw = hShiftSlider.doubleValue
             let adjusted = (raw - 50) * 2
             mods.shift.width = CGFloat(adjusted)
         case .off:
@@ -232,7 +235,7 @@ class OptionsViewController: NSViewController {
     @IBAction func verticalToggled(_ sender: Any) {
         switch verticalToggle.state {
         case .on:
-            let raw = verticalShift.doubleValue
+            let raw = vShiftSlider.doubleValue
             let adjusted = (raw - 50) * 2
             mods.shift.height = CGFloat(adjusted)
         case .off:
@@ -282,12 +285,22 @@ class OptionsViewController: NSViewController {
         aspectRatioLabel.frame = rect
     }
     
+    @IBAction func roundToggled(_ sender: Any) {
+        roundSelected(self)
+    }
+    
+    @IBAction func roundSelected(_ sender: Any) {
+        mods.rounding = CGFloat(roundSlider.doubleValue)
+        imageToConvert = mods.apply(on: origImage)
+        imageView.addImage(imageToConvert)
+    }
+    
     struct ImageModifications {
         var background: NSColor?
         var shift: NSSize = NSSize(width: 0, height: 0)
         var scale: CGFloat = 1
         var aspect: NSSize = NSSize(width: 1, height: 1)
-        
+        var rounding: CGFloat = 0
         
         func apply(on image: NSImage) -> NSImage {
             var modImage = image
@@ -296,6 +309,10 @@ class OptionsViewController: NSViewController {
             
             if let backgroundColor = background {
                 modImage = modImage.addBackground(backgroundColor)
+            }
+            
+            if rounding != 0 {
+                modImage = modImage.round(percent: rounding)
             }
             
             return modImage

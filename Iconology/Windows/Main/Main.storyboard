@@ -266,42 +266,6 @@
                                     <action selector="editCustomPresets:" target="qum-VO-ymn" id="nKU-qf-4jv"/>
                                 </connections>
                             </button>
-                            <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="285-wd-4lQ" userLabel="Prefix View">
-                                <rect key="frame" x="765" y="184" width="223" height="113"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
-                                        <rect key="frame" x="54" y="46" width="159" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cz4-if-umZ">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <connections>
-                                            <action selector="prefixTextEdited:" target="qum-VO-ymn" id="ujq-RO-Yq2"/>
-                                        </connections>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-2t-7Fb">
-                                        <rect key="frame" x="52" y="14" width="161" height="17"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="prefixroot.type" id="S6G-z1-8I5">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrf-CX-EIQ">
-                                        <rect key="frame" x="40" y="76" width="51" height="22"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Prefix" id="ibE-LF-TjO">
-                                            <font key="font" metaFont="system" size="18"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                            </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
                                 <rect key="frame" x="921" y="13" width="89" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -487,13 +451,77 @@
                                     <action selector="verticalShiftSelected:" target="qum-VO-ymn" id="mX6-D4-xBi"/>
                                 </connections>
                             </slider>
+                            <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="285-wd-4lQ" userLabel="Prefix View">
+                                <rect key="frame" x="765" y="133" width="223" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
+                                        <rect key="frame" x="54" y="46" width="159" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cz4-if-umZ">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <action selector="prefixTextEdited:" target="qum-VO-ymn" id="ujq-RO-Yq2"/>
+                                        </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-2t-7Fb">
+                                        <rect key="frame" x="52" y="14" width="161" height="17"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="prefixroot.type" id="S6G-z1-8I5">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrf-CX-EIQ">
+                                        <rect key="frame" x="40" y="76" width="51" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Prefix" id="ibE-LF-TjO">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-4u-LGL">
+                                <rect key="frame" x="784" y="298" width="22" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yIy-Px-QQa">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="roundToggled:" target="qum-VO-ymn" id="PYi-X3-eLT"/>
+                                </connections>
+                            </button>
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-A6-484">
+                                <rect key="frame" x="816" y="271" width="138" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="MdW-Qi-Yec"/>
+                                <connections>
+                                    <action selector="roundSelected:" target="qum-VO-ymn" id="qz3-Sq-iPa"/>
+                                </connections>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-pA-UFx">
+                                <rect key="frame" x="804" y="296" width="57" height="22"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Round" id="g6u-km-OX5">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="aspectRatioLabel" destination="czV-JQ-KJ2" id="c4y-ho-7B6"/>
                         <outlet property="backgroundColor" destination="ZmA-KJ-UH6" id="0Bc-nc-rYv"/>
                         <outlet property="backgroundToggle" destination="1jf-C6-kog" id="B0k-LY-uRs"/>
-                        <outlet property="horizontalShift" destination="tYv-rb-AXw" id="ejJ-ja-FgF"/>
+                        <outlet property="hShiftSlider" destination="tYv-rb-AXw" id="ejJ-ja-FgF"/>
                         <outlet property="horizontalToggle" destination="ern-Fd-nbt" id="FXg-Nb-vWl"/>
                         <outlet property="imageView" destination="dPF-vB-mSk" id="xzs-6o-cLg"/>
                         <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="Gws-w3-4sn"/>
@@ -501,9 +529,11 @@
                         <outlet property="prefixView" destination="285-wd-4lQ" id="JJZ-AJ-DF7"/>
                         <outlet property="presetGroupSelector" destination="D9e-db-h9i" id="DXN-I2-1Nt"/>
                         <outlet property="presetSelector" destination="YUM-aF-gp0" id="BMU-QQ-2gb"/>
+                        <outlet property="roundSlider" destination="dI4-A6-484" id="e0X-Ml-2lE"/>
+                        <outlet property="roundToggle" destination="GeL-4u-LGL" id="J7U-qg-eek"/>
                         <outlet property="scaleSlider" destination="7N2-iu-pSq" id="LS5-X6-3Uj"/>
                         <outlet property="scaleToggle" destination="xsb-g8-VZT" id="zsO-eu-igo"/>
-                        <outlet property="verticalShift" destination="Wd3-Sz-v41" id="zw7-P7-pFK"/>
+                        <outlet property="vShiftSlider" destination="Wd3-Sz-v41" id="zw7-P7-pFK"/>
                         <outlet property="verticalToggle" destination="HpE-V8-cPy" id="8wJ-bH-OEc"/>
                     </connections>
                 </viewController>

@@ -1,5 +1,5 @@
 //
-//  Image+Transform.swift
+//  NSImage+Transform.swift
 //  Iconology
 //
 //  Created by Liam on 1/18/19.
