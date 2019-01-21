@@ -18,7 +18,7 @@ class PreferencesViewController: NSViewController {
     @IBAction func resetCustomPresets(_ sender: Any) {
         let comfirm = Alerts.comfirmPopup(title: "Warning", text: "This will delete all your presets")
         if comfirm {
-            UserPresets.deleteAllPreset()
+            Presets.userPresets.deleteAllPreset()
         }
     }
 }
