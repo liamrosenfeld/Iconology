@@ -18,6 +18,7 @@
 		0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */; };
 		0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */; };
 		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
+		0CC44E4521F59C33009E963D /* PresetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* PresetStorage.swift */; };
 		0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Num+Clean.swift */; };
 		0CC9E81121CF645B00E37482 /* SaveXcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81021CF645B00E37482 /* SaveXcode.swift */; };
 		0CC9E81321CF647200E37482 /* SaveFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81221CF647200E37482 /* SaveFile.swift */; };
@@ -59,6 +60,7 @@
 		0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreset.swift; sourceTree = "<group>"; };
 		0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PNG.swift"; sourceTree = "<group>"; };
 		0C8D9E9621CF169900520AC8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
+		0CC44E4421F59C33009E963D /* PresetStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetStorage.swift; sourceTree = "<group>"; };
 		0CC9E7E621CF434600E37482 /* Num+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Num+Clean.swift"; sourceTree = "<group>"; };
 		0CC9E81021CF645B00E37482 /* SaveXcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveXcode.swift; sourceTree = "<group>"; };
 		0CC9E81221CF647200E37482 /* SaveFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFile.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		0CF5BC2D20E32D0B00F2A57C /* Presets */ = {
 			isa = PBXGroup;
 			children = (
+				0CC44E4421F59C33009E963D /* PresetStorage.swift */,
 				0C8D9E3621CD73B500520AC8 /* Default */,
 				0C8D9E3721CD73C000520AC8 /* Custom */,
 				0C8D9E4021CD984900520AC8 /* PresetTypes */,
@@ -404,6 +407,7 @@
 				0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */,
 				0CE8558721D6F81800F22403 /* PreferencesViewController.swift in Sources */,
 				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
+				0CC44E4521F59C33009E963D /* PresetStorage.swift in Sources */,
 				0C7B55BE21D40B22009FE959 /* NSImageView+AddImage.swift in Sources */,
 				0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */,
 				0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */,

@@ -34,14 +34,14 @@ class OptionsViewController: NSViewController {
         presetSelector.removeAllItems()
         
         // Load Presets
-        if UserPresets.presets.isEmpty {
+        if Presets.userPresets.presets.isEmpty {
             print("adding example custom presets...")
             ExamplePresets.addExamplePresets()
         }
-        let customPresets = PresetGroup(title: "Custom", presets: UserPresets.presets)
+        let customPresets = PresetGroup(title: "Custom", presets: Presets.userPresets.presets)
         
         // Combine Presets
-        presets.append(contentsOf: DefaultPresets.presets)
+        presets.append(contentsOf: Presets.defaultPresets.presets)
         presets.append(customPresets)
         
         // Display Presets
@@ -57,7 +57,7 @@ class OptionsViewController: NSViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("PresetApply"), object: nil, queue: nil) { notification in
             // Reload Custom Presets
             let customGroupIndex = self.presetGroupSelector.indexOfItem(withTitle: "Custom")
-            self.presets[customGroupIndex].presets = UserPresets.presets
+            self.presets[customGroupIndex].presets = Presets.userPresets.presets
             
             // Update UI
             let currentGroupIndex = self.presetGroupSelector.indexOfSelectedItem

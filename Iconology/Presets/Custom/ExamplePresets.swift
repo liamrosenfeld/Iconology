@@ -10,8 +10,8 @@ import Foundation
 
 struct ExamplePresets {
     static func addExamplePresets() {
-        UserPresets.addPreset(name: "Powers of Two", sizes: powersOfTwo, usePrefix: true)
-        UserPresets.savePresets()
+        Presets.userPresets.addPreset(name: "Powers of Two", sizes: powersOfTwo, usePrefix: true)
+        Presets.userPresets.savePresets()
     }
     
     static let powersOfTwo = [

@@ -9,9 +9,9 @@
 import Foundation
 
 struct DefaultPresets {
-    static var presets = [PresetGroup]()
+    var presets = [PresetGroup]()
     
-    static func loadDefaults() {
+    init() {
         let xcode = PresetGroup(title: "Xcode", presets: XcodeSizes.createPresets())
         presets.append(xcode)
         
@@ -28,6 +28,7 @@ struct DefaultPresets {
         setPresets.append(CollectionPreset(name: "Favicon", subpresets: favicon))
         presets.append(PresetGroup(title: "Sets", presets: setPresets))
     }
+    
 }
 
 struct PresetGroup {

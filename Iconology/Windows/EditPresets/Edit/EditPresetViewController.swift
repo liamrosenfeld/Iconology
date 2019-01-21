@@ -25,14 +25,14 @@ class EditPresetViewController: NSViewController {
         super.viewDidLoad()
         
         // Set Vars
-        tempSave = UserPresets.presets[presetSelected!]
+        tempSave = Presets.userPresets.presets[presetSelected!]
         
         // Add Delegates
         presetTable.delegate = self
         presetTable.dataSource = self
         
         // Prep UI
-        titleLabel.stringValue = "Edit \(UserPresets.presets[presetSelected!].name) Preset Via Double Click"
+        titleLabel.stringValue = "Edit \(Presets.userPresets.presets[presetSelected!].name) Preset Via Double Click"
         switch tempSave.usePrefix {
         case true:
             prefixCheckBox.state = .on
@@ -58,9 +58,9 @@ class EditPresetViewController: NSViewController {
         }
         
         // Save Presets
-        UserPresets.presets[presetSelected!] = tempSave
-        print(UserPresets.presets[presetSelected!])
-        UserPresets.savePresets()
+        Presets.userPresets.presets[presetSelected!] = tempSave
+        print(Presets.userPresets.presets[presetSelected!])
+        Presets.userPresets.savePresets()
         
         // Notify Home
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PresetApply"), object: nil)
@@ -203,7 +203,7 @@ class EditPresetViewController: NSViewController {
 extension EditPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        return UserPresets.presets[presetSelected!].sizes.count
+        return Presets.userPresets.presets[presetSelected!].sizes.count
     }
     
 }
