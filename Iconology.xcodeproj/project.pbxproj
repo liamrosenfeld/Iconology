@@ -20,6 +20,7 @@
 		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
 		0CC44E4521F59C33009E963D /* PresetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* PresetStorage.swift */; };
 		0CC44E4721F66891009E963D /* NSImage+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4621F66891009E963D /* NSImage+Round.swift */; };
+		0CC44E4C21F690ED009E963D /* ImageOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */; };
 		0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Num+Clean.swift */; };
 		0CC9E81121CF645B00E37482 /* SaveXcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81021CF645B00E37482 /* SaveXcode.swift */; };
 		0CC9E81321CF647200E37482 /* SaveFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81221CF647200E37482 /* SaveFile.swift */; };
@@ -63,6 +64,7 @@
 		0C8D9E9621CF169900520AC8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		0CC44E4421F59C33009E963D /* PresetStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetStorage.swift; sourceTree = "<group>"; };
 		0CC44E4621F66891009E963D /* NSImage+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Round.swift"; sourceTree = "<group>"; };
+		0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOptionsViewController.swift; sourceTree = "<group>"; };
 		0CC9E7E621CF434600E37482 /* Num+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Num+Clean.swift"; sourceTree = "<group>"; };
 		0CC9E81021CF645B00E37482 /* SaveXcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveXcode.swift; sourceTree = "<group>"; };
 		0CC9E81221CF647200E37482 /* SaveFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFile.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				0CD58C5C21F2D19D006CDC79 /* ImageEditing */,
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
+				0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */,
 			);
 			path = Options;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				0C05610D21D1EB93005E5D4A /* NSImage+Resize.swift in Sources */,
 				0CC44E4721F66891009E963D /* NSImage+Round.swift in Sources */,
 				0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */,
+				0CC44E4C21F690ED009E963D /* ImageOptionsViewController.swift in Sources */,
 				0CD58C5E21F2D1DC006CDC79 /* NSImage+Background.swift in Sources */,
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
 				0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */,

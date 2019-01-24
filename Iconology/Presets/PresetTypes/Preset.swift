@@ -11,7 +11,7 @@ import AppKit
 protocol Preset {
     var name: String { get }
     var folderName: String { get }
-    var usePrefix: Bool { get }
+    var useModifications: UseModifications { get }
     var aspect: NSSize { get }
     
     func save(_ image: NSImage, at url: URL, with prefix: String)
@@ -19,4 +19,28 @@ protocol Preset {
 
 protocol Size {
     var name: String { get }
+}
+
+struct UseModifications {
+    var background: Bool
+    var scale: Bool
+    var shift: Bool
+    var round: Bool
+    var prefix: Bool
+    
+    init(background: Bool, scale: Bool, shift: Bool, round: Bool, prefix: Bool) {
+        self.background = background
+        self.scale = scale
+        self.shift = shift
+        self.round = round
+        self.prefix = prefix
+    }
+    
+    init() {
+        self.background = true
+        self.scale = true
+        self.shift = true
+        self.round = true
+        self.prefix = true
+    }
 }

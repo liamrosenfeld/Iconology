@@ -12,7 +12,7 @@ final class CollectionPreset: Preset {
     var name: String
     var subpresets: [Preset]
     var folderName: String = "Icons"
-    var usePrefix: Bool = false
+    var useModifications = UseModifications(background: true, scale: true, shift: true, round: true, prefix: true)
     var aspect: NSSize
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {

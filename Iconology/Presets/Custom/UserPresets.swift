@@ -11,8 +11,8 @@ import Foundation
 struct UserPresets {
     var presets: [CustomPreset] = []
     
-    mutating func addPreset(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool) {
-        let preset = CustomPreset(name: name, sizes: sizes, usePrefix: usePrefix)
+    mutating func addPreset(name: String, sizes: [ImgSetPreset.ImgSetSize], prefix: Bool) {
+        let preset = CustomPreset(name: name, sizes: sizes)
         presets.append(preset)
     }
     
