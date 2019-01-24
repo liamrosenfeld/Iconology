@@ -19,8 +19,9 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var aspectRatioLabel: NSTextField!
     
+    var imageOptionsVC: ImageOptionsViewController!
+    
     var imageURL: URL?
-    var saveDirectory: URL?
     var presets = [PresetGroup]()
     var origImage: NSImage!
     var imageToConvert: NSImage!
@@ -29,7 +30,6 @@ class OptionsViewController: NSViewController {
         super.viewDidLoad()
         
         // UI Preperation
-        prefixView.isHidden = true
         presetGroupSelector.removeAllItems()
         presetSelector.removeAllItems()
         
@@ -52,24 +52,10 @@ class OptionsViewController: NSViewController {
         for preset in presets[selectedGroup].presets {
             presetSelector.addItem(withTitle: preset.name)
         }
+        prefixPreview.stringValue = ""
         
         // Set Reload Notification
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("PresetApply"), object: nil, queue: nil) { notification in
-            // Reload Custom Presets
-            let customGroupIndex = self.presetGroupSelector.indexOfItem(withTitle: "Custom")
-            self.presets[customGroupIndex].presets = Presets.userPresets.presets
-            
-            // Update UI
-            let currentGroupIndex = self.presetGroupSelector.indexOfSelectedItem
-            if currentGroupIndex == customGroupIndex {
-                self.presetSelector.removeAllItems()
-                let group = self.presets[customGroupIndex]
-                for preset in group.presets {
-                    self.presetSelector.addItem(withTitle: preset.name)
-                }
-                self.selectedPreset(self)
-            }
-        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("PresetApply"), object: nil, queue: nil, using: presetApply)
         
         // Get Image
         let image = NSImage(contentsOf: imageURL!)
@@ -86,17 +72,37 @@ class OptionsViewController: NSViewController {
         imageView.resize(to: imageToConvert)
         imageView.addImage(imageToConvert)
         alignAspectLabel()
-        
-        
-        // Apply Selected Preset
-        selectedPreset(self)
-        prefixPreview.stringValue = ""
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imageOptionsChildSegue" {
+            imageOptionsVC = segue.destinationController as? ImageOptionsViewController
+            imageOptionsVC.delegate = self
+            selectedPreset(self)
+        }
     }
     
     func segue(to: String) {
         if (to == "DragVC") {
             let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("HomeViewController")) as? HomeViewController
             view.window?.contentViewController = dragViewController
+        }
+    }
+    
+    func presetApply(_ notification: Notification) {
+        // Reload Custom Presets
+        let customGroupIndex = self.presetGroupSelector.indexOfItem(withTitle: "Custom")
+        self.presets[customGroupIndex].presets = Presets.userPresets.presets
+        
+        // Update UI
+        let currentGroupIndex = self.presetGroupSelector.indexOfSelectedItem
+        if currentGroupIndex == customGroupIndex {
+            self.presetSelector.removeAllItems()
+            let group = self.presets[customGroupIndex]
+            for preset in group.presets {
+                self.presetSelector.addItem(withTitle: preset.name)
+            }
+            self.selectedPreset(self)
         }
     }
     
@@ -116,15 +122,11 @@ class OptionsViewController: NSViewController {
         
         if selectedPreset != -1 {
             let preset = presets[selectedGroup].presets[selectedPreset]
-            if preset.usePrefix {
-                prefixView.isHidden = false
-            } else {
-                prefixView.isHidden = true
-            }
-            
+            imageOptionsVC.setMods(from: preset)
+            prefixView.isHidden = !preset.useModifications.prefix
             setAspect(preset.aspect)
         } else {
-            prefixView.isHidden = true
+            // TODO: Handle Error
         }
     }
     
@@ -146,7 +148,7 @@ class OptionsViewController: NSViewController {
         // Check User Options
         let selectedPreset = presetSelector.indexOfSelectedItem
         if selectedPreset == -1 {
-            Alerts.warningPopup(title: "Invalid Preset", text: "Congrats... You Broke It. Please Report The Error Here: https://github.com/liamrosenfeld/Iconology/issues")
+            Alerts.warningPopup(title: "Invalid Preset", text: "Please Select a Preset")
             print("ERR: Invalid Preset")
             return
         }
@@ -158,12 +160,12 @@ class OptionsViewController: NSViewController {
         // Where to Save
         let folder = FileHandler.selectFolder()
         guard let chosenFolder = folder else { return }
-        saveDirectory = chosenFolder.appendingPathComponent(preset.folderName)
-        print(saveDirectory!)
-       FileHandler.createFolder(directory: saveDirectory!)
+        let saveDirectory = chosenFolder.appendingPathComponent(preset.folderName)
+        print(saveDirectory)
+        FileHandler.createFolder(directory: saveDirectory)
         
         // Save
-        preset.save(imageToConvert, at: saveDirectory!, with: prefixTextBox.stringValue)
+        preset.save(imageToConvert, at: saveDirectory, with: prefixTextBox.stringValue)
         
         Alerts.success(title: "Saved!", text: "Image Was Saved With The Preset \(preset.name)")
     }
@@ -177,101 +179,10 @@ class OptionsViewController: NSViewController {
         appDelegate?.editCustomPresets(self)
     }
     
-    
-    // MARK: - Options
-    @IBOutlet weak var backgroundToggle: NSButton!
-    @IBOutlet weak var backgroundColor: NSColorWell!
-    
-    @IBOutlet weak var scaleToggle: NSButton!
-    @IBOutlet weak var scaleSlider: NSSlider!
-    
-    @IBOutlet weak var horizontalToggle: NSButton!
-    @IBOutlet weak var hShiftSlider: NSSlider!
-    
-    @IBOutlet weak var verticalToggle: NSButton!
-    @IBOutlet weak var vShiftSlider: NSSlider!
-    
-    @IBOutlet weak var roundToggle: NSButton!
-    @IBOutlet weak var roundSlider: NSSlider!
-    
-    var mods = ImageModifications()
-    
-    @IBAction func backgroundToggled(_ sender: Any) {
-        switch backgroundToggle.state {
-        case .on:
-            mods.background = backgroundColor.color
-        case .off:
-            mods.background = nil
-        default:
-            print("ERR: Wrong Button State")
-        }
-        imageToConvert = mods.apply(on: origImage)
-        imageView.addImage(imageToConvert)
-    }
-    
-    @IBAction func backgroundColorSelected(_ sender: Any) {
-        backgroundToggled(self)
-    }
-    
-    @IBAction func horizontalToggled(_ sender: Any) {
-        switch horizontalToggle.state {
-        case .on:
-            let raw = hShiftSlider.doubleValue
-            let adjusted = (raw - 50) * 2
-            mods.shift.width = CGFloat(adjusted)
-        case .off:
-            mods.shift.width = 0
-        default:
-            print("ERR: Wrong Button State")
-        }
-        imageToConvert = mods.apply(on: origImage)
-        imageView.addImage(imageToConvert)
-    }
-    
-    @IBAction func horizontalShiftSelected(_ sender: Any) {
-        horizontalToggled(self)
-    }
-    
-    @IBAction func verticalToggled(_ sender: Any) {
-        switch verticalToggle.state {
-        case .on:
-            let raw = vShiftSlider.doubleValue
-            let adjusted = (raw - 50) * 2
-            mods.shift.height = CGFloat(adjusted)
-        case .off:
-            mods.shift.height = 0
-        default:
-            print("ERR: Wrong Button State")
-        }
-        imageToConvert = mods.apply(on: origImage)
-        imageView.addImage(imageToConvert)
-    }
-    
-    @IBAction func verticalShiftSelected(_ sender: Any) {
-        verticalToggled(self)
-    }
-    
-    @IBAction func scaleToggled(_ sender: Any) {
-        switch scaleToggle.state {
-        case .on:
-            mods.scale = CGFloat(scaleSlider.doubleValue)
-        case .off:
-            mods.scale = 1
-        default:
-            print("ERR: Wrong Button State")
-        }
-        imageToConvert = mods.apply(on: origImage)
-        imageView.addImage(imageToConvert)
-    }
-    
-    @IBAction func scaleSelected(_ sender: Any) {
-        scaleToggled(self)
-    }
-    
     func setAspect(_ aspect: NSSize) {
-        mods.aspect = aspect
+        imageOptionsVC.mods.aspect = aspect
         aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
-        imageToConvert = mods.apply(on: origImage)
+        imageToConvert = imageOptionsVC.mods.apply(on: origImage)
         imageView.resize(to: imageToConvert)
         imageView.addImage(imageToConvert)
         alignAspectLabel()
@@ -285,37 +196,11 @@ class OptionsViewController: NSViewController {
         aspectRatioLabel.frame = rect
     }
     
-    @IBAction func roundToggled(_ sender: Any) {
-        roundSelected(self)
-    }
-    
-    @IBAction func roundSelected(_ sender: Any) {
-        mods.rounding = CGFloat(roundSlider.doubleValue)
+}
+
+extension OptionsViewController: ImageOptionsDelegate {
+    func modsChanged(_ mods: ImageModifications) {
         imageToConvert = mods.apply(on: origImage)
         imageView.addImage(imageToConvert)
-    }
-    
-    struct ImageModifications {
-        var background: NSColor?
-        var shift: NSSize = NSSize(width: 0, height: 0)
-        var scale: CGFloat = 1
-        var aspect: NSSize = NSSize(width: 1, height: 1)
-        var rounding: CGFloat = 0
-        
-        func apply(on image: NSImage) -> NSImage {
-            var modImage = image
-            
-            modImage = modImage.transform(aspect: aspect, scale: scale, shift: shift)
-            
-            if let backgroundColor = background {
-                modImage = modImage.addBackground(backgroundColor)
-            }
-            
-            if rounding != 0 {
-                modImage = modImage.round(percent: rounding)
-            }
-            
-            return modImage
-        }
     }
 }

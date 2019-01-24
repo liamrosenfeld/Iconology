@@ -11,7 +11,7 @@ import AppKit
 final class XcodePreset: Preset {
     var name: String
     var sizes: [XcodeSizes]
-    var usePrefix = false
+    var useModifications: UseModifications
     var folderName: String
     var aspect: NSSize
     
@@ -19,11 +19,12 @@ final class XcodePreset: Preset {
         saveXcode(image, at: url, in: sizes)
     }
     
-    init(name: String, sizes: [XcodeSizes], folderName: String, aspect: NSSize? = nil) {
+    init(name: String, sizes: [XcodeSizes], folderName: String, aspect: NSSize? = nil, round: Bool) {
         self.name = name
         self.sizes = sizes
         self.folderName = folderName
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
+        self.useModifications = UseModifications(background: true, scale: true, shift: true, round: round, prefix: false)
     }
     
     final class XcodeSizes: Size {

@@ -16,15 +16,15 @@ struct DefaultPresets {
         presets.append(xcode)
         
         var filePresets = [FilePreset]()
-        filePresets.append(FilePreset(name: "icns", filetype: .icns, sizes: macIconset,usePrefix: false))
-        filePresets.append(FilePreset(name: "ico", filetype: .ico, sizes: macIconset, usePrefix: false))
+        filePresets.append(FilePreset(name: "icns", filetype: .icns, sizes: macIconset, prefix: false))
+        filePresets.append(FilePreset(name: "ico", filetype: .ico, sizes: macIconset, prefix: false))
         presets.append(PresetGroup(title: "Files", presets: filePresets))
         
         var setPresets = [Preset]()
-        setPresets.append(ImgSetPreset(name: "Iconset", sizes: macIconset, usePrefix: false))
+        setPresets.append(ImgSetPreset(name: "Iconset", sizes: macIconset))
         var favicon = [Preset]()
-        favicon.append(ImgSetPreset(name: "PNGs", sizes: faviconSet, usePrefix: false))
-        favicon.append(FilePreset(name: "ICO", filetype: .ico, sizes: faviconIcoSet, usePrefix: false))
+        favicon.append(ImgSetPreset(name: "PNGs", sizes: faviconSet))
+        favicon.append(FilePreset(name: "ICO", filetype: .ico, sizes: faviconIcoSet, prefix: false))
         setPresets.append(CollectionPreset(name: "Favicon", subpresets: favicon))
         presets.append(PresetGroup(title: "Sets", presets: setPresets))
     }

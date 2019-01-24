@@ -10,7 +10,7 @@ import Foundation
 
 struct ExamplePresets {
     static func addExamplePresets() {
-        Presets.userPresets.addPreset(name: "Powers of Two", sizes: powersOfTwo, usePrefix: true)
+        Presets.userPresets.addPreset(name: "Powers of Two", sizes: powersOfTwo, prefix: true)
         Presets.userPresets.savePresets()
     }
     

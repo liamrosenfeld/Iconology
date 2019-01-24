@@ -12,7 +12,7 @@ final class FilePreset: Preset {
     var name: String
     var filetype: FilePreset.Filetype
     var folderName = ""
-    var usePrefix: Bool
+    var useModifications: UseModifications
     var sizes: [ImgSetPreset.ImgSetSize]
     var aspect: NSSize
     
@@ -20,11 +20,11 @@ final class FilePreset: Preset {
         saveFile(image, at: url, as: filetype)
     }
     
-    init(name: String, filetype: FilePreset.Filetype, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: NSSize? = nil) {
+    init(name: String, filetype: FilePreset.Filetype, sizes: [ImgSetPreset.ImgSetSize], prefix: Bool, aspect: NSSize? = nil) {
         self.name = name
         self.filetype = filetype
         self.sizes = sizes
-        self.usePrefix = usePrefix
+        self.useModifications = UseModifications(background: true, scale: true, shift: true, round: true, prefix: prefix)
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
     }
     

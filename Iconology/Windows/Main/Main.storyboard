@@ -223,49 +223,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D9e-db-h9i" userLabel="Preset Group Selector">
-                                <rect key="frame" x="46" y="551" width="156" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Group" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fjl-Oa-D3I" id="LUV-cs-74S">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="fI2-Pc-uoy">
-                                        <items>
-                                            <menuItem title="Group" state="on" id="Fjl-Oa-D3I"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="selectedPresetGroup:" target="qum-VO-ymn" id="U67-P5-hIz"/>
-                                </connections>
-                            </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-aF-gp0">
-                                <rect key="frame" x="46" y="481" width="156" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Preset" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="LvA-TZ-jSq">
-                                        <items>
-                                            <menuItem title="Preset" state="on" id="hn9-51-PY6"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="selectedPreset:" target="qum-VO-ymn" id="E3t-VB-mDC"/>
-                                </connections>
-                            </popUpButton>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ">
-                                <rect key="frame" x="30" y="418" width="163" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Edit Custom Presets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="editCustomPresets:" target="qum-VO-ymn" id="nKU-qf-4jv"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
                                 <rect key="frame" x="921" y="13" width="89" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -277,55 +234,6 @@
                                     <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
-                                <rect key="frame" x="784" y="607" width="22" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="backgroundToggled:" target="qum-VO-ymn" id="IZQ-KZ-ZOT"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ern-Fd-nbt">
-                                <rect key="frame" x="784" y="486" width="22" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gYI-dl-9bx">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="horizontalToggled:" target="qum-VO-ymn" id="RAk-hY-RyI"/>
-                                </connections>
-                            </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYv-rb-AXw">
-                                <rect key="frame" x="816" y="459" width="138" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eXG-VA-yHS"/>
-                                <connections>
-                                    <action selector="horizontalShiftSelected:" target="qum-VO-ymn" id="siy-LJ-C1E"/>
-                                </connections>
-                            </slider>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-g8-VZT">
-                                <rect key="frame" x="784" y="544" width="22" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="n00-yR-1cF">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="scaleToggled:" target="qum-VO-ymn" id="JnW-m5-Y9f"/>
-                                </connections>
-                            </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-iu-pSq">
-                                <rect key="frame" x="816" y="515" width="138" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="pOI-dp-j9v"/>
-                                <connections>
-                                    <action selector="scaleSelected:" target="qum-VO-ymn" id="FKf-RO-kmj"/>
-                                </connections>
-                            </slider>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-vB-mSk">
                                 <rect key="frame" x="260" y="130" width="500" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -342,93 +250,87 @@
                                     <action selector="back:" target="qum-VO-ymn" id="OP0-Ph-3Jc"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPA-WV-fgy">
-                                <rect key="frame" x="804" y="605" width="150" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Background Color" id="Cf5-Gn-EOB">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fj-K2-jxf" userLabel="Logo">
                                 <rect key="frame" x="648" y="654" width="307" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Long" id="K6g-bN-lzX"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMB-CB-HgR">
-                                <rect key="frame" x="22" y="619" width="179" height="40"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Selection" id="1Sb-kT-HX5">
-                                    <font key="font" metaFont="system" size="25"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-C1-ZlC">
-                                <rect key="frame" x="34" y="583" width="114" height="28"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Group" id="VdE-tK-6Sc">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ec-59-VEr">
-                                <rect key="frame" x="34" y="513" width="114" height="28"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preset" id="hEJ-XZ-EHb">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmA-KJ-UH6">
-                                <rect key="frame" x="818" y="574" width="44" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="backgroundColorSelected:" target="qum-VO-ymn" id="FDf-WI-frx"/>
-                                </connections>
-                            </colorWell>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-WA-5J6">
-                                <rect key="frame" x="804" y="540" width="49" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="K7V-tR-isF">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-RZ-btC">
-                                <rect key="frame" x="804" y="484" width="85" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="X Position" id="vNW-oR-Cdq">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpE-V8-cPy">
-                                <rect key="frame" x="784" y="427" width="22" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="G8l-sQ-KM4">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="verticalToggled:" target="qum-VO-ymn" id="Inh-Tr-lbw"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUa-zj-oea">
-                                <rect key="frame" x="804" y="425" width="85" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Y Position" id="UIO-qG-nBA">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-HE-QHc" userLabel="Preset Selection">
+                                <rect key="frame" x="4" y="405" width="215" height="274"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMB-CB-HgR" userLabel="Preset Selection Label">
+                                        <rect key="frame" x="18" y="214" width="179" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Selection" id="1Sb-kT-HX5">
+                                            <font key="font" metaFont="system" size="25"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-C1-ZlC" userLabel="Group Label">
+                                        <rect key="frame" x="30" y="178" width="114" height="28"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Group" id="VdE-tK-6Sc">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D9e-db-h9i" userLabel="Group Selector">
+                                        <rect key="frame" x="42" y="146" width="156" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="push" title="Group" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fjl-Oa-D3I" id="LUV-cs-74S">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="fI2-Pc-uoy">
+                                                <items>
+                                                    <menuItem title="Group" state="on" id="Fjl-Oa-D3I"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="selectedPresetGroup:" target="qum-VO-ymn" id="U67-P5-hIz"/>
+                                        </connections>
+                                    </popUpButton>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ec-59-VEr" userLabel="Preset Label">
+                                        <rect key="frame" x="30" y="108" width="114" height="28"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Preset" id="hEJ-XZ-EHb">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-aF-gp0">
+                                        <rect key="frame" x="42" y="76" width="156" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="push" title="Preset" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="LvA-TZ-jSq">
+                                                <items>
+                                                    <menuItem title="Preset" state="on" id="hn9-51-PY6"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="selectedPreset:" target="qum-VO-ymn" id="E3t-VB-mDC"/>
+                                        </connections>
+                                    </popUpButton>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ" userLabel="Edit Custom Presets Button">
+                                        <rect key="frame" x="26" y="13" width="163" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Edit Custom Presets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="editCustomPresets:" target="qum-VO-ymn" id="nKU-qf-4jv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czV-JQ-KJ2">
                                 <rect key="frame" x="270" y="635" width="131" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -438,25 +340,17 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNW-jY-Z5H">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNW-jY-Z5H" userLabel="Divider">
                                 <rect key="frame" x="207" y="118" width="48" height="549"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DottedLine-Vertical" id="BtV-qK-wr0"/>
                             </imageView>
-                            <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-Sz-v41">
-                                <rect key="frame" x="845" y="323" width="19" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="CW9-Jm-gdf"/>
-                                <connections>
-                                    <action selector="verticalShiftSelected:" target="qum-VO-ymn" id="mX6-D4-xBi"/>
-                                </connections>
-                            </slider>
-                            <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="285-wd-4lQ" userLabel="Prefix View">
-                                <rect key="frame" x="765" y="133" width="223" height="113"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKj-Mj-vge" userLabel="Prefix">
+                                <rect key="frame" x="804" y="124" width="180" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
-                                        <rect key="frame" x="54" y="46" width="159" height="22"/>
+                                        <rect key="frame" x="32" y="40" width="137" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cz4-if-umZ">
                                             <font key="font" metaFont="system"/>
@@ -464,20 +358,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <action selector="prefixTextEdited:" target="qum-VO-ymn" id="ujq-RO-Yq2"/>
+                                            <action selector="prefixTextEdited:" target="qum-VO-ymn" id="UIb-fp-Xwg"/>
                                         </connections>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-2t-7Fb">
-                                        <rect key="frame" x="52" y="14" width="161" height="17"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="prefixroot.type" id="S6G-z1-8I5">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrf-CX-EIQ">
-                                        <rect key="frame" x="40" y="76" width="51" height="22"/>
+                                        <rect key="frame" x="18" y="70" width="51" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Prefix" id="ibE-LF-TjO">
                                             <font key="font" metaFont="system" size="18"/>
@@ -485,61 +370,242 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-2t-7Fb">
+                                        <rect key="frame" x="30" y="20" width="142" height="17"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="prefixroot.type" id="S6G-z1-8I5">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-4u-LGL">
-                                <rect key="frame" x="784" y="298" width="22" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yIy-Px-QQa">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="roundToggled:" target="qum-VO-ymn" id="PYi-X3-eLT"/>
-                                </connections>
-                            </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-A6-484">
-                                <rect key="frame" x="816" y="271" width="138" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="MdW-Qi-Yec"/>
-                                <connections>
-                                    <action selector="roundSelected:" target="qum-VO-ymn" id="qz3-Sq-iPa"/>
-                                </connections>
-                            </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-pA-UFx">
-                                <rect key="frame" x="804" y="296" width="57" height="22"/>
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wft-VB-ai5">
+                                <rect key="frame" x="784" y="227" width="220" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Round" id="g6u-km-OX5">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="LabelColor"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                <connections>
+                                    <segue destination="XT1-Ko-uUN" kind="embed" identifier="imageOptionsChildSegue" id="Foz-u9-HCf"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="aspectRatioLabel" destination="czV-JQ-KJ2" id="c4y-ho-7B6"/>
-                        <outlet property="backgroundColor" destination="ZmA-KJ-UH6" id="0Bc-nc-rYv"/>
-                        <outlet property="backgroundToggle" destination="1jf-C6-kog" id="B0k-LY-uRs"/>
-                        <outlet property="hShiftSlider" destination="tYv-rb-AXw" id="ejJ-ja-FgF"/>
-                        <outlet property="horizontalToggle" destination="ern-Fd-nbt" id="FXg-Nb-vWl"/>
                         <outlet property="imageView" destination="dPF-vB-mSk" id="xzs-6o-cLg"/>
                         <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="Gws-w3-4sn"/>
-                        <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="5yy-uB-gvA"/>
-                        <outlet property="prefixView" destination="285-wd-4lQ" id="JJZ-AJ-DF7"/>
+                        <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="mZ5-7B-o7h"/>
+                        <outlet property="prefixView" destination="WKj-Mj-vge" id="alv-yf-jtN"/>
                         <outlet property="presetGroupSelector" destination="D9e-db-h9i" id="DXN-I2-1Nt"/>
                         <outlet property="presetSelector" destination="YUM-aF-gp0" id="BMU-QQ-2gb"/>
-                        <outlet property="roundSlider" destination="dI4-A6-484" id="e0X-Ml-2lE"/>
-                        <outlet property="roundToggle" destination="GeL-4u-LGL" id="J7U-qg-eek"/>
-                        <outlet property="scaleSlider" destination="7N2-iu-pSq" id="LS5-X6-3Uj"/>
-                        <outlet property="scaleToggle" destination="xsb-g8-VZT" id="zsO-eu-igo"/>
-                        <outlet property="vShiftSlider" destination="Wd3-Sz-v41" id="zw7-P7-pFK"/>
-                        <outlet property="verticalToggle" destination="HpE-V8-cPy" id="8wJ-bH-OEc"/>
                     </connections>
                 </viewController>
                 <customObject id="0DN-fa-hGa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1242" y="914"/>
+        </scene>
+        <!--Image Options View Controller-->
+        <scene sceneID="Skb-r6-Bk3">
+            <objects>
+                <viewController id="XT1-Ko-uUN" customClass="ImageOptionsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Vys-8j-bDM">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Tz-Nx-gK6" userLabel="Background Color">
+                                <rect key="frame" x="27" y="328" width="166" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
+                                        <rect key="frame" x="-2" y="33" width="22" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="backgroundToggled:" target="XT1-Ko-uUN" id="Ve0-eC-vRF"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPA-WV-fgy">
+                                        <rect key="frame" x="18" y="31" width="150" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Background Color" id="Cf5-Gn-EOB">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmA-KJ-UH6">
+                                        <rect key="frame" x="32" y="0.0" width="44" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="backgroundColorSelected:" target="XT1-Ko-uUN" id="jj4-Ct-nUm"/>
+                                        </connections>
+                                    </colorWell>
+                                </subviews>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SeN-xq-ctz" userLabel="Scale">
+                                <rect key="frame" x="27" y="258" width="166" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-iu-pSq">
+                                        <rect key="frame" x="30" y="-2" width="138" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="pOI-dp-j9v"/>
+                                        <connections>
+                                            <action selector="scaleSelected:" target="XT1-Ko-uUN" id="KTp-OS-lli"/>
+                                        </connections>
+                                    </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-WA-5J6">
+                                        <rect key="frame" x="18" y="23" width="49" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="K7V-tR-isF">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-g8-VZT">
+                                        <rect key="frame" x="-2" y="27" width="22" height="12"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="n00-yR-1cF">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="scaleToggled:" target="XT1-Ko-uUN" id="Pz3-vD-iC0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="X Position">
+                                <rect key="frame" x="27" y="190" width="166" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYv-rb-AXw">
+                                        <rect key="frame" x="30" y="-2" width="138" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eXG-VA-yHS"/>
+                                        <connections>
+                                            <action selector="horizontalShiftSelected:" target="XT1-Ko-uUN" id="wiC-E7-m41"/>
+                                        </connections>
+                                    </slider>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ern-Fd-nbt">
+                                        <rect key="frame" x="-2" y="25" width="22" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gYI-dl-9bx">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="horizontalToggled:" target="XT1-Ko-uUN" id="ahi-2a-PiX"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-RZ-btC">
+                                        <rect key="frame" x="18" y="23" width="85" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="X Position" id="vNW-oR-Cdq">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-7D-gxj" userLabel="Y Position">
+                                <rect key="frame" x="27" y="61" width="101" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-Sz-v41">
+                                        <rect key="frame" x="59" y="-3" width="19" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="CW9-Jm-gdf"/>
+                                        <connections>
+                                            <action selector="verticalShiftSelected:" target="XT1-Ko-uUN" id="Bih-M8-xGc"/>
+                                        </connections>
+                                    </slider>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpE-V8-cPy">
+                                        <rect key="frame" x="-2" y="101" width="22" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="G8l-sQ-KM4">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="verticalToggled:" target="XT1-Ko-uUN" id="wqK-7z-3uh"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUa-zj-oea">
+                                        <rect key="frame" x="18" y="99" width="85" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Y Position" id="UIO-qG-nBA">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-X7-Tpl" userLabel="Round">
+                                <rect key="frame" x="27" y="8" width="166" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-4u-LGL">
+                                        <rect key="frame" x="-2" y="25" width="22" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yIy-Px-QQa">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="roundToggled:" target="XT1-Ko-uUN" id="h7P-2u-r9W"/>
+                                        </connections>
+                                    </button>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-A6-484">
+                                        <rect key="frame" x="30" y="-2" width="138" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="MdW-Qi-Yec"/>
+                                        <connections>
+                                            <action selector="roundSelected:" target="XT1-Ko-uUN" id="A8W-DA-4Ot"/>
+                                        </connections>
+                                    </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-pA-UFx">
+                                        <rect key="frame" x="18" y="23" width="57" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Round" id="g6u-km-OX5">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundColor" destination="ZmA-KJ-UH6" id="2mZ-2o-qT5"/>
+                        <outlet property="backgroundToggle" destination="1jf-C6-kog" id="m3g-20-TM7"/>
+                        <outlet property="backgroundView" destination="7Tz-Nx-gK6" id="L0y-Vb-0lQ"/>
+                        <outlet property="hShiftSlider" destination="tYv-rb-AXw" id="uSb-3D-yi0"/>
+                        <outlet property="horizontalToggle" destination="ern-Fd-nbt" id="WRB-dm-J4n"/>
+                        <outlet property="horizontalView" destination="uhx-WT-CPa" id="iWA-43-uhn"/>
+                        <outlet property="prefixView" destination="WKj-Mj-vge" id="W5a-lc-kqe"/>
+                        <outlet property="roundSlider" destination="dI4-A6-484" id="ivx-my-Z13"/>
+                        <outlet property="roundToggle" destination="GeL-4u-LGL" id="N0S-NV-zPN"/>
+                        <outlet property="roundView" destination="Uf2-X7-Tpl" id="UJI-dr-2hq"/>
+                        <outlet property="scaleSlider" destination="7N2-iu-pSq" id="39F-5m-hhB"/>
+                        <outlet property="scaleToggle" destination="xsb-g8-VZT" id="eQg-B9-4ul"/>
+                        <outlet property="scaleView" destination="SeN-xq-ctz" id="Hyh-AX-NmN"/>
+                        <outlet property="vShiftSlider" destination="Wd3-Sz-v41" id="0zR-Yd-exJ"/>
+                        <outlet property="verticalToggle" destination="HpE-V8-cPy" id="1g4-IB-f5z"/>
+                        <outlet property="verticalView" destination="Tn5-7D-gxj" id="3Ec-UZ-dfc"/>
+                    </connections>
+                </viewController>
+                <customObject id="76Z-or-U2Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1945" y="914"/>
         </scene>
     </scenes>
     <resources>

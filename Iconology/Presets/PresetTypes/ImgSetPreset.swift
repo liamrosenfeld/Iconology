@@ -12,17 +12,16 @@ class ImgSetPreset: Preset {
     var name: String
     var sizes: [ImgSetSize]
     var folderName = "Icons"
-    var usePrefix: Bool
+    var useModifications = UseModifications()
     var aspect: NSSize
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {
         savePng(image, at: url, with: prefix, in: sizes)
     }
     
-    init(name: String, sizes: [ImgSetPreset.ImgSetSize], usePrefix: Bool, aspect: NSSize? = nil) {
+    init(name: String, sizes: [ImgSetPreset.ImgSetSize], aspect: NSSize? = nil) {
         self.name = name
         self.sizes = sizes
-        self.usePrefix = usePrefix
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
     }
     

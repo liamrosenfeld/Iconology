@@ -33,7 +33,7 @@ class EditPresetViewController: NSViewController {
         
         // Prep UI
         titleLabel.stringValue = "Edit \(Presets.userPresets.presets[presetSelected!].name) Preset Via Double Click"
-        switch tempSave.usePrefix {
+        switch tempSave.useModifications.prefix {
         case true:
             prefixCheckBox.state = .on
         case false:
@@ -50,9 +50,9 @@ class EditPresetViewController: NSViewController {
         // Set Prefix Bool
         switch prefixCheckBox.state {
         case .on:
-            tempSave.usePrefix = true
+            tempSave.useModifications.prefix = true
         case .off:
-            tempSave.usePrefix = false
+            tempSave.useModifications.prefix = false
         default:
             print("ERR: Wrong Button State")
         }

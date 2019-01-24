@@ -369,25 +369,8 @@ Gw
                                     <action selector="manageRows:" target="GQO-ND-OnX" id="O21-Q3-m1j"/>
                                 </connections>
                             </segmentedControl>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-Wc-wm3">
-                                <rect key="frame" x="116" y="61" width="103" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Ask for Prefix" bezelStyle="regularSquare" imagePosition="left" inset="2" id="6VR-3T-n3d">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIa-Uz-FDR">
-                                <rect key="frame" x="285" y="62" width="51" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Aspect:" id="sNk-8N-yK8">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA9-kg-9Ng">
-                                <rect key="frame" x="366" y="60" width="8" height="17"/>
+                                <rect key="frame" x="421" y="62" width="8" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title=":" id="usW-Lw-mt6">
                                     <font key="font" metaFont="system"/>
@@ -396,7 +379,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdZ-Te-LfE" userLabel="AspectW">
-                                <rect key="frame" x="342" y="55" width="26" height="22"/>
+                                <rect key="frame" x="390" y="59" width="26" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="hcy-vr-z28">
                                     <font key="font" metaFont="system"/>
@@ -408,7 +391,7 @@ Gw
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2W-t4-dYi" userLabel="AspectH">
-                                <rect key="frame" x="376" y="55" width="26" height="22"/>
+                                <rect key="frame" x="432" y="59" width="26" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="6NT-KI-q74">
                                     <font key="font" metaFont="system"/>
@@ -419,13 +402,29 @@ Gw
                                     <action selector="aspectSelected:" target="GQO-ND-OnX" id="bbX-XV-XGP"/>
                                 </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKD-Mv-fhE" userLabel="Filler Button">
+                                <rect key="frame" x="111" y="59" width="216" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" enabled="NO" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T18-LS-y0p">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIa-Uz-FDR">
+                                <rect key="frame" x="333" y="61" width="51" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Aspect:" id="sNk-8N-yK8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="aspectH" destination="z2W-t4-dYi" id="dYG-xH-7UL"/>
                         <outlet property="aspectW" destination="AdZ-Te-LfE" id="tVR-Vu-Oou"/>
                         <outlet property="manageRowsButton" destination="ZQI-S1-Eav" id="FKq-PW-AG6"/>
-                        <outlet property="prefixCheckBox" destination="RQc-Wc-wm3" id="zth-MB-0i5"/>
                         <outlet property="presetTable" destination="3gw-DB-Dpd" id="5xK-rv-PqQ"/>
                         <outlet property="titleLabel" destination="4gZ-OT-VhN" id="EaY-Eg-yXc"/>
                     </connections>
