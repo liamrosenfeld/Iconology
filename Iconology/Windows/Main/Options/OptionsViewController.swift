@@ -29,33 +29,11 @@ class OptionsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // UI Preperation
-        presetGroupSelector.removeAllItems()
-        presetSelector.removeAllItems()
+        loadPresets()
         
-        // Load Presets
-        if Presets.userPresets.presets.isEmpty {
-            print("adding example custom presets...")
-            ExamplePresets.addExamplePresets()
-        }
-        let customPresets = PresetGroup(title: "Custom", presets: Presets.userPresets.presets)
-        
-        // Combine Presets
-        presets.append(contentsOf: Presets.defaultPresets.presets)
-        presets.append(customPresets)
-        
-        // Display Presets
-        for presetGroup in presets {
-            presetGroupSelector.addItem(withTitle: presetGroup.title)
-        }
-        let selectedGroup = presetGroupSelector.indexOfSelectedItem
-        for preset in presets[selectedGroup].presets {
-            presetSelector.addItem(withTitle: preset.name)
-        }
-        prefixPreview.stringValue = ""
-        
-        // Set Reload Notification
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("PresetApply"), object: nil, queue: nil, using: presetApply)
+        // Set Reload Notifications
+        NotificationCenter.default.addObserver(forName: Notifications.preferencesApply, object: nil, queue: nil, using: reloadPresets)
+        NotificationCenter.default.addObserver(forName: Notifications.presetApply, object: nil, queue: nil, using: presetApply)
         
         // Get Image
         let image = NSImage(contentsOf: imageURL!)
@@ -89,10 +67,43 @@ class OptionsViewController: NSViewController {
         }
     }
     
+    func loadPresets() {
+        // UI Preperation
+        presetGroupSelector.removeAllItems()
+        presetSelector.removeAllItems()
+        
+        // Load Presets
+        if Storage.userPresets.presets.isEmpty {
+            print("adding example custom presets...")
+            ExamplePresets.addExamplePresets()
+        }
+        let customPresets = PresetGroup(title: "Custom", presets: Storage.userPresets.presets)
+        
+        // Combine Presets
+        presets.append(contentsOf: Storage.defaultPresets.presets)
+        presets.append(customPresets)
+        
+        // Display Presets
+        for presetGroup in presets {
+            presetGroupSelector.addItem(withTitle: presetGroup.title)
+        }
+        let selectedGroup = presetGroupSelector.indexOfSelectedItem
+        for preset in presets[selectedGroup].presets {
+            presetSelector.addItem(withTitle: preset.name)
+        }
+        prefixPreview.stringValue = ""
+    }
+    
+    func reloadPresets(_ notification: Notification) {
+        presets.removeAll()
+        loadPresets()
+        presetApply(notification)
+    }
+    
     func presetApply(_ notification: Notification) {
         // Reload Custom Presets
         let customGroupIndex = self.presetGroupSelector.indexOfItem(withTitle: "Custom")
-        self.presets[customGroupIndex].presets = Presets.userPresets.presets
+        self.presets[customGroupIndex].presets = Storage.userPresets.presets
         
         // Update UI
         let currentGroupIndex = self.presetGroupSelector.indexOfSelectedItem
@@ -168,6 +179,10 @@ class OptionsViewController: NSViewController {
         preset.save(imageToConvert, at: saveDirectory, with: prefixTextBox.stringValue)
         
         Alerts.success(title: "Saved!", text: "Image Was Saved With The Preset \(preset.name)")
+        
+        if Storage.preferences.openFolder {
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: saveDirectory.path)
+        }
     }
    
     @IBAction func back(_ sender: Any) {

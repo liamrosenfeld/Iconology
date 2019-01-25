@@ -53,8 +53,8 @@ extension HomeViewController: DragViewDelegate {
     }
     
     func dragViewMouseExited(){
-        self.descriptionLabel.stringValue = "Drag and Drop an image file here"
-        self.subText.stringValue = "(Input a high-res photo of the same aspect ratio)"
+        self.descriptionLabel.stringValue = "Drag and Drop an Image File Here"
+        self.subText.stringValue = "(Input a High-Resolution Image)"
     }
     
     func dragView(didDragFileWith url: URL) {

@@ -1,5 +1,5 @@
 //
-//  PresetStorage.swift
+//  Storage.swift
 //  Iconology
 //
 //  Created by Liam on 1/21/19.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-final class Presets {
+final class Storage {
     static var userPresets = UserPresets()
     static var defaultPresets = DefaultPresets()
+    static var preferences = Preferences()
 }

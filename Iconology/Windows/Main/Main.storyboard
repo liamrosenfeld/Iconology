@@ -163,7 +163,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-gH-9bI" userLabel="Description">
                                 <rect key="frame" x="391" y="246" width="240" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Drag and Drop an image file here" id="m4o-5g-Eg5" userLabel="Drag and Drop a .png image file here">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Drag and Drop an Image File Here" id="m4o-5g-Eg5" userLabel="Drag and Drop a .png image file here">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -172,7 +172,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3M-1A-3zn" userLabel="Sub-Text">
                                 <rect key="frame" x="313" y="221" width="397" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Input a high-res photo of the same aspect ratio)" id="Ugq-SZ-O2r" userLabel="(Input a high-res photo of the same aspect ratio)">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Input a High-Resolution Image)" id="Ugq-SZ-O2r" userLabel="(Input a high-res photo of the same aspect ratio)">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -271,7 +271,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-C1-ZlC" userLabel="Group Label">
                                         <rect key="frame" x="30" y="178" width="114" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Group" id="VdE-tK-6Sc">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Group" id="VdE-tK-6Sc">
                                             <font key="font" metaFont="system" size="18"/>
                                             <color key="textColor" name="LabelColor"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -345,8 +345,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DottedLine-Vertical" id="BtV-qK-wr0"/>
                             </imageView>
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wft-VB-ai5">
+                                <rect key="frame" x="784" y="184" width="220" height="400"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <connections>
+                                    <segue destination="XT1-Ko-uUN" kind="embed" identifier="imageOptionsChildSegue" id="Foz-u9-HCf"/>
+                                </connections>
+                            </containerView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKj-Mj-vge" userLabel="Prefix">
-                                <rect key="frame" x="804" y="124" width="180" height="92"/>
+                                <rect key="frame" x="784" y="81" width="180" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
@@ -381,13 +388,15 @@
                                     </textField>
                                 </subviews>
                             </customView>
-                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wft-VB-ai5">
-                                <rect key="frame" x="784" y="227" width="220" height="400"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgf-3o-S1L" userLabel="Image Adjustments Title">
+                                <rect key="frame" x="782" y="592" width="212" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <connections>
-                                    <segue destination="XT1-Ko-uUN" kind="embed" identifier="imageOptionsChildSegue" id="Foz-u9-HCf"/>
-                                </connections>
-                            </containerView>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Image Adjustments" id="3pj-b3-bfd">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
