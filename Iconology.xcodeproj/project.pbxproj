@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C05610D21D1EB93005E5D4A /* NSImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C05610C21D1EB93005E5D4A /* NSImage+Resize.swift */; };
+		0C3C44F521FA70390067508C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C44F421FA70390067508C /* Preferences.swift */; };
+		0C3C44F721FAC4420067508C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C44F621FAC4420067508C /* Notifications.swift */; };
 		0C7B55BE21D40B22009FE959 /* NSImageView+AddImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */; };
 		0C8D9E3921CD73E500520AC8 /* UserPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3821CD73E500520AC8 /* UserPresets.swift */; };
 		0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */; };
@@ -18,7 +20,7 @@
 		0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */; };
 		0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */; };
 		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
-		0CC44E4521F59C33009E963D /* PresetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* PresetStorage.swift */; };
+		0CC44E4521F59C33009E963D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* Storage.swift */; };
 		0CC44E4721F66891009E963D /* NSImage+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4621F66891009E963D /* NSImage+Round.swift */; };
 		0CC44E4C21F690ED009E963D /* ImageOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */; };
 		0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Num+Clean.swift */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		0C05610C21D1EB93005E5D4A /* NSImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Resize.swift"; sourceTree = "<group>"; };
+		0C3C44F421FA70390067508C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		0C3C44F621FAC4420067508C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+AddImage.swift"; sourceTree = "<group>"; };
 		0C8D9E3821CD73E500520AC8 /* UserPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresets.swift; sourceTree = "<group>"; };
 		0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
@@ -62,7 +66,7 @@
 		0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreset.swift; sourceTree = "<group>"; };
 		0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PNG.swift"; sourceTree = "<group>"; };
 		0C8D9E9621CF169900520AC8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
-		0CC44E4421F59C33009E963D /* PresetStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetStorage.swift; sourceTree = "<group>"; };
+		0CC44E4421F59C33009E963D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0CC44E4621F66891009E963D /* NSImage+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Round.swift"; sourceTree = "<group>"; };
 		0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOptionsViewController.swift; sourceTree = "<group>"; };
 		0CC9E7E621CF434600E37482 /* Num+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Num+Clean.swift"; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			children = (
 				0CD58C5C21F2D19D006CDC79 /* ImageEditing */,
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
+				0C3C44F621FAC4420067508C /* Notifications.swift */,
 				0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */,
 			);
 			path = Options;
@@ -246,6 +251,7 @@
 				0CE8558221D6E9B800F22403 /* Preferences.storyboard */,
 				0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */,
 				0CE8558621D6F81800F22403 /* PreferencesViewController.swift */,
+				0C3C44F421FA70390067508C /* Preferences.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 		0CE8558C21D7121700F22403 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0CC44E4421F59C33009E963D /* Storage.swift */,
 				0CE8558A21D7111300F22403 /* Alerts.swift */,
 				0C8D9E9621CF169900520AC8 /* FileHandler.swift */,
 				0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */,
@@ -263,7 +270,6 @@
 		0CF5BC2D20E32D0B00F2A57C /* Presets */ = {
 			isa = PBXGroup;
 			children = (
-				0CC44E4421F59C33009E963D /* PresetStorage.swift */,
 				0C8D9E3621CD73B500520AC8 /* Default */,
 				0C8D9E3721CD73C000520AC8 /* Custom */,
 				0C8D9E4021CD984900520AC8 /* PresetTypes */,
@@ -396,6 +402,7 @@
 				0CE8558921D6FDAA00F22403 /* PresetsWindowController.swift in Sources */,
 				0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */,
 				ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */,
+				0C3C44F521FA70390067508C /* Preferences.swift in Sources */,
 				0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */,
 				0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */,
 				0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */,
@@ -403,6 +410,7 @@
 				0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */,
 				AD1270092023D1510068531A /* HomeViewController.swift in Sources */,
 				ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */,
+				0C3C44F721FAC4420067508C /* Notifications.swift in Sources */,
 				0CE8558E21D858DC00F22403 /* AllowedFileTypes.swift in Sources */,
 				AD1270382024050C0068531A /* OptionsViewController.swift in Sources */,
 				AD1270072023D1510068531A /* AppDelegate.swift in Sources */,
@@ -415,7 +423,7 @@
 				0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */,
 				0CE8558721D6F81800F22403 /* PreferencesViewController.swift in Sources */,
 				ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */,
-				0CC44E4521F59C33009E963D /* PresetStorage.swift in Sources */,
+				0CC44E4521F59C33009E963D /* Storage.swift in Sources */,
 				0C7B55BE21D40B22009FE959 /* NSImageView+AddImage.swift in Sources */,
 				0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */,
 				0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */,

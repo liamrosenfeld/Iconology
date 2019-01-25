@@ -25,14 +25,14 @@ class EditPresetViewController: NSViewController {
         super.viewDidLoad()
         
         // Set Vars
-        tempSave = Presets.userPresets.presets[presetSelected!]
+        tempSave = Storage.userPresets.presets[presetSelected!]
         
         // Add Delegates
         presetTable.delegate = self
         presetTable.dataSource = self
         
         // Prep UI
-        titleLabel.stringValue = "Edit \(Presets.userPresets.presets[presetSelected!].name) Preset Via Double Click"
+        titleLabel.stringValue = "Edit \(Storage.userPresets.presets[presetSelected!].name) Preset Via Double Click"
         switch tempSave.useModifications.prefix {
         case true:
             prefixCheckBox.state = .on
@@ -58,12 +58,12 @@ class EditPresetViewController: NSViewController {
         }
         
         // Save Presets
-        Presets.userPresets.presets[presetSelected!] = tempSave
-        print(Presets.userPresets.presets[presetSelected!])
-        Presets.userPresets.savePresets()
+        Storage.userPresets.presets[presetSelected!] = tempSave
+        print(Storage.userPresets.presets[presetSelected!])
+        Storage.userPresets.savePresets()
         
         // Notify Home
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PresetApply"), object: nil)
+        NotificationCenter.default.post(name: Notifications.presetApply, object: nil)
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -203,7 +203,7 @@ class EditPresetViewController: NSViewController {
 extension EditPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        return Presets.userPresets.presets[presetSelected!].sizes.count
+        return Storage.userPresets.presets[presetSelected!].sizes.count
     }
     
 }

@@ -23,6 +23,7 @@ I got tired of manually exporting every icon size, so I made a app to do it.
   - Scale
   - Horizontal and Vertical Shift
   - Non-Stretching Aspect Ratio Editor
+  - Rounding
 - Lightweight
 - Simple to Use UI
 - Supports
