@@ -27,8 +27,28 @@ class OptionsViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addImageFrom(imageURL)
+        getImages()
+        imageToConvert = origImage
         addChildren()
+    }
+    
+    func getImages() {
+        guard let url = imageURL else {
+            Alerts.warningPopup(title: "Image Not Selected", text: "No Image Was Selected")
+            print("ERR: URL is Nil")
+            segue(to: "DragVC")
+            return
+        }
+        
+        do {
+            origImage = try url.toImage()
+        } catch URL.ImageError.imageNotFound {
+            Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
+            print("ERR: File Could No Longer Be Found")
+            segue(to: "DragVC")
+        } catch {
+            print("Unexpected error: \(error).")
+        }
     }
     
     func addChildren() {
@@ -54,7 +74,7 @@ class OptionsViewController: NSViewController {
         var preset: Preset!
         do {
             try preset = presetsVC.getSelectedPreset()
-        } catch let error {
+        } catch {
             print("ERR: \(error)")
             Alerts.warningPopup(title: "Invalid Preset", text: "Please Select a Preset")
             return
@@ -81,47 +101,6 @@ class OptionsViewController: NSViewController {
         segue(to: "DragVC")
     }
     
-    // MARK: - Image Stuff
-    func addImageFrom( _ url: URL?) {
-        // Retrieve From URL
-        guard let url = imageURL else {
-            Alerts.warningPopup(title: "Image Not Selected", text: "No Image Was Selected")
-            print("ERR: URL is Nil")
-            return
-        }
-        guard let image = NSImage(contentsOf: url) else {
-            Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
-            print("ERR: File Could No Longer Be Found")
-            return
-        }
-        
-        // Add Image
-        imageToConvert = image
-        origImage = image
-        addImage(image)
-    }
-    
-    func addImage(_ image: NSImage) {
-        imageView.resize(to: imageToConvert)
-        imageView.addImage(imageToConvert)
-        alignAspectLabel()
-    }
-    
-    func setAspect(_ aspect: NSSize) {
-        imageOptionsVC.mods.aspect = aspect
-        aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
-        imageToConvert = imageOptionsVC.mods.apply(on: origImage)
-        addImage(imageToConvert)
-    }
-    
-    func alignAspectLabel() {
-        let x = imageView.frame.origin.x
-        let y = imageView.frame.size.height + imageView.frame.origin.y
-        let origin = NSPoint(x: x, y: y)
-        let rect = NSRect(origin: origin, size: aspectRatioLabel.frame.size)
-        aspectRatioLabel.frame = rect
-    }
-    
 }
 
 extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
@@ -137,5 +116,26 @@ extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
         }
         imageOptionsVC.setMods(from: preset)
         setAspect(preset.aspect)
+        setNewImage(imageToConvert)
+    }
+    
+    func setNewImage(_ image: NSImage) {
+        imageView.resize(to: imageToConvert)
+        imageView.addImage(imageToConvert)
+        alignAspectLabel()
+    }
+    
+    func alignAspectLabel() {
+        let x = imageView.frame.origin.x
+        let y = imageView.frame.size.height + imageView.frame.origin.y
+        let origin = NSPoint(x: x, y: y)
+        let rect = NSRect(origin: origin, size: aspectRatioLabel.frame.size)
+        aspectRatioLabel.frame = rect
+    }
+    
+    func setAspect(_ aspect: NSSize) {
+        imageOptionsVC.mods.aspect = aspect
+        aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
+        imageToConvert = imageOptionsVC.mods.apply(on: origImage)
     }
 }

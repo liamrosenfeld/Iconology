@@ -16,7 +16,6 @@ class EditPresetViewController: NSViewController {
     
     @IBOutlet weak var presetTable: NSTableView!
     @IBOutlet weak var titleLabel: NSTextFieldCell!
-    @IBOutlet weak var prefixCheckBox: NSButton!
     @IBOutlet weak var manageRowsButton: NSSegmentedControl!
     @IBOutlet weak var aspectW: NSTextField!
     @IBOutlet weak var aspectH: NSTextField!
@@ -33,12 +32,6 @@ class EditPresetViewController: NSViewController {
         
         // Prep UI
         titleLabel.stringValue = "Edit \(Storage.userPresets.presets[presetSelected!].name) Preset Via Double Click"
-        switch tempSave.useModifications.prefix {
-        case true:
-            prefixCheckBox.state = .on
-        case false:
-            prefixCheckBox.state = .off
-        }
         aspectW.stringValue = tempSave.aspect.width.clean
         aspectH.stringValue = tempSave.aspect.height.clean
     }
@@ -46,16 +39,6 @@ class EditPresetViewController: NSViewController {
     // MARK: - Actions
     @IBAction func apply(_ sender: Any) {
         forceSaveText()
-        
-        // Set Prefix Bool
-        switch prefixCheckBox.state {
-        case .on:
-            tempSave.useModifications.prefix = true
-        case .off:
-            tempSave.useModifications.prefix = false
-        default:
-            print("ERR: Wrong Button State")
-        }
         
         // Save Presets
         Storage.userPresets.presets[presetSelected!] = tempSave
