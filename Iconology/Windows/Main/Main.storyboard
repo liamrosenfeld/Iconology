@@ -223,17 +223,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
-                                <rect key="frame" x="921" y="13" width="89" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Convert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w0k-0Z-8mk">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
-                                </connections>
-                            </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-vB-mSk">
                                 <rect key="frame" x="260" y="130" width="500" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -250,11 +239,6 @@
                                     <action selector="back:" target="qum-VO-ymn" id="OP0-Ph-3Jc"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fj-K2-jxf" userLabel="Logo">
-                                <rect key="frame" x="648" y="654" width="307" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Long" id="K6g-bN-lzX"/>
-                            </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czV-JQ-KJ2">
                                 <rect key="frame" x="270" y="635" width="131" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -269,51 +253,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DottedLine-Vertical" id="BtV-qK-wr0"/>
                             </imageView>
-                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wft-VB-ai5">
-                                <rect key="frame" x="784" y="184" width="220" height="400"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <connections>
-                                    <segue destination="XT1-Ko-uUN" kind="embed" identifier="imageOptionsChildSegue" id="Foz-u9-HCf"/>
-                                </connections>
-                            </containerView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKj-Mj-vge" userLabel="Prefix">
-                                <rect key="frame" x="784" y="81" width="180" height="92"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
-                                        <rect key="frame" x="32" y="40" width="137" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cz4-if-umZ">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <connections>
-                                            <action selector="prefixTextEdited:" target="qum-VO-ymn" id="UIb-fp-Xwg"/>
-                                        </connections>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrf-CX-EIQ">
-                                        <rect key="frame" x="18" y="70" width="51" height="22"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Prefix" id="ibE-LF-TjO">
-                                            <font key="font" metaFont="system" size="18"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-2t-7Fb">
-                                        <rect key="frame" x="30" y="20" width="142" height="17"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="prefixroot.type" id="S6G-z1-8I5">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                            </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgf-3o-S1L" userLabel="Image Adjustments Title">
-                                <rect key="frame" x="782" y="592" width="212" height="40"/>
+                                <rect key="frame" x="788" y="607" width="212" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Image Adjustments" id="3pj-b3-bfd">
                                     <font key="font" metaFont="system" size="25"/>
@@ -333,18 +274,29 @@
                             <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bB7-cE-fPP">
                                 <rect key="frame" x="8" y="359" width="215" height="225"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <connections>
-                                    <segue destination="UKa-I6-q2M" kind="embed" identifier="presetsChildSegue" id="pJO-yI-LBO"/>
-                                </connections>
                             </containerView>
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wft-VB-ai5">
+                                <rect key="frame" x="790" y="111" width="220" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </containerView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
+                                <rect key="frame" x="872" y="13" width="132" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Generate Icons" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w0k-0Z-8mk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="convert:" target="qum-VO-ymn" id="DaY-Ud-jO5"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="aspectRatioLabel" destination="czV-JQ-KJ2" id="c4y-ho-7B6"/>
+                        <outlet property="imageVCContainer" destination="wft-VB-ai5" id="h8A-vd-Ith"/>
                         <outlet property="imageView" destination="dPF-vB-mSk" id="xzs-6o-cLg"/>
-                        <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="Gws-w3-4sn"/>
-                        <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="mZ5-7B-o7h"/>
-                        <outlet property="prefixView" destination="WKj-Mj-vge" id="alv-yf-jtN"/>
+                        <outlet property="presetVCContainer" destination="bB7-cE-fPP" id="6fW-TE-2pF"/>
                     </connections>
                 </viewController>
                 <customObject id="0DN-fa-hGa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -354,7 +306,7 @@
         <!--Presets View Controller-->
         <scene sceneID="8BB-0x-xlC">
             <objects>
-                <viewController id="UKa-I6-q2M" customClass="PresetsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PresetsVC" id="UKa-I6-q2M" customClass="PresetsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="a3D-yN-2KX">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="225"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -429,18 +381,18 @@
                 </viewController>
                 <customObject id="Itq-Ej-rns" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="827"/>
+            <point key="canvasLocation" x="857" y="829"/>
         </scene>
         <!--Image Options View Controller-->
         <scene sceneID="Skb-r6-Bk3">
             <objects>
-                <viewController id="XT1-Ko-uUN" customClass="ImageOptionsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageOptionsVC" id="XT1-Ko-uUN" customClass="ImageOptionsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Vys-8j-bDM">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Tz-Nx-gK6" userLabel="Background Color">
-                                <rect key="frame" x="27" y="328" width="166" height="53"/>
+                                <rect key="frame" x="27" y="433" width="166" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
@@ -474,7 +426,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SeN-xq-ctz" userLabel="Scale">
-                                <rect key="frame" x="27" y="258" width="166" height="45"/>
+                                <rect key="frame" x="27" y="363" width="166" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-iu-pSq">
@@ -508,7 +460,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="X Position">
-                                <rect key="frame" x="27" y="190" width="166" height="45"/>
+                                <rect key="frame" x="27" y="295" width="166" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYv-rb-AXw">
@@ -542,7 +494,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-7D-gxj" userLabel="Y Position">
-                                <rect key="frame" x="27" y="61" width="101" height="121"/>
+                                <rect key="frame" x="27" y="166" width="101" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-Sz-v41">
@@ -576,7 +528,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-X7-Tpl" userLabel="Round">
-                                <rect key="frame" x="27" y="8" width="166" height="45"/>
+                                <rect key="frame" x="27" y="113" width="166" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-4u-LGL">
@@ -609,6 +561,42 @@
                                     </textField>
                                 </subviews>
                             </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKj-Mj-vge" userLabel="Prefix">
+                                <rect key="frame" x="27" y="13" width="180" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
+                                        <rect key="frame" x="32" y="40" width="137" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cz4-if-umZ">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <action selector="prefixTextEdited:" target="XT1-Ko-uUN" id="Vhj-iI-1eB"/>
+                                        </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrf-CX-EIQ">
+                                        <rect key="frame" x="18" y="70" width="51" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Prefix" id="ibE-LF-TjO">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-2t-7Fb">
+                                        <rect key="frame" x="30" y="20" width="142" height="17"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="prefixroot.type" id="S6G-z1-8I5">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
                         </subviews>
                     </view>
                     <connections>
@@ -618,6 +606,8 @@
                         <outlet property="hShiftSlider" destination="tYv-rb-AXw" id="uSb-3D-yi0"/>
                         <outlet property="horizontalToggle" destination="ern-Fd-nbt" id="WRB-dm-J4n"/>
                         <outlet property="horizontalView" destination="uhx-WT-CPa" id="iWA-43-uhn"/>
+                        <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="mOA-WK-LyJ"/>
+                        <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="yPB-LY-6jI"/>
                         <outlet property="prefixView" destination="WKj-Mj-vge" id="W5a-lc-kqe"/>
                         <outlet property="roundSlider" destination="dI4-A6-484" id="ivx-my-Z13"/>
                         <outlet property="roundToggle" destination="GeL-4u-LGL" id="N0S-NV-zPN"/>
@@ -632,7 +622,7 @@
                 </viewController>
                 <customObject id="76Z-or-U2Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="914"/>
+            <point key="canvasLocation" x="2133" y="941"/>
         </scene>
     </scenes>
     <resources>

@@ -11,50 +11,34 @@ import Cocoa
 class OptionsViewController: NSViewController {
     
     // MARK: - Setup
-    @IBOutlet weak var prefixView: NSView!
-    @IBOutlet weak var prefixTextBox: NSTextField!
-    @IBOutlet weak var prefixPreview: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var aspectRatioLabel: NSTextField!
+    
+    @IBOutlet weak var imageVCContainer: NSView!
+    @IBOutlet weak var presetVCContainer: NSView!
+    
     
     var imageOptionsVC: ImageOptionsViewController!
     var presetsVC: PresetsViewController!
     
     var imageURL: URL?
-    
     var origImage: NSImage!
     var imageToConvert: NSImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Get Image
-        let image = NSImage(contentsOf: imageURL!)
-        if image != nil {
-            imageToConvert = image!
-            origImage = image!
-        } else {
-            Alerts.warningPopup(title: "Image Not Found", text: "'\(imageURL?.path ?? "File")' No Longer Exists'")
-            print("ERR: File Could No Longer Be Found")
-            return
-        }
-        
-        // Display Image
-        imageView.resize(to: imageToConvert)
-        imageView.addImage(imageToConvert)
-        alignAspectLabel()
-        
-        prefixPreview.stringValue = ""
+        addImageFrom(imageURL)
+        addChildren()
     }
     
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.identifier == "imageOptionsChildSegue" {
-            imageOptionsVC = segue.destinationController as? ImageOptionsViewController
-            imageOptionsVC.delegate = self
-        } else if segue.identifier == "presetsChildSegue" {
-            presetsVC = segue.destinationController as? PresetsViewController
-            presetsVC.delegate = self
-        }
+    func addChildren() {
+        imageOptionsVC = self.storyboard?.instantiateController(withIdentifier: "ImageOptionsVC") as? ImageOptionsViewController
+        imageOptionsVC.delegate = self
+        addChildVC(imageOptionsVC, to: imageVCContainer)
+        
+        presetsVC = self.storyboard?.instantiateController(withIdentifier: "PresetsVC") as? PresetsViewController
+        presetsVC.delegate = self
+        addChildVC(presetsVC, to: presetVCContainer)
     }
     
     func segue(to: String) {
@@ -66,11 +50,6 @@ class OptionsViewController: NSViewController {
     
     
     // MARK: - Actions
-    @IBAction func prefixTextEdited(_ sender: Any) {
-        let prefix = prefixTextBox.stringValue
-        prefixPreview.stringValue = "Ex: \(prefix)root.type"
-    }
-    
     @IBAction func convert(_ sender: Any) {
         var preset: Preset!
         do {
@@ -89,7 +68,7 @@ class OptionsViewController: NSViewController {
         FileHandler.createFolder(directory: saveDirectory)
         
         // Save
-        preset.save(imageToConvert, at: saveDirectory, with: prefixTextBox.stringValue)
+        preset.save(imageToConvert, at: saveDirectory, with: imageOptionsVC.prefix)
         
         Alerts.success(title: "Saved!", text: "Image Was Saved With The Preset \(preset.name)")
         
@@ -102,13 +81,37 @@ class OptionsViewController: NSViewController {
         segue(to: "DragVC")
     }
     
+    // MARK: - Image Stuff
+    func addImageFrom( _ url: URL?) {
+        // Retrieve From URL
+        guard let url = imageURL else {
+            Alerts.warningPopup(title: "Image Not Selected", text: "No Image Was Selected")
+            print("ERR: URL is Nil")
+            return
+        }
+        guard let image = NSImage(contentsOf: url) else {
+            Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
+            print("ERR: File Could No Longer Be Found")
+            return
+        }
+        
+        // Add Image
+        imageToConvert = image
+        origImage = image
+        addImage(image)
+    }
+    
+    func addImage(_ image: NSImage) {
+        imageView.resize(to: imageToConvert)
+        imageView.addImage(imageToConvert)
+        alignAspectLabel()
+    }
+    
     func setAspect(_ aspect: NSSize) {
         imageOptionsVC.mods.aspect = aspect
         aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
         imageToConvert = imageOptionsVC.mods.apply(on: origImage)
-        imageView.resize(to: imageToConvert)
-        imageView.addImage(imageToConvert)
-        alignAspectLabel()
+        addImage(imageToConvert)
     }
     
     func alignAspectLabel() {
@@ -128,8 +131,11 @@ extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
     }
     
     func presetsSelected(_ preset: Preset) {
+        guard let imageOptionsVC = imageOptionsVC else {
+            print("ERR: ImageOptionsVC Not Loaded")
+            return
+        }
         imageOptionsVC.setMods(from: preset)
-        prefixView.isHidden = !preset.useModifications.prefix
         setAspect(preset.aspect)
     }
 }

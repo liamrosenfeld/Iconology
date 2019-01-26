@@ -24,6 +24,7 @@ class PresetsViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _ = self.view // Load View Hierarchy
         loadPresets()
         setNotifications()
         selectedPreset(self)
