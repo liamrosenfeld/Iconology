@@ -11,8 +11,6 @@ import Cocoa
 class OptionsViewController: NSViewController {
     
     // MARK: - Setup
-    @IBOutlet weak var presetSelector: NSPopUpButton!
-    @IBOutlet weak var presetGroupSelector: NSPopUpButton!
     @IBOutlet weak var prefixView: NSView!
     @IBOutlet weak var prefixTextBox: NSTextField!
     @IBOutlet weak var prefixPreview: NSTextField!
@@ -20,20 +18,15 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var aspectRatioLabel: NSTextField!
     
     var imageOptionsVC: ImageOptionsViewController!
+    var presetsVC: PresetsViewController!
     
     var imageURL: URL?
-    var presets = [PresetGroup]()
+    
     var origImage: NSImage!
     var imageToConvert: NSImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadPresets()
-        
-        // Set Reload Notifications
-        NotificationCenter.default.addObserver(forName: Notifications.preferencesApply, object: nil, queue: nil, using: reloadPresets)
-        NotificationCenter.default.addObserver(forName: Notifications.presetApply, object: nil, queue: nil, using: presetApply)
         
         // Get Image
         let image = NSImage(contentsOf: imageURL!)
@@ -50,13 +43,17 @@ class OptionsViewController: NSViewController {
         imageView.resize(to: imageToConvert)
         imageView.addImage(imageToConvert)
         alignAspectLabel()
+        
+        prefixPreview.stringValue = ""
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "imageOptionsChildSegue" {
             imageOptionsVC = segue.destinationController as? ImageOptionsViewController
             imageOptionsVC.delegate = self
-            selectedPreset(self)
+        } else if segue.identifier == "presetsChildSegue" {
+            presetsVC = segue.destinationController as? PresetsViewController
+            presetsVC.delegate = self
         }
     }
     
@@ -67,106 +64,22 @@ class OptionsViewController: NSViewController {
         }
     }
     
-    func loadPresets() {
-        // UI Preperation
-        presetGroupSelector.removeAllItems()
-        presetSelector.removeAllItems()
-        
-        // Load Presets
-        if Storage.userPresets.presets.isEmpty {
-            print("adding example custom presets...")
-            ExamplePresets.addExamplePresets()
-        }
-        let customPresets = PresetGroup(title: "Custom", presets: Storage.userPresets.presets)
-        
-        // Combine Presets
-        presets.append(contentsOf: Storage.defaultPresets.presets)
-        presets.append(customPresets)
-        
-        // Display Presets
-        for presetGroup in presets {
-            presetGroupSelector.addItem(withTitle: presetGroup.title)
-        }
-        let selectedGroup = presetGroupSelector.indexOfSelectedItem
-        for preset in presets[selectedGroup].presets {
-            presetSelector.addItem(withTitle: preset.name)
-        }
-        prefixPreview.stringValue = ""
-    }
-    
-    func reloadPresets(_ notification: Notification) {
-        presets.removeAll()
-        loadPresets()
-        presetApply(notification)
-    }
-    
-    func presetApply(_ notification: Notification) {
-        // Reload Custom Presets
-        let customGroupIndex = self.presetGroupSelector.indexOfItem(withTitle: "Custom")
-        self.presets[customGroupIndex].presets = Storage.userPresets.presets
-        
-        // Update UI
-        let currentGroupIndex = self.presetGroupSelector.indexOfSelectedItem
-        if currentGroupIndex == customGroupIndex {
-            self.presetSelector.removeAllItems()
-            let group = self.presets[customGroupIndex]
-            for preset in group.presets {
-                self.presetSelector.addItem(withTitle: preset.name)
-            }
-            self.selectedPreset(self)
-        }
-    }
     
     // MARK: - Actions
-    @IBAction func selectedPresetGroup(_ sender: Any) {
-        presetSelector.removeAllItems()
-        let selectedGroup = presetGroupSelector.indexOfSelectedItem
-        for preset in presets[selectedGroup].presets {
-            presetSelector.addItem(withTitle: preset.name)
-        }
-        selectedPreset(self)
-    }
-    
-    @IBAction func selectedPreset(_ sender: Any) {
-        let selectedGroup = presetGroupSelector.indexOfSelectedItem
-        let selectedPreset = presetSelector.indexOfSelectedItem
-        
-        if selectedPreset != -1 {
-            let preset = presets[selectedGroup].presets[selectedPreset]
-            imageOptionsVC.setMods(from: preset)
-            prefixView.isHidden = !preset.useModifications.prefix
-            setAspect(preset.aspect)
-        } else {
-            // TODO: Handle Error
-        }
-    }
-    
     @IBAction func prefixTextEdited(_ sender: Any) {
-        let group = presets[presetGroupSelector.indexOfSelectedItem]
-        // TODO: Update On Type
-        if presetSelector.indexOfSelectedItem < group.presets.count && presetSelector.indexOfSelectedItem != -1 {
-            // TODO: Get Example Of Root File Name
-            let root = "root"
-            let prefix = prefixTextBox.stringValue
-            prefixPreview.stringValue = "Ex: \(prefix)\(root).type"
-        } else {
-            let prefix = prefixTextBox.stringValue
-            prefixPreview.stringValue = "Ex: \(prefix)root.type"
-        }
+        let prefix = prefixTextBox.stringValue
+        prefixPreview.stringValue = "Ex: \(prefix)root.type"
     }
     
     @IBAction func convert(_ sender: Any) {
-        // Check User Options
-        let selectedPreset = presetSelector.indexOfSelectedItem
-        if selectedPreset == -1 {
+        var preset: Preset!
+        do {
+            try preset = presetsVC.getSelectedPreset()
+        } catch let error {
+            print("ERR: \(error)")
             Alerts.warningPopup(title: "Invalid Preset", text: "Please Select a Preset")
-            print("ERR: Invalid Preset")
             return
         }
-        
-        // Convert and Save
-        let group = presets[presetGroupSelector.indexOfSelectedItem]
-        let preset = group.presets[presetSelector.indexOfSelectedItem]
         
         // Where to Save
         let folder = FileHandler.selectFolder()
@@ -189,11 +102,6 @@ class OptionsViewController: NSViewController {
         segue(to: "DragVC")
     }
     
-    @IBAction func editCustomPresets(_ sender: Any) {
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.editCustomPresets(self)
-    }
-    
     func setAspect(_ aspect: NSSize) {
         imageOptionsVC.mods.aspect = aspect
         aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
@@ -213,9 +121,15 @@ class OptionsViewController: NSViewController {
     
 }
 
-extension OptionsViewController: ImageOptionsDelegate {
+extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
     func modsChanged(_ mods: ImageModifications) {
         imageToConvert = mods.apply(on: origImage)
         imageView.addImage(imageToConvert)
+    }
+    
+    func presetsSelected(_ preset: Preset) {
+        imageOptionsVC.setMods(from: preset)
+        prefixView.isHidden = !preset.useModifications.prefix
+        setAspect(preset.aspect)
     }
 }
