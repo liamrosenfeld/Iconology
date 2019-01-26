@@ -255,82 +255,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Long" id="K6g-bN-lzX"/>
                             </imageView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-HE-QHc" userLabel="Preset Selection">
-                                <rect key="frame" x="4" y="405" width="215" height="274"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMB-CB-HgR" userLabel="Preset Selection Label">
-                                        <rect key="frame" x="18" y="214" width="179" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Selection" id="1Sb-kT-HX5">
-                                            <font key="font" metaFont="system" size="25"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-C1-ZlC" userLabel="Group Label">
-                                        <rect key="frame" x="30" y="178" width="114" height="28"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Group" id="VdE-tK-6Sc">
-                                            <font key="font" metaFont="system" size="18"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D9e-db-h9i" userLabel="Group Selector">
-                                        <rect key="frame" x="42" y="146" width="156" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="push" title="Group" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fjl-Oa-D3I" id="LUV-cs-74S">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="fI2-Pc-uoy">
-                                                <items>
-                                                    <menuItem title="Group" state="on" id="Fjl-Oa-D3I"/>
-                                                </items>
-                                            </menu>
-                                        </popUpButtonCell>
-                                        <connections>
-                                            <action selector="selectedPresetGroup:" target="qum-VO-ymn" id="U67-P5-hIz"/>
-                                        </connections>
-                                    </popUpButton>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ec-59-VEr" userLabel="Preset Label">
-                                        <rect key="frame" x="30" y="108" width="114" height="28"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Preset" id="hEJ-XZ-EHb">
-                                            <font key="font" metaFont="system" size="18"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-aF-gp0">
-                                        <rect key="frame" x="42" y="76" width="156" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="push" title="Preset" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="LvA-TZ-jSq">
-                                                <items>
-                                                    <menuItem title="Preset" state="on" id="hn9-51-PY6"/>
-                                                </items>
-                                            </menu>
-                                        </popUpButtonCell>
-                                        <connections>
-                                            <action selector="selectedPreset:" target="qum-VO-ymn" id="E3t-VB-mDC"/>
-                                        </connections>
-                                    </popUpButton>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ" userLabel="Edit Custom Presets Button">
-                                        <rect key="frame" x="26" y="13" width="163" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Edit Custom Presets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="editCustomPresets:" target="qum-VO-ymn" id="nKU-qf-4jv"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czV-JQ-KJ2">
                                 <rect key="frame" x="270" y="635" width="131" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -397,6 +321,22 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMB-CB-HgR" userLabel="Preset Selection Label">
+                                <rect key="frame" x="26" y="578" width="179" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Selection" id="1Sb-kT-HX5">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bB7-cE-fPP">
+                                <rect key="frame" x="8" y="359" width="215" height="225"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <connections>
+                                    <segue destination="UKa-I6-q2M" kind="embed" identifier="presetsChildSegue" id="pJO-yI-LBO"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                     </view>
                     <connections>
@@ -405,13 +345,91 @@
                         <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="Gws-w3-4sn"/>
                         <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="mZ5-7B-o7h"/>
                         <outlet property="prefixView" destination="WKj-Mj-vge" id="alv-yf-jtN"/>
-                        <outlet property="presetGroupSelector" destination="D9e-db-h9i" id="DXN-I2-1Nt"/>
-                        <outlet property="presetSelector" destination="YUM-aF-gp0" id="BMU-QQ-2gb"/>
                     </connections>
                 </viewController>
                 <customObject id="0DN-fa-hGa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1242" y="914"/>
+            <point key="canvasLocation" x="1495" y="914"/>
+        </scene>
+        <!--Presets View Controller-->
+        <scene sceneID="8BB-0x-xlC">
+            <objects>
+                <viewController id="UKa-I6-q2M" customClass="PresetsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="a3D-yN-2KX">
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="225"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-C1-ZlC" userLabel="Group Label">
+                                <rect key="frame" x="24" y="165" width="114" height="28"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Group" id="VdE-tK-6Sc">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D9e-db-h9i" userLabel="Group Selector">
+                                <rect key="frame" x="36" y="140" width="156" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Group" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fjl-Oa-D3I" id="LUV-cs-74S">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="fI2-Pc-uoy">
+                                        <items>
+                                            <menuItem title="Group" state="on" id="Fjl-Oa-D3I"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectedPresetGroup:" target="UKa-I6-q2M" id="Zkr-gO-kch"/>
+                                </connections>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ec-59-VEr" userLabel="Preset Label">
+                                <rect key="frame" x="24" y="104" width="114" height="28"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preset" id="hEJ-XZ-EHb">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-aF-gp0">
+                                <rect key="frame" x="36" y="80" width="156" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Preset" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="LvA-TZ-jSq">
+                                        <items>
+                                            <menuItem title="Preset" state="on" id="hn9-51-PY6"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectedPreset:" target="UKa-I6-q2M" id="Z1J-Iz-9fM"/>
+                                </connections>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-hC-HQZ" userLabel="Edit Custom Presets Button">
+                                <rect key="frame" x="26" y="29" width="163" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Edit Custom Presets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QJC-aw-yxR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="editCustomPresets:" target="UKa-I6-q2M" id="C2b-xp-9Ta"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="presetGroupSelector" destination="D9e-db-h9i" id="0DU-pI-I1H"/>
+                        <outlet property="presetSelector" destination="YUM-aF-gp0" id="hS8-HD-U1l"/>
+                    </connections>
+                </viewController>
+                <customObject id="Itq-Ej-rns" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="827"/>
         </scene>
         <!--Image Options View Controller-->
         <scene sceneID="Skb-r6-Bk3">
@@ -614,7 +632,7 @@
                 </viewController>
                 <customObject id="76Z-or-U2Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="914"/>
+            <point key="canvasLocation" x="2225" y="914"/>
         </scene>
     </scenes>
     <resources>
