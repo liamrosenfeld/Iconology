@@ -16,6 +16,11 @@ class ImageOptionsViewController: NSViewController {
     // MARK: - Setup
     var mods = ImageModifications()
     var delegate: ImageOptionsDelegate?
+    
+    override func viewDidLoad() {
+        _ = self.view // Load View Hierarchy
+        prefixPreview.stringValue = ""
+    }
 
     // MARK: - Outlets
     @IBOutlet weak var backgroundView: NSView!
@@ -38,15 +43,25 @@ class ImageOptionsViewController: NSViewController {
     @IBOutlet weak var roundToggle: NSButton!
     @IBOutlet weak var roundSlider: NSSlider!
     
+    @IBOutlet weak var prefixView: NSView!
+    @IBOutlet weak var prefixTextBox: NSTextField!
+    @IBOutlet weak var prefixPreview: NSTextField!
+    
     // MARK: - Parent Interactions
     func setMods(from preset: Preset) {
-        _ = self.view // Load View Hierarchy
         let useMod = preset.useModifications
         backgroundView.isHidden = !useMod.background
         scaleView.isHidden      = !useMod.scale
         horizontalView.isHidden = !useMod.shift
         verticalView.isHidden   = !useMod.shift
         roundView.isHidden      = !useMod.round
+        prefixView.isHidden     = !useMod.prefix
+    }
+    
+    var prefix: String {
+        get {
+            return prefixTextBox.stringValue
+        }
     }
     
     // MARK: - Actions
@@ -132,6 +147,11 @@ class ImageOptionsViewController: NSViewController {
     
     @IBAction func roundSelected(_ sender: Any) {
         roundToggled(self)
+    }
+    
+    @IBAction func prefixTextEdited(_ sender: Any) {
+        let prefix = prefixTextBox.stringValue
+        prefixPreview.stringValue = "Ex: \(prefix)root.type"
     }
 }
 
