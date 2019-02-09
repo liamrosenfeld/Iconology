@@ -17,12 +17,13 @@ extension NSImage {
         
         // Place Image in Rep
         let destRect = NSRect(origin: CGPoint.zero, size: destSize)
-        self.draw(in: destRect, from: NSZeroRect, operation: NSCompositingOperation.copy, fraction: 1.0)
+        self.draw(in: destRect, from: NSRect.zero, operation: NSCompositingOperation.copy, fraction: 1.0)
         
         // Return rep as Image
         NSGraphicsContext.restoreGraphicsState()
         let newImage = NSImage(size: destSize)
         newImage.addRepresentation(rep)
+        newImage.size = destSize
         
         return newImage
     }

@@ -40,6 +40,7 @@ extension NSImage {
         NSGraphicsContext.restoreGraphicsState()
         let newImage = NSImage(size: imageSize)
         newImage.addRepresentation(rep)
+        newImage.size = aspectSize
         return newImage
     }
     
