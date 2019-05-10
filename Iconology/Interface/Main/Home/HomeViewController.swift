@@ -37,7 +37,6 @@ class HomeViewController: NSViewController {
     
     @IBAction func chooseFileClicked(_ sender: Any) {
         guard let url = FileHandler.chooseFile() else {
-            // TODO: Warn
             return
         }
         imageURL = url

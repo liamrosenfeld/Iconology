@@ -152,7 +152,6 @@
 		0C05611121D1FD98005E5D4A /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				0CD58C5C21F2D19D006CDC79 /* ImageEditing */,
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
 				0C3C44F621FAC4420067508C /* Notifications.swift */,
 				0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */,
@@ -244,14 +243,14 @@
 			path = ImageEditing;
 			sourceTree = "<group>";
 		};
-		0CE8558021D6E96A00F22403 /* Windows */ = {
+		0CE8558021D6E96A00F22403 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
 				0C05610E21D1FCF7005E5D4A /* Main */,
 				0C05610F21D1FD07005E5D4A /* EditPresets */,
 				0CE8558121D6E98200F22403 /* Preferences */,
 			);
-			path = Windows;
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		0CE8558121D6E98200F22403 /* Preferences */ = {
@@ -268,6 +267,7 @@
 		0CE8558C21D7121700F22403 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0C8D9E2821CD696C00520AC8 /* Extensions */,
 				0CC44E4421F59C33009E963D /* Storage.swift */,
 				0CE8558A21D7111300F22403 /* Alerts.swift */,
 				0C8D9E9621CF169900520AC8 /* FileHandler.swift */,
@@ -307,9 +307,9 @@
 		AD1270052023D1510068531A /* Iconology */ = {
 			isa = PBXGroup;
 			children = (
-				0CE8558021D6E96A00F22403 /* Windows */,
+				0CE8558021D6E96A00F22403 /* Interface */,
+				0CD58C5C21F2D19D006CDC79 /* ImageEditing */,
 				0CE8558C21D7121700F22403 /* Util */,
-				0C8D9E2821CD696C00520AC8 /* Extensions */,
 				0CF5BC2D20E32D0B00F2A57C /* Presets */,
 				ADEE32A62039192500AE0566 /* SupportFiles */,
 			);
@@ -371,6 +371,7 @@
 			knownRegions = (
 				en,
 				Base,
+				global,
 			);
 			mainGroup = AD126FFA2023D1510068531A;
 			productRefGroup = AD1270042023D1510068531A /* Products */;
