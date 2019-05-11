@@ -27,6 +27,8 @@ class PreferencesViewController: NSViewController {
         let comfirm = Alerts.comfirmPopup(title: "Warning", text: "This will delete all your presets")
         if comfirm {
             Storage.userPresets.deleteAllPreset()
+            ExamplePresets.addExamplePresets()
+            NotificationCenter.default.post(name: Notifications.preferencesApply, object: nil)
         }
     }
     

@@ -11,9 +11,6 @@ import Cocoa
 class EditPresetViewController: NSViewController {
     
     // MARK: - Setup
-    var presetSelected: Int?
-    var tempSave: CustomPreset!
-    
     @IBOutlet weak var presetTable: NSTableView!
     @IBOutlet weak var titleLabel: NSTextFieldCell!
     @IBOutlet weak var manageRowsButton: NSSegmentedControl!
@@ -23,37 +20,58 @@ class EditPresetViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set Vars
-        tempSave = Storage.userPresets.presets[presetSelected!]
-        
         // Add Delegates
         presetTable.delegate = self
         presetTable.dataSource = self
         
-        // Prep UI
-        titleLabel.stringValue = "Edit \(Storage.userPresets.presets[presetSelected!].name) Preset Via Double Click"
+        // Load UI
+        if tempSave != nil {
+            prepUI()
+        }
+    }
+    
+    
+    
+    // MARK: - Temp Save
+    var tempSave: CustomPreset! {
+        didSet {
+            // reload UI
+            if (self.isViewLoaded) && (self.view.window != nil) {
+                let presetSelected = tempSave != nil
+                
+                // enable/disable table
+                enableUI(presetSelected)
+                
+                // set UI values
+                if presetSelected {
+                    prepUI()
+                }
+                
+            }
+        }
+    }
+    
+    func enableUI(_ enabled: Bool) {
+        presetTable.isEnabled = enabled
+        manageRowsButton.isEnabled = enabled
+        aspectW.isEnabled = enabled
+        aspectH.isEnabled = enabled
+        
+        if !enabled {
+            presetTable.reloadData()
+            titleLabel.stringValue = "Please Select a Preset"
+        }
+        
+    }
+    
+    func prepUI() {
+        presetTable.reloadData()
+        titleLabel.stringValue = "\(tempSave.name)'s Sizes"
         aspectW.stringValue = tempSave.aspect.width.clean
         aspectH.stringValue = tempSave.aspect.height.clean
     }
     
     // MARK: - Actions
-    @IBAction func apply(_ sender: Any) {
-        forceSaveText()
-        
-        // Save Presets
-        Storage.userPresets.presets[presetSelected!] = tempSave
-        print(Storage.userPresets.presets[presetSelected!])
-        Storage.userPresets.savePresets()
-        
-        // Notify Home
-        NotificationCenter.default.post(name: Notifications.presetApply, object: nil)
-    }
-    
-    @IBAction func backButton(_ sender: Any) {
-        let SelectPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SelectPresetViewController")) as? SelectPresetViewController
-        view.window?.contentViewController = SelectPresetViewController
-    }
-    
     @IBAction func manageRows(_ sender: Any) {
         if manageRowsButton.selectedSegment == 0 {
             newRow()
@@ -170,10 +188,10 @@ class EditPresetViewController: NSViewController {
                 guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
                     print("WARN: Non-Integer Inputed")
-                    sender.stringValue = tempSave.sizes[selectedRow].size.width.description
+                    sender.stringValue = tempSave.sizes[selectedRow].size.height.description
                     return
                 }
-                tempSave.sizes[selectedRow].size.width = CGFloat(intValue)
+                tempSave.sizes[selectedRow].size.height = CGFloat(intValue)
             default:
                 print("ERR: Column not found")
             }
@@ -186,7 +204,10 @@ class EditPresetViewController: NSViewController {
 extension EditPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        return Storage.userPresets.presets[presetSelected!].sizes.count
+        guard let tempSave = tempSave else {
+            return 0
+        }
+        return tempSave.sizes.count
     }
     
 }
