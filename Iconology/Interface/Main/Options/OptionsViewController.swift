@@ -17,7 +17,6 @@ class OptionsViewController: NSViewController {
     @IBOutlet weak var imageVCContainer: NSView!
     @IBOutlet weak var presetVCContainer: NSView!
     
-    
     var imageOptionsVC: ImageOptionsViewController!
     var presetsVC: PresetsViewController!
     
