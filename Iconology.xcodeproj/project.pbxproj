@@ -14,6 +14,7 @@
 		0C3C44FB21FBF9830067508C /* NSViewController+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C44FA21FBF9830067508C /* NSViewController+Children.swift */; };
 		0C3C44FF21FCF9F70067508C /* URL+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C44FE21FCF9F70067508C /* URL+NSImage.swift */; };
 		0C7B55BE21D40B22009FE959 /* NSImageView+AddImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */; };
+		0C8A68202286755400DDE2CA /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8A681E2286755400DDE2CA /* PresetViewController.swift */; };
 		0C8D9E3921CD73E500520AC8 /* UserPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3821CD73E500520AC8 /* UserPresets.swift */; };
 		0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */; };
 		0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3C21CD815100520AC8 /* Preset.swift */; };
@@ -63,6 +64,7 @@
 		0C3C44FA21FBF9830067508C /* NSViewController+Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Children.swift"; sourceTree = "<group>"; };
 		0C3C44FE21FCF9F70067508C /* URL+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+NSImage.swift"; sourceTree = "<group>"; };
 		0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+AddImage.swift"; sourceTree = "<group>"; };
+		0C8A681E2286755400DDE2CA /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
 		0C8D9E3821CD73E500520AC8 /* UserPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresets.swift; sourceTree = "<group>"; };
 		0C8D9E3A21CD810D00520AC8 /* DefaultPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
 		0C8D9E3C21CD815100520AC8 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
@@ -134,8 +136,9 @@
 			children = (
 				ADF887AC20B07FAA00E60C19 /* Presets.storyboard */,
 				0CE8558821D6FDAA00F22403 /* PresetsWindowController.swift */,
-				0C05611321D1FDCB005E5D4A /* Select */,
-				0C05611421D1FDDD005E5D4A /* Edit */,
+				0C8A681E2286755400DDE2CA /* PresetViewController.swift */,
+				ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */,
+				ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */,
 			);
 			path = EditPresets;
 			sourceTree = "<group>";
@@ -153,27 +156,10 @@
 			isa = PBXGroup;
 			children = (
 				AD1270372024050C0068531A /* OptionsViewController.swift */,
-				0C3C44F621FAC4420067508C /* Notifications.swift */,
 				0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */,
 				0C3C44F821FBCFD70067508C /* PresetsViewController.swift */,
 			);
 			path = Options;
-			sourceTree = "<group>";
-		};
-		0C05611321D1FDCB005E5D4A /* Select */ = {
-			isa = PBXGroup;
-			children = (
-				ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */,
-			);
-			path = Select;
-			sourceTree = "<group>";
-		};
-		0C05611421D1FDDD005E5D4A /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */,
-			);
-			path = Edit;
 			sourceTree = "<group>";
 		};
 		0C8D9E2821CD696C00520AC8 /* Extensions */ = {
@@ -272,6 +258,7 @@
 				0CE8558A21D7111300F22403 /* Alerts.swift */,
 				0C8D9E9621CF169900520AC8 /* FileHandler.swift */,
 				0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */,
+				0C3C44F621FAC4420067508C /* Notifications.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -417,6 +404,7 @@
 				0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */,
 				0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */,
 				0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */,
+				0C8A68202286755400DDE2CA /* PresetViewController.swift in Sources */,
 				0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */,
 				AD1270092023D1510068531A /* HomeViewController.swift in Sources */,
 				ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */,

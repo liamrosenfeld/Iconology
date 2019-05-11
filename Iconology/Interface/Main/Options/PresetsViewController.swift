@@ -46,10 +46,6 @@ class PresetsViewController: NSViewController {
         presetSelector.removeAllItems()
         
         // Load Presets
-        if Storage.userPresets.presets.isEmpty {
-            print("adding example custom presets...")
-            ExamplePresets.addExamplePresets()
-        }
         let customPresets = PresetGroup(title: "Custom", presets: Storage.userPresets.presets)
         
         // Combine Presets

@@ -8,34 +8,41 @@
 
 import Cocoa
 
+protocol SelectPresetDelegate {
+    func presetSelected(withIndex index: Int)
+    func presetRenamed(to name: String, forIndex index: Int)
+    func addPreset(named name: String)
+    func removePreset(at index: Int)
+    var  presets: [CustomPreset] { get }
+}
+
 class SelectPresetViewController: NSViewController {
+    
+    // MARK: - Setup
+    var delegate: SelectPresetDelegate?
     
     @IBOutlet weak var presetTable: NSTableView!
     @IBOutlet weak var manageRowsButton: NSSegmentedControl!
+    
+    var presetSelected = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presetTable.delegate = self
         presetTable.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedRow), name: NSTableView.selectionDidChangeNotification, object: nil)
     }
     
-    // MARK: - Actions
-    @IBAction func next(_ sender: Any) {
-        forceSaveText()
-        let presetSelected = presetTable.selectedRow
-        if presetSelected >= 0 {
-            print(Storage.userPresets.presets[presetSelected].name)
-            
-            let editPresetViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditPresetViewController")) as? EditPresetViewController
-            editPresetViewController?.presetSelected = presetSelected
-            view.window?.contentViewController = editPresetViewController
+    // MARK: - Table Updates
+    @objc func selectedRow() {
+        let selected = presetTable.selectedRow
+        if selected != presetSelected {
+            presetSelected = selected
+            delegate?.presetSelected(withIndex: presetSelected)
+            print("Selected: \(presetSelected)")
         }
-    }
-    
-    @IBAction func apply(_ sender: Any) {
-        forceSaveText()
-        Storage.userPresets.savePresets()
-        NotificationCenter.default.post(name: Notifications.presetApply, object: nil)
+        
     }
     
     @IBAction func manageRows(_ sender: Any) {
@@ -46,20 +53,18 @@ class SelectPresetViewController: NSViewController {
         }
     }
     
-    
-    // MARK: - Table Updates
     func newRow() {
         // Generate Name
         var name = "New Preset"
         var n = 1
         while true {
-            var state = "good"
-            for preset in Storage.userPresets.presets {
+            var good = true
+            for preset in delegate?.presets ?? [CustomPreset]() {
                 if name == preset.name {
-                    state = "fail"
+                    good = false
                 }
             }
-            if state != "fail" {
+            if good {
                 break
             }
             name = "New Preset \(n)"
@@ -67,18 +72,19 @@ class SelectPresetViewController: NSViewController {
         }
         
         // Update Data
-        Storage.userPresets.addPreset(name: name, sizes: [ImgSetPreset.ImgSetSize](), prefix: false)
+        delegate?.addPreset(named: name)
         
         // Update Table
-        presetTable.insertRows(at: IndexSet(integer: Storage.userPresets.presets.count - 1), withAnimation: .effectFade)
-        presetTable.selectRowIndexes(IndexSet(integer: Storage.userPresets.presets.count - 1), byExtendingSelection: false)
+        let newIndex = (delegate?.presets.count ?? 1) - 1
+        presetTable.insertRows(at: IndexSet(integer: newIndex), withAnimation: .effectFade)
+        presetTable.selectRowIndexes(IndexSet(integer: newIndex), byExtendingSelection: false)
     }
     
     func removeRow() {
         let selectedRow = presetTable!.selectedRow
         if selectedRow != -1 {
             // Update Data
-            Storage.userPresets.presets.remove(at: selectedRow)
+            delegate?.removePreset(at: selectedRow)
         
             // Update Table
             presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
@@ -87,6 +93,11 @@ class SelectPresetViewController: NSViewController {
             } else {
                 presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
             }
+        }
+        
+        // if no row is left
+        if presetTable.selectedRow == -1 {
+            delegate?.presetSelected(withIndex: -1)
         }
     }
     
@@ -115,7 +126,7 @@ class SelectPresetViewController: NSViewController {
         }
         
         if selectedRow != -1 {
-            Storage.userPresets.presets[selectedRow].name = value
+            delegate?.presetRenamed(to: value, forIndex: selectedRow)
         }
     }
 }
@@ -124,7 +135,7 @@ class SelectPresetViewController: NSViewController {
 extension SelectPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        return Storage.userPresets.presets.count
+        return delegate?.presets.count ?? 0
     }
     
 }
@@ -132,7 +143,7 @@ extension SelectPresetViewController: NSTableViewDataSource {
 extension SelectPresetViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let item = Storage.userPresets.presets[row]
+        let item = delegate!.presets[row]
         let text = item.name
 
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "selectTextCell"), owner: self) as? NSTableCellView
