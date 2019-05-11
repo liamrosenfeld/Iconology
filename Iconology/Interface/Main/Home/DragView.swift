@@ -59,7 +59,7 @@ class DragView: NSView {
     
     // Check drag object, grab the url of the file coming in, and check if it matches a 'allowedViewTypes' UTI String.
     fileprivate func checkExtension(drag: NSDraggingInfo) -> Bool {
-        guard let urlResource = try? drag.draggedFileURL?.resourceValues(forKeys: [.typeIdentifierKey]) else {
+        guard let urlResource = ((try? drag.draggedFileURL?.resourceValues(forKeys: [.typeIdentifierKey])) as URLResourceValues??) else {
             return false
         }
         guard let typeIdentifier = urlResource?.typeIdentifier else {
