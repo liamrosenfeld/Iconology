@@ -32,6 +32,7 @@ struct FileHandler {
     static func selectFolder(_ callingClass: String = #function) -> URL? {
         let selectPanel = NSOpenPanel()
         selectPanel.title = "Select a folder to save your icons"
+        selectPanel.prompt = "Save"
         selectPanel.showsResizeIndicator = true
         selectPanel.canChooseDirectories = true
         selectPanel.canChooseFiles = false

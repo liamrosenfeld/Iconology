@@ -418,7 +418,7 @@
                                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmA-KJ-UH6">
                                         <rect key="frame" x="32" y="0.0" width="44" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="backgroundColorSelected:" target="XT1-Ko-uUN" id="jj4-Ct-nUm"/>
                                         </connections>
