@@ -57,7 +57,9 @@ extension PresetViewController: SelectPresetDelegate {
     func presetSelected(withIndex index: Int) {
         if index != -1 {
             if let edited = editVC.tempSave {
-                tempPresets[currentIndex] = edited
+                if currentIndex < tempPresets.count {
+                    tempPresets[currentIndex] = edited
+                }
             }
             editVC.tempSave = tempPresets[index]
             currentIndex = index
