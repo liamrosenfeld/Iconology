@@ -570,7 +570,7 @@
 				CODE_SIGN_ENTITLEMENTS = Iconology/SupportFiles/Iconology.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DSGCBGBHJN;
+				DEVELOPMENT_TEAM = 28V7PPHDHC;
 				INFOPLIST_FILE = Iconology/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -589,7 +589,7 @@
 				CODE_SIGN_ENTITLEMENTS = Iconology/SupportFiles/Iconology.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DSGCBGBHJN;
+				DEVELOPMENT_TEAM = 28V7PPHDHC;
 				INFOPLIST_FILE = Iconology/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
