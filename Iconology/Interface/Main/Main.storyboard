@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -460,71 +460,33 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="X Position">
-                                <rect key="frame" x="27" y="295" width="166" height="45"/>
+                                <rect key="frame" x="27" y="187" width="166" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYv-rb-AXw">
-                                        <rect key="frame" x="30" y="-2" width="138" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eXG-VA-yHS"/>
-                                        <connections>
-                                            <action selector="horizontalShiftSelected:" target="XT1-Ko-uUN" id="wiC-E7-m41"/>
-                                        </connections>
-                                    </slider>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ern-Fd-nbt">
-                                        <rect key="frame" x="-2" y="25" width="22" height="18"/>
+                                        <rect key="frame" x="-2" y="133" width="22" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gYI-dl-9bx">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="horizontalToggled:" target="XT1-Ko-uUN" id="ahi-2a-PiX"/>
+                                            <action selector="shiftToggled:" target="XT1-Ko-uUN" id="sWU-lJ-oPU"/>
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-RZ-btC">
-                                        <rect key="frame" x="18" y="23" width="85" height="22"/>
+                                        <rect key="frame" x="24" y="131" width="85" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="X Position" id="vNW-oR-Cdq">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Position" id="vNW-oR-Cdq">
                                             <font key="font" metaFont="system" size="18"/>
                                             <color key="textColor" name="LabelColor"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                </subviews>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-7D-gxj" userLabel="Y Position">
-                                <rect key="frame" x="27" y="166" width="101" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wd3-Sz-v41">
-                                        <rect key="frame" x="59" y="-3" width="19" height="96"/>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-AD-ebn" customClass="PositionView" customModule="Iconology" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="CW9-Jm-gdf"/>
-                                        <connections>
-                                            <action selector="verticalShiftSelected:" target="XT1-Ko-uUN" id="Bih-M8-xGc"/>
-                                        </connections>
-                                    </slider>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpE-V8-cPy">
-                                        <rect key="frame" x="-2" y="101" width="22" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="G8l-sQ-KM4">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="verticalToggled:" target="XT1-Ko-uUN" id="wqK-7z-3uh"/>
-                                        </connections>
-                                    </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUa-zj-oea">
-                                        <rect key="frame" x="18" y="99" width="85" height="22"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Y Position" id="UIO-qG-nBA">
-                                            <font key="font" metaFont="system" size="18"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    </customView>
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-X7-Tpl" userLabel="Round">
@@ -603,9 +565,6 @@
                         <outlet property="backgroundColor" destination="ZmA-KJ-UH6" id="2mZ-2o-qT5"/>
                         <outlet property="backgroundToggle" destination="1jf-C6-kog" id="m3g-20-TM7"/>
                         <outlet property="backgroundView" destination="7Tz-Nx-gK6" id="L0y-Vb-0lQ"/>
-                        <outlet property="hShiftSlider" destination="tYv-rb-AXw" id="uSb-3D-yi0"/>
-                        <outlet property="horizontalToggle" destination="ern-Fd-nbt" id="WRB-dm-J4n"/>
-                        <outlet property="horizontalView" destination="uhx-WT-CPa" id="iWA-43-uhn"/>
                         <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="mOA-WK-LyJ"/>
                         <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="yPB-LY-6jI"/>
                         <outlet property="prefixView" destination="WKj-Mj-vge" id="W5a-lc-kqe"/>
@@ -615,9 +574,9 @@
                         <outlet property="scaleSlider" destination="7N2-iu-pSq" id="39F-5m-hhB"/>
                         <outlet property="scaleToggle" destination="xsb-g8-VZT" id="eQg-B9-4ul"/>
                         <outlet property="scaleView" destination="SeN-xq-ctz" id="Hyh-AX-NmN"/>
-                        <outlet property="vShiftSlider" destination="Wd3-Sz-v41" id="0zR-Yd-exJ"/>
-                        <outlet property="verticalToggle" destination="HpE-V8-cPy" id="1g4-IB-f5z"/>
-                        <outlet property="verticalView" destination="Tn5-7D-gxj" id="3Ec-UZ-dfc"/>
+                        <outlet property="shiftSelector" destination="fTB-AD-ebn" id="pjf-nB-Trq"/>
+                        <outlet property="shiftToggle" destination="ern-Fd-nbt" id="YLj-r4-MuS"/>
+                        <outlet property="shiftView" destination="uhx-WT-CPa" id="hZh-so-bax"/>
                     </connections>
                 </viewController>
                 <customObject id="76Z-or-U2Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

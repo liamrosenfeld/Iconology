@@ -20,6 +20,8 @@ class ImageOptionsViewController: NSViewController {
     override func viewDidLoad() {
         _ = self.view // Load View Hierarchy
         prefixPreview.stringValue = ""
+        shiftSelector.target = self
+        shiftSelector.action = #selector(shiftSelected)
     }
 
     // MARK: - Outlets
@@ -31,13 +33,9 @@ class ImageOptionsViewController: NSViewController {
     @IBOutlet weak var scaleToggle: NSButton!
     @IBOutlet weak var scaleSlider: NSSlider!
     
-    @IBOutlet weak var horizontalView: NSView!
-    @IBOutlet weak var horizontalToggle: NSButton!
-    @IBOutlet weak var hShiftSlider: NSSlider!
-    
-    @IBOutlet weak var verticalView: NSView!
-    @IBOutlet weak var verticalToggle: NSButton!
-    @IBOutlet weak var vShiftSlider: NSSlider!
+    @IBOutlet weak var shiftView: NSView!
+    @IBOutlet weak var shiftToggle: NSButton!
+    @IBOutlet weak var shiftSelector: PositionView!
     
     @IBOutlet weak var roundView: NSView!
     @IBOutlet weak var roundToggle: NSButton!
@@ -52,8 +50,7 @@ class ImageOptionsViewController: NSViewController {
         let useMod = preset.useModifications
         backgroundView.isHidden = !useMod.background
         scaleView.isHidden      = !useMod.scale
-        horizontalView.isHidden = !useMod.shift
-        verticalView.isHidden   = !useMod.shift
+        shiftView.isHidden      = !useMod.shift
         roundView.isHidden      = !useMod.round
         prefixView.isHidden     = !useMod.prefix
     }
@@ -97,12 +94,12 @@ class ImageOptionsViewController: NSViewController {
         scaleToggled(self)
     }
     
-    @IBAction func horizontalToggled(_ sender: Any) {
-        switch horizontalToggle.state {
+    @IBAction func shiftToggled(_ sender: Any) {
+        switch shiftToggle.state {
         case .on:
-            let raw = hShiftSlider.doubleValue
-            let adjusted = (raw - 50) * 2
-            mods.shift.width = CGFloat(adjusted)
+            let shift = shiftSelector.position
+            mods.shift.width = shift.x
+            mods.shift.height = shift.y
         case .off:
             mods.shift.width = 0
         default:
@@ -111,26 +108,8 @@ class ImageOptionsViewController: NSViewController {
         delegate?.modsChanged(mods)
     }
     
-    @IBAction func horizontalShiftSelected(_ sender: Any) {
-        horizontalToggled(self)
-    }
-    
-    @IBAction func verticalToggled(_ sender: Any) {
-        switch verticalToggle.state {
-        case .on:
-            let raw = vShiftSlider.doubleValue
-            let adjusted = (raw - 50) * 2
-            mods.shift.height = CGFloat(adjusted)
-        case .off:
-            mods.shift.height = 0
-        default:
-            print("ERR: Wrong Button State")
-        }
-        delegate?.modsChanged(mods)
-    }
-    
-    @IBAction func verticalShiftSelected(_ sender: Any) {
-        verticalToggled(self)
+    @objc func shiftSelected(_ sender: Any) {
+        shiftToggled(sender)
     }
     
     @IBAction func roundToggled(_ sender: Any) {
@@ -157,7 +136,7 @@ class ImageOptionsViewController: NSViewController {
 
 struct ImageModifications {
     var background: NSColor?
-    var shift: NSSize = NSSize(width: 0, height: 0)
+    var shift: NSSize = NSSize(width: 0, height: 0) // TODO: CGPoint
     var scale: CGFloat = 1
     var aspect: NSSize = NSSize(width: 1, height: 1)
     var rounding: CGFloat = 0
