@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class PositionView: NSControl {
+class PositionSelector: NSControl {
     
     private var dragView = NSView()
+    private var count = 0
     
     var position: CGPoint {
         get {
@@ -52,11 +53,19 @@ class PositionView: NSControl {
         setupDragView()
     }
     
+    override func viewWillDraw() {
+        super.viewWillDraw()
+        
+        // format
+        setBackground(to: .labelColor)
+        self.layer?.cornerRadius = dragView.frame.width / 2
+    }
+    
     // MARK: - Drag View
     func setupDragView() {
         // size and position
         dragView = NSView(frame: NSRect(x: 0, y: 0, width: self.frame.width / 10, height: self.frame.height / 10))
-        dragView.setBackground(to: .white)
+        dragView.setBackground(to: .systemBlue)
         dragView.layer?.cornerRadius = dragView.frame.width / 2
         setPosition(to: CGPoint(x: 0, y: 0))
         
@@ -67,6 +76,12 @@ class PositionView: NSControl {
     }
     
     @objc func draggedView(_ sender: NSPanGestureRecognizer) {
+        // limit triggers
+        count += 1
+        if count % 5 != 0 {
+            return
+        }
+        
         // get point and vector
         let currentLoc = dragView.frame.origin
         let translation = sender.translation(in: self)
@@ -93,22 +108,11 @@ class PositionView: NSControl {
         // reset translation
         sender.setTranslation(CGPoint.zero, in: self)
     }
-    
-    // MARK: - Draw
-    override func viewWillDraw() {
-        super.viewWillDraw()
-        setBackground(to: .black)
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        print(position)
-    }
 }
 
 fileprivate extension NSView {
-    func setBackground(to color: CGColor) {
+    func setBackground(to color: NSColor) {
         wantsLayer = true
-        layer?.backgroundColor = color
+        layer?.backgroundColor = color.cgColor
     }
 }

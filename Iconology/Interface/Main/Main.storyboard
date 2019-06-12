@@ -483,7 +483,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-AD-ebn" customClass="PositionView" customModule="Iconology" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-AD-ebn" customClass="PositionSelector" customModule="Iconology" customModuleProvider="target">
                                         <rect key="frame" x="21" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>

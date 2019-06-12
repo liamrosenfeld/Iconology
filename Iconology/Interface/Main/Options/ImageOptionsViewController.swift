@@ -35,7 +35,7 @@ class ImageOptionsViewController: NSViewController {
     
     @IBOutlet weak var shiftView: NSView!
     @IBOutlet weak var shiftToggle: NSButton!
-    @IBOutlet weak var shiftSelector: PositionView!
+    @IBOutlet weak var shiftSelector: PositionSelector!
     
     @IBOutlet weak var roundView: NSView!
     @IBOutlet weak var roundToggle: NSButton!
