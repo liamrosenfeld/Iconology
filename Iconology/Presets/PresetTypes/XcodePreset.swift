@@ -16,7 +16,7 @@ final class XcodePreset: Preset {
     var aspect: NSSize
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {
-        saveXcode(image, at: url, in: sizes)
+        saveXcode(image, at: url, in: sizes, with: prefix)
     }
     
     init(name: String, sizes: [XcodeSizes], folderName: String, aspect: NSSize? = nil, round: Bool) {
@@ -24,7 +24,7 @@ final class XcodePreset: Preset {
         self.sizes = sizes
         self.folderName = folderName
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
-        self.useModifications = UseModifications(background: true, scale: true, shift: true, round: round, prefix: false)
+        self.useModifications = UseModifications(background: true, scale: true, shift: true, round: round, prefix: true)
     }
     
     final class XcodeSizes: Size {
