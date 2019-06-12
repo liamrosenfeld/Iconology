@@ -398,7 +398,7 @@
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
                                         <rect key="frame" x="-2" y="33" width="22" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
+                                        <buttonCell key="cell" type="check" alternateTitle="Toggle Backgorund" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -438,7 +438,7 @@
                                         </connections>
                                     </slider>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-WA-5J6">
-                                        <rect key="frame" x="18" y="23" width="49" height="22"/>
+                                        <rect key="frame" x="39" y="24" width="49" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="K7V-tR-isF">
                                             <font key="font" metaFont="system" size="18"/>
@@ -446,36 +446,40 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-g8-VZT">
-                                        <rect key="frame" x="-2" y="27" width="22" height="12"/>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mec-X8-tqH" userLabel="Reset">
+                                        <rect key="frame" x="-6" y="17" width="39" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="n00-yR-1cF">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <buttonCell key="cell" type="push" alternateTitle="Reset Scale" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0ke-cf-I8Z">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
+                                            <connections>
+                                                <action selector="resetScale:" target="XT1-Ko-uUN" id="vUQ-Xp-wKD"/>
+                                            </connections>
                                         </buttonCell>
-                                        <connections>
-                                            <action selector="scaleToggled:" target="XT1-Ko-uUN" id="Pz3-vD-iC0"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="X Position">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="Position">
                                 <rect key="frame" x="27" y="187" width="166" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ern-Fd-nbt">
-                                        <rect key="frame" x="-2" y="133" width="22" height="18"/>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-AD-ebn" customClass="PositionSelector" customModule="Iconology" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gYI-dl-9bx">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSx-bH-ed6" userLabel="Reset">
+                                        <rect key="frame" x="-6" y="125" width="39" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" alternateTitle="Reset Position" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02O-Ag-aN1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="shiftToggled:" target="XT1-Ko-uUN" id="sWU-lJ-oPU"/>
+                                            <action selector="resetShift:" target="XT1-Ko-uUN" id="AJe-xM-ZhM"/>
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-RZ-btC">
-                                        <rect key="frame" x="24" y="131" width="85" height="22"/>
+                                        <rect key="frame" x="33" y="131" width="85" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Position" id="vNW-oR-Cdq">
                                             <font key="font" metaFont="system" size="18"/>
@@ -483,27 +487,12 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-AD-ebn" customClass="PositionSelector" customModule="Iconology" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="0.0" width="125" height="125"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </customView>
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-X7-Tpl" userLabel="Round">
                                 <rect key="frame" x="27" y="113" width="166" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-4u-LGL">
-                                        <rect key="frame" x="-2" y="25" width="22" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yIy-Px-QQa">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="roundToggled:" target="XT1-Ko-uUN" id="h7P-2u-r9W"/>
-                                        </connections>
-                                    </button>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-A6-484">
                                         <rect key="frame" x="30" y="-2" width="138" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -512,8 +501,19 @@
                                             <action selector="roundSelected:" target="XT1-Ko-uUN" id="A8W-DA-4Ot"/>
                                         </connections>
                                     </slider>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0w-xr-urb" userLabel="Reset">
+                                        <rect key="frame" x="-6" y="17" width="38" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" alternateTitle="Reset Round" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pAK-qm-nit">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="roundReset:" target="XT1-Ko-uUN" id="cKj-4k-6Ot"/>
+                                        </connections>
+                                    </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-pA-UFx">
-                                        <rect key="frame" x="18" y="23" width="57" height="22"/>
+                                        <rect key="frame" x="30" y="24" width="57" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Round" id="g6u-km-OX5">
                                             <font key="font" metaFont="system" size="18"/>
@@ -569,13 +569,10 @@
                         <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="yPB-LY-6jI"/>
                         <outlet property="prefixView" destination="WKj-Mj-vge" id="W5a-lc-kqe"/>
                         <outlet property="roundSlider" destination="dI4-A6-484" id="ivx-my-Z13"/>
-                        <outlet property="roundToggle" destination="GeL-4u-LGL" id="N0S-NV-zPN"/>
                         <outlet property="roundView" destination="Uf2-X7-Tpl" id="UJI-dr-2hq"/>
                         <outlet property="scaleSlider" destination="7N2-iu-pSq" id="39F-5m-hhB"/>
-                        <outlet property="scaleToggle" destination="xsb-g8-VZT" id="eQg-B9-4ul"/>
                         <outlet property="scaleView" destination="SeN-xq-ctz" id="Hyh-AX-NmN"/>
                         <outlet property="shiftSelector" destination="fTB-AD-ebn" id="pjf-nB-Trq"/>
-                        <outlet property="shiftToggle" destination="ern-Fd-nbt" id="YLj-r4-MuS"/>
                         <outlet property="shiftView" destination="uhx-WT-CPa" id="hZh-so-bax"/>
                     </connections>
                 </viewController>
@@ -588,6 +585,8 @@
         <image name="DottedLine-Horizontal" width="915" height="1"/>
         <image name="DottedLine-Vertical" width="1" height="525"/>
         <image name="Logo-Long" width="421" height="144"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSTouchBarRefreshTemplate" width="19" height="30"/>
         <image name="uploadIcon" width="573" height="453"/>
         <namedColor name="LabelColor">
             <color red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

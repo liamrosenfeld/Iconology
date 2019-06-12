@@ -30,15 +30,12 @@ class ImageOptionsViewController: NSViewController {
     @IBOutlet weak var backgroundColor: NSColorWell!
     
     @IBOutlet weak var scaleView: NSView!
-    @IBOutlet weak var scaleToggle: NSButton!
     @IBOutlet weak var scaleSlider: NSSlider!
     
     @IBOutlet weak var shiftView: NSView!
-    @IBOutlet weak var shiftToggle: NSButton!
     @IBOutlet weak var shiftSelector: PositionSelector!
     
     @IBOutlet weak var roundView: NSView!
-    @IBOutlet weak var roundToggle: NSButton!
     @IBOutlet weak var roundSlider: NSSlider!
     
     @IBOutlet weak var prefixView: NSView!
@@ -62,6 +59,8 @@ class ImageOptionsViewController: NSViewController {
     }
     
     // MARK: - Actions
+    
+    // Background
     @IBAction func backgroundToggled(_ sender: Any) {
         switch backgroundToggle.state {
         case .on:
@@ -78,56 +77,45 @@ class ImageOptionsViewController: NSViewController {
         backgroundToggled(self)
     }
     
-    @IBAction func scaleToggled(_ sender: Any) {
-        switch scaleToggle.state {
-        case .on:
-            mods.scale = CGFloat(scaleSlider.doubleValue)
-        case .off:
-            mods.scale = 1
-        default:
-            print("ERR: Wrong Button State")
-        }
-        delegate?.modsChanged(mods)
-    }
-    
+    // Scale
     @IBAction func scaleSelected(_ sender: Any) {
-        scaleToggled(self)
-    }
-    
-    @IBAction func shiftToggled(_ sender: Any) {
-        switch shiftToggle.state {
-        case .on:
-            let shift = shiftSelector.position
-            mods.shift.width = shift.x
-            mods.shift.height = shift.y
-        case .off:
-            mods.shift.width = 0
-        default:
-            print("ERR: Wrong Button State")
-        }
+        mods.scale = CGFloat(scaleSlider.doubleValue)
         delegate?.modsChanged(mods)
     }
     
+    @IBAction func resetScale(_ sender: Any) {
+        mods.scale = 1
+        scaleSlider.doubleValue = 1
+        delegate?.modsChanged(mods)
+    }
+    
+    
+    // Shift
     @objc func shiftSelected(_ sender: Any) {
-        shiftToggled(sender)
-    }
-    
-    @IBAction func roundToggled(_ sender: Any) {
-        switch roundToggle.state {
-        case .on:
-            mods.rounding = CGFloat(roundSlider.doubleValue)
-        case .off:
-            mods.rounding = 0
-        default:
-            print("ERR: Wrong Button State")
-        }
+        let shift = shiftSelector.position
+        mods.shift = shift
         delegate?.modsChanged(mods)
     }
     
-    @IBAction func roundSelected(_ sender: Any) {
-        roundToggled(self)
+    @IBAction func resetShift(_ sender: Any) {
+        mods.shift = .zero
+        shiftSelector.setPosition(to: .zero)
+        delegate?.modsChanged(mods)
     }
     
+    // Round
+    @IBAction func roundSelected(_ sender: Any) {
+        mods.rounding = CGFloat(roundSlider.doubleValue)
+        delegate?.modsChanged(mods)
+    }
+    
+    @IBAction func roundReset(_ sender: Any) {
+        mods.rounding = CGFloat(roundSlider.doubleValue)
+        roundSlider.doubleValue = 0
+        delegate?.modsChanged(mods)
+    }
+    
+    // Prefix
     @IBAction func prefixTextEdited(_ sender: Any) {
         let prefix = prefixTextBox.stringValue
         prefixPreview.stringValue = "Ex: \(prefix)root.type"
@@ -136,7 +124,7 @@ class ImageOptionsViewController: NSViewController {
 
 struct ImageModifications {
     var background: NSColor?
-    var shift: NSSize = NSSize(width: 0, height: 0) // TODO: CGPoint
+    var shift: CGPoint = .zero
     var scale: CGFloat = 1
     var aspect: NSSize = NSSize(width: 1, height: 1)
     var rounding: CGFloat = 0
