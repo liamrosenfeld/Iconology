@@ -52,7 +52,9 @@ class OptionsViewController: NSViewController {
     
     func addChildren() {
         imageOptionsVC = self.storyboard?.instantiateController(withIdentifier: "ImageOptionsVC") as? ImageOptionsViewController
-        imageOptionsVC.delegate = self
+        imageOptionsVC.mods = ImageModifier(image: origImage) { image in
+            self.imageView.addImage(image)
+        }
         addChildVC(imageOptionsVC, to: imageVCContainer)
         
         presetsVC = self.storyboard?.instantiateController(withIdentifier: "PresetsVC") as? PresetsViewController
@@ -102,12 +104,7 @@ class OptionsViewController: NSViewController {
     
 }
 
-extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
-    func modsChanged(_ mods: ImageModifications) {
-        imageToConvert = mods.apply(on: origImage)
-        imageView.addImage(imageToConvert)
-    }
-    
+extension OptionsViewController: PresetDelegate {
     func presetsSelected(_ preset: Preset) {
         guard let imageOptionsVC = imageOptionsVC else {
             print("ERR: ImageOptionsVC Not Loaded")
@@ -119,8 +116,9 @@ extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
     }
     
     func setNewImage(_ image: NSImage) {
-        imageView.resize(to: imageToConvert)
-        imageView.addImage(imageToConvert)
+        imageOptionsVC.mods.origImage = image
+        imageView.resize(to: imageOptionsVC.mods.image)
+        imageView.addImage(imageOptionsVC.mods.image)
         alignAspectLabel()
     }
     
@@ -134,7 +132,6 @@ extension OptionsViewController: ImageOptionsDelegate, PresetDelegate {
     
     func setAspect(_ aspect: NSSize) {
         imageOptionsVC.mods.aspect = aspect
-        aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
-        imageToConvert = imageOptionsVC.mods.apply(on: origImage)
     }
+    
 }
