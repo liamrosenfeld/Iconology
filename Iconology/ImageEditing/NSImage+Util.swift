@@ -1,8 +1,8 @@
 //
-//  NSImage+EditUtil.swift
+//  NSImage+Util.swift
 //  Iconology
 //
-//  Created by Liam on 1/18/19.
+//  Created by Liam on 6/12/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
@@ -23,4 +23,3 @@ extension NSImage {
         return rep!
     }
 }
-

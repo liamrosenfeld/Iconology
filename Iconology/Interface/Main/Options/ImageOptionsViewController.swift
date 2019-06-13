@@ -8,14 +8,9 @@
 
 import Cocoa
 
-protocol ImageOptionsDelegate {
-    func modsChanged(_ mods: ImageModifications)
-}
-
 class ImageOptionsViewController: NSViewController {
     // MARK: - Setup
-    var mods = ImageModifications()
-    var delegate: ImageOptionsDelegate?
+    var mods = ImageModifier(image: NSImage())
     
     override func viewDidLoad() {
         _ = self.view // Load View Hierarchy
@@ -70,7 +65,6 @@ class ImageOptionsViewController: NSViewController {
         default:
             print("ERR: Wrong Button State")
         }
-        delegate?.modsChanged(mods)
     }
     
     @IBAction func backgroundColorSelected(_ sender: Any) {
@@ -78,15 +72,20 @@ class ImageOptionsViewController: NSViewController {
     }
     
     // Scale
+    var shiftCount = 0
     @IBAction func scaleSelected(_ sender: Any) {
+        // limit triggers
+        shiftCount += 1
+        if shiftCount % 2 == 0 {
+            return
+        }
+        
         mods.scale = CGFloat(scaleSlider.doubleValue)
-        delegate?.modsChanged(mods)
     }
     
     @IBAction func resetScale(_ sender: Any) {
         mods.scale = 1
         scaleSlider.doubleValue = 1
-        delegate?.modsChanged(mods)
     }
     
     
@@ -94,54 +93,26 @@ class ImageOptionsViewController: NSViewController {
     @objc func shiftSelected(_ sender: Any) {
         let shift = shiftSelector.position
         mods.shift = shift
-        delegate?.modsChanged(mods)
     }
     
     @IBAction func resetShift(_ sender: Any) {
         mods.shift = .zero
         shiftSelector.setPosition(to: .zero)
-        delegate?.modsChanged(mods)
     }
     
     // Round
     @IBAction func roundSelected(_ sender: Any) {
         mods.rounding = CGFloat(roundSlider.doubleValue)
-        delegate?.modsChanged(mods)
     }
     
     @IBAction func roundReset(_ sender: Any) {
         mods.rounding = CGFloat(roundSlider.doubleValue)
         roundSlider.doubleValue = 0
-        delegate?.modsChanged(mods)
     }
     
     // Prefix
     @IBAction func prefixTextEdited(_ sender: Any) {
         let prefix = prefixTextBox.stringValue
         prefixPreview.stringValue = "Ex: \(prefix)root.type"
-    }
-}
-
-struct ImageModifications {
-    var background: NSColor?
-    var shift: CGPoint = .zero
-    var scale: CGFloat = 1
-    var aspect: NSSize = NSSize(width: 1, height: 1)
-    var rounding: CGFloat = 0
-    
-    func apply(on image: NSImage) -> NSImage {
-        var modImage = image
-        
-        modImage = modImage.transform(aspect: aspect, scale: scale, shift: shift)
-        
-        if let backgroundColor = background {
-            modImage = modImage.addBackground(backgroundColor)
-        }
-        
-        if rounding != 0 {
-            modImage = modImage.round(percent: rounding)
-        }
-        
-        return modImage
     }
 }

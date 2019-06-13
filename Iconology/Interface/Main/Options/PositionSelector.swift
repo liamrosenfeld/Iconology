@@ -78,7 +78,7 @@ class PositionSelector: NSControl {
     @objc func draggedView(_ sender: NSPanGestureRecognizer) {
         // limit triggers
         count += 1
-        if count % 5 != 0 {
+        if count % 2 == 0 {
             return
         }
         
