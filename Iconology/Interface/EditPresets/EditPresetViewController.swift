@@ -8,6 +8,16 @@
 
 import Cocoa
 
+protocol EditPresetDelegate {
+    func removeSize(at index: Int)
+    func appendSize(_ size: ImgSetPreset.ImgSetSize)
+    func changeName(at index: Int, to name: String)
+    func changeWidth(at index: Int, to size: Int)
+    func changeHeight(at index: Int, to size: Int)
+    func changeAspect(to aspect: NSSize)
+    var  preset: CustomPreset? { get }
+}
+
 class EditPresetViewController: NSViewController {
     
     // MARK: - Setup
@@ -17,6 +27,8 @@ class EditPresetViewController: NSViewController {
     @IBOutlet weak var aspectW: NSTextField!
     @IBOutlet weak var aspectH: NSTextField!
     
+    var delegate: EditPresetDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,29 +37,25 @@ class EditPresetViewController: NSViewController {
         presetTable.dataSource = self
         
         // Load UI
-        if tempSave != nil {
+        if delegate.preset != nil {
             prepUI()
         }
     }
     
     
-    
     // MARK: - Temp Save
-    var tempSave: CustomPreset! {
-        didSet {
-            // reload UI
-            if (self.isViewLoaded) && (self.view.window != nil) {
-                let presetSelected = tempSave != nil
-                
-                // enable/disable table
-                enableUI(presetSelected)
-                
-                // set UI values
-                if presetSelected {
-                    prepUI()
-                }
-                
+    func reloadUI() {
+        if (self.isViewLoaded) && (self.view.window != nil) {
+            let presetSelected = (delegate.preset != nil)
+            
+            // enable/disable table
+            enableUI(presetSelected)
+            
+            // set UI values
+            if presetSelected {
+                prepUI()
             }
+            
         }
     }
     
@@ -66,9 +74,10 @@ class EditPresetViewController: NSViewController {
     
     func prepUI() {
         presetTable.reloadData()
-        titleLabel.stringValue = "\(tempSave.name)'s Sizes"
-        aspectW.stringValue = tempSave.aspect.width.clean
-        aspectH.stringValue = tempSave.aspect.height.clean
+        guard let preset = delegate.preset else { return }
+        titleLabel.stringValue = "\(preset.name)'s Sizes"
+        aspectW.stringValue = preset.aspect.width.clean
+        aspectH.stringValue = preset.aspect.height.clean
     }
     
     // MARK: - Actions
@@ -100,7 +109,7 @@ class EditPresetViewController: NSViewController {
         }
         
         let aspect = NSSize(width: w, height: h)
-        tempSave.aspect = aspect
+        delegate.changeAspect(to: aspect)
     }
     
     
@@ -110,13 +119,8 @@ class EditPresetViewController: NSViewController {
         var name = "New Size"
         var n = 1
         while true {
-            var state = "good"
-            for size in tempSave.sizes {
-                if name == size.name {
-                    state = "fail"
-                }
-            }
-            if state != "fail" {
+            let contains = delegate.preset!.sizes.contains { $0.name == name }
+            if !contains {
                 break
             }
             name = "New Size \(n)"
@@ -124,22 +128,22 @@ class EditPresetViewController: NSViewController {
         }
         
         // Update Data
-        tempSave.sizes.append(ImgSetPreset.ImgSetSize(name: name, size: tempSave.aspect))
+        delegate.appendSize(ImgSetPreset.ImgSetSize(name: name, size: delegate.preset!.aspect))
         
         // Update Table
-        presetTable.insertRows(at: IndexSet(integer: tempSave.sizes.count-1), withAnimation: .effectFade)
-        presetTable.selectRowIndexes(IndexSet(integer: tempSave.sizes.count-1), byExtendingSelection: false)
+        presetTable.insertRows(at: IndexSet(integer: delegate.preset!.sizes.count-1), withAnimation: .effectFade)
+        presetTable.selectRowIndexes(IndexSet(integer: delegate.preset!.sizes.count-1), byExtendingSelection: false)
     }
     
     func removeRow() {
         let selectedRow = presetTable!.selectedRow
         if selectedRow != -1 {
             // Update Data
-            tempSave.sizes.remove(at: selectedRow)
+            delegate.removeSize(at: selectedRow)
             
             // Update Table
             presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
-            if selectedRow > tempSave.sizes.count - 1{
+            if selectedRow > delegate.preset!.sizes.count - 1{
                 presetTable.selectRowIndexes(IndexSet(integer: selectedRow-1), byExtendingSelection: false)
             } else {
                 presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
@@ -162,38 +166,36 @@ class EditPresetViewController: NSViewController {
         let selectedRow = presetTable.selectedRow
         let column = presetTable.column(for: sender)
         let value = sender.stringValue
+        guard let preset = delegate.preset else { return }
         
         if selectedRow != -1 {
             switch column {
             case 0:
-                let oldName = tempSave.sizes[selectedRow].name
-                for index in 0..<tempSave.sizes.count {
-                    if value == tempSave.sizes[index].name && index != selectedRow {
-                        sender.stringValue = oldName
+                let oldName = preset.sizes[selectedRow].name
+                for index in 0..<preset.sizes.count {
+                    if value == preset.sizes[index].name && index != selectedRow {
                         Alerts.warningPopup(title: "Name Already Exists", text: "'\(value)' is Already Taken")
-                        print("WARN: Name Already Exists")
+                        sender.stringValue = oldName
                         return
                     }
                 }
-                tempSave.sizes[selectedRow].name = value
+                delegate.changeName(at: selectedRow, to: value)
             case 1:
                 guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
-                    print("WARN: Non-Integer Inputed")
-                    sender.stringValue = tempSave.sizes[selectedRow].size.width.description
+                    sender.stringValue = Int(preset.sizes[selectedRow].size.width).description
                     return
                 }
-                tempSave.sizes[selectedRow].size.width = CGFloat(intValue)
+                delegate.changeWidth(at: selectedRow, to: intValue)
             case 2:
                 guard let intValue = Int(value) else {
                     Alerts.warningPopup(title: "Non-Integer Inputed", text: "'\(value)' is Not an Integer")
-                    print("WARN: Non-Integer Inputed")
-                    sender.stringValue = tempSave.sizes[selectedRow].size.height.description
+                    sender.stringValue = Int(preset.sizes[selectedRow].size.height).description
                     return
                 }
-                tempSave.sizes[selectedRow].size.height = CGFloat(intValue)
+                delegate.changeHeight(at: selectedRow, to: intValue)
             default:
-                print("ERR: Column not found")
+                fatalError("Column not found")
             }
         }
     }
@@ -204,10 +206,10 @@ class EditPresetViewController: NSViewController {
 extension EditPresetViewController: NSTableViewDataSource {
     
     func numberOfRows(in presetList: NSTableView) -> Int {
-        guard let tempSave = tempSave else {
+        guard let sizes = delegate.preset?.sizes else {
             return 0
         }
-        return tempSave.sizes.count
+        return sizes.count
     }
     
 }
@@ -223,7 +225,7 @@ extension EditPresetViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var text = ""
         var cellIdentifier = ""
-        let sizes = tempSave.sizes[row]
+        let sizes = delegate.preset!.sizes[row]
         
         if tableColumn == presetTable.tableColumns[0] {
             text = sizes.name

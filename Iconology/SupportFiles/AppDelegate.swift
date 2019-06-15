@@ -31,7 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let storyboard = NSStoryboard(name: "Preferences", bundle: Bundle.main)
             preferencesWindowController = storyboard.instantiateInitialController() as? NSWindowController
             preferencesWindowController!.window?.makeKeyAndOrderFront(nil)
-            preferencesWindowController!.window?.level = .floating
         }
         
     }
@@ -43,7 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let storyboard = NSStoryboard(name: "Presets", bundle: Bundle.main)
             presetsWindowController = storyboard.instantiateInitialController() as? NSWindowController
             presetsWindowController!.window?.makeKeyAndOrderFront(nil)
-            presetsWindowController!.window?.level = .floating
         }
     }
     

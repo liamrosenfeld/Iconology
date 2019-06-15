@@ -58,13 +58,8 @@ class SelectPresetViewController: NSViewController {
         var name = "New Preset"
         var n = 1
         while true {
-            var good = true
-            for preset in delegate?.presets ?? [CustomPreset]() {
-                if name == preset.name {
-                    good = false
-                }
-            }
-            if good {
+            let contains = delegate!.presets.contains { $0.name == name }
+            if !contains {
                 break
             }
             name = "New Preset \(n)"
