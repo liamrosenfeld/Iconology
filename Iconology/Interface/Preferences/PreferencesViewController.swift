@@ -28,7 +28,7 @@ class PreferencesViewController: NSViewController {
         if comfirm {
             Storage.userPresets.deleteAllPreset()
             ExamplePresets.addExamplePresets()
-            NotificationCenter.default.post(name: Notifications.preferencesApply, object: nil)
+            NotificationCenter.default.post(name: Notifications.customPresetsReset, object: nil)
         }
     }
     

@@ -11,4 +11,5 @@ import AppKit
 enum Notifications {
     static let presetApply = Notification.Name(rawValue: "PresetApply")
     static let preferencesApply = Notification.Name(rawValue: "PreferencesApply")
+    static let customPresetsReset = Notification.Name(rawValue: "CustomPresetsReset")
 }
