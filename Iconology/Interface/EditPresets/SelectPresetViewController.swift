@@ -40,7 +40,6 @@ class SelectPresetViewController: NSViewController {
         if selected != presetSelected {
             presetSelected = selected
             delegate?.presetSelected(withIndex: presetSelected)
-            print("Selected: \(presetSelected)")
         }
         
     }
