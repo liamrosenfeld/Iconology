@@ -17,6 +17,7 @@ class ImageOptionsViewController: NSViewController {
         prefixPreview.stringValue = ""
         shiftSelector.target = self
         shiftSelector.action = #selector(shiftSelected)
+        resetAll()
     }
 
     // MARK: - Outlets
@@ -26,12 +27,16 @@ class ImageOptionsViewController: NSViewController {
     
     @IBOutlet weak var scaleView: NSView!
     @IBOutlet weak var scaleSlider: NSSlider!
+    @IBOutlet weak var scaleText: NSTextField!
     
     @IBOutlet weak var shiftView: NSView!
     @IBOutlet weak var shiftSelector: PositionSelector!
+    @IBOutlet weak var shiftXText: NSTextField!
+    @IBOutlet weak var shiftYText: NSTextField!
     
     @IBOutlet weak var roundView: NSView!
     @IBOutlet weak var roundSlider: NSSlider!
+    @IBOutlet weak var roundText: NSTextField!
     
     @IBOutlet weak var prefixView: NSView!
     @IBOutlet weak var prefixTextBox: NSTextField!
@@ -53,7 +58,12 @@ class ImageOptionsViewController: NSViewController {
         }
     }
     
-    // MARK: - Actions
+    // MARK: -- Actions
+    func resetAll() {
+        resetScale(self)
+        resetShift(self)
+        resetRound(self)
+    }
     
     // Background
     @IBAction func backgroundToggled(_ sender: Any) {
@@ -81,33 +91,92 @@ class ImageOptionsViewController: NSViewController {
         }
         
         mods.scale = CGFloat(scaleSlider.doubleValue)
+        scaleText.stringValue = scaleSlider.doubleValue.description
     }
     
     @IBAction func resetScale(_ sender: Any) {
         mods.scale = 1
         scaleSlider.doubleValue = 1
+        scaleText.stringValue = "1"
     }
     
+    @IBAction func scaleTyped(_ sender: Any) {
+        guard let num = Double(scaleText.stringValue) else {
+            return
+        }
+        
+        if num <= 0 || num > 2 {
+            return
+        }
+        
+        mods.scale = CGFloat(num)
+        scaleSlider.doubleValue = num
+    }
     
     // Shift
     @objc func shiftSelected(_ sender: Any) {
         let shift = shiftSelector.position
         mods.shift = shift
+        shiftXText.stringValue = shift.x.description
+        shiftYText.stringValue = shift.y.description
     }
     
     @IBAction func resetShift(_ sender: Any) {
         mods.shift = .zero
         shiftSelector.setPosition(to: .zero)
+        shiftXText.stringValue = "0"
+        shiftYText.stringValue = "0"
+    }
+    
+    @IBAction func shiftXTyped(_ sender: Any) {
+        guard let num = Double(shiftXText.stringValue) else {
+            return
+        }
+        
+        if num < -120 || num > 120 {
+            return
+        }
+        
+        mods.shift.x = CGFloat(num)
+        shiftSelector.setPosition(to: mods.shift)
+    }
+    
+    @IBAction func shiftYTyped(_ sender: Any) {
+        guard let num = Double(shiftYText.stringValue) else {
+            return
+        }
+        
+        if num < -120 || num > 120 {
+            return
+        }
+        
+        mods.shift.y = CGFloat(num)
+        shiftSelector.setPosition(to: mods.shift)
     }
     
     // Round
     @IBAction func roundSelected(_ sender: Any) {
         mods.rounding = CGFloat(roundSlider.doubleValue)
+        roundText.stringValue = roundSlider.doubleValue.description
     }
     
-    @IBAction func roundReset(_ sender: Any) {
-        mods.rounding = CGFloat(roundSlider.doubleValue)
+    @IBAction func resetRound(_ sender: Any) {
+        mods.rounding = 0
         roundSlider.doubleValue = 0
+        roundText.stringValue = "0"
+    }
+    
+    @IBAction func roundTyped(_ sender: Any) {
+        guard let num = Double(scaleText.stringValue) else {
+            return
+        }
+        
+        if num <= 0 || num >= 100 {
+            return
+        }
+        
+        mods.rounding = CGFloat(num)
+        roundSlider.doubleValue = num
     }
     
     // Prefix
