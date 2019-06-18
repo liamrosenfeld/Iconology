@@ -132,6 +132,7 @@ extension OptionsViewController: PresetDelegate {
     
     func setAspect(_ aspect: NSSize) {
         imageOptionsVC.mods.aspect = aspect
+        aspectRatioLabel.stringValue = "Aspect: " + aspect.width.clean + ":" + aspect.height.clean
     }
     
 }
