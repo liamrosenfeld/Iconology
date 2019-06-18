@@ -70,7 +70,7 @@ class PositionSelector: NSControl {
         setPosition(to: CGPoint(x: 0, y: 0))
         
         // drag support
-        let gesture = NSPanGestureRecognizer(target: self, action: #selector(Self.draggedView(_:)))
+        let gesture = NSPanGestureRecognizer(target: self, action: #selector(PositionSelector.draggedView(_:)))
         dragView.addGestureRecognizer(gesture)
         self.addSubview(dragView)
     }

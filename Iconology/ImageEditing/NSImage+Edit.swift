@@ -39,16 +39,13 @@ extension NSImage {
     }
     
     func scale(by scale: CGFloat) -> NSImage {
-        // get the size of the original image
-        let imageSize = self.size
-        
-        // Set graphics state
-        let w = imageSize.width * scale
-        let h = imageSize.height * scale
-        let destSize = NSSize(width: w, height: h)
+        // calc size
+        var size = self.size
+        size.width  *= scale
+        size.height *= scale
         
         // draw the scaled image
-        return self.resize(to: destSize)
+        return self.resize(to: size)
     }
     
     func placeInFrame(_ frame: NSSize, at loc: CGPoint) -> NSImage {
@@ -61,7 +58,7 @@ extension NSImage {
         
         // create rect of ascpect size
         var imageRect = NSRect.zero
-        imageRect.size = frame
+        imageRect.size = self.size
         
         // draw the image
         let rect = imageRect
