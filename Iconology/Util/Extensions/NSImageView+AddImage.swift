@@ -11,8 +11,7 @@ import AppKit
 extension NSImageView {
     func resize(to image: NSImage) {
         // Get Image Size
-        let inputBitmap = NSBitmapImageRep(data: image.tiffRepresentation!)!
-        let imageSize = NSSize(width: inputBitmap.pixelsWide, height: inputBitmap.pixelsHigh)
+        let imageSize = image.size
         let w: CGFloat = imageSize.width
         let h: CGFloat = imageSize.height
         
