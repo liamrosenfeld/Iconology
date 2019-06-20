@@ -109,10 +109,3 @@ class PositionSelector: NSControl {
         sender.setTranslation(CGPoint.zero, in: self)
     }
 }
-
-fileprivate extension NSView {
-    func setBackground(to color: NSColor) {
-        wantsLayer = true
-        layer?.backgroundColor = color.cgColor
-    }
-}
