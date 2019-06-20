@@ -35,7 +35,7 @@ class OptionsViewController: NSViewController {
         guard let url = imageURL else {
             Alerts.warningPopup(title: "Image Not Selected", text: "No Image Was Selected")
             print("ERR: URL is Nil")
-            segue(to: "DragVC")
+            toHomeVC()
             return
         }
         
@@ -44,7 +44,7 @@ class OptionsViewController: NSViewController {
         } catch URL.ImageError.imageNotFound {
             Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
             print("ERR: File Could No Longer Be Found")
-            segue(to: "DragVC")
+            toHomeVC()
         } catch {
             print("Unexpected error: \(error).")
         }
@@ -62,13 +62,10 @@ class OptionsViewController: NSViewController {
         addChildVC(presetsVC, to: presetVCContainer)
     }
     
-    func segue(to: String) {
-        if (to == "DragVC") {
-            let dragViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("HomeViewController")) as? HomeViewController
-            view.window?.contentViewController = dragViewController
-        }
+    func toHomeVC() {
+        let windowController = view.window?.windowController as! MainWindowController
+        windowController.presentHome()
     }
-    
     
     // MARK: - Actions
     @IBAction func convert(_ sender: Any) {
@@ -99,7 +96,7 @@ class OptionsViewController: NSViewController {
     }
    
     @IBAction func back(_ sender: Any) {
-        segue(to: "DragVC")
+        toHomeVC()
     }
     
 }
