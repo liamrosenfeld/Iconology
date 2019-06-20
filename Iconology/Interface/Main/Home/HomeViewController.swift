@@ -15,18 +15,13 @@ class HomeViewController: NSViewController {
     @IBOutlet weak var descriptionLabel: NSTextField!
     @IBOutlet weak var subText: NSTextField!
     
-    
     var imageURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dragView.delegate = self
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+        dragView.setBackground(to: .gray)
+        dragView.alphaValue = 0
     }
     
     func toOptionsVC() {
@@ -49,11 +44,13 @@ extension HomeViewController: DragViewDelegate {
     func dragViewDidHover() {
         self.descriptionLabel.stringValue = "That would work!"
         self.subText.stringValue = ""
+        dragView.alphaValue = 0.25
     }
     
     func dragViewMouseExited(){
         self.descriptionLabel.stringValue = "Drag and Drop an Image File Here"
         self.subText.stringValue = "(Input a High-Resolution Image)"
+        dragView.alphaValue = 0
     }
     
     func dragView(didDragFileWith url: URL) {
