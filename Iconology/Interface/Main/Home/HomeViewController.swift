@@ -24,18 +24,17 @@ class HomeViewController: NSViewController {
         dragView.alphaValue = 0
     }
     
-    func toOptionsVC() {
-        let optionsViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("OptionsViewController")) as? OptionsViewController
-        optionsViewController?.imageURL = imageURL!
-        view.window?.contentViewController = optionsViewController
+    func toOptionsVC(for imageURL: URL) {
+        let windowController = view.window?.windowController as! MainWindowController
+        print("Image Dir: \(imageURL)")
+        windowController.presentOptions(for: imageURL)
     }
     
     @IBAction func chooseFileClicked(_ sender: Any) {
         guard let url = FileHandler.chooseFile() else {
             return
         }
-        imageURL = url
-        toOptionsVC()
+        toOptionsVC(for: url)
     }
 }
 
@@ -54,9 +53,7 @@ extension HomeViewController: DragViewDelegate {
     }
     
     func dragView(didDragFileWith url: URL) {
-        imageURL = url
-        print(url)
-        toOptionsVC()
+        toOptionsVC(for: url)
     }
     
 }
