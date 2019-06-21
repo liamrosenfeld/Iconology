@@ -20,40 +20,24 @@ class OptionsViewController: NSViewController {
     var imageOptionsVC: ImageOptionsViewController!
     var presetsVC: PresetsViewController!
     
-    var imageURL: URL?
-    var origImage: NSImage!
-    var imageToConvert: NSImage!
+    var origImage: NSImage? {
+        didSet {
+            if imageOptionsVC != nil {
+                reloadUI()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getImages()
-        imageToConvert = origImage
         addChildren()
-    }
-    
-    func getImages() {
-        guard let url = imageURL else {
-            Alerts.warningPopup(title: "Image Not Selected", text: "No Image Was Selected")
-            print("ERR: URL is Nil")
-            toHomeVC()
-            return
-        }
-        
-        do {
-            origImage = try url.toImage()
-        } catch URL.ImageError.imageNotFound {
-            Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
-            print("ERR: File Could No Longer Be Found")
-            toHomeVC()
-        } catch {
-            print("Unexpected error: \(error).")
-        }
+        reloadUI()
     }
     
     func addChildren() {
         imageOptionsVC = self.storyboard?.instantiateController(withIdentifier: "ImageOptionsVC") as? ImageOptionsViewController
-        imageOptionsVC.mods = ImageModifier(image: origImage) { image in
-            self.imageView.addImage(image)
+        imageOptionsVC.mods = ImageModifier(image: origImage!) { modImage in
+            self.imageView.addImage(modImage)
         }
         addChildVC(imageOptionsVC, to: imageVCContainer)
         
@@ -62,10 +46,32 @@ class OptionsViewController: NSViewController {
         addChildVC(presetsVC, to: presetVCContainer)
     }
     
-    func toHomeVC() {
-        let windowController = view.window?.windowController as! MainWindowController
-        windowController.presentHome()
+    // MARK: - Interface Management
+    func reloadUI() {
+        resetMods()
+        displayImage()
+        alignAspectLabel()
     }
+    
+    func resetMods() {
+        guard let image = origImage else { return }
+        imageOptionsVC.mods.origImage = image
+        imageOptionsVC.resetAll()
+    }
+    
+    func displayImage() {
+        imageView.resize(to: imageOptionsVC.mods.image)
+        imageView.addImage(imageOptionsVC.mods.image)
+    }
+    
+    func alignAspectLabel() {
+        let x = imageView.frame.origin.x
+        let y = imageView.frame.size.height + imageView.frame.origin.y
+        let origin = NSPoint(x: x, y: y)
+        let rect = NSRect(origin: origin, size: aspectRatioLabel.frame.size)
+        aspectRatioLabel.frame = rect
+    }
+    
     
     // MARK: - Actions
     @IBAction func convert(_ sender: Any) {
@@ -86,7 +92,7 @@ class OptionsViewController: NSViewController {
         FileHandler.createFolder(directory: saveDirectory)
         
         // Save
-        preset.save(imageToConvert, at: saveDirectory, with: imageOptionsVC.prefix)
+        preset.save(imageOptionsVC.mods.image, at: saveDirectory, with: imageOptionsVC.prefix)
         
         Alerts.success(title: "Saved!", text: "Image Was Saved With The Preset \(preset.name)")
         
@@ -99,6 +105,11 @@ class OptionsViewController: NSViewController {
         toHomeVC()
     }
     
+    func toHomeVC() {
+        let windowController = view.window?.windowController as! MainWindowController
+        windowController.presentHome()
+    }
+    
 }
 
 extension OptionsViewController: PresetDelegate {
@@ -109,27 +120,11 @@ extension OptionsViewController: PresetDelegate {
         }
         imageOptionsVC.setMods(from: preset)
         setAspect(preset.aspect)
-        setNewImage(imageToConvert)
-    }
-    
-    func setNewImage(_ image: NSImage) {
-        imageOptionsVC.mods.origImage = image
-        imageView.resize(to: imageOptionsVC.mods.image)
-        imageView.addImage(imageOptionsVC.mods.image)
-        alignAspectLabel()
-    }
-    
-    func alignAspectLabel() {
-        let x = imageView.frame.origin.x
-        let y = imageView.frame.size.height + imageView.frame.origin.y
-        let origin = NSPoint(x: x, y: y)
-        let rect = NSRect(origin: origin, size: aspectRatioLabel.frame.size)
-        aspectRatioLabel.frame = rect
+        displayImage()
     }
     
     func setAspect(_ aspect: NSSize) {
         imageOptionsVC.mods.aspect = aspect
-        aspectRatioLabel.stringValue = "Aspect: " + aspect.width.clean + ":" + aspect.height.clean
+        aspectRatioLabel.stringValue = "Aspect: \(aspect.width.clean):\(aspect.height.clean)"
     }
-    
 }

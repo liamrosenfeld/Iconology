@@ -23,8 +23,8 @@ class MainWindowController: NSWindowController {
         window?.contentViewController = home
     }
     
-    func presentOptions(for imageURL: URL) {
-        options?.imageURL = imageURL
+    func presentOptions(for image: NSImage) {
+        options?.origImage = image
         window?.contentViewController = options
     }
 }
