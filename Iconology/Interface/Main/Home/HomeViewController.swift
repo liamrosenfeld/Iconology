@@ -26,8 +26,8 @@ class HomeViewController: NSViewController {
     
     func toOptionsVC(for imageURL: URL) {
         let windowController = view.window?.windowController as! MainWindowController
-        print("Image Dir: \(imageURL)")
-        windowController.presentOptions(for: imageURL)
+        guard let image = getImage(from: imageURL) else { return }
+        windowController.presentOptions(for: image)
     }
     
     @IBAction func chooseFileClicked(_ sender: Any) {
@@ -35,6 +35,19 @@ class HomeViewController: NSViewController {
             return
         }
         toOptionsVC(for: url)
+    }
+    
+    func getImage(from url: URL) -> NSImage? {
+        do {
+            return try url.toImage()
+        } catch URL.ImageError.imageNotFound {
+            Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
+            print("ERR: File Could No Longer Be Found")
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+        
+        return nil
     }
 }
 
@@ -46,7 +59,7 @@ extension HomeViewController: DragViewDelegate {
         dragView.alphaValue = 0.25
     }
     
-    func dragViewMouseExited(){
+    func dragViewMouseExited() {
         self.descriptionLabel.stringValue = "Drag and Drop an Image File Here"
         self.subText.stringValue = "(Input a High-Resolution Image)"
         dragView.alphaValue = 0
