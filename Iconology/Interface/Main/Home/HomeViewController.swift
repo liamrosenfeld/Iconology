@@ -21,6 +21,9 @@ class HomeViewController: NSViewController {
         super.viewDidLoad()
         dragView.delegate = self
         dragView.setBackground(to: .gray)
+    }
+    
+    override func viewWillAppear() {
         dragView.alphaValue = 0
     }
     

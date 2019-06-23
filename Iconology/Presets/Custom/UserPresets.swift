@@ -18,9 +18,9 @@ struct UserPresets {
     
     var filePath: String {
         let manager = FileManager.default
-        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
-        print("Document Directory: \(String(describing: url!))")
-        return (url!.appendingPathComponent("Data").path)
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print("Custom Preset Directory: \(url.path)")
+        return (url.appendingPathComponent("Data").path)
     }
     
     func savePresets() {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// https://developer.apple.com/library/archive/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Optimizing/Optimizing.html
 let macIconset = [
     ImgSetPreset.ImgSetSize(name: "icon_16x16", x: 16, y: 16),
     ImgSetPreset.ImgSetSize(name: "icon_16x16@2x", x: 32, y: 32),
@@ -21,12 +22,23 @@ let macIconset = [
     ImgSetPreset.ImgSetSize(name: "icon_512x512@2x", x: 1024, y: 1024)
 ]
 
+// https://docs.microsoft.com/en-us/windows/desktop/uxguide/vis-icons
+let winIconset = [
+    ImgSetPreset.ImgSetSize(name: "icon-16",  x: 16, y: 16),
+    ImgSetPreset.ImgSetSize(name: "icon-32",  x: 32, y: 32),
+    ImgSetPreset.ImgSetSize(name: "icon-48",  x: 48, y: 48),
+    ImgSetPreset.ImgSetSize(name: "icon-64",  x: 64, y: 64)
+]
+
+// https://github.com/audreyr/favicon-cheat-sheet
 let faviconIcoSet = [
-    ImgSetPreset.ImgSetSize(name: "icon_16x16", x: 16, y: 16),
-    ImgSetPreset.ImgSetSize(name: "icon_32x32", x: 32, y: 32)
+    ImgSetPreset.ImgSetSize(name: "favicon-16", x: 16, y: 16),
+    ImgSetPreset.ImgSetSize(name: "favicon-32", x: 32, y: 32),
+    ImgSetPreset.ImgSetSize(name: "favicon-48", x: 48, y: 48)
 ]
 
 let faviconSet = [
+    ImgSetPreset.ImgSetSize(name: "favicon-16", x: 16, y: 16),
     ImgSetPreset.ImgSetSize(name: "favicon-32", x: 32, y: 32),
     ImgSetPreset.ImgSetSize(name: "favicon-57", x: 57, y: 57),
     ImgSetPreset.ImgSetSize(name: "favicon-76", x: 76, y: 76),
