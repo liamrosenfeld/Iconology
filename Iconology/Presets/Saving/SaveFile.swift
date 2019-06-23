@@ -10,8 +10,10 @@ import Cocoa
 
 func saveFile(_ image: NSImage, at url: URL, as type: FilePreset.Filetype) {
     switch type {
+    case .png:
+        savePng(image, named: "Icon", at: url)
     case .icns:
-        IcnsGenerator.saveIcns(image, in: macIconset, at: url)
+        IcnsGenerator.saveIcns(image, at: url)
     case .ico(let sizes):
         IcoGenerator.saveIco(image, in: sizes, at: url)
     }
@@ -116,13 +118,13 @@ fileprivate struct IcnsGenerator {
     // for info go here:
     // https://www.unix.com/man-page/osx/1/iconutil/
     
-    static func saveIcns(_ image: NSImage, in sizes: [ImgSetPreset.ImgSetSize], at url: URL) {
+    static func saveIcns(_ image: NSImage, at url: URL) {
         // create temp location
         let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent("Icons.iconset")
         FileHandler.createFolder(directory: tempUrl)
         
         // create with iconutil
-        savePNGs(image, at: tempUrl, with: "", in: sizes)
+        savePngs(image, at: tempUrl, with: "", in: macIconset)
         iconUtil(in: tempUrl, out: url)
         
         // tear down
