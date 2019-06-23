@@ -24,6 +24,7 @@ struct DefaultPresets {
         
         if Storage.preferences.useFiles {
             var filePresets = [FilePreset]()
+            filePresets.append(FilePreset(name: "png", filetype: .png, prefix: false))
             filePresets.append(FilePreset(name: "icns", filetype: .icns, prefix: false))
             filePresets.append(FilePreset(name: "ico", filetype: .ico(winIconset), prefix: false))
             presets.append(PresetGroup(title: "Files", presets: filePresets))

@@ -28,7 +28,6 @@
 		0C8D9E4221CD988400520AC8 /* ImgSetPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4121CD988400520AC8 /* ImgSetPreset.swift */; };
 		0C8D9E4421CD988E00520AC8 /* XcodePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */; };
 		0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */; };
-		0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */; };
 		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
 		0CB404A622B0C5830022505A /* PositionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB404A522B0C5830022505A /* PositionSelector.swift */; };
 		0CC44E4521F59C33009E963D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* Storage.swift */; };
@@ -81,7 +80,6 @@
 		0C8D9E4121CD988400520AC8 /* ImgSetPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgSetPreset.swift; sourceTree = "<group>"; };
 		0C8D9E4321CD988E00520AC8 /* XcodePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePreset.swift; sourceTree = "<group>"; };
 		0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreset.swift; sourceTree = "<group>"; };
-		0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PNG.swift"; sourceTree = "<group>"; };
 		0C8D9E9621CF169900520AC8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		0CB404A522B0C5830022505A /* PositionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSelector.swift; sourceTree = "<group>"; };
 		0CC44E4421F59C33009E963D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				0CC9E81021CF645B00E37482 /* SaveXcode.swift */,
 				0CC9E81221CF647200E37482 /* SaveFile.swift */,
 				0CC9E81821D0842600E37482 /* SaveCollection.swift */,
-				0C8D9E9221CF155700520AC8 /* NSImage+PNG.swift */,
 			);
 			path = Saving;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */,
 				0C3C44F521FA70390067508C /* Preferences.swift in Sources */,
 				0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */,
-				0C8D9E9321CF155700520AC8 /* NSImage+PNG.swift in Sources */,
 				0C6C91B222BC302700C6A897 /* NSView+Background.swift in Sources */,
 				0C8D9E3B21CD810D00520AC8 /* DefaultPresets.swift in Sources */,
 				0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */,

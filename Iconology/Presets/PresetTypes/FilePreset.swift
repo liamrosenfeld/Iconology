@@ -27,6 +27,7 @@ final class FilePreset: Preset {
     }
     
     enum Filetype {
+        case png
         case icns
         case ico([ImgSetPreset.ImgSetSize])
     }
