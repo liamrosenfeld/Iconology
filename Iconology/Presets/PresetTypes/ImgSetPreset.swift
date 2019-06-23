@@ -16,7 +16,7 @@ class ImgSetPreset: Preset {
     var aspect: NSSize
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {
-        savePng(image, at: url, with: prefix, in: sizes)
+        savePNGs(image, at: url, with: prefix, in: sizes)
     }
     
     init(name: String, sizes: [ImgSetPreset.ImgSetSize], aspect: NSSize? = nil) {

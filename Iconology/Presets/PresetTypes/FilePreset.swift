@@ -13,24 +13,22 @@ final class FilePreset: Preset {
     var filetype: FilePreset.Filetype
     var folderName = ""
     var useModifications: UseModifications
-    var sizes: [ImgSetPreset.ImgSetSize]
     var aspect: NSSize
     
     func save(_ image: NSImage, at url: URL, with prefix: String) {
         saveFile(image, at: url, as: filetype)
     }
     
-    init(name: String, filetype: FilePreset.Filetype, sizes: [ImgSetPreset.ImgSetSize], prefix: Bool, aspect: NSSize? = nil) {
+    init(name: String, filetype: FilePreset.Filetype, prefix: Bool, aspect: NSSize? = nil) {
         self.name = name
         self.filetype = filetype
-        self.sizes = sizes
         self.useModifications = UseModifications(background: true, scale: true, shift: true, round: true, prefix: prefix)
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
     }
     
-    enum Filetype: String {
+    enum Filetype {
         case icns
-        case ico
+        case ico([ImgSetPreset.ImgSetSize])
     }
 }
 
