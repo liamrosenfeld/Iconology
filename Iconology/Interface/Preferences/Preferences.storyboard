@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="E3r-bg-6De">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="E3r-bg-6De">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.12"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="apply:" target="cOI-Ew-Ovy" id="Tsg-cd-XvJ"/>
+                                    <action selector="applyGeneral:" target="cOI-Ew-Ovy" id="Tsg-cd-XvJ"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-6l-Y6I">
@@ -55,7 +55,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="apply:" target="cOI-Ew-Ovy" id="093-sg-8t1"/>
+                                    <action selector="applyDefaultPresets:" target="cOI-Ew-Ovy" id="ILY-HF-QG1"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUo-14-gJa" userLabel="Title">
@@ -93,7 +93,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="apply:" target="cOI-Ew-Ovy" id="uZA-3x-qjJ"/>
+                                    <action selector="applyDefaultPresets:" target="cOI-Ew-Ovy" id="WMR-Ai-X5f"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSv-jc-37q">
@@ -104,7 +104,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="apply:" target="cOI-Ew-Ovy" id="u0t-PE-vwn"/>
+                                    <action selector="applyDefaultPresets:" target="cOI-Ew-Ovy" id="Faf-Vv-PFL"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySf-Vp-aXC">
@@ -118,9 +118,21 @@
                                     <action selector="resetCustomPresets:" target="cOI-Ew-Ovy" id="O4i-wP-Ty6"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pSN-bo-4sk">
+                                <rect key="frame" x="158" y="45" width="190" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Continuous Preview Update" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aOY-eW-dfL">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="applyGeneral:" target="cOI-Ew-Ovy" id="B1K-zt-2sJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="continuousPreviewToggle" destination="pSN-bo-4sk" id="FQt-fZ-YZm"/>
                         <outlet property="fileToggle" destination="dM3-Ss-bTZ" id="Bom-32-4mW"/>
                         <outlet property="openFolderToggle" destination="ZM9-Ny-qaG" id="aN9-eO-MXc"/>
                         <outlet property="setToggle" destination="GSv-jc-37q" id="jXq-He-b6N"/>

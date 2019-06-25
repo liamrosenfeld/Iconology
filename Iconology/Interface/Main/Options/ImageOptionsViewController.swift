@@ -13,11 +13,31 @@ class ImageOptionsViewController: NSViewController {
     var mods = ImageModifier(image: NSImage())
     
     override func viewDidLoad() {
-        _ = self.view // Load View Hierarchy
-        prefixPreview.stringValue = ""
+        // Load View Hierarchy
+        _ = self.view
+        
+        // shiftSelector
         shiftSelector.target = self
         shiftSelector.action = #selector(shiftSelected)
+        
+        // set ui
         resetAll()
+        setContinous()
+        prefixPreview.stringValue = ""
+        
+        // notif
+        NotificationCenter.default.addObserver(forName: Notifications.preferencesApply, object: nil, queue: nil) { _ in
+            self.setContinous()
+        }
+    }
+    
+    func setContinous() {
+        let cont = Storage.preferences.continuousPreview
+        // TODO: Non-Continuous Background Option
+//        backgroundColor.isContinuous = cont
+        scaleSlider.isContinuous     = cont
+        shiftSelector.isContinuous   = cont
+        roundSlider.isContinuous     = cont
     }
 
     // MARK: - Outlets
@@ -58,7 +78,7 @@ class ImageOptionsViewController: NSViewController {
         }
     }
     
-    // MARK: -- Actions
+    // MARK: - Actions
     func resetAll() {
         resetScale(self)
         resetShift(self)
@@ -86,7 +106,7 @@ class ImageOptionsViewController: NSViewController {
     @IBAction func scaleSelected(_ sender: Any) {
         // limit triggers
         shiftCount += 1
-        if shiftCount % 2 == 0 {
+        if Storage.preferences.continuousPreview && shiftCount % 2 == 0 {
             return
         }
         
