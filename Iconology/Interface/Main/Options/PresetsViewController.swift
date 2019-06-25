@@ -36,7 +36,7 @@ class PresetsViewController: NSViewController {
     
     // MARK: - Preset Cycle
     func setNotifications() {
-        NotificationCenter.default.addObserver(forName: Notifications.preferencesApply, object: nil, queue: nil, using: reloadPresets)
+        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset, object: nil, queue: nil, using: reloadPresets)
         NotificationCenter.default.addObserver(forName: Notifications.presetApply, object: nil, queue: nil, using: presetApply)
     }
     

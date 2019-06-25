@@ -14,13 +14,15 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var fileToggle: NSButton!
     @IBOutlet weak var setToggle: NSButton!
     @IBOutlet weak var openFolderToggle: NSButton!
+    @IBOutlet weak var continuousPreviewToggle: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButton(xcodeToggle, to: Storage.preferences.useXcode)
-        setButton(fileToggle,  to: Storage.preferences.useFiles)
-        setButton(setToggle,   to: Storage.preferences.useSets)
-        setButton(openFolderToggle, to: Storage.preferences.openFolder)
+        xcodeToggle.state = Storage.preferences.useXcode ? .on : .off
+        fileToggle.state  = Storage.preferences.useFiles ? .on : .off
+        setToggle.state   = Storage.preferences.useSets ? .on : .off
+        openFolderToggle.state = Storage.preferences.openFolder ? .on : .off
+        continuousPreviewToggle.state = Storage.preferences.continuousPreview ? .on : .off
     }
     
     @IBAction func resetCustomPresets(_ sender: Any) {
@@ -32,20 +34,18 @@ class PreferencesViewController: NSViewController {
         }
     }
     
-    @IBAction func apply(_ sender: Any) {
-        Storage.preferences.update(useXcode:   xcodeToggle.state == .on,
-                                   useFiles:   fileToggle.state == .on,
-                                   useSets:    setToggle.state == .on,
-                                   openFolder: openFolderToggle.state == .on)
+    @IBAction func applyDefaultPresets(_ sender: Any) {
+        Storage.preferences.useXcode = xcodeToggle.state == .on
+        Storage.preferences.useFiles = fileToggle.state  == .on
+        Storage.preferences.useSets  = setToggle.state   == .on
         Storage.defaultPresets.fill()
+        NotificationCenter.default.post(name: Notifications.newDefaultPresets, object: nil)
+    }
+    
+    @IBAction func applyGeneral(_ sender: Any) {
+        Storage.preferences.openFolder        = openFolderToggle.state        == .on
+        Storage.preferences.continuousPreview = continuousPreviewToggle.state == .on
         NotificationCenter.default.post(name: Notifications.preferencesApply, object: nil)
     }
     
-    func setButton(_ button: NSButton, to position: Bool) {
-        if position {
-            button.state = .on
-        } else {
-            button.state = .off
-        }
-    }
 }

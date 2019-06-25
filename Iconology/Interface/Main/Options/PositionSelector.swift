@@ -11,7 +11,6 @@ import Cocoa
 class PositionSelector: NSControl {
     
     private var dragView = NSView()
-    private var count = 0
     
     var position: CGPoint {
         get {
@@ -70,18 +69,13 @@ class PositionSelector: NSControl {
         setPosition(to: CGPoint(x: 0, y: 0))
         
         // drag support
-        let gesture = NSPanGestureRecognizer(target: self, action: #selector(PositionSelector.draggedView(_:)))
+        let gesture = DragDetector(target: self, onDrag: #selector(PositionSelector.draggedView(_:)), onMouseUp: draggerReleased)
         dragView.addGestureRecognizer(gesture)
         self.addSubview(dragView)
     }
     
+    private var count = 0
     @objc func draggedView(_ sender: NSPanGestureRecognizer) {
-        // limit triggers
-        count += 1
-        if count % 2 == 0 {
-            return
-        }
-        
         // get point and vector
         let currentLoc = dragView.frame.origin
         let translation = sender.translation(in: self)
@@ -101,11 +95,38 @@ class PositionSelector: NSControl {
             return
         }
         
-        // apply transformation
+        // update box
         dragView.frame.origin = CGPoint(x: currentLoc.x + translation.x, y: currentLoc.y + translation.y)
-        sendAction(action, to: target)
+        
+        // send action
+        count += 1
+        if isContinuous && count % 2 == 0 {
+            sendAction(action, to: target)
+        }
         
         // reset translation
         sender.setTranslation(CGPoint.zero, in: self)
+    }
+    
+    func draggerReleased() {
+        sendAction(action, to: target)
+    }
+}
+
+class DragDetector: NSPanGestureRecognizer {
+    var onMouseUp: (() -> ())
+
+    override func mouseUp(with event: NSEvent) {
+        super.mouseUp(with: event)
+        onMouseUp()
+    }
+
+    init(target: Any, onDrag: Selector, onMouseUp: @escaping (() -> ())) {
+        self.onMouseUp = onMouseUp
+        super.init(target: target, action: onDrag)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
