@@ -38,6 +38,7 @@
 		0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81421CFF56300E37482 /* IconsetSizes.swift */; };
 		0CC9E81721D0830E00E37482 /* CollectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81621D0830E00E37482 /* CollectionPreset.swift */; };
 		0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E81821D0842600E37482 /* SaveCollection.swift */; };
+		0CE7DD9B22C3028C0074E0AF /* NSRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE7DD9A22C3028C0074E0AF /* NSRect+Center.swift */; };
 		0CE8558321D6E9B800F22403 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE8558221D6E9B800F22403 /* Preferences.storyboard */; };
 		0CE8558521D6F69A00F22403 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */; };
 		0CE8558721D6F81800F22403 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558621D6F81800F22403 /* PreferencesViewController.swift */; };
@@ -90,6 +91,7 @@
 		0CC9E81421CFF56300E37482 /* IconsetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsetSizes.swift; sourceTree = "<group>"; };
 		0CC9E81621D0830E00E37482 /* CollectionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreset.swift; sourceTree = "<group>"; };
 		0CC9E81821D0842600E37482 /* SaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCollection.swift; sourceTree = "<group>"; };
+		0CE7DD9A22C3028C0074E0AF /* NSRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRect+Center.swift"; sourceTree = "<group>"; };
 		0CE8558221D6E9B800F22403 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		0CE8558421D6F69A00F22403 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		0CE8558621D6F81800F22403 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				0C3C44FA21FBF9830067508C /* NSViewController+Children.swift */,
 				0C3C44FE21FCF9F70067508C /* URL+NSImage.swift */,
 				0C6C91B122BC302700C6A897 /* NSView+Background.swift */,
+				0CE7DD9A22C3028C0074E0AF /* NSRect+Center.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C02DD5622B1FD63008B9759 /* NSImage+Util.swift in Sources */,
+				0CE7DD9B22C3028C0074E0AF /* NSRect+Center.swift in Sources */,
 				0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */,
 				0CC44E4C21F690ED009E963D /* ImageOptionsViewController.swift in Sources */,
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,

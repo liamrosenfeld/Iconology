@@ -10,32 +10,39 @@ import Cocoa
 
 class PositionSelector: NSControl {
     
-    private var dragView = NSView()
+    private var dragFrame  = NSRect()
+    private var dragerView = NSView()
     
     var position: CGPoint {
         get {
-            var point = dragView.frame.origin
+            // get point
+            var point = dragerView.frame.center
             
-            // make point center of dragView
-            point.x += dragView.frame.size.width / 2
-            point.y += dragView.frame.size.height / 2
-            
-            // make (0, 0) center of parent
+            // align (0, 0) to center of parent
             point.x -= self.frame.size.width / 2
             point.y -= self.frame.size.height / 2
             
-            // scale to -120...120
-            point.x = (point.x / (self.frame.size.width  / 2)) * 120
-            point.y = (point.y / (self.frame.size.height / 2)) * 120
+            // actual size -> -100...100
+            point.x = (point.x / (dragFrame.width  / 2)) * 100
+            point.y = (point.y / (dragFrame.height / 2)) * 100
             
             return point
         }
-    }
-    
-    func setPosition(to position: CGPoint) {
-        let x = position.x + (frame.size.width / 2) - (dragView.frame.size.width / 2)
-        let y = position.y + (frame.size.height / 2) - (dragView.frame.size.height / 2)
-        dragView.frame.origin = CGPoint(x: x, y: y)
+        set {
+            // get point
+            var point = newValue
+            
+            // -100...100 -> actual size
+            point.x = (point.x / 100) * (dragFrame.width  / 2)
+            point.y = (point.y / 100) * (dragFrame.height / 2)
+            
+            // align (0, 0) to center of parent
+            point.x += self.frame.size.width / 2
+            point.y += self.frame.size.height / 2
+            
+            // set pos
+            dragerView.frame.center = point
+        }
     }
     
     // MARK: - Initialization
@@ -43,7 +50,6 @@ class PositionSelector: NSControl {
         super.init(frame: frame)
         
         setupDragView()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,46 +63,46 @@ class PositionSelector: NSControl {
         
         // format
         setBackground(to: .labelColor)
-        self.layer?.cornerRadius = dragView.frame.width / 2
+        self.layer?.cornerRadius = dragerView.frame.width / 2
     }
     
     // MARK: - Drag View
     func setupDragView() {
         // size and position
-        dragView = NSView(frame: NSRect(x: 0, y: 0, width: self.frame.width / 10, height: self.frame.height / 10))
-        dragView.setBackground(to: .systemBlue)
-        dragView.layer?.cornerRadius = dragView.frame.width / 2
-        setPosition(to: CGPoint(x: 0, y: 0))
+        dragerView = NSView(frame: NSRect(x: 0, y: 0, width: self.frame.width / 10, height: self.frame.height / 10))
+        dragerView.setBackground(to: .systemBlue)
+        dragerView.layer?.cornerRadius = dragerView.frame.width / 2
+        position = .zero
         
         // drag support
-        let gesture = DragDetector(target: self, onDrag: #selector(PositionSelector.draggedView(_:)), onMouseUp: draggerReleased)
-        dragView.addGestureRecognizer(gesture)
-        self.addSubview(dragView)
+        let gesture = DragDetector(target: self, onDrag: #selector(Self.draggedView(_:)), onMouseUp: draggerReleased)
+        dragerView.addGestureRecognizer(gesture)
+        self.addSubview(dragerView)
+        
+        // set bounds
+        dragFrame.size.width  = self.frame.size.width * 0.9
+        dragFrame.size.height = self.frame.size.height * 0.9
+        dragFrame.center = self.frame.center
     }
     
     private var count = 0
     @objc func draggedView(_ sender: NSPanGestureRecognizer) {
         // get point and vector
-        let currentLoc = dragView.frame.origin
+        let currentLoc = dragerView.frame.center
         let translation = sender.translation(in: self)
         
-        // check bounds
-        let upper = currentLoc.y + dragView.frame.height + translation.y
-        let lower = currentLoc.y + translation.y
-        let left  = currentLoc.x + translation.x
-        let right = currentLoc.x + dragView.frame.width + translation.x
+        // get new pos
+        let newPos = CGPoint(x: currentLoc.x + translation.x, y: currentLoc.y + translation.y)
         
-        if  (upper >= frame.height) ||
-            (lower <= 0) ||
-            (left <= 0) ||
-            (right >= frame.width) {
+        // check bounds
+        if !dragFrame.contains(newPos) {
             sender.mouseUp(with: NSEvent())
             sender.setTranslation(CGPoint.zero, in: self)
             return
         }
         
         // update box
-        dragView.frame.origin = CGPoint(x: currentLoc.x + translation.x, y: currentLoc.y + translation.y)
+        dragerView.frame.center = newPos
         
         // send action
         count += 1
