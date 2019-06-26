@@ -48,6 +48,13 @@ extension NSImage {
         return self.resize(to: size)
     }
     
+    /**
+     Places the image into a given frame. Crops the image to the bounds of the frame.
+     - Parameters:
+        - frame: the frame the image should be placed in
+        - loc: the point you want the image. (0, 0) is the center of the frame and (100, 100) is totally out of the frame
+     - Returns: the image placed in the frame
+     */
     func placeInFrame(_ frame: NSSize, at loc: CGPoint) -> NSImage {
         // Make Rep
         let rep = makeRep(at: frame)

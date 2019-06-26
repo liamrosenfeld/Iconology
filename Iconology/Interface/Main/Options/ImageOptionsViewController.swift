@@ -33,7 +33,7 @@ class ImageOptionsViewController: NSViewController {
     
     func setContinous() {
         let cont = Storage.preferences.continuousPreview
-        // TODO: Non-Continuous Background Option
+        // FIXME: Non-Continuous Background Option
 //        backgroundColor.isContinuous = cont
         scaleSlider.isContinuous     = cont
         shiftSelector.isContinuous   = cont
@@ -125,12 +125,18 @@ class ImageOptionsViewController: NSViewController {
             return
         }
         
-        if num <= 0 || num > 2 {
-            return
+        if num <= 0 {
+            scaleText.stringValue = "0.01"
+            mods.scale  = 0.01
+            scaleSlider.doubleValue = 0.01
+        } else if num > 2 {
+            scaleText.stringValue = "2"
+            mods.scale  = 2
+            scaleSlider.doubleValue = 2
+        } else {
+            mods.scale = CGFloat(num)
+            scaleSlider.doubleValue = num
         }
-        
-        mods.scale = CGFloat(num)
-        scaleSlider.doubleValue = num
     }
     
     // Shift
@@ -143,7 +149,7 @@ class ImageOptionsViewController: NSViewController {
     
     @IBAction func resetShift(_ sender: Any) {
         mods.shift = .zero
-        shiftSelector.setPosition(to: .zero)
+        shiftSelector.position = .zero
         shiftXText.stringValue = "0"
         shiftYText.stringValue = "0"
     }
@@ -153,12 +159,17 @@ class ImageOptionsViewController: NSViewController {
             return
         }
         
-        if num < -120 || num > 120 {
-            return
+        if num < -100 {
+            shiftXText.stringValue = "-100"
+            mods.shift.x = -100
+        } else if num > 100 {
+            shiftXText.stringValue = "100"
+            mods.shift.x = 100
+        } else {
+            mods.shift.x = CGFloat(num)
         }
         
-        mods.shift.x = CGFloat(num)
-        shiftSelector.setPosition(to: mods.shift)
+        shiftSelector.position = mods.shift
     }
     
     @IBAction func shiftYTyped(_ sender: Any) {
@@ -166,12 +177,17 @@ class ImageOptionsViewController: NSViewController {
             return
         }
         
-        if num < -120 || num > 120 {
-            return
+        if num < -100 {
+            shiftYText.stringValue = "-100"
+            mods.shift.y = -100
+        } else if num > 120 {
+            shiftYText.stringValue = "100"
+            mods.shift.y = 100
+        } else {
+            mods.shift.y = CGFloat(num)
         }
         
-        mods.shift.y = CGFloat(num)
-        shiftSelector.setPosition(to: mods.shift)
+        shiftSelector.position = mods.shift
     }
     
     // Round
@@ -187,16 +203,22 @@ class ImageOptionsViewController: NSViewController {
     }
     
     @IBAction func roundTyped(_ sender: Any) {
-        guard let num = Double(scaleText.stringValue) else {
+        guard let num = Double(roundText.stringValue) else {
             return
         }
         
-        if num <= 0 || num >= 100 {
-            return
+        if num < 0 {
+            roundText.stringValue = "0"
+            mods.rounding = 0
+            roundSlider.doubleValue = 0
+        } else if num > 100 {
+            roundText.stringValue = "100"
+            mods.rounding = 100
+            roundSlider.doubleValue = 100
+        } else {
+            mods.rounding = CGFloat(num)
+            roundSlider.doubleValue = num
         }
-        
-        mods.rounding = CGFloat(num)
-        roundSlider.doubleValue = num
     }
     
     // Prefix
