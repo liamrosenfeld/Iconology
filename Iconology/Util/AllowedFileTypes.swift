@@ -10,10 +10,8 @@ import AppKit
 
 var allowedFileTypes: [String] {
     get {
-        var allowed = [String]()
-        allowed.append(contentsOf: NSImage.imageTypes)
-        let additional = ["com.adobe.illustrator.ai-image"]
-        allowed.append(contentsOf: additional)
+        var allowed = NSImage.imageTypes
+        allowed.append(contentsOf: ["com.adobe.illustrator.ai-image"])
         return allowed
     }
 }

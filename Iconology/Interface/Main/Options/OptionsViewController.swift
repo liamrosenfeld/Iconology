@@ -85,7 +85,7 @@ class OptionsViewController: NSViewController {
         }
         
         // Where to Save
-        let folder = FileHandler.selectFolder()
+        let folder = FileHandler.selectSaveFolder()
         guard let chosenFolder = folder else { return }
         let saveDirectory = chosenFolder.appendingPathComponent(preset.folderName)
         print(saveDirectory)
