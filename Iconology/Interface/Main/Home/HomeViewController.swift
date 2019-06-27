@@ -34,7 +34,7 @@ class HomeViewController: NSViewController {
     }
     
     @IBAction func chooseFileClicked(_ sender: Any) {
-        guard let url = FileHandler.chooseFile() else {
+        guard let url = FileHandler.selectImage() else {
             return
         }
         toOptionsVC(for: url)

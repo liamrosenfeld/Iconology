@@ -69,6 +69,33 @@ class PresetViewController: NSViewController {
         self.selectVC.presetTable.reloadData()
         winController.edited = false
     }
+    
+    // MARK: - Import and Export
+    @IBAction func export(_ sender: Any) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(tempPresets[selectedPreset])
+            FileHandler.saveJson(from: data)
+        } catch {
+            print("ERR: Json Encoding Error - \(error)")
+        }
+        
+    }
+    
+    @IBAction func importPressed(_ sender: Any) {
+        let decoder = JSONDecoder()
+        guard let data = FileHandler.selectJson() else { return }
+        
+        do {
+            let preset = try decoder.decode(CustomPreset.self, from: data)
+            tempPresets.append(preset)
+            selectVC.presetTable.reloadData()
+            winController.edited = true
+        } catch {
+            Alerts.warningPopup(title: "JSON File Not Compatable", text: "Please make sure the imported file is created with Iconology")
+            print("WARN: Json Decoding Error - \(error)")
+        }
+    }
 }
 
 // MARK: - Delegates
