@@ -24,7 +24,7 @@ I got tired of manually exporting every icon size, so I made a app to do it.
   - Horizontal and Vertical Shift
   - Non-Stretching Aspect Ratio Editor
   - Rounding
-- Lightweight
+- Lightweight, 100% native
 - Simple to Use UI
 - Supports
   - .png

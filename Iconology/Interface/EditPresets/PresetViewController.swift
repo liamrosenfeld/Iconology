@@ -51,7 +51,7 @@ class PresetViewController: NSViewController {
     }
     
     // MARK: - Saving
-    @IBAction func apply(_ sender: Any) {
+    @objc @IBAction func save(_ sender: Any) {
         let _ = commitEditing()
     }
     
