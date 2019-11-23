@@ -25,23 +25,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var presetsWindowController: NSWindowController?
     
     @IBAction func preferences(_ sender: Any) {
-        if let windowController = preferencesWindowController {
-            windowController.showWindow(sender)
-        } else {
-            let storyboard = NSStoryboard(name: "Preferences", bundle: Bundle.main)
-            preferencesWindowController = storyboard.instantiateInitialController() as? NSWindowController
-            preferencesWindowController!.window?.makeKeyAndOrderFront(nil)
-        }
-        
+        openNoRepeat(sender: sender, existing: &preferencesWindowController, name: "Preferences")
     }
     
     @IBAction func editCustomPresets(_ sender: Any) {
-        if let windowController = presetsWindowController {
+        openNoRepeat(sender: sender, existing: &presetsWindowController, name: "Presets")
+    }
+    
+    func openNoRepeat(sender: Any, existing: inout NSWindowController?, name: String) {
+        if let windowController = existing {
             windowController.showWindow(sender)
         } else {
-            let storyboard = NSStoryboard(name: "Presets", bundle: Bundle.main)
-            presetsWindowController = storyboard.instantiateInitialController() as? NSWindowController
-            presetsWindowController!.window?.makeKeyAndOrderFront(nil)
+            let storyboard = NSStoryboard(name: name, bundle: Bundle.main)
+            existing = storyboard.instantiateInitialController() as? NSWindowController
+            existing!.window?.makeKeyAndOrderFront(nil)
         }
     }
     

@@ -20,6 +20,7 @@ class PresetsWindowController: NSWindowController, NSWindowDelegate {
         super.windowDidLoad()
     }
     
+    // MARK: - Closing
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         if self.edited {
             askClose()
@@ -56,6 +57,39 @@ class PresetsWindowController: NSWindowController, NSWindowDelegate {
                 self.close()
             }
         }
+    }
+    
+    // MARK: - In Front
+    func windowDidBecomeMain(_ notification: Notification) {
+        addEditMenu()
+    }
+    
+    func windowDidResignMain(_ notification: Notification) {
+        removeEditMenu()
+    }
+    
+    // MARK: - Menu Bar
+    let editIndex = 1
+    
+    func addEditMenu() {
+        let mainMenu = NSApplication.shared.mainMenu
+        mainMenu?.insertItem(editMenu, at: editIndex)
+    }
+    
+    func removeEditMenu() {
+        let mainMenu = NSApplication.shared.mainMenu
+        mainMenu?.removeItem(at: editIndex)
+    }
+    
+    var editMenu: NSMenuItem {
+        let vc = self.contentViewController as? PresetViewController
+        
+        let editMenu = NSMenuItem(title: "Edit", action: nil, keyEquivalent: "")
+        editMenu.submenu = NSMenu(title: "Edit")
+
+        editMenu.submenu?.addItem(NSMenuItem(title: "Save", action: #selector(vc?.save), keyEquivalent: "s"))
+        
+        return editMenu
     }
     
 }
