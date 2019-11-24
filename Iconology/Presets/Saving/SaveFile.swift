@@ -48,12 +48,11 @@ fileprivate struct IcoGenerator {
     }
     
     static private func imagesToIco(_ images: [NSImage]) -> Data {
-        let header = makeHeader(imageCount: UInt16(images.count))
-        var iconDir = Data()
-        var imageData = Data()
+        let header = makeHeader(imageCount: UInt16(images.count)) // top section of file, countains general info about image
+        var iconDir = Data()                                      // middle section of file, stores info about each image in imageData
+        var imageData = Data()                                    // bottom of file, actual imageData
         
-        var len = header.count
-        var offset = header.count + (16 * images.count)
+        var offset = header.count + (16 * images.count)           // the location where each image will be stored, final dir size is known so it is added here
         
         for image in images {
             let dir = getDir(of: image, withOffset: UInt32(offset))
@@ -62,8 +61,7 @@ fileprivate struct IcoGenerator {
             iconDir.append(dir)
             imageData.append(data)
             
-            len += dir.count + data.count
-            offset += data.count
+            offset += data.count // add the length of the image to find where the next image will start
         }
         
         var final = Data()
