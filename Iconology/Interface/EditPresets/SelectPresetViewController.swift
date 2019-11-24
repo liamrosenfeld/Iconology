@@ -9,11 +9,17 @@
 import Cocoa
 
 protocol SelectPresetDelegate {
-    func presetSelected(withIndex index: Int)
+    func presetSelected(at index: Int)
     func presetRenamed(to name: String, forIndex index: Int)
-    func addPreset(named name: String)
+    func addPreset(_ preset: CustomPreset, at index: Int?)
     func removePreset(at index: Int)
     var  presets: [CustomPreset] { get }
+}
+
+extension SelectPresetDelegate {
+    func addPreset(named name: String) {
+        addPreset(CustomPreset(name: name), at: nil)
+    }
 }
 
 class SelectPresetViewController: NSViewController {
@@ -39,7 +45,7 @@ class SelectPresetViewController: NSViewController {
         let selected = presetTable.selectedRow
         if selected != presetSelected {
             presetSelected = selected
-            delegate?.presetSelected(withIndex: presetSelected)
+            delegate?.presetSelected(at: presetSelected)
         }
         
     }
@@ -91,7 +97,7 @@ class SelectPresetViewController: NSViewController {
         
         // if no row is left
         if presetTable.selectedRow == -1 {
-            delegate?.presetSelected(withIndex: -1)
+            delegate?.presetSelected(at: -1)
         }
     }
     

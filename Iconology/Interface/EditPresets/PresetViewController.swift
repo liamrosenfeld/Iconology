@@ -37,10 +37,7 @@ class PresetViewController: NSViewController {
     
     override func viewDidAppear() {
         winController = self.view.window?.windowController as? PresetsWindowController
-        
-        // toggle undo/redo
-        winController.allowUndo(undoManager?.canUndo ?? false)
-        winController.allowRedo(undoManager?.canRedo ?? false)
+        allowUndoRedo()
     }
     
     func addChildren() {
@@ -107,8 +104,7 @@ class PresetViewController: NSViewController {
     }
     
     @objc func redo() {
-        print("redo")
-//        undoManager?.redo()
+        undoManager?.redo()
     }
     
     func registerUndo(_ action: @escaping (PresetViewController) -> ()) {
@@ -117,41 +113,41 @@ class PresetViewController: NSViewController {
             
             this.selectVC.presetTable.reloadData()
             this.editVC.presetTable.reloadData()
-            
-            DispatchQueue.main.async { // if called concurrently it will return true instead of the actual value
-                this.winController.allowUndo(this.undoManager?.canUndo ?? false)
-                this.winController.allowRedo(this.undoManager?.canRedo ?? false)
-            }
         }
         
-        winController.allowUndo(undoManager?.canUndo ?? false)
+        allowUndoRedo()
     }
-
+    
+    func allowUndoRedo() {
+        winController.allowUndo(undoManager?.canUndo ?? false)
+        winController.allowRedo(undoManager?.canRedo ?? false)
+    }
     
 }
 
 // MARK: - Delegates
 extension PresetViewController: SelectPresetDelegate {
-    func presetSelected(withIndex index: Int) {
+    func presetSelected(at index: Int) {
         selectedPreset = index
     }
     
-    func addPreset(named name: String) {
-        tempPresets.append(CustomPreset(name: name, sizes: [ImgSetPreset.ImgSetSize]()))
-        registerUndo { $0.tempPresets.removeLast() }
+    func addPreset(_ preset: CustomPreset, at index: Int?) {
+        let index = index ?? tempPresets.endIndex
+        tempPresets.insert(preset, at: index)
+        registerUndo { $0.removePreset(at: index) }
         winController.edited = true
     }
     
     func removePreset(at index: Int) {
         let removed = tempPresets.remove(at: index)
-        registerUndo { $0.tempPresets.insert(removed, at: index) }
+        registerUndo { $0.addPreset(removed, at: index) }
         winController.edited = true
     }
     
     func presetRenamed(to name: String, forIndex index: Int) {
         let oldName = tempPresets[index].name
         tempPresets[index].name = name
-        registerUndo { $0.tempPresets[index].name = oldName }
+        registerUndo { $0.presetRenamed(to: oldName, forIndex: index) }
         winController.edited = true
     }
     
@@ -161,41 +157,42 @@ extension PresetViewController: SelectPresetDelegate {
 extension PresetViewController: EditPresetDelegate {
     func removeSize(at index: Int) {
         let removed = tempPresets[selectedPreset].sizes.remove(at: index)
-        registerUndo { $0.tempPresets[$0.selectedPreset].sizes.insert(removed, at: index) }
+        registerUndo { $0.addSize(removed, at: index) }
         winController.edited = true
     }
     
-    func appendSize(_ size: ImgSetPreset.ImgSetSize) {
-        tempPresets[selectedPreset].sizes.append(size)
-        registerUndo { $0.tempPresets[$0.selectedPreset].sizes.removeLast() }
+    func addSize(_ size: ImgSetPreset.ImgSetSize, at index: Int?) {
+        let index = index ?? tempPresets[selectedPreset].sizes.endIndex
+        tempPresets[selectedPreset].sizes.insert(size, at: index)
+        registerUndo { $0.removeSize(at: index) }
         winController.edited = true
     }
     
     func changeName(at index: Int, to name: String) {
         let oldName = tempPresets[selectedPreset].sizes[index].name
         tempPresets[selectedPreset].sizes[index].name = name
-        registerUndo { $0.tempPresets[$0.selectedPreset].sizes[index].name = oldName }
+        registerUndo { $0.changeName(at: index, to: oldName) }
         winController.edited = true
     }
     
     func changeWidth(at index: Int, to size: Int) {
-        let oldSize = tempPresets[selectedPreset].sizes[index].size.width
+        let oldSize = Int(tempPresets[selectedPreset].sizes[index].size.width)
         tempPresets[selectedPreset].sizes[index].size.width = CGFloat(size)
-        registerUndo { $0.tempPresets[$0.selectedPreset].sizes[index].size.width = oldSize }
+        registerUndo { $0.changeWidth(at: index, to: oldSize) }
         winController.edited = true
     }
     
     func changeHeight(at index: Int, to size: Int) {
-        let oldSize = tempPresets[selectedPreset].sizes[index].size.height
+        let oldSize = Int(tempPresets[selectedPreset].sizes[index].size.height)
         tempPresets[selectedPreset].sizes[index].size.height = CGFloat(size)
-        registerUndo { $0.tempPresets[$0.selectedPreset].sizes[index].size.height = oldSize }
+        registerUndo { $0.changeHeight(at: index, to: oldSize) }
         winController.edited = true
     }
     
     func changeAspect(to aspect: NSSize) {
         let oldAspect = tempPresets[selectedPreset].aspect
         tempPresets[selectedPreset].aspect = aspect
-        registerUndo { $0.tempPresets[$0.selectedPreset].aspect = oldAspect }
+        registerUndo { $0.changeAspect(to: oldAspect) }
         winController.edited = true
     }
     

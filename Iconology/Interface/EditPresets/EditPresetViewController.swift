@@ -10,12 +10,18 @@ import Cocoa
 
 protocol EditPresetDelegate {
     func removeSize(at index: Int)
-    func appendSize(_ size: ImgSetPreset.ImgSetSize)
+    func addSize(_ size: ImgSetPreset.ImgSetSize, at index: Int?)
     func changeName(at index: Int, to name: String)
     func changeWidth(at index: Int, to size: Int)
     func changeHeight(at index: Int, to size: Int)
     func changeAspect(to aspect: NSSize)
     var  preset: CustomPreset? { get }
+}
+
+extension EditPresetDelegate {
+    func appendSize(_ size: ImgSetPreset.ImgSetSize) {
+        addSize(size, at: nil)
+    }
 }
 
 class EditPresetViewController: NSViewController {
