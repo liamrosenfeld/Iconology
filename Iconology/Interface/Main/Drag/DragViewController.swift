@@ -8,7 +8,7 @@
 
 import AppKit
 
-class HomeViewController: NSViewController {
+class DragViewController: NSViewController {
     
     @IBOutlet weak var dragView: DragView!
     @IBOutlet weak var imageView: NSImageView!
@@ -54,7 +54,7 @@ class HomeViewController: NSViewController {
     }
 }
 
-extension HomeViewController: DragViewDelegate {
+extension DragViewController: DragViewDelegate {
     
     func dragViewDidHover() {
         self.descriptionLabel.stringValue = "That would work!"

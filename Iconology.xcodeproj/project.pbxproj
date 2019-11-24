@@ -18,7 +18,7 @@
 		0C6C91B022BC2EFB00C6A897 /* ImageOptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C91AF22BC2EFB00C6A897 /* ImageOptions.storyboard */; };
 		0C6C91B222BC302700C6A897 /* NSView+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C91B122BC302700C6A897 /* NSView+Background.swift */; };
 		0C6C91B422BC383500C6A897 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C91B322BC383500C6A897 /* MainWindowController.swift */; };
-		0C6C91B622BC3BA300C6A897 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C91B522BC3BA300C6A897 /* Home.storyboard */; };
+		0C6C91B622BC3BA300C6A897 /* Drag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C91B522BC3BA300C6A897 /* Drag.storyboard */; };
 		0C7B55BE21D40B22009FE959 /* NSImageView+AddImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */; };
 		0C8A68202286755400DDE2CA /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8A681E2286755400DDE2CA /* PresetViewController.swift */; };
 		0C8D9E3921CD73E500520AC8 /* UserPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E3821CD73E500520AC8 /* UserPresets.swift */; };
@@ -30,6 +30,7 @@
 		0C8D9E4621CD9A5E00520AC8 /* FilePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */; };
 		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
 		0CB404A622B0C5830022505A /* PositionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB404A522B0C5830022505A /* PositionSelector.swift */; };
+		0CBC127523882B14000AEEDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A520B07CE500E60C19 /* Main.storyboard */; };
 		0CC44E4521F59C33009E963D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* Storage.swift */; };
 		0CC44E4C21F690ED009E963D /* ImageOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */; };
 		0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Num+Clean.swift */; };
@@ -47,13 +48,12 @@
 		0CE8558E21D858DC00F22403 /* AllowedFileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */; };
 		0CF5BC2A20E32A0200F2A57C /* SavePng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF5BC2920E32A0200F2A57C /* SavePng.swift */; };
 		AD1270072023D1510068531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270062023D1510068531A /* AppDelegate.swift */; };
-		AD1270092023D1510068531A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* HomeViewController.swift */; };
+		AD1270092023D1510068531A /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270082023D1510068531A /* DragViewController.swift */; };
 		AD12700B2023D1510068531A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD12700A2023D1510068531A /* Assets.xcassets */; };
 		AD1270362023DADA0068531A /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270352023DADA0068531A /* DragView.swift */; };
 		AD1270382024050C0068531A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1270372024050C0068531A /* OptionsViewController.swift */; };
 		ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E420AF6F8900A2A69F /* CustomPreset.swift */; };
 		ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E620AF709F00A2A69F /* XcodeSizes.swift */; };
-		ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A420B07CE500E60C19 /* Main.storyboard */; };
 		ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887AC20B07FAA00E60C19 /* Presets.storyboard */; };
 		ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */; };
 		ADF887B120B081BF00E60C19 /* EditPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */; };
@@ -71,7 +71,7 @@
 		0C6C91AF22BC2EFB00C6A897 /* ImageOptions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageOptions.storyboard; sourceTree = "<group>"; };
 		0C6C91B122BC302700C6A897 /* NSView+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Background.swift"; sourceTree = "<group>"; };
 		0C6C91B322BC383500C6A897 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		0C6C91B522BC3BA300C6A897 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		0C6C91B522BC3BA300C6A897 /* Drag.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Drag.storyboard; sourceTree = "<group>"; };
 		0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+AddImage.swift"; sourceTree = "<group>"; };
 		0C8A681E2286755400DDE2CA /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
 		0C8D9E3821CD73E500520AC8 /* UserPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresets.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		0CF5BC2920E32A0200F2A57C /* SavePng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePng.swift; sourceTree = "<group>"; };
 		AD1270032023D1510068531A /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1270062023D1510068531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD1270082023D1510068531A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AD1270082023D1510068531A /* DragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragViewController.swift; sourceTree = "<group>"; };
 		AD12700A2023D1510068531A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD12700F2023D1510068531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1270102023D1510068531A /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		AD1270372024050C0068531A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		ADA070E420AF6F8900A2A69F /* CustomPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPreset.swift; sourceTree = "<group>"; };
 		ADA070E620AF709F00A2A69F /* XcodeSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeSizes.swift; sourceTree = "<group>"; };
-		ADF887A520B07CE500E60C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		ADF887A520B07CE500E60C19 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ADF887AC20B07FAA00E60C19 /* Presets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
 		ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPresetViewController.swift; sourceTree = "<group>"; };
 		ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresetViewController.swift; sourceTree = "<group>"; };
@@ -130,9 +130,9 @@
 		0C05610E21D1FCF7005E5D4A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ADF887A420B07CE500E60C19 /* Main.storyboard */,
+				ADF887A520B07CE500E60C19 /* Main.storyboard */,
 				0C6C91B322BC383500C6A897 /* MainWindowController.swift */,
-				0C05611021D1FD8A005E5D4A /* Home */,
+				0C05611021D1FD8A005E5D4A /* Drag */,
 				0C05611121D1FD98005E5D4A /* Options */,
 			);
 			path = Main;
@@ -150,14 +150,14 @@
 			path = EditPresets;
 			sourceTree = "<group>";
 		};
-		0C05611021D1FD8A005E5D4A /* Home */ = {
+		0C05611021D1FD8A005E5D4A /* Drag */ = {
 			isa = PBXGroup;
 			children = (
-				0C6C91B522BC3BA300C6A897 /* Home.storyboard */,
-				AD1270082023D1510068531A /* HomeViewController.swift */,
+				0C6C91B522BC3BA300C6A897 /* Drag.storyboard */,
+				AD1270082023D1510068531A /* DragViewController.swift */,
 				AD1270352023DADA0068531A /* DragView.swift */,
 			);
-			path = Home;
+			path = Drag;
 			sourceTree = "<group>";
 		};
 		0C05611121D1FD98005E5D4A /* Options */ = {
@@ -367,7 +367,6 @@
 			knownRegions = (
 				en,
 				Base,
-				global,
 			);
 			mainGroup = AD126FFA2023D1510068531A;
 			productRefGroup = AD1270042023D1510068531A /* Products */;
@@ -384,10 +383,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADF887A720B07CE600E60C19 /* Main.storyboard in Resources */,
+				0CBC127523882B14000AEEDC /* Main.storyboard in Resources */,
 				AD12700B2023D1510068531A /* Assets.xcassets in Resources */,
 				ADF887AD20B07FAA00E60C19 /* Presets.storyboard in Resources */,
-				0C6C91B622BC3BA300C6A897 /* Home.storyboard in Resources */,
+				0C6C91B622BC3BA300C6A897 /* Drag.storyboard in Resources */,
 				0CE8558321D6E9B800F22403 /* Preferences.storyboard in Resources */,
 				0C6C91B022BC2EFB00C6A897 /* ImageOptions.storyboard in Resources */,
 			);
@@ -416,7 +415,7 @@
 				0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */,
 				0C8A68202286755400DDE2CA /* PresetViewController.swift in Sources */,
 				0CC9E81521CFF56300E37482 /* IconsetSizes.swift in Sources */,
-				AD1270092023D1510068531A /* HomeViewController.swift in Sources */,
+				AD1270092023D1510068531A /* DragViewController.swift in Sources */,
 				ADA070E520AF6F8900A2A69F /* CustomPreset.swift in Sources */,
 				0C3C44F721FAC4420067508C /* Notifications.swift in Sources */,
 				0CE8558E21D858DC00F22403 /* AllowedFileTypes.swift in Sources */,
@@ -448,17 +447,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		ADF887A420B07CE500E60C19 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ADF887A520B07CE500E60C19 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AD1270272023D1510068531A /* Debug */ = {
