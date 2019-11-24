@@ -71,6 +71,15 @@ class PresetsWindowController: NSWindowController, NSWindowDelegate {
     // MARK: - Menu Bar
     let editIndex = 1
     
+    let editTag = 890850937668
+    let undoTag = 879459854568
+    let redoTag = 456789093562
+    
+    var vc: PresetViewController { contentViewController as! PresetViewController}
+    var saveAction: Selector { #selector(vc.save) }
+    var undoAction: Selector { #selector(vc.undo) }
+    var redoAction: Selector { #selector(vc.redo) }
+    
     func addEditMenu() {
         let mainMenu = NSApplication.shared.mainMenu
         mainMenu?.insertItem(editMenu, at: editIndex)
@@ -82,14 +91,41 @@ class PresetsWindowController: NSWindowController, NSWindowDelegate {
     }
     
     var editMenu: NSMenuItem {
-        let vc = self.contentViewController as? PresetViewController
-        
+        // top level menu
         let editMenu = NSMenuItem(title: "Edit", action: nil, keyEquivalent: "")
         editMenu.submenu = NSMenu(title: "Edit")
+        
+        // menu items
+        let items = [
+            NSMenuItem(title: "Save", action: saveAction, keyEquivalent: "s"),
+            .separator(),
+            NSMenuItem(title: "Undo", action: undoAction, keyEquivalent: "z"),
+            NSMenuItem(title: "Redo", action: redoAction, keyEquivalent: "Z"),
+        ]
 
-        editMenu.submenu?.addItem(NSMenuItem(title: "Save", action: #selector(vc?.save), keyEquivalent: "s"))
+        // tags
+        editMenu.tag = editTag
+        items[2].tag = undoTag
+        items[3].tag = redoTag
+        
+        // add
+        items.forEach { editMenu.submenu?.addItem($0) }
         
         return editMenu
+    }
+    
+    func allowUndo(_ on: Bool) {
+        let mainMenu = NSApplication.shared.mainMenu
+        let editMenu = mainMenu?.item(withTag: editTag)
+        let undo = editMenu?.submenu?.item(withTag: undoTag)
+        undo?.action = on ? undoAction : nil
+    }
+    
+    func allowRedo(_ on: Bool) {
+        let mainMenu = NSApplication.shared.mainMenu
+        let editMenu = mainMenu?.item(withTag: editTag)
+        let redo = editMenu?.submenu?.item(withTag: redoTag)
+        redo?.action = on ? redoAction : nil
     }
     
 }
