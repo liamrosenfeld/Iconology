@@ -102,13 +102,10 @@ class OptionsViewController: NSViewController {
     }
    
     @IBAction func back(_ sender: Any) {
-        toHomeVC()
-    }
-    
-    func toHomeVC() {
         let windowController = view.window?.windowController as! MainWindowController
-        windowController.presentHome()
+        windowController.presentDrag()
     }
+
     
 }
 
