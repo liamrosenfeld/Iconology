@@ -33,5 +33,9 @@ final class CustomPreset: ImgSetPreset, Codable {
     override init(name: String, sizes: [ImgSetPreset.ImgSetSize], aspect: NSSize? = nil) {
         super.init(name: name, sizes: sizes, aspect: aspect)
     }
+    
+    init(name: String) {
+        super.init(name: name, sizes: [ImgSetPreset.ImgSetSize]())
+    }
 }
 
