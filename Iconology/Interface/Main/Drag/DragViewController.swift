@@ -24,7 +24,7 @@ class DragViewController: NSViewController {
     }
     
     override func viewWillAppear() {
-        dragView.alphaValue = 0
+        resetSubText()
     }
     
     func toOptionsVC(for imageURL: URL) {
@@ -52,6 +52,12 @@ class DragViewController: NSViewController {
         
         return nil
     }
+    
+    func resetSubText() {
+        self.descriptionLabel.stringValue = "Drag and Drop an Image File Here"
+        self.subText.stringValue = "(Input a High-Resolution Image)"
+        dragView.alphaValue = 0
+    }
 }
 
 extension DragViewController: DragViewDelegate {
@@ -63,9 +69,7 @@ extension DragViewController: DragViewDelegate {
     }
     
     func dragViewMouseExited() {
-        self.descriptionLabel.stringValue = "Drag and Drop an Image File Here"
-        self.subText.stringValue = "(Input a High-Resolution Image)"
-        dragView.alphaValue = 0
+        resetSubText()
     }
     
     func dragView(didDragFileWith url: URL) {
