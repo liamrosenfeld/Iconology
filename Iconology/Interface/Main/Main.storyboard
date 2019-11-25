@@ -66,6 +66,58 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="File" id="fdq-jx-vBa" userLabel="File">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="O2B-7a-1rJ">
+                                    <items>
+                                        <menuItem isSeparatorItem="YES" id="jlc-RZ-cSc"/>
+                                        <menuItem title="Close" keyEquivalent="w" id="lVK-SG-88a">
+                                            <connections>
+                                                <action selector="close:" target="Ady-hI-5gd" id="qf8-Kx-Qms"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="x3h-fG-7K0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="Jbz-v2-dgf">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="8pK-5b-Oth"/>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="yOc-65-KCk"/>
+                                        <menuItem isSeparatorItem="YES" id="i5M-2F-kbh"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="pVV-hu-or3">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="jAg-lt-1oa"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="i63-UF-Us7">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="b59-x3-Asu"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="mlO-c6-KTU">
+                                            <connections>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="Lvb-yG-6oL"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Delete" id="j1q-uk-5FX">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="delete:" target="Ady-hI-5gd" id="k0m-r8-flO"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="Fid-Ek-Kh4">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="oRb-uZ-4vs"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">

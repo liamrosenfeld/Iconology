@@ -61,70 +61,51 @@ class PresetsWindowController: NSWindowController, NSWindowDelegate {
     
     // MARK: - In Front
     func windowDidBecomeMain(_ notification: Notification) {
-        addEditMenu()
+        addPresetItems()
     }
     
     func windowDidResignMain(_ notification: Notification) {
-        removeEditMenu()
+        removePresetItems()
     }
     
     // MARK: - Menu Bar
-    let editIndex = 1
-    
-    let editTag = 890850937668
-    let undoTag = 879459854568
-    let redoTag = 456789093562
-    
     var vc: PresetViewController { contentViewController as! PresetViewController}
     var saveAction: Selector { #selector(vc.save) }
     var undoAction: Selector { #selector(vc.undo) }
     var redoAction: Selector { #selector(vc.redo) }
     
-    func addEditMenu() {
-        let mainMenu = NSApplication.shared.mainMenu
-        mainMenu?.insertItem(editMenu, at: editIndex)
+    let fileText = "File"
+    let editText = "Edit"
+    let undoText = "Undo"
+    let redoText = "Redo"
+    let saveText = "Save"
+    
+    func addPresetItems() {
+        let save = NSMenuItem(title: saveText, action: saveAction, keyEquivalent: "s")
+        fileMenu.insertItem(save, at: 0)
     }
     
-    func removeEditMenu() {
-        let mainMenu = NSApplication.shared.mainMenu
-        mainMenu?.removeItem(at: editIndex)
+    func removePresetItems() {
+        fileMenu.removeItem(at: 0)
     }
     
-    var editMenu: NSMenuItem {
-        // top level menu
-        let editMenu = NSMenuItem(title: "Edit", action: nil, keyEquivalent: "")
-        editMenu.submenu = NSMenu(title: "Edit")
-        
-        // menu items
-        let items = [
-            NSMenuItem(title: "Save", action: saveAction, keyEquivalent: "s"),
-            .separator(),
-            NSMenuItem(title: "Undo", action: undoAction, keyEquivalent: "z"),
-            NSMenuItem(title: "Redo", action: redoAction, keyEquivalent: "Z"),
-        ]
-
-        // tags
-        editMenu.tag = editTag
-        items[2].tag = undoTag
-        items[3].tag = redoTag
-        
-        // add
-        items.forEach { editMenu.submenu?.addItem($0) }
-        
-        return editMenu
+    var fileMenu: NSMenu {
+        let mainMenu = NSApplication.shared.mainMenu
+        return mainMenu!.item(withTitle: fileText)!.submenu!
+    }
+    
+    var editMenu: NSMenu {
+        let mainMenu = NSApplication.shared.mainMenu
+        return mainMenu!.item(withTitle: editText)!.submenu!
     }
     
     func allowUndo(_ on: Bool) {
-        let mainMenu = NSApplication.shared.mainMenu
-        let editMenu = mainMenu?.item(withTag: editTag)
-        let undo = editMenu?.submenu?.item(withTag: undoTag)
+        let undo = editMenu.item(withTitle: undoText)
         undo?.action = on ? undoAction : nil
     }
     
     func allowRedo(_ on: Bool) {
-        let mainMenu = NSApplication.shared.mainMenu
-        let editMenu = mainMenu?.item(withTag: editTag)
-        let redo = editMenu?.submenu?.item(withTag: redoTag)
+        let redo = editMenu.item(withTitle: redoText)
         redo?.action = on ? redoAction : nil
     }
     

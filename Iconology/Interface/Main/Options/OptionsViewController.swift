@@ -20,6 +20,8 @@ class OptionsViewController: NSViewController {
     var imageOptionsVC: ImageOptionsViewController!
     var presetsVC: PresetsViewController!
     
+    var winController: MainWindowController!
+    
     var origImage: NSImage? {
         didSet {
             if imageOptionsVC != nil {
@@ -32,6 +34,11 @@ class OptionsViewController: NSViewController {
         super.viewDidLoad()
         addChildren()
         reloadUI()
+    }
+    
+    override func viewDidAppear() {
+        winController = self.view.window?.windowController as? MainWindowController
+        allowUndoRedo()
     }
     
     func addChildren() {
@@ -74,7 +81,7 @@ class OptionsViewController: NSViewController {
     
     
     // MARK: - Actions
-    @IBAction func convert(_ sender: Any) {
+    @IBAction func generate(_ sender: Any) {
         var preset: Preset!
         do {
             try preset = presetsVC.getSelectedPreset()
@@ -106,6 +113,29 @@ class OptionsViewController: NSViewController {
         windowController.presentDrag()
     }
 
+    // MARK: - Undo/Redo
+    @objc func undo() {
+        print("TODO: Undo")
+        undoManager?.undo()
+    }
+    
+    @objc func redo() {
+        print("TODO: Redo")
+        undoManager?.redo()
+    }
+    
+    func registerUndo(_ action: @escaping (OptionsViewController) -> ()) {
+        undoManager?.registerUndo(withTarget: self) { this in
+            action(this)
+        }
+        
+        allowUndoRedo()
+    }
+    
+    func allowUndoRedo() {
+        winController.allowUndo(undoManager?.canUndo ?? false)
+        winController.allowRedo(undoManager?.canRedo ?? false)
+    }
     
 }
 
