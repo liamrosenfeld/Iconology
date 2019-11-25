@@ -137,8 +137,7 @@ class EditPresetViewController: NSViewController {
         delegate.appendSize(ImgSetPreset.ImgSetSize(name: name, size: delegate.preset!.aspect))
         
         // Update Table
-        presetTable.insertRows(at: IndexSet(integer: delegate.preset!.sizes.count-1), withAnimation: .effectFade)
-        presetTable.selectRowIndexes(IndexSet(integer: delegate.preset!.sizes.count-1), byExtendingSelection: false)
+        addTableRow(at: delegate.preset!.sizes.count - 1)
     }
     
     func removeRow() {
@@ -148,13 +147,33 @@ class EditPresetViewController: NSViewController {
             delegate.removeSize(at: selectedRow)
             
             // Update Table
-            presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
-            if selectedRow > delegate.preset!.sizes.count - 1{
-                presetTable.selectRowIndexes(IndexSet(integer: selectedRow-1), byExtendingSelection: false)
-            } else {
-                presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
-            }
+            removeTableRow(at: selectedRow)
         }
+    }
+    
+    // MARK: - Table Updating
+    func addTableRow(at index: Int) {
+        presetTable.insertRows(at: IndexSet(integer: index), withAnimation: .effectFade)
+        presetTable.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+    }
+    
+    func removeTableRow(at index: Int) {
+        presetTable.removeRows(at: IndexSet(integer: index), withAnimation: .effectFade)
+        if index > Storage.userPresets.presets.count - 1 {
+            presetTable.selectRowIndexes(IndexSet(integer: index - 1), byExtendingSelection: false)
+        } else {
+            presetTable.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        }
+    }
+    
+    func reload(row: Int, col: Int) {
+        presetTable.reloadData(forRowIndexes: IndexSet(integer: row),
+                               columnIndexes: IndexSet(integer: col))
+    }
+    
+    func reloadAspect() {
+        aspectW.stringValue = delegate.preset!.aspect.width.clean
+        aspectH.stringValue = delegate.preset!.aspect.height.clean
     }
     
     
