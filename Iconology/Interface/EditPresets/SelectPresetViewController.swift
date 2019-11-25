@@ -76,8 +76,7 @@ class SelectPresetViewController: NSViewController {
         
         // Update Table
         let newIndex = (delegate?.presets.count ?? 1) - 1
-        presetTable.insertRows(at: IndexSet(integer: newIndex), withAnimation: .effectFade)
-        presetTable.selectRowIndexes(IndexSet(integer: newIndex), byExtendingSelection: false)
+        addTableRow(at: newIndex)
     }
     
     func removeRow() {
@@ -87,17 +86,35 @@ class SelectPresetViewController: NSViewController {
             delegate?.removePreset(at: selectedRow)
         
             // Update Table
-            presetTable.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
-            if selectedRow > Storage.userPresets.presets.count - 1{
-                presetTable.selectRowIndexes(IndexSet(integer: selectedRow-1), byExtendingSelection: false)
-            } else {
-                presetTable.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
-            }
+            removeTableRow(at: selectedRow)
         }
         
         // if no row is left
         if presetTable.selectedRow == -1 {
             delegate?.presetSelected(at: -1)
+        }
+    }
+    
+    // MARK: - Table Updating
+    func addTableRow(at index: Int) {
+        presetTable.insertRows(at: IndexSet(integer: index), withAnimation: .effectFade)
+        presetTable.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+    }
+    
+    func removeTableRow(at index: Int) {
+        presetTable.removeRows(at: IndexSet(integer: index), withAnimation: .effectFade)
+        if index > Storage.userPresets.presets.count - 1 {
+            presetTable.selectRowIndexes(IndexSet(integer: index - 1), byExtendingSelection: false)
+        } else {
+            presetTable.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        }
+    }
+    
+    func reload(row: Int) {
+        presetTable.reloadData(forRowIndexes: IndexSet(integer: row),
+                               columnIndexes: IndexSet(integer: 0))
+        if row == presetTable.selectedRow {
+            delegate?.presetSelected(at: presetTable.selectedRow) // reload EditPresetVC title
         }
     }
     
@@ -127,6 +144,10 @@ class SelectPresetViewController: NSViewController {
         
         if selectedRow != -1 {
             delegate?.presetRenamed(to: value, forIndex: selectedRow)
+        }
+        
+        if selectedRow == presetTable.selectedRow {
+            delegate?.presetSelected(at: selectedRow) // reload EditPresetVC title
         }
     }
 }

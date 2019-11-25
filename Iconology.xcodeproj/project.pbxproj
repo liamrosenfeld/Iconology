@@ -31,6 +31,7 @@
 		0C8D9E9721CF169900520AC8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D9E9621CF169900520AC8 /* FileHandler.swift */; };
 		0CB404A622B0C5830022505A /* PositionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB404A522B0C5830022505A /* PositionSelector.swift */; };
 		0CBC127523882B14000AEEDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF887A520B07CE500E60C19 /* Main.storyboard */; };
+		0CBC1277238B2B10000AEEDC /* PresetVC+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC1276238B2B10000AEEDC /* PresetVC+Delegates.swift */; };
 		0CC44E4521F59C33009E963D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4421F59C33009E963D /* Storage.swift */; };
 		0CC44E4C21F690ED009E963D /* ImageOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */; };
 		0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9E7E621CF434600E37482 /* Num+Clean.swift */; };
@@ -83,6 +84,7 @@
 		0C8D9E4521CD9A5E00520AC8 /* FilePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreset.swift; sourceTree = "<group>"; };
 		0C8D9E9621CF169900520AC8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		0CB404A522B0C5830022505A /* PositionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSelector.swift; sourceTree = "<group>"; };
+		0CBC1276238B2B10000AEEDC /* PresetVC+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PresetVC+Delegates.swift"; sourceTree = "<group>"; };
 		0CC44E4421F59C33009E963D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0CC44E4A21F690ED009E963D /* ImageOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOptionsViewController.swift; sourceTree = "<group>"; };
 		0CC9E7E621CF434600E37482 /* Num+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Num+Clean.swift"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				ADF887AC20B07FAA00E60C19 /* Presets.storyboard */,
 				0CE8558821D6FDAA00F22403 /* PresetsWindowController.swift */,
 				0C8A681E2286755400DDE2CA /* PresetViewController.swift */,
+				0CBC1276238B2B10000AEEDC /* PresetVC+Delegates.swift */,
 				ADF887AE20B0819E00E60C19 /* SelectPresetViewController.swift */,
 				ADF887B020B081BF00E60C19 /* EditPresetViewController.swift */,
 			);
@@ -425,6 +428,7 @@
 				0CE8558B21D7111300F22403 /* Alerts.swift in Sources */,
 				0C3C44FF21FCF9F70067508C /* URL+NSImage.swift in Sources */,
 				0CE8558521D6F69A00F22403 /* PreferencesWindowController.swift in Sources */,
+				0CBC1277238B2B10000AEEDC /* PresetVC+Delegates.swift in Sources */,
 				0C8D9E3F21CD977200520AC8 /* ExamplePresets.swift in Sources */,
 				0C8D9E4221CD988400520AC8 /* ImgSetPreset.swift in Sources */,
 				0C8D9E3D21CD815100520AC8 /* Preset.swift in Sources */,
