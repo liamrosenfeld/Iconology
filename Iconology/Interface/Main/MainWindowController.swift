@@ -54,7 +54,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     
     // MARK: - Menu
     var generateAction: Selector { #selector(options?.generate) }
-    var newImageAction: Selector? = nil // TODO
+    var newImageAction: Selector { #selector(options?.newImage) }
     var undoAction: Selector { #selector(options?.undo) }
     var redoAction: Selector { #selector(options?.redo) }
     
