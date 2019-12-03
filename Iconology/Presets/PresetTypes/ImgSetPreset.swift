@@ -2,7 +2,7 @@
 //  ImgSetPreset.swift
 //  Iconology
 //
-//  Created by Liam on 12/21/18.
+//  Created by Liam Rosenfeld on 12/21/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.
 //
 

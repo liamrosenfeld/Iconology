@@ -2,7 +2,7 @@
 //  AllowedFileTypes.swift
 //  Iconology
 //
-//  Created by Liam on 12/29/18.
+//  Created by Liam Rosenfeld on 12/29/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.
 //
 

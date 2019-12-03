@@ -2,7 +2,7 @@
 //  Notifications.swift
 //  Iconology
 //
-//  Created by Liam on 1/24/19.
+//  Created by Liam Rosenfeld on 1/24/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
