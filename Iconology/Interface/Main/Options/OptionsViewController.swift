@@ -39,6 +39,7 @@ class OptionsViewController: NSViewController {
     override func viewDidAppear() {
         winController = self.view.window?.windowController as? MainWindowController
         allowUndoRedo()
+        imageOptionsVC.resetAll() // resets image modifications
     }
     
     func addChildren() {
@@ -55,15 +56,10 @@ class OptionsViewController: NSViewController {
     
     // MARK: - Interface Management
     func reloadUI() {
-        resetMods()
-        displayImage()
-        alignAspectLabel()
-    }
-    
-    func resetMods() {
         guard let image = origImage else { return }
         imageOptionsVC.mods.origImage = image
-        imageOptionsVC.resetAll()
+        alignAspectLabel()
+        displayImage()
     }
     
     func displayImage() {
@@ -105,6 +101,21 @@ class OptionsViewController: NSViewController {
         
         if Storage.preferences.openFolder {
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: saveDirectory.path)
+        }
+    }
+    
+    @objc func newImage() {
+        guard let url = FileHandler.selectImage() else {
+            return
+        }
+        
+        do {
+            origImage = try url.toImage()
+        } catch URL.ImageError.imageNotFound {
+            Alerts.warningPopup(title: "Image Not Found", text: "'\(url.path)' No Longer Exists'")
+            print("ERR: File Could No Longer Be Found")
+        } catch {
+            print("Unexpected error: \(error).")
         }
     }
    
