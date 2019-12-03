@@ -2,7 +2,7 @@
 //  NSImageView+AddImage.swift
 //  Iconology
 //
-//  Created by Liam on 12/26/18.
+//  Created by Liam Rosenfeld on 12/26/18.
 //  Copyright © 2018 Liam Rosenfeld. All rights reserved.
 //
 

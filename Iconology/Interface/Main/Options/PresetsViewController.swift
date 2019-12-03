@@ -2,7 +2,7 @@
 //  PresetsViewController.swift
 //  Iconology
 //
-//  Created by Liam on 1/25/19.
+//  Created by Liam Rosenfeld on 1/25/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 

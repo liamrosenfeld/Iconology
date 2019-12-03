@@ -2,7 +2,7 @@
 //  NSImage+Edit.swift
 //  Iconology
 //
-//  Created by Liam on 6/12/19.
+//  Created by Liam Rosenfeld on 6/12/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
