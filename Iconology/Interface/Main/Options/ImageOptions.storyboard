@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Image Adjustments" id="3pj-b3-bfd">
                                     <font key="font" metaFont="system" size="25"/>
-                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="textColor" name="HeaderColor"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -59,7 +59,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Preset Selection" id="1Sb-kT-HX5">
                                     <font key="font" metaFont="system" size="25"/>
-                                    <color key="textColor" name="LabelColor"/>
+                                    <color key="textColor" name="HeaderColor"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -449,6 +449,9 @@
         <image name="DottedLine-Vertical" width="1" height="525"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSTouchBarRefreshTemplate" width="19" height="30"/>
+        <namedColor name="HeaderColor">
+            <color red="0.28299297863924056" green="0.28299297863924056" blue="0.28299297863924056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="LabelColor">
             <color red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
