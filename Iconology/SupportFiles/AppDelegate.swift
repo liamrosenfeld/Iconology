@@ -10,7 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
             for window: AnyObject in sender.windows {
@@ -19,19 +18,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         return true
     }
-    
+
     // MARK: - Extra Windows
+
     var preferencesWindowController: NSWindowController?
     var presetsWindowController: NSWindowController?
-    
+
     @IBAction func preferences(_ sender: Any) {
         openNoRepeat(sender: sender, existing: &preferencesWindowController, name: "Preferences")
     }
-    
+
     @IBAction func editCustomPresets(_ sender: Any) {
         openNoRepeat(sender: sender, existing: &presetsWindowController, name: "Presets")
     }
-    
+
     func openNoRepeat(sender: Any, existing: inout NSWindowController?, name: String) {
         if let windowController = existing {
             windowController.showWindow(sender)
@@ -41,6 +41,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             existing!.window?.makeKeyAndOrderFront(nil)
         }
     }
-    
 }
-

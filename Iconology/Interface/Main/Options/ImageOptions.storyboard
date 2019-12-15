@@ -188,7 +188,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
-                                        <rect key="frame" x="-2" y="33" width="22" height="18"/>
+                                        <rect key="frame" x="2" y="33" width="19" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" alternateTitle="Toggle Backgorund" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

@@ -10,21 +10,24 @@ import Cocoa
 
 class ImageModifier {
     // MARK: - Modification Properties
+
     public var aspect: NSSize { didSet { applyAspect() } }
-    public var scale: CGFloat { didSet { applyScale()  } }
-    public var shift: CGPoint { didSet { applyShift()  } }
+    public var scale: CGFloat { didSet { applyScale() } }
+    public var shift: CGPoint { didSet { applyShift() } }
     public var background: NSColor? { didSet { applyBackground() } }
     public var rounding: CGFloat { didSet { applyRound() } }
-    
+
     // MARK: - Chain Storage
-    public  var origImage: NSImage { didSet { fullChain() } }
+
+    public var origImage: NSImage { didSet { fullChain() } }
     private var appliedAspect: NSSize = .zero
     private var scaledImage = NSImage()
     private var placedImage = NSImage()
-    private var withBack    = NSImage()
-    
+    private var withBack = NSImage()
+
     // MARK: - Output
-    private var after: ((NSImage) -> ())?
+
+    private var after: ((NSImage) -> Void)?
     public var image = NSImage() {
         didSet {
             if let after = after {
@@ -32,28 +35,29 @@ class ImageModifier {
             }
         }
     }
-    
+
     // MARK: - Chain Apply
+
     private func fullChain() {
         appliedAspect = origImage.findFrame(aspect: aspect)
         applyScale()
     }
-    
+
     private func applyAspect() {
         appliedAspect = origImage.findFrame(aspect: aspect)
         applyShift()
     }
-    
+
     private func applyScale() {
         scaledImage = origImage.scale(by: scale)
         applyShift()
     }
-    
+
     private func applyShift() {
-        placedImage =  scaledImage.placeInFrame(appliedAspect, at: shift)
+        placedImage = scaledImage.placeInFrame(appliedAspect, at: shift)
         applyBackground()
     }
-    
+
     private func applyBackground() {
         if let color = background {
             withBack = placedImage.addBackground(of: color)
@@ -62,7 +66,7 @@ class ImageModifier {
         }
         applyRound()
     }
-    
+
     private func applyRound() {
         if rounding != 0 {
             image = withBack.round(by: rounding)
@@ -70,22 +74,23 @@ class ImageModifier {
             image = withBack
         }
     }
-    
+
     // MARK: - Init
-    init(image: NSImage, after: ((NSImage) -> ())? = nil) {
+
+    init(image: NSImage, after: ((NSImage) -> Void)? = nil) {
         // Default Images
-        self.origImage = image
+        origImage = image
         self.image = image
-        
+
         // Default Properties
-        self.aspect = NSSize(width: 1, height: 1)
-        self.scale = 1
-        self.shift = .zero
-        self.background = nil
-        self.rounding = 0
-        
+        aspect = NSSize(width: 1, height: 1)
+        scale = 1
+        shift = .zero
+        background = nil
+        rounding = 0
+
         self.after = after
-        
+
         // Initial Chain
         if image.size != .zero {
             fullChain()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C02B4D923A5ACD600187F00 /* Storyboard+Instantiate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C02B4D823A5ACD600187F00 /* Storyboard+Instantiate.swift */; };
 		0C02DD5222B1FD2C008B9759 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C02DD5122B1FD2C008B9759 /* ImageModifier.swift */; };
 		0C02DD5422B1FD57008B9759 /* NSImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C02DD5322B1FD57008B9759 /* NSImage+Edit.swift */; };
 		0C02DD5622B1FD63008B9759 /* NSImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C02DD5522B1FD63008B9759 /* NSImage+Util.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C02B4D823A5ACD600187F00 /* Storyboard+Instantiate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Instantiate.swift"; sourceTree = "<group>"; };
 		0C02DD5122B1FD2C008B9759 /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		0C02DD5322B1FD57008B9759 /* NSImage+Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Edit.swift"; sourceTree = "<group>"; };
 		0C02DD5522B1FD63008B9759 /* NSImage+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Util.swift"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				0C3C44FE21FCF9F70067508C /* URL+NSImage.swift */,
 				0C6C91B122BC302700C6A897 /* NSView+Background.swift */,
 				0CE7DD9A22C3028C0074E0AF /* NSRect+Center.swift */,
+				0C02B4D823A5ACD600187F00 /* Storyboard+Instantiate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD1270292023D1510068531A /* Build configuration list for PBXNativeTarget "Iconology" */;
 			buildPhases = (
+				0C02B4D723A58CD400187F00 /* Format */,
 				AD126FFF2023D1510068531A /* Sources */,
 				AD1270002023D1510068531A /* Frameworks */,
 				AD1270012023D1510068531A /* Resources */,
@@ -397,6 +401,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C02B4D723A58CD400187F00 /* Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Format;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect --format\n    swiftlint\nelse\n    echo \"warning: swiftlint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\nif which pecker >/dev/null; then\n    pecker\nelse\n    echo \"warning: Pecker not installed, download from https://github.com/woshiccm/Pecker\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AD126FFF2023D1510068531A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -409,6 +434,7 @@
 				ADF887AF20B0819E00E60C19 /* SelectPresetViewController.swift in Sources */,
 				0CC9E7E721CF434600E37482 /* Num+Clean.swift in Sources */,
 				0CE8558921D6FDAA00F22403 /* PresetsWindowController.swift in Sources */,
+				0C02B4D923A5ACD600187F00 /* Storyboard+Instantiate.swift in Sources */,
 				0CC9E81921D0842600E37482 /* SaveCollection.swift in Sources */,
 				ADA070E720AF709F00A2A69F /* XcodeSizes.swift in Sources */,
 				0C3C44F521FA70390067508C /* Preferences.swift in Sources */,

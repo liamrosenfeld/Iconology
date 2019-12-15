@@ -13,17 +13,17 @@ struct ExamplePresets {
         Storage.userPresets.addPreset(name: "Powers of Two", sizes: powersOfTwo, prefix: true)
         Storage.userPresets.savePresets()
     }
-    
+
     static let powersOfTwo = [
-        ImgSetPreset.ImgSetSize(name: "16", x: 16, y: 16),
-        ImgSetPreset.ImgSetSize(name: "24", x: 24, y: 24),
-        ImgSetPreset.ImgSetSize(name: "32", x: 32, y: 32),
-        ImgSetPreset.ImgSetSize(name: "48", x: 48, y: 48),
-        ImgSetPreset.ImgSetSize(name: "64", x: 64, y: 64),
-        ImgSetPreset.ImgSetSize(name: "96", x: 96, y: 96),
-        ImgSetPreset.ImgSetSize(name: "128", x: 128, y: 128),
-        ImgSetPreset.ImgSetSize(name: "512", x: 512, y: 512),
-        ImgSetPreset.ImgSetSize(name: "1024", x: 1024, y: 1024),
-        ImgSetPreset.ImgSetSize(name: "2048", x: 2048, y: 2048)
+        ImgSetPreset.ImgSetSize(name: "16", w: 16, h: 16),
+        ImgSetPreset.ImgSetSize(name: "24", w: 24, h: 24),
+        ImgSetPreset.ImgSetSize(name: "32", w: 32, h: 32),
+        ImgSetPreset.ImgSetSize(name: "48", w: 48, h: 48),
+        ImgSetPreset.ImgSetSize(name: "64", w: 64, h: 64),
+        ImgSetPreset.ImgSetSize(name: "96", w: 96, h: 96),
+        ImgSetPreset.ImgSetSize(name: "128", w: 128, h: 128),
+        ImgSetPreset.ImgSetSize(name: "512", w: 512, h: 512),
+        ImgSetPreset.ImgSetSize(name: "1024", w: 1024, h: 1024),
+        ImgSetPreset.ImgSetSize(name: "2048", w: 2048, h: 2048)
     ]
 }

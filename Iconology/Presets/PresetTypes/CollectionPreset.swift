@@ -14,15 +14,14 @@ final class CollectionPreset: Preset {
     var folderName: String = "Icons"
     var useModifications = UseModifications(background: true, scale: true, shift: true, round: true, prefix: true)
     var aspect: NSSize
-    
-    func save(_ image: NSImage, at url: URL, with prefix: String) {
+
+    func save(_ image: NSImage, at url: URL, with _: String) {
         saveCollection(image, at: url, in: subpresets)
     }
-    
+
     init(name: String, subpresets: [Preset], aspect: NSSize? = nil) {
         self.name = name
         self.subpresets = subpresets
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
     }
-    
 }
