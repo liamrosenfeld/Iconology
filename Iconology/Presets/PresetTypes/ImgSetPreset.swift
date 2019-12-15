@@ -29,7 +29,6 @@ class ImgSetPreset: Preset {
         var name: String
         var size: NSSize
 
-        //swiftlint:disable identifier_name
         init(name: String, w: Int, h: Int) {
             self.name = name
             size = NSSize(width: w, height: h)

@@ -69,7 +69,6 @@ extension NSImage {
 
         // draw the image
         let rect = imageRect
-        //swiftlint:disable identifier_name
         let x = ((frame.width / 2) - (size.width / 2)) + (loc.x * (frame.width / 100))
         let y = ((frame.height / 2) - (size.height / 2)) + (loc.y * (frame.height / 100))
         let point = NSPoint(x: x, y: y)

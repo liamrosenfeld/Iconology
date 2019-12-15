@@ -31,9 +31,10 @@ class PresetViewController: NSViewController {
         super.viewDidLoad()
         addChildren()
 
-        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset, object: nil, queue: nil) { _ in
-            self.discardEditing()
-        }
+        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset,
+                                               object: nil,
+                                               queue: nil,
+                                               using: { [weak self] (_: Notification) in self?.discardEditing() })
     }
 
     override func viewDidAppear() {
