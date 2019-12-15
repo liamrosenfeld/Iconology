@@ -8,7 +8,6 @@
 
 import AppKit
 
-//swiftlint:disable identifier_name
 extension NSImageView {
     func resize(to image: NSImage) {
         // Get Image Size

@@ -49,7 +49,7 @@ class OptionsViewController: NSViewController {
         }
         addChildVC(imageOptionsVC, to: imageVCContainer)
 
-        presetsVC = instantiateVC(withID: "ImageOptionsVC")
+        presetsVC = instantiateVC(withID: "PresetsVC")
         presetsVC.delegate = self
         addChildVC(presetsVC, to: presetVCContainer)
     }
@@ -69,7 +69,6 @@ class OptionsViewController: NSViewController {
     }
 
     func alignAspectLabel() {
-        //swiftlint:disable identifier_name
         let x = imageView.frame.origin.x
         let y = imageView.frame.size.height + imageView.frame.origin.y
         let origin = NSPoint(x: x, y: y)

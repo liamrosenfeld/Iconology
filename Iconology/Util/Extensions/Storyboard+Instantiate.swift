@@ -9,7 +9,6 @@
 import AppKit
 
 extension NSWindowController {
-    //swiftlint:disable identifier_name
     func instantiateVC<VC: NSViewController>(withID id: String) -> VC? {
         let id = NSStoryboard.SceneIdentifier(id)
         let vc = storyboard?.instantiateController(withIdentifier: id) as? VC
@@ -18,7 +17,6 @@ extension NSWindowController {
 }
 
 extension NSViewController {
-    //swiftlint:disable identifier_name
     func instantiateVC<VC: NSViewController>(withID id: String) -> VC? {
         let id = NSStoryboard.SceneIdentifier(id)
         let vc = storyboard?.instantiateController(withIdentifier: id) as? VC

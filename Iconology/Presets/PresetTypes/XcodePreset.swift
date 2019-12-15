@@ -36,7 +36,6 @@ final class XcodePreset: Preset {
         var role: String?
         var subtype: String?
 
-        //swiftlint:disable identifier_name
         init(name: String,
              w: Double,
              h: Double,

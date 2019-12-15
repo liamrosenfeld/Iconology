@@ -1,0 +1,16 @@
+disabled_rules:
+  - class_delegate_protocol # almost all false positives
+  - weak_delegate # almost all false positives
+  - discarded_notification_center_observer # not needed on macOS 10.11 and later
+  
+#configurable rules
+identifier_name:
+    excluded:
+      - id
+      - vc
+      - x
+      - 'y'
+      - w
+      - h
+
+reporter: "xcode"
