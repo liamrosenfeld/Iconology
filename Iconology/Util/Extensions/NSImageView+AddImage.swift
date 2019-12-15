@@ -8,15 +8,16 @@
 
 import AppKit
 
+//swiftlint:disable identifier_name
 extension NSImageView {
     func resize(to image: NSImage) {
         // Get Image Size
         let imageSize = image.size
         let w: CGFloat = imageSize.width
         let h: CGFloat = imageSize.height
-        
+
         let max: CGFloat = 500
-        
+
         // Get Mod Image Size
         var size = NSSize(width: 0, height: 0)
         if w > h {
@@ -44,19 +45,19 @@ extension NSImageView {
                 size.height = h
             }
         }
-        
+
         // Get Origin
         let x = 510 - (size.width / 2)
         let y = 380 - (size.height / 2)
         let origin = NSPoint(x: x, y: y)
-        
+
         // Resize
         let rect = NSRect(origin: origin, size: size)
-        self.frame = rect
+        frame = rect
     }
-    
+
     func addImage(_ image: NSImage) {
-        let size = self.frame.size
+        let size = frame.size
         let image = image.resize(to: size)
         self.image = image
     }

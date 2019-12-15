@@ -11,17 +11,17 @@ import Foundation
 extension NSRect {
     var center: NSPoint {
         get {
-            var point = self.origin
-            point.x += self.width / 2
-            point.y += self.height / 2
+            var point = origin
+            point.x += width / 2
+            point.y += height / 2
             return point
         }
-        
+
         set {
             var point = newValue
-            point.x -= self.width / 2
-            point.y -= self.height / 2
-            self.origin = point
+            point.x -= width / 2
+            point.y -= height / 2
+            origin = point
         }
     }
 }

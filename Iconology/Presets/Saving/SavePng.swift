@@ -32,14 +32,14 @@ extension NSImage {
         }
         return nil
     }
-    
+
     func savePng(to url: URL) throws {
         guard let png = self.PNGRepresentation else {
             throw NSImageError.unwrapPNGFailed
         }
         try png.write(to: url, options: .atomicWrite)
     }
-    
+
     enum NSImageError: Error {
         case unwrapPNGFailed
     }

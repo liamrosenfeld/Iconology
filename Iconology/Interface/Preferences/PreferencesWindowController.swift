@@ -9,15 +9,13 @@
 import Cocoa
 
 class PreferencesWindowController: NSWindowController, NSWindowDelegate {
-
     override func windowDidLoad() {
         super.windowDidLoad()
     }
-    
+
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         // Hide window instead of closing
-        self.window?.orderOut(sender)
+        window?.orderOut(sender)
         return false
     }
-
 }

@@ -10,19 +10,19 @@ import Foundation
 
 struct UserPresets {
     var presets: [CustomPreset] = []
-    
-    mutating func addPreset(name: String, sizes: [ImgSetPreset.ImgSetSize], prefix: Bool) {
+
+    mutating func addPreset(name: String, sizes: [ImgSetPreset.ImgSetSize], prefix _: Bool) {
         let preset = CustomPreset(name: name, sizes: sizes)
         presets.append(preset)
     }
-    
+
     var filePath: String {
         let manager = FileManager.default
         let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first!
         print("Custom Preset Directory: \(url.path)")
         return (url.appendingPathComponent("Data").path)
     }
-    
+
     func savePresets() {
         do {
             let data = try PropertyListEncoder().encode(presets)
@@ -32,7 +32,7 @@ struct UserPresets {
             print("ERR: Save Failed -- \(error)")
         }
     }
-    
+
     mutating func loadPresets() {
         guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Data else { return }
         do {
@@ -43,7 +43,7 @@ struct UserPresets {
             print("ERR: Retrieve Failed -- \(error)")
         }
     }
-    
+
     mutating func deleteAllPreset() {
         presets.removeAll()
         do {
@@ -53,9 +53,8 @@ struct UserPresets {
             print("ERR: Delete Failed -- \(error)")
         }
     }
-    
+
     init() {
         loadPresets()
     }
-    
 }

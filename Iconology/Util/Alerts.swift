@@ -18,7 +18,7 @@ struct Alerts {
         alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
-    
+
     static func warningPopup(title: String, text: String) {
         let alert = NSAlert()
         alert.messageText = title
@@ -27,7 +27,7 @@ struct Alerts {
         alert.addButton(withTitle: "OK")
         alert.runModal()
     }
-    
+
     static func success(title: String, text: String) {
         let alert = NSAlert()
         alert.messageText = title

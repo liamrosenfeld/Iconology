@@ -13,45 +13,52 @@ protocol PresetDelegate {
 }
 
 class PresetsViewController: NSViewController {
-    
     // MARK: - Setup
+
     var delegate: PresetDelegate?
-    
-    @IBOutlet weak var presetSelector: NSPopUpButton!
-    @IBOutlet weak var presetGroupSelector: NSPopUpButton!
-    
+
+    @IBOutlet var presetSelector: NSPopUpButton!
+    @IBOutlet var presetGroupSelector: NSPopUpButton!
+
     var presets = [PresetGroup]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = self.view // Load View Hierarchy
+        _ = view // Load View Hierarchy
         loadPresets()
         setNotifications()
         selectedPreset(self)
     }
-    
+
     enum PresetErrors: Error {
         case invalidSelection
     }
-    
+
     // MARK: - Preset Cycle
+
     func setNotifications() {
-        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset, object: nil, queue: nil, using: reloadPresets)
-        NotificationCenter.default.addObserver(forName: Notifications.presetApply, object: nil, queue: nil, using: presetApply)
+        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset,
+                                               object: nil,
+                                               queue: nil,
+                                               using: reloadPresets)
+        NotificationCenter.default.addObserver(forName: Notifications.presetApply,
+                                               object: nil,
+                                               queue: nil,
+                                               using: presetApply)
     }
-    
+
     func loadPresets() {
         // UI Preperation
         presetGroupSelector.removeAllItems()
         presetSelector.removeAllItems()
-        
+
         // Load Presets
         let customPresets = PresetGroup(title: "Custom", presets: Storage.userPresets.presets)
-        
+
         // Combine Presets
         presets.append(contentsOf: Storage.defaultPresets.presets)
         presets.append(customPresets)
-        
+
         // Display Presets
         for presetGroup in presets {
             presetGroupSelector.addItem(withTitle: presetGroup.title)
@@ -61,46 +68,48 @@ class PresetsViewController: NSViewController {
             presetSelector.addItem(withTitle: preset.name)
         }
     }
-    
+
     func reloadPresets(_ notification: Notification) {
         presets.removeAll()
         loadPresets()
         presetApply(notification)
     }
-    
-    func presetApply(_ notification: Notification) {
+
+    func presetApply(_: Notification) {
         // Reload Custom Presets
-        let customGroupIndex = self.presetGroupSelector.indexOfItem(withTitle: "Custom")
-        self.presets[customGroupIndex].presets = Storage.userPresets.presets
-        
+        let customGroupIndex = presetGroupSelector.indexOfItem(withTitle: "Custom")
+        presets[customGroupIndex].presets = Storage.userPresets.presets
+
         // Update UI
-        let currentGroupIndex = self.presetGroupSelector.indexOfSelectedItem
+        let currentGroupIndex = presetGroupSelector.indexOfSelectedItem
         if currentGroupIndex == customGroupIndex {
-            self.presetSelector.removeAllItems()
-            let group = self.presets[customGroupIndex]
+            presetSelector.removeAllItems()
+            let group = presets[customGroupIndex]
             for preset in group.presets {
-                self.presetSelector.addItem(withTitle: preset.name)
+                presetSelector.addItem(withTitle: preset.name)
             }
-            self.selectedPreset(self)
+            selectedPreset(self)
         }
     }
-    
+
     // MARK: - Interactions
+
     func getSelectedPreset() throws -> Preset {
         // Check User Options
         let selectedPreset = presetSelector.indexOfSelectedItem
         guard selectedPreset != -1 else {
             throw PresetErrors.invalidSelection
         }
-        
+
         // Convert and Save
         let group = presets[presetGroupSelector.indexOfSelectedItem]
         let preset = group.presets[presetSelector.indexOfSelectedItem]
         return preset
     }
-    
+
     // MARK: - Actions
-    @IBAction func selectedPresetGroup(_ sender: Any) {
+
+    @IBAction func selectedPresetGroup(_: Any) {
         presetSelector.removeAllItems()
         let selectedGroup = presetGroupSelector.indexOfSelectedItem
         for preset in presets[selectedGroup].presets {
@@ -108,23 +117,22 @@ class PresetsViewController: NSViewController {
         }
         selectedPreset(self)
     }
-    
-    @IBAction func selectedPreset(_ sender: Any) {
+
+    @IBAction func selectedPreset(_: Any) {
         let selectedGroup = presetGroupSelector.indexOfSelectedItem
         let selectedPreset = presetSelector.indexOfSelectedItem
-        
+
         guard selectedPreset != -1 else {
             Alerts.warningPopup(title: "Invalid Preset", text: "Please Select a Preset")
             return
         }
-        
+
         let preset = presets[selectedGroup].presets[selectedPreset]
         delegate?.presetsSelected(preset)
     }
-    
-    @IBAction func editCustomPresets(_ sender: Any) {
+
+    @IBAction func editCustomPresets(_: Any) {
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.editCustomPresets(self)
     }
-    
 }

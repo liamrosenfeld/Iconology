@@ -13,10 +13,10 @@ extension URL {
         guard let image = NSImage(contentsOf: self) else {
             throw ImageError.imageNotFound
         }
-        
+
         return image
     }
-    
+
     enum ImageError: Error {
         case imageNotFound
     }
