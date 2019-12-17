@@ -8,9 +8,9 @@
 
 import AppKit
 
-enum Notifications {
-    static let presetApply = Notification.Name(rawValue: "PresetApply")
+extension Notification.Name {
+    static let customPresetsEdited = Notification.Name(rawValue: "CustomPresetsEdited")
     static let newDefaultPresets = Notification.Name(rawValue: "NewDefaultPresets")
-    static let preferencesApply = Notification.Name(rawValue: "PreferencesApply")
+    static let generalPrefApply = Notification.Name(rawValue: "GeneralPrefApply")
     static let customPresetsReset = Notification.Name(rawValue: "CustomPresetsReset")
 }

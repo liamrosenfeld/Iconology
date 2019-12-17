@@ -37,15 +37,21 @@ class PresetsViewController: NSViewController {
     // MARK: - Preset Cycle
 
     func setNotifications() {
-        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset,
+        NotificationCenter.default.addObserver(forName: .newDefaultPresets,
                                                object: nil,
                                                queue: nil,
-                                               using: reloadPresets)
-        NotificationCenter.default.addObserver(forName: Notifications.presetApply,
+                                               using: reloadDefault)
+        NotificationCenter.default.addObserver(forName: .customPresetsEdited,
                                                object: nil,
                                                queue: nil,
-                                               using: presetApply)
+                                               using: reloadCustom)
+        NotificationCenter.default.addObserver(forName: .customPresetsReset,
+                                               object: nil,
+                                               queue: nil,
+                                               using: reloadCustom)
     }
+
+    let customText = "Custom"
 
     func loadPresets() {
         // UI Preperation
@@ -53,7 +59,7 @@ class PresetsViewController: NSViewController {
         presetSelector.removeAllItems()
 
         // Load Presets
-        let customPresets = PresetGroup(title: "Custom", presets: Storage.userPresets.presets)
+        let customPresets = PresetGroup(title: customText, presets: Storage.userPresets.presets)
 
         // Combine Presets
         presets.append(contentsOf: Storage.defaultPresets.presets)
@@ -69,15 +75,15 @@ class PresetsViewController: NSViewController {
         }
     }
 
-    func reloadPresets(_ notification: Notification) {
+    func reloadDefault(_ : Notification) {
         presets.removeAll()
         loadPresets()
-        presetApply(notification)
+        selectedPreset(self)
     }
 
-    func presetApply(_: Notification) {
+    func reloadCustom(_ : Notification) {
         // Reload Custom Presets
-        let customGroupIndex = presetGroupSelector.indexOfItem(withTitle: "Custom")
+        let customGroupIndex = presetGroupSelector.indexOfItem(withTitle: customText)
         presets[customGroupIndex].presets = Storage.userPresets.presets
 
         // Update UI

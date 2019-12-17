@@ -29,7 +29,7 @@ class PreferencesViewController: NSViewController {
         if comfirm {
             Storage.userPresets.deleteAllPreset()
             ExamplePresets.addExamplePresets()
-            NotificationCenter.default.post(name: Notifications.customPresetsReset, object: nil)
+            NotificationCenter.default.post(name: .customPresetsReset, object: nil)
         }
     }
 
@@ -37,13 +37,12 @@ class PreferencesViewController: NSViewController {
         Storage.preferences.useXcode = xcodeToggle.state == .on
         Storage.preferences.useFiles = fileToggle.state == .on
         Storage.preferences.useSets = setToggle.state == .on
-        Storage.defaultPresets.fill()
-        NotificationCenter.default.post(name: Notifications.newDefaultPresets, object: nil)
+        Storage.defaultPresets.fill() // triggers newDefaultPresets notif
     }
 
     @IBAction func applyGeneral(_: Any) {
         Storage.preferences.openFolder = openFolderToggle.state == .on
         Storage.preferences.continuousPreview = continuousPreviewToggle.state == .on
-        NotificationCenter.default.post(name: Notifications.preferencesApply, object: nil)
+        NotificationCenter.default.post(name: .generalPrefApply, object: nil)
     }
 }
