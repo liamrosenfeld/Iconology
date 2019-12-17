@@ -9,45 +9,42 @@
 import Foundation
 
 class Preferences {
+    // default presets
     var useXcode: Bool {
-        didSet {
-            UserDefaults.standard.set(useXcode, forKey: Keys.useXcode.rawValue)
-        }
+        didSet { setValue(for: .useXcode, to: useXcode) }
     }
 
     var useFiles: Bool {
-        didSet {
-            UserDefaults.standard.set(useFiles, forKey: Keys.useFiles.rawValue)
-        }
+        didSet { setValue(for: .useFiles, to: useFiles) }
     }
 
     var useSets: Bool {
-        didSet {
-            UserDefaults.standard.set(useSets, forKey: Keys.useSets.rawValue)
-        }
+        didSet { setValue(for: .useSets, to: useSets) }
     }
 
+    // general
     var openFolder: Bool {
-        didSet {
-            UserDefaults.standard.set(openFolder, forKey: Keys.openFolder.rawValue)
-        }
+        didSet { setValue(for: .openFolder, to: openFolder) }
     }
 
     var continuousPreview: Bool {
-        didSet {
-            UserDefaults.standard.set(continuousPreview, forKey: Keys.continuousPreview.rawValue)
-        }
+        didSet { setValue(for: .continuousPreview, to: continuousPreview) }
+    }
+
+    // util
+    func setValue(for key: Key, to value: Bool) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 
     init() {
-        useXcode = UserDefaults.standard.bool(forKey: Keys.useXcode.rawValue)
-        useFiles = UserDefaults.standard.bool(forKey: Keys.useFiles.rawValue)
-        useSets = UserDefaults.standard.bool(forKey: Keys.useSets.rawValue)
-        openFolder = UserDefaults.standard.bool(forKey: Keys.openFolder.rawValue)
-        continuousPreview = UserDefaults.standard.bool(forKey: Keys.continuousPreview.rawValue)
+        useXcode = UserDefaults.standard.bool(forKey: Key.useXcode.rawValue)
+        useFiles = UserDefaults.standard.bool(forKey: Key.useFiles.rawValue)
+        useSets = UserDefaults.standard.bool(forKey: Key.useSets.rawValue)
+        openFolder = UserDefaults.standard.bool(forKey: Key.openFolder.rawValue)
+        continuousPreview = UserDefaults.standard.bool(forKey: Key.continuousPreview.rawValue)
     }
 
-    enum Keys: String {
+    enum Key: String {
         case useXcode
         case useFiles
         case useSets

@@ -17,6 +17,7 @@ struct DefaultPresets {
 
     mutating func fill() {
         presets.removeAll()
+
         if Storage.preferences.useXcode {
             let xcode = PresetGroup(title: "Xcode", presets: XcodeSizes.createPresets())
             presets.append(xcode)
@@ -40,6 +41,10 @@ struct DefaultPresets {
             setPresets.append(CollectionPreset(name: "Favicon", subpresets: favicon))
 
             presets.append(PresetGroup(title: "Sets", presets: setPresets))
+        }
+
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .newDefaultPresets, object: nil)
         }
     }
 }

@@ -31,7 +31,7 @@ class PresetViewController: NSViewController {
         super.viewDidLoad()
         addChildren()
 
-        NotificationCenter.default.addObserver(forName: Notifications.customPresetsReset,
+        NotificationCenter.default.addObserver(forName: .customPresetsReset,
                                                object: nil,
                                                queue: nil,
                                                using: { [weak self] (_: Notification) in self?.discardEditing() })
@@ -62,7 +62,7 @@ class PresetViewController: NSViewController {
     override func commitEditing() -> Bool {
         Storage.userPresets.presets = tempPresets
         Storage.userPresets.savePresets()
-        NotificationCenter.default.post(name: Notifications.presetApply, object: nil)
+        NotificationCenter.default.post(name: .customPresetsEdited, object: nil)
         winController.edited = false
         return true
     }

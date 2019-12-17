@@ -27,7 +27,7 @@ class ImageOptionsViewController: NSViewController {
         prefixPreview.stringValue = ""
 
         // notif
-        NotificationCenter.default.addObserver(forName: Notifications.preferencesApply, object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: .generalPrefApply, object: nil, queue: nil) { _ in
             self.setContinous()
         }
     }

@@ -180,6 +180,7 @@
 		0C8D9E2821CD696C00520AC8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0C3C44F621FAC4420067508C /* Notifications.swift */,
 				0CC9E7E621CF434600E37482 /* Num+Clean.swift */,
 				0C7B55BD21D40B22009FE959 /* NSImageView+AddImage.swift */,
 				0C3C44FA21FBF9830067508C /* NSViewController+Children.swift */,
@@ -273,7 +274,6 @@
 				0CE8558A21D7111300F22403 /* Alerts.swift */,
 				0C8D9E9621CF169900520AC8 /* FileHandler.swift */,
 				0CE8558D21D858DC00F22403 /* AllowedFileTypes.swift */,
-				0C3C44F621FAC4420067508C /* Notifications.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
