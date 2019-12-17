@@ -68,10 +68,21 @@ class PositionSelector: NSControl {
 
     // MARK: - Drag View
 
+    override func viewDidChangeEffectiveAppearance() {
+        if #available(OSX 10.14, *) {
+            super.viewDidChangeEffectiveAppearance()
+            dragerView.setBackground(to: .controlAccentColor)
+        }
+    }
+
     func setupDragView() {
         // size and position
         dragerView = NSView(frame: NSRect(x: 0, y: 0, width: frame.width / 10, height: frame.height / 10))
-        dragerView.setBackground(to: .systemBlue)
+        if #available(OSX 10.14, *) {
+            dragerView.setBackground(to: .controlAccentColor)
+        } else {
+            dragerView.setBackground(to: .systemBlue)
+        }
         dragerView.layer?.cornerRadius = dragerView.frame.width / 2
         position = .zero
 
