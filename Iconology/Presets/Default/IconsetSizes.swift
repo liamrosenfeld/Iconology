@@ -26,9 +26,11 @@ let macIconset = [
 // https://docs.microsoft.com/en-us/windows/desktop/uxguide/vis-icons
 let winIconset = [
     ImgSetPreset.ImgSetSize(name: "icon-16", w: 16, h: 16),
+    ImgSetPreset.ImgSetSize(name: "icon-24", w: 24, h: 24),
     ImgSetPreset.ImgSetSize(name: "icon-32", w: 32, h: 32),
     ImgSetPreset.ImgSetSize(name: "icon-48", w: 48, h: 48),
-    ImgSetPreset.ImgSetSize(name: "icon-64", w: 64, h: 64)
+    ImgSetPreset.ImgSetSize(name: "icon-64", w: 64, h: 64),
+    ImgSetPreset.ImgSetSize(name: "icon-256", w: 256, h: 256)
 ]
 
 // https://github.com/audreyr/favicon-cheat-sheet
