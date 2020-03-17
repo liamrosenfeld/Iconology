@@ -11,40 +11,54 @@ import Foundation
 class Preferences {
     // default presets
     var useXcode: Bool {
-        didSet { setValue(for: .useXcode, to: useXcode) }
+        didSet { Preferences.setValue(for: .useXcode, to: useXcode) }
     }
 
     var useFiles: Bool {
-        didSet { setValue(for: .useFiles, to: useFiles) }
+        didSet { Preferences.setValue(for: .useFiles, to: useFiles) }
     }
 
     var useSets: Bool {
-        didSet { setValue(for: .useSets, to: useSets) }
+        didSet { Preferences.setValue(for: .useSets, to: useSets) }
     }
 
     // general
     var openFolder: Bool {
-        didSet { setValue(for: .openFolder, to: openFolder) }
+        didSet { Preferences.setValue(for: .openFolder, to: openFolder) }
     }
 
     var continuousPreview: Bool {
-        didSet { setValue(for: .continuousPreview, to: continuousPreview) }
+        didSet { Preferences.setValue(for: .continuousPreview, to: continuousPreview) }
     }
 
     // util
-    func setValue(for key: Key, to value: Bool) {
+    static func setValue(for key: Key, to value: Bool) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 
+    static func getValue(for key: Key) -> Bool {
+        return UserDefaults.standard.value(forKey: key.rawValue) as? Bool ?? false
+    }
+
     init() {
-        useXcode = UserDefaults.standard.bool(forKey: Key.useXcode.rawValue)
-        useFiles = UserDefaults.standard.bool(forKey: Key.useFiles.rawValue)
-        useSets = UserDefaults.standard.bool(forKey: Key.useSets.rawValue)
-        openFolder = UserDefaults.standard.bool(forKey: Key.openFolder.rawValue)
-        continuousPreview = UserDefaults.standard.bool(forKey: Key.continuousPreview.rawValue)
+        if !UserDefaults.standard.bool(forKey: Key.notFirstLaunch.rawValue) {
+            Preferences.setValue(for: .notFirstLaunch, to: true)
+            useXcode = true
+            useFiles = true
+            useSets = true
+            openFolder = true
+            continuousPreview = true
+        }
+
+        useXcode = Preferences.getValue(for: .useXcode)
+        useFiles = Preferences.getValue(for: .useFiles)
+        useSets = Preferences.getValue(for: .useSets)
+        openFolder = Preferences.getValue(for: .openFolder)
+        continuousPreview = Preferences.getValue(for: .continuousPreview)
     }
 
     enum Key: String {
+        case notFirstLaunch
         case useXcode
         case useFiles
         case useSets
