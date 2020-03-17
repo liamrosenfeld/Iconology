@@ -20,6 +20,11 @@ class DragViewController: NSViewController {
         super.viewDidLoad()
         dragView.delegate = self
         dragView.setBackground(to: .gray)
+
+        // if no custom presets, add one
+        if Storage.userPresets.presets.count == 0 {
+            ExamplePresets.addExamplePresets()
+        }
     }
 
     override func viewWillAppear() {
