@@ -18,4 +18,17 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         window?.orderOut(sender)
         return false
     }
+
+    // MARK: - Menu Items
+    let fileText = "File"
+    let closeText = "Close"
+
+    func windowDidBecomeMain(_ notification: Notification) {
+        fileMenu.item(withTitle: closeText)?.action = #selector(window?.performClose(_:))
+    }
+
+    var fileMenu: NSMenu {
+        let mainMenu = NSApplication.shared.mainMenu
+        return mainMenu!.item(withTitle: fileText)!.submenu!
+    }
 }

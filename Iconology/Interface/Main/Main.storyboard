@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,11 +71,7 @@
                                 <menu key="submenu" title="File" id="O2B-7a-1rJ">
                                     <items>
                                         <menuItem isSeparatorItem="YES" id="jlc-RZ-cSc"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="lVK-SG-88a">
-                                            <connections>
-                                                <action selector="close:" target="Ady-hI-5gd" id="qf8-Kx-Qms"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Close" keyEquivalent="w" id="lVK-SG-88a"/>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -91,11 +87,7 @@
                                                 <action selector="cut:" target="Ady-hI-5gd" id="jAg-lt-1oa"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Copy" keyEquivalent="c" id="i63-UF-Us7">
-                                            <connections>
-                                                <action selector="copy:" target="Ady-hI-5gd" id="b59-x3-Asu"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="i63-UF-Us7"/>
                                         <menuItem title="Paste" keyEquivalent="v" id="mlO-c6-KTU">
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="Lvb-yG-6oL"/>

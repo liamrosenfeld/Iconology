@@ -65,6 +65,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     let editText = "Edit"
     let undoText = "Undo"
     let redoText = "Redo"
+    let closeText = "Close"
     let newImageText = "New Image"
     let generateIconsText = "Generate Icons"
 
@@ -73,6 +74,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         let export = NSMenuItem(title: generateIconsText, action: nil, keyEquivalent: "e")
         fileMenu.insertItem(export, at: 0)
         fileMenu.insertItem(new, at: 0)
+        fileMenu.item(withTitle: closeText)?.action = nil
     }
 
     func removeMainItems() {

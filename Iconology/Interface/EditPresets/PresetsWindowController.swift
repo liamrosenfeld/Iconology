@@ -81,10 +81,12 @@ class PresetsWindowController: NSWindowController, NSWindowDelegate {
     let undoText = "Undo"
     let redoText = "Redo"
     let saveText = "Save"
+    let closeText = "Close"
 
     func addPresetItems() {
         let save = NSMenuItem(title: saveText, action: saveAction, keyEquivalent: "s")
         fileMenu.insertItem(save, at: 0)
+        fileMenu.item(withTitle: closeText)?.action = #selector(window?.performClose(_:))
     }
 
     func removePresetItems() {
