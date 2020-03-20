@@ -23,6 +23,12 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Show Main Window" id="T01-OV-iip">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showMainWindow:" target="Voe-Tx-rLC" id="Oc6-25-nUn"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
                                                 <action selector="preferences:" target="Voe-Tx-rLC" id="gdW-IT-CA9"/>

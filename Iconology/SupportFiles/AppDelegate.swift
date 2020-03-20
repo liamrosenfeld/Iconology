@@ -10,6 +10,11 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        mainWindowController = NSApplication.shared.windows.last?.windowController
+    }
+
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
             for window: AnyObject in sender.windows {
@@ -20,6 +25,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: - Menu Actions
+    @IBAction func showMainWindow(_ sender: Any) {
+        mainWindowController?.showWindow(sender)
+    }
+
     @IBAction func preferences(_ sender: Any) {
         openNoRepeat(sender: sender, existing: &preferencesWindowController, name: "Preferences")
     }
@@ -34,6 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: - Extra Windows
+    var mainWindowController: NSWindowController?
     var preferencesWindowController: NSWindowController?
     var presetsWindowController: NSWindowController?
 
