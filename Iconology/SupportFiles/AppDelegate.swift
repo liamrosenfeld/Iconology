@@ -19,11 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
-    // MARK: - Extra Windows
-
-    var preferencesWindowController: NSWindowController?
-    var presetsWindowController: NSWindowController?
-
+    // MARK: - Menu Actions
     @IBAction func preferences(_ sender: Any) {
         openNoRepeat(sender: sender, existing: &preferencesWindowController, name: "Preferences")
     }
@@ -31,6 +27,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func editCustomPresets(_ sender: Any) {
         openNoRepeat(sender: sender, existing: &presetsWindowController, name: "Presets")
     }
+
+    @IBAction func support(_ sender: Any) {
+        let support = URL(string: "https://github.com/liamrosenfeld/Iconology/issues")!
+        NSWorkspace.shared.open(support)
+    }
+
+    // MARK: - Extra Windows
+    var preferencesWindowController: NSWindowController?
+    var presetsWindowController: NSWindowController?
 
     func openNoRepeat(sender: Any, existing: inout NSWindowController?, name: String) {
         if let windowController = existing {

@@ -139,9 +139,10 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Iconology Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Support" id="FKE-Sm-Kum">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                                <action selector="support:" target="Voe-Tx-rLC" id="2OR-eD-VMZ"/>
                                             </connections>
                                         </menuItem>
                                     </items>
