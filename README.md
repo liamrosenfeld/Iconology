@@ -1,6 +1,8 @@
 # Iconology
 
-I got tired of manually exporting every icon size, so I made a app to do it.
+Easily import, modify, and export icons!
+
+[![Download on app Store](https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg)](https://apps.apple.com/us/app/iconology/id1463452867)
 
 ## Features
 
@@ -10,14 +12,14 @@ I got tired of manually exporting every icon size, so I made a app to do it.
     - MacOS
     - Message
     - Apple Watch
-    - > **Exports Xcode json So Importing Only Takes One Drag**
+    - > **Exports JSON for 1 drag import**
   - Special Files
     - .icns
     - .ico
   - Image Sets
     - Mac Iconset
     - Favicons
-  - Infinitely Many Custom Presets!
+  - Create Your Own Custom Presets!
 - Image Editor
   - Background Color
   - Scale
