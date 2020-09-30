@@ -12,7 +12,7 @@ func saveXcode(_ image: NSImage, at url: URL, in sizes: [XcodePreset.XcodeSizes]
     // Generate + Save Images
     for xcodeSize in sizes {
         let width  = xcodeSize.size.width * CGFloat(xcodeSize.scale)
-        let height = xcodeSize.size.width * CGFloat(xcodeSize.scale)
+        let height = xcodeSize.size.height * CGFloat(xcodeSize.scale)
         let destSize = NSSize(width: width, height: height)
         let resizedImage = image.resize(to: destSize)
         let url = url.appendingPathComponent("\(prefix)\(xcodeSize.name).png")
