@@ -1,4 +1,4 @@
-# Iconology
+![Iconology](./Iconology/SupportFiles/Assets.xcassets/Logo-Long.imageset/Iconology_Black.png)
 
 Easily import, modify, and export icons!
 
@@ -36,3 +36,7 @@ Easily import, modify, and export icons!
   - .pdf
   - raw
   - and many more!
+
+## Demo
+
+![Demo](demo.gif)
