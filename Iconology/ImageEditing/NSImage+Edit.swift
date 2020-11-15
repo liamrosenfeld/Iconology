@@ -122,19 +122,21 @@ extension NSImage {
         NSGraphicsContext.saveGraphicsState()
         NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
 
-        // create circle size
-        let sqrtTwo = CGFloat(sqrt(2.0))
-        let wSide = imageSize.width * sqrtTwo - (percent / 100 * (imageSize.width * sqrtTwo - imageSize.width))
-        let hSide = imageSize.height * sqrtTwo - (percent / 100 * (imageSize.height * sqrtTwo - imageSize.height))
-        let outerSize = CGSize(width: wSide, height: hSide)
+        // Calculate Sizes
+        let widthCornerRad = cornerRadius(sideLength: size.width, percent: percent)
+        let heightCornerRad = cornerRadius(sideLength: size.height, percent: percent)
 
-        // create cicle path
-        let adjCenter = CGPoint(x: 0 - (wSide - imageSize.width) / 2, y: 0 - (hSide - imageSize.height) / 2)
-        let circleRect = CGRect(origin: adjCenter, size: outerSize)
-        let circle = CGPath(ellipseIn: circleRect, transform: nil)
+        // Create Rounded Rect Path
+        let rect = CGRect(origin: .zero, size: size)
+        let roundedRect = CGPath(
+            roundedRect: rect,
+            cornerWidth: widthCornerRad,
+            cornerHeight: heightCornerRad,
+            transform: nil
+        )
 
-        // draw the image in circle
-        NSGraphicsContext.current?.cgContext.addPath(circle)
+        // Draw Inside Rounded Rect
+        NSGraphicsContext.current?.cgContext.addPath(roundedRect)
         NSGraphicsContext.current?.cgContext.clip()
         draw(in: CGRect(origin: CGPoint.zero, size: imageSize))
 
@@ -143,6 +145,13 @@ extension NSImage {
         let newImage = NSImage(size: imageSize)
         newImage.addRepresentation(rep)
         return newImage
+    }
+
+    private func cornerRadius(sideLength: CGFloat, percent: CGFloat) -> CGFloat {
+        let sqrtTwo = CGFloat(sqrt(2.0))
+        let roundPercent = (percent / 100) * 0.7 // is circle when radius is 70% of diagonal
+        let diagonal = sqrtTwo * (size.width / 2)
+        return roundPercent * diagonal
     }
 
     func resize(to destSize: NSSize) -> NSImage {

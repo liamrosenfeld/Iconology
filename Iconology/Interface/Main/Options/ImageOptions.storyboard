@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -117,7 +117,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Group" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fjl-Oa-D3I" id="LUV-cs-74S">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="fI2-Pc-uoy">
                                         <items>
                                             <menuItem title="Group" state="on" id="Fjl-Oa-D3I"/>
@@ -142,7 +142,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Preset" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hn9-51-PY6" id="xQc-sv-daw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="LvA-TZ-jSq">
                                         <items>
                                             <menuItem title="Preset" state="on" id="hn9-51-PY6"/>
@@ -188,9 +188,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
-                                        <rect key="frame" x="2" y="33" width="19" height="19"/>
+                                        <rect key="frame" x="5" y="33" width="19" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" alternateTitle="Toggle Backgorund" bezelStyle="regularSquare" imagePosition="left" inset="2" id="A4m-fm-G9P">
+                                        <buttonCell key="cell" type="check" alternateTitle="Toggle Backgorund" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="A4m-fm-G9P">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -199,7 +199,7 @@
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPA-WV-fgy">
-                                        <rect key="frame" x="18" y="31" width="150" height="22"/>
+                                        <rect key="frame" x="30" y="31" width="150" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Background Color" id="Cf5-Gn-EOB">
                                             <font key="font" metaFont="system" size="18"/>
@@ -218,28 +218,11 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SeN-xq-ctz" userLabel="Scale">
-                                <rect key="frame" x="0.0" y="363" width="220" height="45"/>
+                                <rect key="frame" x="0.0" y="352" width="220" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-iu-pSq">
-                                        <rect key="frame" x="4" y="-1" width="138" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="pOI-dp-j9v"/>
-                                        <connections>
-                                            <action selector="scaleSelected:" target="XT1-Ko-uUN" id="KTp-OS-lli"/>
-                                        </connections>
-                                    </slider>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-WA-5J6">
-                                        <rect key="frame" x="39" y="24" width="49" height="22"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="K7V-tR-isF">
-                                            <font key="font" metaFont="system" size="18"/>
-                                            <color key="textColor" name="LabelColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mec-X8-tqH" userLabel="Reset">
-                                        <rect key="frame" x="-6" y="17" width="39" height="32"/>
+                                        <rect key="frame" x="-5" y="26" width="39" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" alternateTitle="Reset Scale" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0ke-cf-I8Z">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -250,7 +233,7 @@
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOe-We-EEf">
-                                        <rect key="frame" x="155" y="4" width="52" height="21"/>
+                                        <rect key="frame" x="162" y="7" width="52" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="50W-wJ-Hpl">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Jzu-up-yxn"/>
@@ -262,6 +245,23 @@
                                             <action selector="scaleTyped:" target="XT1-Ko-uUN" id="Vsq-jw-YPJ"/>
                                         </connections>
                                     </textField>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7N2-iu-pSq">
+                                        <rect key="frame" x="9" y="9" width="138" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="pOI-dp-j9v"/>
+                                        <connections>
+                                            <action selector="scaleSelected:" target="XT1-Ko-uUN" id="KTp-OS-lli"/>
+                                        </connections>
+                                    </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-WA-5J6">
+                                        <rect key="frame" x="30" y="32" width="49" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="K7V-tR-isF">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="Position">
@@ -272,19 +272,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSx-bH-ed6" userLabel="Reset">
-                                        <rect key="frame" x="-6" y="125" width="39" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" alternateTitle="Reset Position" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02O-Ag-aN1">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="resetShift:" target="XT1-Ko-uUN" id="AJe-xM-ZhM"/>
-                                        </connections>
-                                    </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rb-RZ-btC">
-                                        <rect key="frame" x="33" y="131" width="85" height="22"/>
+                                        <rect key="frame" x="30" y="131" width="85" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Position" id="vNW-oR-Cdq">
                                             <font key="font" metaFont="system" size="18"/>
@@ -335,22 +324,25 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSx-bH-ed6" userLabel="Reset">
+                                        <rect key="frame" x="-5" y="125" width="39" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" alternateTitle="Reset Position" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02O-Ag-aN1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="resetShift:" target="XT1-Ko-uUN" id="AJe-xM-ZhM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-X7-Tpl" userLabel="Round">
-                                <rect key="frame" x="0.0" y="121" width="220" height="45"/>
+                                <rect key="frame" x="0.0" y="110" width="220" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-A6-484">
-                                        <rect key="frame" x="5" y="-2" width="138" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="MdW-Qi-Yec"/>
-                                        <connections>
-                                            <action selector="roundSelected:" target="XT1-Ko-uUN" id="A8W-DA-4Ot"/>
-                                        </connections>
-                                    </slider>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0w-xr-urb" userLabel="Reset">
-                                        <rect key="frame" x="-6" y="17" width="38" height="32"/>
+                                        <rect key="frame" x="-5" y="36" width="38" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" alternateTitle="Reset Round" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pAK-qm-nit">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -361,7 +353,7 @@
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-pA-UFx">
-                                        <rect key="frame" x="30" y="24" width="57" height="22"/>
+                                        <rect key="frame" x="32" y="41" width="57" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Round" id="g6u-km-OX5">
                                             <font key="font" metaFont="system" size="18"/>
@@ -369,8 +361,16 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-A6-484">
+                                        <rect key="frame" x="5" y="18" width="138" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="MdW-Qi-Yec"/>
+                                        <connections>
+                                            <action selector="roundSelected:" target="XT1-Ko-uUN" id="A8W-DA-4Ot"/>
+                                        </connections>
+                                    </slider>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="low-Ml-4JD">
-                                        <rect key="frame" x="156" y="4" width="56" height="21"/>
+                                        <rect key="frame" x="155" y="18" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="3TF-3L-buO">
                                             <font key="font" metaFont="system"/>
@@ -380,6 +380,15 @@
                                         <connections>
                                             <action selector="roundTyped:" target="XT1-Ko-uUN" id="ZSa-jj-KTB"/>
                                         </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-KN-Un3">
+                                        <rect key="frame" x="22" y="6" width="133" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="44.64 for macOS 11 Icon" id="2dC-gn-bBR">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="HeaderColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
                                     </textField>
                                 </subviews>
                             </customView>
@@ -447,10 +456,10 @@
     </scenes>
     <resources>
         <image name="DottedLine-Vertical" width="1" height="525"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSTouchBarRefreshTemplate" width="19" height="30"/>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
         <namedColor name="HeaderColor">
-            <color red="0.28299297863924056" green="0.28299297863924056" blue="0.28299297863924056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.28299999237060547" green="0.28299999237060547" blue="0.28299999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LabelColor">
             <color red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
