@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </containerView>
                             <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wft-VB-ai5">
-                                <rect key="frame" x="790" y="111" width="220" height="500"/>
+                                <rect key="frame" x="790" y="60" width="220" height="550"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </containerView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-4n-NRl" userLabel="Convert Button">
@@ -180,11 +180,11 @@
             <objects>
                 <viewController storyboardIdentifier="ImageOptionsVC" id="XT1-Ko-uUN" customClass="ImageOptionsViewController" customModule="Iconology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Vys-8j-bDM">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="550"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Tz-Nx-gK6" userLabel="Background Color">
-                                <rect key="frame" x="0.0" y="433" width="220" height="53"/>
+                                <rect key="frame" x="0.0" y="497" width="220" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1jf-C6-kog">
@@ -218,7 +218,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SeN-xq-ctz" userLabel="Scale">
-                                <rect key="frame" x="0.0" y="352" width="220" height="62"/>
+                                <rect key="frame" x="0.0" y="416" width="220" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mec-X8-tqH" userLabel="Reset">
@@ -265,7 +265,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhx-WT-CPa" userLabel="Position">
-                                <rect key="frame" x="0.0" y="187" width="220" height="153"/>
+                                <rect key="frame" x="0.0" y="251" width="220" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-AD-ebn" customClass="PositionSelector" customModule="Iconology" customModuleProvider="target">
@@ -338,7 +338,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf2-X7-Tpl" userLabel="Round">
-                                <rect key="frame" x="0.0" y="110" width="220" height="64"/>
+                                <rect key="frame" x="0.0" y="174" width="220" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0w-xr-urb" userLabel="Reset">
@@ -373,6 +373,7 @@
                                         <rect key="frame" x="155" y="18" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="3TF-3L-buO">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="djL-2r-h1B"/>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -393,7 +394,7 @@
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKj-Mj-vge" userLabel="Prefix">
-                                <rect key="frame" x="0.0" y="13" width="220" height="92"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Imh-aD-TdE">
@@ -428,12 +429,71 @@
                                     </textField>
                                 </subviews>
                             </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-D7-huV" userLabel="Round">
+                                <rect key="frame" x="0.0" y="102" width="220" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8eC-4s-4OL" userLabel="Reset">
+                                        <rect key="frame" x="-5" y="36" width="38" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" alternateTitle="Reset Round" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QIr-xj-kZg">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="resetPadding:" target="XT1-Ko-uUN" id="Bez-B0-nnM"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jEX-zP-Yl4">
+                                        <rect key="frame" x="32" y="41" width="70" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Padding" id="yT8-Mh-jb0">
+                                            <font key="font" metaFont="system" size="18"/>
+                                            <color key="textColor" name="LabelColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmD-sP-Epg">
+                                        <rect key="frame" x="5" y="18" width="138" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="75" tickMarkPosition="above" sliderType="linear" id="Lhe-g8-UzV"/>
+                                        <connections>
+                                            <action selector="paddingSelected:" target="XT1-Ko-uUN" id="wNw-Jf-Ij4"/>
+                                        </connections>
+                                    </slider>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-JM-U9L">
+                                        <rect key="frame" x="155" y="18" width="56" height="21"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="sEx-7G-eOH">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="rHq-So-eWX"/>
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <action selector="paddingTyped:" target="XT1-Ko-uUN" id="CYP-2J-f5e"/>
+                                        </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHN-e6-J6p">
+                                        <rect key="frame" x="22" y="6" width="124" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="19.5 for macOS 11 Icon" id="XvV-30-hZ6">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="HeaderColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="backgroundColor" destination="ZmA-KJ-UH6" id="2mZ-2o-qT5"/>
                         <outlet property="backgroundToggle" destination="1jf-C6-kog" id="m3g-20-TM7"/>
                         <outlet property="backgroundView" destination="7Tz-Nx-gK6" id="L0y-Vb-0lQ"/>
+                        <outlet property="paddingSlider" destination="gmD-sP-Epg" id="4pt-J0-dyr"/>
+                        <outlet property="paddingText" destination="9Yc-JM-U9L" id="6Rb-jF-Rnc"/>
+                        <outlet property="paddingView" destination="nWr-D7-huV" id="yWb-hf-rey"/>
                         <outlet property="prefixPreview" destination="bQV-2t-7Fb" id="mOA-WK-LyJ"/>
                         <outlet property="prefixTextBox" destination="Imh-aD-TdE" id="yPB-LY-6jI"/>
                         <outlet property="prefixView" destination="WKj-Mj-vge" id="W5a-lc-kqe"/>

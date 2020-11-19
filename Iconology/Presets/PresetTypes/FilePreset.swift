@@ -22,7 +22,7 @@ final class FilePreset: Preset {
     init(name: String, filetype: FilePreset.Filetype, prefix: Bool, aspect: NSSize? = nil) {
         self.name = name
         self.filetype = filetype
-        useModifications = UseModifications(background: true, scale: true, shift: true, round: true, prefix: prefix)
+        useModifications = UseModifications(background: true, scale: true, shift: true, round: true, padding: true, prefix: prefix)
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
     }
 

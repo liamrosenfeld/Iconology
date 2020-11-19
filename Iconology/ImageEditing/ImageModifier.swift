@@ -16,6 +16,7 @@ class ImageModifier {
     public var shift: CGPoint { didSet { applyShift() } }
     public var background: NSColor? { didSet { applyBackground() } }
     public var rounding: CGFloat { didSet { applyRound() } }
+    public var padding: CGFloat { didSet { applyRound() } }
 
     // MARK: - Chain Storage
 
@@ -23,7 +24,8 @@ class ImageModifier {
     private var appliedAspect: NSSize = .zero
     private var scaledImage = NSImage()
     private var placedImage = NSImage()
-    private var withBack = NSImage()
+    private var backedImage = NSImage()
+    private var roundedImage = NSImage()
 
     // MARK: - Output
 
@@ -60,18 +62,27 @@ class ImageModifier {
 
     private func applyBackground() {
         if let color = background {
-            withBack = placedImage.addBackground(of: color)
+            backedImage = placedImage.addBackground(of: color)
         } else {
-            withBack = placedImage
+            backedImage = placedImage
         }
         applyRound()
     }
 
     private func applyRound() {
         if rounding != 0 {
-            image = withBack.round(by: rounding)
+            roundedImage = backedImage.round(by: rounding)
         } else {
-            image = withBack
+            roundedImage = backedImage
+        }
+        applyPadding()
+    }
+
+    private func applyPadding() {
+        if padding != 0 {
+            image = roundedImage.pad(by: padding)
+        } else {
+            image = roundedImage
         }
     }
 
@@ -88,6 +99,7 @@ class ImageModifier {
         shift = .zero
         background = nil
         rounding = 0
+        padding = 0
 
         self.after = after
 

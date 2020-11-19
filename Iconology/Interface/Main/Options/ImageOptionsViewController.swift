@@ -60,6 +60,10 @@ class ImageOptionsViewController: NSViewController {
     @IBOutlet var roundSlider: NSSlider!
     @IBOutlet var roundText: NSTextField!
 
+    @IBOutlet var paddingView: NSView!
+    @IBOutlet var paddingSlider: NSSlider!
+    @IBOutlet var paddingText: NSTextField!
+
     @IBOutlet var prefixView: NSView!
     @IBOutlet var prefixTextBox: NSTextField!
     @IBOutlet var prefixPreview: NSTextField!
@@ -72,6 +76,7 @@ class ImageOptionsViewController: NSViewController {
         scaleView.isHidden = !useMod.scale
         shiftView.isHidden = !useMod.shift
         roundView.isHidden = !useMod.round
+        paddingView.isHidden = !useMod.padding
         prefixView.isHidden = !useMod.prefix
     }
 
@@ -220,6 +225,37 @@ class ImageOptionsViewController: NSViewController {
         } else {
             mods.rounding = CGFloat(num)
             roundSlider.doubleValue = num
+        }
+    }
+
+    // Padding
+    @IBAction func paddingSelected(_: Any) {
+        mods.padding = CGFloat(paddingSlider.doubleValue)
+        paddingText.stringValue = paddingSlider.doubleValue.description
+    }
+
+    @IBAction func resetPadding(_: Any) {
+        mods.padding = 0
+        paddingSlider.doubleValue = 0
+        paddingSlider.stringValue = "0"
+    }
+
+    @IBAction func paddingTyped(_: Any) {
+        guard let num = Double(paddingText.stringValue) else {
+            return
+        }
+
+        if num < 0 {
+            paddingText.stringValue = "0"
+            mods.padding = 0
+            paddingSlider.doubleValue = 0
+        } else if num > 75 {
+            paddingText.stringValue = "75"
+            mods.padding = 75
+            paddingSlider.doubleValue = 75
+        } else {
+            mods.padding = CGFloat(num)
+            paddingSlider.doubleValue = num
         }
     }
 

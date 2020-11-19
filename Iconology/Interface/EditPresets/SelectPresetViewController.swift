@@ -130,11 +130,11 @@ class SelectPresetViewController: NSViewController {
 
         // Check Not Duplicate
         for index in 0 ..< Storage.userPresets.presets.count
-            where value == Storage.userPresets.presets[index].name && index != selectedRow {
-                sender.stringValue = Storage.userPresets.presets[selectedRow].name
-                Alerts.warningPopup(title: "Name Already Exists", text: "'\(sender.stringValue)' is Already Taken")
-                print("WARN: Name Already Exists")
-                return
+        where value == Storage.userPresets.presets[index].name && index != selectedRow {
+            sender.stringValue = Storage.userPresets.presets[selectedRow].name
+            Alerts.warningPopup(title: "Name Already Exists", text: "'\(sender.stringValue)' is Already Taken")
+            print("WARN: Name Already Exists")
+            return
         }
 
         if selectedRow != -1 {

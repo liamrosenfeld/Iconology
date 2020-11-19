@@ -12,10 +12,10 @@ import Foundation
 struct XcodeSizes {
     static func createPresets() -> [XcodePreset] {
         var presets = [XcodePreset]()
-        presets.append(XcodePreset(name: "iOS", sizes: iosSizes, folderName: "AppIcon.appiconset", round: false))
-        presets.append(XcodePreset(name: "MacOS", sizes: macSizes, folderName: "AppIcon.appiconset", round: true))
-        presets.append(XcodePreset(name: "iMessage", sizes: messageSizes, folderName: "Messages Icon.stickersiconset", aspect: NSSize(width: 4, height: 3), round: false))
-        presets.append(XcodePreset(name: "Watch", sizes: watchSizes, folderName: "AppIcon.appiconset", round: true))
+        presets.append(XcodePreset(name: "iOS", sizes: iosSizes, folderName: "AppIcon.appiconset", fullEdit: false))
+        presets.append(XcodePreset(name: "MacOS", sizes: macSizes, folderName: "AppIcon.appiconset", fullEdit: true))
+        presets.append(XcodePreset(name: "iMessage", sizes: messageSizes, folderName: "Messages Icon.stickersiconset", aspect: NSSize(width: 4, height: 3), fullEdit: false))
+        presets.append(XcodePreset(name: "Watch", sizes: watchSizes, folderName: "AppIcon.appiconset", fullEdit: true))
         return presets
     }
 

@@ -26,13 +26,15 @@ struct UseModifications {
     var scale: Bool
     var shift: Bool
     var round: Bool
+    var padding: Bool
     var prefix: Bool
 
-    init(background: Bool, scale: Bool, shift: Bool, round: Bool, prefix: Bool) {
+    init(background: Bool, scale: Bool, shift: Bool, round: Bool, padding: Bool, prefix: Bool) {
         self.background = background
         self.scale = scale
         self.shift = shift
         self.round = round
+        self.padding = padding
         self.prefix = prefix
     }
 
@@ -41,6 +43,7 @@ struct UseModifications {
         scale = true
         shift = true
         round = true
+        padding = true
         prefix = true
     }
 }

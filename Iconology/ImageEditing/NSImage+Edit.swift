@@ -9,35 +9,7 @@
 import AppKit
 
 extension NSImage {
-    func findFrame(aspect: NSSize) -> NSSize {
-        let aspectW = aspect.width
-        let aspectH = aspect.height
-        let imgW = size.width
-        let imgH = size.height
-
-        var fullSize = size
-        if aspectW > aspectH {
-            let outerX = imgW * (aspectW / aspectH)
-            let outerY = imgH
-            fullSize = NSSize(width: outerX, height: outerY)
-        } else if aspectW < aspectH {
-            let outerX = imgW
-            let outerY = imgH * (aspectH / aspectW)
-            fullSize = NSSize(width: outerX, height: outerY)
-        } else {
-            if imgW > imgH {
-                let outerX = imgW
-                let outerY = imgW
-                fullSize = NSSize(width: outerX, height: outerY)
-            } else if imgW < imgH {
-                let outerX = imgH
-                let outerY = imgH
-                fullSize = NSSize(width: outerX, height: outerY)
-            }
-        }
-        return fullSize
-    }
-
+    // MARK: - Editing
     func scale(by scale: CGFloat) -> NSImage {
         // calc size
         var size = self.size
@@ -152,6 +124,53 @@ extension NSImage {
         let roundPercent = (percent / 100) * 0.7 // is circle when radius is 70% of diagonal
         let diagonal = sqrtTwo * (size.width / 2)
         return roundPercent * diagonal
+    }
+
+    func pad(by percent: CGFloat) -> NSImage {
+        // Find total padding for both sides in pixels
+        // percent/100 = pad / (pad + side)
+        // => pad = (percent * size) / (100 - percent)
+        let paddingW = (percent * (self.size.width)) / (100 - percent)
+        let paddingH = (percent * (self.size.height)) / (100 - percent)
+
+        // Find size of orig + padding
+        let newFrame = NSSize(
+            width: self.size.width + paddingW,
+            height: self.size.height + paddingH
+        )
+
+        // Place orig in center of new frame
+        return placeInFrame(newFrame, at: .zero)
+    }
+
+    // MARK: - Misc
+    func findFrame(aspect: NSSize) -> NSSize {
+        let aspectW = aspect.width
+        let aspectH = aspect.height
+        let imgW = size.width
+        let imgH = size.height
+
+        var fullSize = size
+        if aspectW > aspectH {
+            let outerX = imgW * (aspectW / aspectH)
+            let outerY = imgH
+            fullSize = NSSize(width: outerX, height: outerY)
+        } else if aspectW < aspectH {
+            let outerX = imgW
+            let outerY = imgH * (aspectH / aspectW)
+            fullSize = NSSize(width: outerX, height: outerY)
+        } else {
+            if imgW > imgH {
+                let outerX = imgW
+                let outerY = imgW
+                fullSize = NSSize(width: outerX, height: outerY)
+            } else if imgW < imgH {
+                let outerX = imgH
+                let outerY = imgH
+                fullSize = NSSize(width: outerX, height: outerY)
+            }
+        }
+        return fullSize
     }
 
     func resize(to destSize: NSSize) -> NSImage {

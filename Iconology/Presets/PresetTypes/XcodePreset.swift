@@ -19,12 +19,19 @@ final class XcodePreset: Preset {
         saveXcode(image, at: url, in: sizes, with: prefix)
     }
 
-    init(name: String, sizes: [XcodeSizes], folderName: String, aspect: NSSize? = nil, round: Bool) {
+    init(name: String, sizes: [XcodeSizes], folderName: String, aspect: NSSize? = nil, fullEdit: Bool) {
         self.name = name
         self.sizes = sizes
         self.folderName = folderName
         self.aspect = aspect ?? NSSize(width: 1, height: 1)
-        useModifications = UseModifications(background: true, scale: true, shift: true, round: round, prefix: true)
+        useModifications = UseModifications(
+            background: true,
+            scale: true,
+            shift: true,
+            round: fullEdit,
+            padding: fullEdit,
+            prefix: true
+        )
     }
 
     final class XcodeSizes: Size {
