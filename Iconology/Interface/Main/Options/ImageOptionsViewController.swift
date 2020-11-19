@@ -122,9 +122,9 @@ class ImageOptionsViewController: NSViewController {
     }
 
     @IBAction func resetScale(_: Any) {
-        mods.scale = 1
-        scaleSlider.doubleValue = 1
-        scaleText.stringValue = "1"
+        mods.scale = 100
+        scaleSlider.doubleValue = 100
+        scaleText.stringValue = "100"
     }
 
     @IBAction func scaleTyped(_: Any) {
@@ -132,14 +132,14 @@ class ImageOptionsViewController: NSViewController {
             return
         }
 
-        if num <= 0 {
-            scaleText.stringValue = "0.01"
-            mods.scale = 0.01
-            scaleSlider.doubleValue = 0.01
-        } else if num > 2 {
-            scaleText.stringValue = "2"
-            mods.scale = 2
-            scaleSlider.doubleValue = 2
+        if num <= 10 {
+            scaleText.stringValue = "10"
+            mods.scale = 10
+            scaleSlider.doubleValue = 10
+        } else if num > 200 {
+            scaleText.stringValue = "200"
+            mods.scale = 200
+            scaleSlider.doubleValue = 200
         } else {
             mods.scale = CGFloat(num)
             scaleSlider.doubleValue = num

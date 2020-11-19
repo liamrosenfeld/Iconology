@@ -95,7 +95,7 @@ class ImageModifier {
 
         // Default Properties
         aspect = NSSize(width: 1, height: 1)
-        scale = 1
+        scale = 100
         shift = .zero
         background = nil
         rounding = 0

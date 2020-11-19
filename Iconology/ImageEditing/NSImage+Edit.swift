@@ -10,9 +10,10 @@ import AppKit
 
 extension NSImage {
     // MARK: - Editing
-    func scale(by scale: CGFloat) -> NSImage {
+    func scale(by percent: CGFloat) -> NSImage {
         // calc size
         var size = self.size
+        let scale = percent / 100
         size.width *= scale
         size.height *= scale
 
