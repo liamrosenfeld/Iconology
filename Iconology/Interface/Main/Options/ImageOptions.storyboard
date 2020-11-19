@@ -369,8 +369,17 @@
                                             <action selector="roundSelected:" target="XT1-Ko-uUN" id="A8W-DA-4Ot"/>
                                         </connections>
                                     </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-KN-Un3">
+                                        <rect key="frame" x="22" y="6" width="126" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="46% for macOS 11 Icon" id="2dC-gn-bBR">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="HeaderColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="low-Ml-4JD">
-                                        <rect key="frame" x="155" y="18" width="56" height="21"/>
+                                        <rect key="frame" x="144" y="18" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="3TF-3L-buO">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="djL-2r-h1B"/>
@@ -382,12 +391,12 @@
                                             <action selector="roundTyped:" target="XT1-Ko-uUN" id="ZSa-jj-KTB"/>
                                         </connections>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-KN-Un3">
-                                        <rect key="frame" x="22" y="6" width="133" height="14"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVM-Ju-bN0">
+                                        <rect key="frame" x="200" y="21" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="44.64 for macOS 11 Icon" id="2dC-gn-bBR">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="HeaderColor"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="4fC-7I-G1i">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -461,8 +470,17 @@
                                             <action selector="paddingSelected:" target="XT1-Ko-uUN" id="wNw-Jf-Ij4"/>
                                         </connections>
                                     </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHN-e6-J6p">
+                                        <rect key="frame" x="22" y="6" width="134" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="19.5% for macOS 11 Icon" id="XvV-30-hZ6">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="HeaderColor"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-JM-U9L">
-                                        <rect key="frame" x="155" y="18" width="56" height="21"/>
+                                        <rect key="frame" x="144" y="18" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="sEx-7G-eOH">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="rHq-So-eWX"/>
@@ -474,12 +492,12 @@
                                             <action selector="paddingTyped:" target="XT1-Ko-uUN" id="CYP-2J-f5e"/>
                                         </connections>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHN-e6-J6p">
-                                        <rect key="frame" x="22" y="6" width="124" height="14"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ID2-zZ-eQr">
+                                        <rect key="frame" x="200" y="20" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="19.5 for macOS 11 Icon" id="XvV-30-hZ6">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="HeaderColor"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="JKe-l4-GGb">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>

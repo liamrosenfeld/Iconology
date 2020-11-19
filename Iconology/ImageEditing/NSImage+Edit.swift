@@ -35,11 +35,11 @@ extension NSImage {
         NSGraphicsContext.saveGraphicsState()
         NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
 
-        // create rect of ascpect size
+        // Create rect of aspect size
         var imageRect = NSRect.zero
         imageRect.size = size
 
-        // draw the image
+        // Draw the image
         let rect = imageRect
         let x = ((frame.width / 2) - (size.width / 2)) + (loc.x * (frame.width / 100))
         let y = ((frame.height / 2) - (size.height / 2)) + (loc.y * (frame.height / 100))
@@ -52,6 +52,7 @@ extension NSImage {
         newImage.addRepresentation(rep)
         newImage.size = frame
         return newImage
+
     }
 
     func addBackground(of color: NSColor) -> NSImage {
@@ -120,10 +121,20 @@ extension NSImage {
     }
 
     private func cornerRadius(sideLength: CGFloat, percent: CGFloat) -> CGFloat {
-        let sqrtTwo = CGFloat(sqrt(2.0))
-        let roundPercent = (percent / 100) * 0.7 // is circle when radius is 70% of diagonal
-        let diagonal = sqrtTwo * (size.width / 2)
-        return roundPercent * diagonal
+        // Scale the percentage so 0 is square and 1 is circle
+        //
+        // circle is when corner radius equals half of side length
+        // (sqrt2)(s/2)(Pmax) = s/2
+        // => Pmax = 1/sqrt2
+        let sqrtTwo = CGFloat(2).squareRoot()
+        let adjustedPercent = (percent / 100) * (1 / sqrtTwo)
+
+        // Diagonal of a quarter of the shape
+        // TODO: might cause issues on non square aspect ratios
+        let diagonal = sqrtTwo * (sideLength / 2)
+
+        // Radius is the diagonal times the adjusted percent
+        return adjustedPercent * diagonal
     }
 
     func pad(by percent: CGFloat) -> NSImage {
