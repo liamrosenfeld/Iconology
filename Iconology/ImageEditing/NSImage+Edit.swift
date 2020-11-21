@@ -157,32 +157,23 @@ extension NSImage {
 
     // MARK: - Misc
     func findFrame(aspect: NSSize) -> NSSize {
-        let aspectW = aspect.width
-        let aspectH = aspect.height
+        let aspectVal = aspect.width / aspect.height
+        let imgAspect = size.width / size.height
         let imgW = size.width
         let imgH = size.height
 
-        var fullSize = size
-        if aspectW > aspectH {
-            let outerX = imgW * (aspectW / aspectH)
-            let outerY = imgH
-            fullSize = NSSize(width: outerX, height: outerY)
-        } else if aspectW < aspectH {
-            let outerX = imgW
-            let outerY = imgH * (aspectH / aspectW)
-            fullSize = NSSize(width: outerX, height: outerY)
+        if aspect.width == aspect.height {
+            let side = max(imgW, imgH)
+            return NSSize(width: side, height: side)
+        } else if imgAspect > aspectVal {
+            let newW = imgW
+            let newH = imgW * (aspect.height / aspect.width)
+            return NSSize(width: newW, height: newH)
         } else {
-            if imgW > imgH {
-                let outerX = imgW
-                let outerY = imgW
-                fullSize = NSSize(width: outerX, height: outerY)
-            } else if imgW < imgH {
-                let outerX = imgH
-                let outerY = imgH
-                fullSize = NSSize(width: outerX, height: outerY)
-            }
+            let newW = imgH * aspectVal
+            let newH = imgH
+            return NSSize(width: newW, height: newH)
         }
-        return fullSize
     }
 
     func resize(to destSize: NSSize) -> NSImage {

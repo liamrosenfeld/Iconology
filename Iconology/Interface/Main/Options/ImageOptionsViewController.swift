@@ -23,16 +23,16 @@ class ImageOptionsViewController: NSViewController {
 
         // set ui
         resetAll()
-        setContinous()
+        setContinuous()
         prefixPreview.stringValue = ""
 
         // notif
         NotificationCenter.default.addObserver(forName: .generalPrefApply, object: nil, queue: nil) { _ in
-            self.setContinous()
+            self.setContinuous()
         }
     }
 
-    func setContinous() {
+    func setContinuous() {
         let cont = Storage.preferences.continuousPreview
         // TODO: Non-Continuous Background Option
         // backgroundColor.isContinuous = cont
@@ -78,6 +78,13 @@ class ImageOptionsViewController: NSViewController {
         roundView.isHidden = !useMod.round
         paddingView.isHidden = !useMod.padding
         prefixView.isHidden = !useMod.prefix
+
+        if !useMod.round {
+            resetRound(self)
+        }
+        if !useMod.padding {
+            resetPadding(self)
+        }
     }
 
     var prefix: String {

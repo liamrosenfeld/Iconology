@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import func AVFoundation.AVMakeRect
 
 extension NSImageView {
     func resize(to image: NSImage) {
@@ -15,34 +16,14 @@ extension NSImageView {
         let w: CGFloat = imageSize.width
         let h: CGFloat = imageSize.height
 
-        let max: CGFloat = 500
+        let maxSize = CGSize(width: 500, height: 500)
 
-        // Get Mod Image Size
+        // Fit within 500x500 if needed
         var size = NSSize(width: 0, height: 0)
-        if w > h {
-            if w > max {
-                size.width = max
-                size.height = max * (h / w)
-            } else {
-                size.width = w
-                size.height = h
-            }
-        } else if w < h {
-            if h > max {
-                size.width = max * (w / h)
-                size.height = max
-            } else {
-                size.width = w
-                size.height = h
-            }
+        if w <= 500 && h <= 500 {
+            size = image.size
         } else {
-            if w > max || h > max {
-                size.width = 350
-                size.height = 350
-            } else {
-                size.width = w
-                size.height = h
-            }
+            size = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: .zero, size: maxSize)).size
         }
 
         // Get Origin

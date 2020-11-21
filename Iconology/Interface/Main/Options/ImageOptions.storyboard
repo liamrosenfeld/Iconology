@@ -396,15 +396,6 @@
                                             <action selector="roundSelected:" target="XT1-Ko-uUN" id="A8W-DA-4Ot"/>
                                         </connections>
                                     </slider>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-KN-Un3">
-                                        <rect key="frame" x="22" y="6" width="126" height="14"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="46% for macOS 11 Icon" id="2dC-gn-bBR">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="HeaderColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="low-Ml-4JD">
                                         <rect key="frame" x="144" y="18" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -424,6 +415,15 @@
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="4fC-7I-G1i">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-KN-Un3">
+                                        <rect key="frame" x="11" y="5" width="132" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="46% for macOS 11 Icons" id="2dC-gn-bBR">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="HeaderColor"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -497,15 +497,6 @@
                                             <action selector="paddingSelected:" target="XT1-Ko-uUN" id="wNw-Jf-Ij4"/>
                                         </connections>
                                     </slider>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHN-e6-J6p">
-                                        <rect key="frame" x="22" y="6" width="134" height="14"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="19.5% for macOS 11 Icon" id="XvV-30-hZ6">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="HeaderColor"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-JM-U9L">
                                         <rect key="frame" x="144" y="18" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -525,6 +516,15 @@
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="JKe-l4-GGb">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHN-e6-J6p">
+                                        <rect key="frame" x="5" y="4" width="140" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="19.5% for macOS 11 Icons" id="XvV-30-hZ6">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="HeaderColor"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>

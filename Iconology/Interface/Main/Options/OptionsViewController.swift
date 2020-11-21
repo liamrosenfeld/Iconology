@@ -59,13 +59,13 @@ class OptionsViewController: NSViewController {
     func reloadUI() {
         guard let image = origImage else { return }
         imageOptionsVC.mods.origImage = image
-        alignAspectLabel()
         displayImage()
     }
 
     func displayImage() {
         imageView.resize(to: imageOptionsVC.mods.image)
         imageView.addImage(imageOptionsVC.mods.image)
+        alignAspectLabel()
     }
 
     func alignAspectLabel() {
