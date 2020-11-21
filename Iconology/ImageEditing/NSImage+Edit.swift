@@ -67,8 +67,8 @@ extension NSImage {
 
         // fill the background with selected color
         color.setFill()
-        let backgoundRect = NSRect(origin: CGPoint.zero, size: imageSize)
-        NSBezierPath.fill(backgoundRect)
+        let backgroundRect = NSRect(origin: CGPoint.zero, size: imageSize)
+        NSBezierPath.fill(backgroundRect)
 
         // rect of image size positioned inside the border
         var imageRect = NSRect.zero

@@ -25,8 +25,8 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction func resetCustomPresets(_: Any) {
-        let comfirm = Alerts.comfirmPopup(title: "Warning", text: "This will delete all your presets")
-        if comfirm {
+        let confirm = Alerts.confirmPopup(title: "Warning", text: "This will delete all your presets")
+        if confirm {
             Storage.userPresets.deleteAllPreset()
             ExamplePresets.addExamplePresets()
             NotificationCenter.default.post(name: .customPresetsReset, object: nil)

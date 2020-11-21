@@ -9,7 +9,7 @@
 import AppKit
 
 struct Alerts {
-    static func comfirmPopup(title: String, text: String) -> Bool {
+    static func confirmPopup(title: String, text: String) -> Bool {
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = text

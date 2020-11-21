@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol PresetDelegate {
-    func presetsSelected(_ preset: Preset)
+    func presetSelected(_ preset: Preset)
 }
 
 class PresetsViewController: NSViewController {
@@ -54,7 +54,7 @@ class PresetsViewController: NSViewController {
     let customText = "Custom"
 
     func loadPresets() {
-        // UI Preperation
+        // UI Preparation
         presetGroupSelector.removeAllItems()
         presetSelector.removeAllItems()
 
@@ -134,7 +134,7 @@ class PresetsViewController: NSViewController {
         }
 
         let preset = presets[selectedGroup].presets[selectedPreset]
-        delegate?.presetsSelected(preset)
+        delegate?.presetSelected(preset)
     }
 
     @IBAction func editCustomPresets(_: Any) {

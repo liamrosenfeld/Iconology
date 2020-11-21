@@ -10,12 +10,12 @@ import Cocoa
 
 class PositionSelector: NSControl {
     private var dragFrame = NSRect()
-    private var dragerView = NSView()
+    private var draggerView = NSView()
 
     var position: CGPoint {
         get {
             // get point
-            var point = dragerView.frame.center
+            var point = draggerView.frame.center
 
             // align (0, 0) to center of parent
             point.x -= self.frame.size.width / 2
@@ -40,7 +40,7 @@ class PositionSelector: NSControl {
             point.y += self.frame.size.height / 2
 
             // set pos
-            dragerView.frame.center = point
+            draggerView.frame.center = point
         }
     }
 
@@ -63,7 +63,7 @@ class PositionSelector: NSControl {
 
         // format
         setBackground(to: .labelColor)
-        layer?.cornerRadius = dragerView.frame.width / 2
+        layer?.cornerRadius = draggerView.frame.width / 2
     }
 
     // MARK: - Drag View
@@ -71,25 +71,25 @@ class PositionSelector: NSControl {
     override func viewDidChangeEffectiveAppearance() {
         if #available(OSX 10.14, *) {
             super.viewDidChangeEffectiveAppearance()
-            dragerView.setBackground(to: .controlAccentColor)
+            draggerView.setBackground(to: .controlAccentColor)
         }
     }
 
     func setupDragView() {
         // size and position
-        dragerView = NSView(frame: NSRect(x: 0, y: 0, width: frame.width / 10, height: frame.height / 10))
+        draggerView = NSView(frame: NSRect(x: 0, y: 0, width: frame.width / 10, height: frame.height / 10))
         if #available(OSX 10.14, *) {
-            dragerView.setBackground(to: .controlAccentColor)
+            draggerView.setBackground(to: .controlAccentColor)
         } else {
-            dragerView.setBackground(to: .systemBlue)
+            draggerView.setBackground(to: .systemBlue)
         }
-        dragerView.layer?.cornerRadius = dragerView.frame.width / 2
+        draggerView.layer?.cornerRadius = draggerView.frame.width / 2
         position = .zero
 
         // drag support
         let gesture = DragDetector(target: self, onDrag: #selector(Self.draggedView(_:)), onMouseUp: draggerReleased)
-        dragerView.addGestureRecognizer(gesture)
-        addSubview(dragerView)
+        draggerView.addGestureRecognizer(gesture)
+        addSubview(draggerView)
 
         // set bounds
         dragFrame.size.width = frame.size.width * 0.9
@@ -100,7 +100,7 @@ class PositionSelector: NSControl {
     private var count = 0
     @objc func draggedView(_ sender: NSPanGestureRecognizer) {
         // get point and vector
-        let currentLoc = dragerView.frame.center
+        let currentLoc = draggerView.frame.center
         let translation = sender.translation(in: self)
 
         // get new pos
@@ -114,7 +114,7 @@ class PositionSelector: NSControl {
         }
 
         // update box
-        dragerView.frame.center = newPos
+        draggerView.frame.center = newPos
 
         // send action
         count += 1

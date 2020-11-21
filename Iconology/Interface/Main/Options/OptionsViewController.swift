@@ -127,7 +127,7 @@ class OptionsViewController: NSViewController {
     }
 
     // MARK: - Undo/Redo
-
+    // TODO: Undo and Redo for Adjustments
     @objc func undo() {
         print("TODO: Undo")
         undoManager?.undo()
@@ -145,7 +145,7 @@ class OptionsViewController: NSViewController {
 }
 
 extension OptionsViewController: PresetDelegate {
-    func presetsSelected(_ preset: Preset) {
+    func presetSelected(_ preset: Preset) {
         guard let imageOptionsVC = imageOptionsVC else {
             print("ERR: ImageOptionsVC Not Loaded")
             return
