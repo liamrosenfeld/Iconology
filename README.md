@@ -1,4 +1,4 @@
-![Iconology](./Iconology/SupportFiles/Assets.xcassets/Logo-Long.imageset/Iconology_Black.png)
+![Iconology](./Iconology/SupportFiles/Assets.xcassets/Logo-Long.imageset/logo-long-black.svg)
 
 Easily import, modify, and export icons!
 
@@ -26,6 +26,8 @@ Easily import, modify, and export icons!
   - Horizontal and Vertical Shift
   - Non-Stretching Aspect Ratio Editor
   - Rounding
+  - Padding
+  - > **Easily Create macOS 11 Icons**
 - Lightweight, 100% native
 - Simple to Use UI
 - Supports
