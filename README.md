@@ -1,4 +1,4 @@
-![Iconology](./Iconology/SupportFiles/Assets.xcassets/Logo-Long.imageset/logo-long-black.svg)
+![Iconology](./Iconology/Assets.xcassets/Logo.imageset/logo-long-black.svg)
 
 Easily import, modify, and export icons!
 
