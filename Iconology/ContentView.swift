@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var image: NSImage?
+    @State private var image: CGImage?
 
     var body: some View {
         Group {

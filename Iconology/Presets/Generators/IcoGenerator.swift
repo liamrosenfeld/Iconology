@@ -11,15 +11,15 @@ import AppKit
 enum IcoGenerator {
     // MARK: - Generation
     // https://en.wikipedia.org/wiki/ICO_(file_format)
-    static func saveIco(_ image: NSImage, in sizes: [ImgSetSize], at url: URL) {
+    static func saveIco(_ image: CGImage, in sizes: [ImgSetSize], at url: URL) {
         // Resize Images
-        var images = [NSImage]()
+        var images = [CGImage]()
         for size in sizes {
             if size.size.width >= 256 || size.size.height >= 256 {
                 print("ERR: Size is too large for ICO")
                 continue
             }
-            images.append(image.resize(to: size.size))
+            images.append(image.resized(to: size.size, quality: .high))
         }
 
         // Generate Buffer
@@ -34,7 +34,7 @@ enum IcoGenerator {
         }
     }
 
-    private static func imagesToIco(_ images: [NSImage]) -> Data {
+    private static func imagesToIco(_ images: [CGImage]) -> Data {
         // file sections
         let header = makeHeader(imageCount: UInt16(images.count)) // top - contains general info about image
         var iconDir = Data() // middle - stores info about each image in imageData
@@ -46,7 +46,7 @@ enum IcoGenerator {
 
         for image in images {
             let dir = getDir(of: image, withOffset: UInt32(offset))
-            let data = image.PNGRepresentation!
+            let data = image.pngRepresentation!
 
             iconDir.append(dir)
             imageData.append(data)
@@ -78,9 +78,9 @@ enum IcoGenerator {
         return data
     }
 
-    private static func getDir(of image: NSImage, withOffset offset: UInt32) -> Data {
-        let bitmap = NSBitmapImageRep(cgImage: image.cgImage)
-        let size = UInt32(image.PNGRepresentation!.count)
+    private static func getDir(of image: CGImage, withOffset offset: UInt32) -> Data {
+        let bitmap = NSBitmapImageRep(cgImage: image)
+        let size = UInt32(image.pngRepresentation!.count)
         let width = bitmap.size.width
         let height = bitmap.size.height
         let bpp = UInt16(bitmap.bitsPerPixel)

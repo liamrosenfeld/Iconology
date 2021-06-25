@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ImagePreviewView: View {
-    var image: NSImage
+    var image: CGImage
     var aspect: CGSize
 
     var body: some View {
@@ -17,10 +17,13 @@ struct ImagePreviewView: View {
             Text("Aspect: \(Int(aspect.width)):\(Int(aspect.height))")
                 .font(.title2)
                 .foregroundColor(Color.secondary)
-            Image(nsImage: image)
+            Image(decorative: image, scale: 1, orientation: .up)
                 .resizable()
                 .aspectRatio(aspect, contentMode: .fit)
-                .background(Checkerboard(rows: 100, columns: 100).fill(Color.gray))
+                .background(
+                    Checkerboard(rows: 70, columns: 70)
+                        .fill(Color(.sRGB, white: 0.88, opacity: 1))
+                )
                 .padding(1)
                 .background(Color.white)
         }

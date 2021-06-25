@@ -14,7 +14,7 @@ struct EditView: View {
 
     @State var prefix = ""
 
-    init(image: NSImage) {
+    init(image: CGImage) {
         self._modifier = StateObject(wrappedValue: ImageModifier(image: image))
     }
 
@@ -88,15 +88,15 @@ struct EditView: View {
             // TODO: show error
             return
         }
-        self.modifier.origImage = image
+        self.modifier.origImage = image.cgImage
     }
 }
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(image: NSImage(named: "Logo")!)
+        EditView(image: NSImage(named: "Logo")!.cgImage)
             .colorScheme(.light)
-        EditView(image: NSImage(named: "Logo")!)
+        EditView(image: NSImage(named: "Logo")!.cgImage)
             .colorScheme(.dark)
     }
 }

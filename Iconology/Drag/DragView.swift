@@ -10,7 +10,7 @@ import SwiftUI
 import AppKit
 
 struct DragView: View {
-    @Binding var image: NSImage?
+    @Binding var image: CGImage?
 
     @State var imageUrl: URL?
     @State var isDropping = false
@@ -57,12 +57,12 @@ struct DragView: View {
             // TODO: show error
             return
         }
-        self.image = image
+        self.image = image.cgImage
     }
 }
 
 struct DragView_Previews: PreviewProvider {
-    @State static private var image: NSImage?
+    @State static private var image: CGImage?
 
     static var previews: some View {
         DragView(image: $image)

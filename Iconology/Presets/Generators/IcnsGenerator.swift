@@ -12,14 +12,14 @@ enum IcnsGenerator {
     // for info go here:
     // https://www.unix.com/man-page/osx/1/iconutil/
 
-    static func saveIcns(_ image: NSImage, at url: URL) {
+    static func saveIcns(_ image: CGImage, at url: URL) {
         // create temp location
         let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent("Icons.iconset")
         try! FileManager.default.createDirectory(at: tempUrl, withIntermediateDirectories: true, attributes: nil)
 
         // create with iconutil
         for size in ImgSetSizes.macIconset {
-            let resizedImage = image.resize(to: size.size)
+            let resizedImage = image.resized(to: size.size, quality: .high)
             let pngUrl = tempUrl.appendingPathComponent("\(size.name).png")
             do {
                 try resizedImage.savePng(to: pngUrl)

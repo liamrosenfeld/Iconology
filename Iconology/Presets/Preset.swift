@@ -14,7 +14,7 @@ struct Preset: Hashable, Codable {
     var aspect: CGSize
     var useModifications: EnabledModifications
 
-    func save(_ image: NSImage, at url: URL, with prefix: String) -> URL {
+    func save(_ image: CGImage, at url: URL, with prefix: String) -> URL {
         switch type {
         case .xcodeAsset(let sizes, let folderName):
             let saveUrl = url.appendingPathComponent(folderName)
@@ -39,9 +39,9 @@ struct Preset: Hashable, Codable {
         }
     }
 
-    private func savePngs(_ image: NSImage, at url: URL, with prefix: String, in sizes: [ImgSetSize]) {
+    private func savePngs(_ image: CGImage, at url: URL, with prefix: String, in sizes: [ImgSetSize]) {
         for size in sizes {
-            let resizedImage = image.resize(to: size.size)
+            let resizedImage = image.resized(to: size.size, quality: .high)
             let name = "\(prefix)\(size.name)"
             let url = url.appendingPathComponent("\(name).png")
             do {

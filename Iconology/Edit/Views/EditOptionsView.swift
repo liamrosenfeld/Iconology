@@ -31,6 +31,7 @@ struct EditOptionsView: View {
 
             if enabled.scale {
                 SliderAndText(name: "Scale", value: $mods.scale, range: 10...200, defaultVal: 100)
+                    .padding(.bottom)
             }
 
             if enabled.shift {
@@ -55,10 +56,14 @@ struct EditOptionsView: View {
 
             if enabled.round {
                 SliderAndText(name: "Rounding", value: $mods.rounding, range: 0...100, defaultVal: 0)
+                Text("45.3% for macOS 11+ Icons")
+                    .padding(.bottom)
             }
 
             if enabled.padding {
                 SliderAndText(name: "Padding", value: $mods.padding, range: 0...75, defaultVal: 0)
+                Text("19.5% for macOS 11+ Icons")
+                    .padding(.bottom)
             }
         }.labelsHidden()
     }
@@ -84,10 +89,18 @@ struct SliderAndText: View {
             }
             HStack {
                 Slider(value: $value, in: range)
-                TextField(name, value: $value, formatter: NumberFormatter()) // TODO: bound to range
+                TextField(name, value: $value, formatter: .floatFormatter) // TODO: bound to range
                     .frame(width: 50)
                 Text("%")
-            }.padding(.bottom)
+            }
         }
     }
+}
+
+extension Formatter {
+    static let floatFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
 }

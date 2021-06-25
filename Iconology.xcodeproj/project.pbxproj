@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C90447F26839029005060DF /* CGPointSize+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90447E26839029005060DF /* CGPointSize+Util.swift */; };
+		0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* CGPath+Rounding.swift */; };
 		0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */; };
 		0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CABB91426732C3800701959 /* PresetPickerView.swift */; };
 		0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84593266EDADA0070AC87 /* IconologyApp.swift */; };
@@ -18,8 +20,8 @@
 		0CC845AC266EE0E10070AC87 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AB266EE0E10070AC87 /* EditView.swift */; };
 		0CC845AE266F2DA70070AC87 /* ImageModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AD266F2DA70070AC87 /* ImageModifications.swift */; };
 		0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */; };
-		0CC845B4266F2EF70070AC87 /* NSImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B2266F2EF70070AC87 /* NSImage+Util.swift */; };
-		0CC845B5266F2EF70070AC87 /* NSImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B3266F2EF70070AC87 /* NSImage+Edit.swift */; };
+		0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */; };
+		0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */; };
 		0CFC53282672797900ACCC22 /* IcoGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC53272672797900ACCC22 /* IcoGenerator.swift */; };
 		0CFC532A267279CA00ACCC22 /* IcnsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC5329267279CA00ACCC22 /* IcnsGenerator.swift */; };
 		0CFC532D26727E1C00ACCC22 /* NSOpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC532C26727E1C00ACCC22 /* NSOpenPanel.swift */; };
@@ -28,13 +30,15 @@
 		0CFFD9F926713D5A007FB3FB /* ImgSetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9E726713D5A007FB3FB /* ImgSetSizes.swift */; };
 		0CFFD9FA26713D5A007FB3FB /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9E826713D5A007FB3FB /* DefaultPresets.swift */; };
 		0CFFD9FC26713D5A007FB3FB /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9EB26713D5A007FB3FB /* Preset.swift */; };
-		0CFFDA0126713D5A007FB3FB /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9F126713D5A007FB3FB /* NSImage+PNG.swift */; };
+		0CFFDA0126713D5A007FB3FB /* CGImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9F126713D5A007FB3FB /* CGImage+PNG.swift */; };
 		0CFFDA0826713FF5007FB3FB /* PositionSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFDA0726713FF5007FB3FB /* PositionSelecting.swift */; };
 		0CFFDA0B267153B3007FB3FB /* XcodeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFDA0A267153B3007FB3FB /* XcodeSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C29BC9726732D7D00F3E61F /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
+		0C90447E26839029005060DF /* CGPointSize+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPointSize+Util.swift"; sourceTree = "<group>"; };
+		0C904480268396EA005060DF /* CGPath+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Rounding.swift"; sourceTree = "<group>"; };
 		0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeAssetGenerator.swift; sourceTree = "<group>"; };
 		0CABB91426732C3800701959 /* PresetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPickerView.swift; sourceTree = "<group>"; };
 		0CC84590266EDADA0070AC87 /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,8 +51,8 @@
 		0CC845AB266EE0E10070AC87 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		0CC845AD266F2DA70070AC87 /* ImageModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifications.swift; sourceTree = "<group>"; };
 		0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
-		0CC845B2266F2EF70070AC87 /* NSImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Util.swift"; sourceTree = "<group>"; };
-		0CC845B3266F2EF70070AC87 /* NSImage+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Edit.swift"; sourceTree = "<group>"; };
+		0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Util.swift"; sourceTree = "<group>"; };
+		0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Edit.swift"; sourceTree = "<group>"; };
 		0CFC53272672797900ACCC22 /* IcoGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcoGenerator.swift; sourceTree = "<group>"; };
 		0CFC5329267279CA00ACCC22 /* IcnsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcnsGenerator.swift; sourceTree = "<group>"; };
 		0CFC532C26727E1C00ACCC22 /* NSOpenPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOpenPanel.swift; sourceTree = "<group>"; };
@@ -57,7 +61,7 @@
 		0CFFD9E726713D5A007FB3FB /* ImgSetSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgSetSizes.swift; sourceTree = "<group>"; };
 		0CFFD9E826713D5A007FB3FB /* DefaultPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
 		0CFFD9EB26713D5A007FB3FB /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
-		0CFFD9F126713D5A007FB3FB /* NSImage+PNG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PNG.swift"; sourceTree = "<group>"; };
+		0CFFD9F126713D5A007FB3FB /* CGImage+PNG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+PNG.swift"; sourceTree = "<group>"; };
 		0CFFDA0726713FF5007FB3FB /* PositionSelecting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSelecting.swift; sourceTree = "<group>"; };
 		0CFFDA0A267153B3007FB3FB /* XcodeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,8 +148,10 @@
 		0CC845B6266F2F0F0070AC87 /* Editing */ = {
 			isa = PBXGroup;
 			children = (
-				0CC845B3266F2EF70070AC87 /* NSImage+Edit.swift */,
-				0CC845B2266F2EF70070AC87 /* NSImage+Util.swift */,
+				0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */,
+				0C904480268396EA005060DF /* CGPath+Rounding.swift */,
+				0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */,
+				0C90447E26839029005060DF /* CGPointSize+Util.swift */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -195,7 +201,7 @@
 		0CFFD9EF26713D5A007FB3FB /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				0CFFD9F126713D5A007FB3FB /* NSImage+PNG.swift */,
+				0CFFD9F126713D5A007FB3FB /* CGImage+PNG.swift */,
 				0CFC532C26727E1C00ACCC22 /* NSOpenPanel.swift */,
 			);
 			path = Util;
@@ -275,10 +281,11 @@
 				0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */,
 				0CFFD9E32670847D007FB3FB /* EditOptionsView.swift in Sources */,
 				0CFC532A267279CA00ACCC22 /* IcnsGenerator.swift in Sources */,
+				0C90447F26839029005060DF /* CGPointSize+Util.swift in Sources */,
 				0CFC53282672797900ACCC22 /* IcoGenerator.swift in Sources */,
 				0CFFD9FC26713D5A007FB3FB /* Preset.swift in Sources */,
 				0CFFD9F926713D5A007FB3FB /* ImgSetSizes.swift in Sources */,
-				0CFFDA0126713D5A007FB3FB /* NSImage+PNG.swift in Sources */,
+				0CFFDA0126713D5A007FB3FB /* CGImage+PNG.swift in Sources */,
 				0CFFDA0B267153B3007FB3FB /* XcodeSize.swift in Sources */,
 				0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */,
 				0CFC532D26727E1C00ACCC22 /* NSOpenPanel.swift in Sources */,
@@ -287,12 +294,13 @@
 				0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */,
 				0CFFD9E126708458007FB3FB /* ImagePreviewView.swift in Sources */,
 				0CFFDA0826713FF5007FB3FB /* PositionSelecting.swift in Sources */,
-				0CC845B4266F2EF70070AC87 /* NSImage+Util.swift in Sources */,
+				0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */,
+				0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */,
 				0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */,
 				0CC845AC266EE0E10070AC87 /* EditView.swift in Sources */,
 				0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */,
 				0CC845AE266F2DA70070AC87 /* ImageModifications.swift in Sources */,
-				0CC845B5266F2EF70070AC87 /* NSImage+Edit.swift in Sources */,
+				0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */,
 				0CC845A2266EDF100070AC87 /* DragView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

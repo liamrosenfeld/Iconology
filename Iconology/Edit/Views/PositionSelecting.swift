@@ -49,13 +49,13 @@ struct PositionInput: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("X:")
-                TextField("X Position", value: $position.x, formatter: NumberFormatter())
+                TextField("X Position", value: $position.x, formatter: .floatFormatter) // TODO: bound to range
                     .frame(width: 50)
                 Text("%")
             }
             HStack {
                 Text("Y:")
-                TextField("Y Position", value: $position.y, formatter: NumberFormatter())
+                TextField("Y Position", value: $position.y, formatter: .floatFormatter)
                     .frame(width: 50)
                 Text("%")
             }
