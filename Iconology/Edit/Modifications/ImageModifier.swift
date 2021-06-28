@@ -17,154 +17,88 @@ class ImageModifier: ObservableObject {
     // MARK: - Intermediate Storage
     private var outerSize: NSSize = .zero
     private var innerSize: NSSize = .zero
+    
+    private var imageOrigin: CGPoint = .zero
+    private var maskPath: CGPath?
+    
     private var scaledImage: CGImage!
+    private var placedImage: CGImage!
+    private var shadowImage: CGImage?
     
     // MARK: - In and Out
-    public var origImage: CGImage { didSet { fullChain() } }
+    public var origImage: CGImage { didSet { fullChain(aspect: mods.aspect, padding: mods.padding, quality: .high) } }
     @Published private(set) var finalImage: CGImage
     
     // MARK: - Modification Change Reactions
-    private func fullChain() {
-        findSizes(
-            aspect: mods.aspect,
-            padding: mods.padding
-        )
-        scaleInnerImage(
-            mods.scale,
-            padding: mods.padding,
-            quality: .high
-        )
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
+    private func fullChain(aspect: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
+        findSizes(aspect: aspect, padding: padding)
+        scaleInnerImage(mods.scale, padding: padding, quality: quality)
+        findImageOrigin(shiftPercent: mods.shift, padding: padding)
+        findMaskPath(rounding: mods.rounding, padding: padding)
+        // TODO: async PIF and shadow
+        let optBg = mods.useBackground ? mods.background : nil
+        placeInFrame(background: optBg)
+        makeShadow(attributes: mods.shadow)
+        overlay()
     }
     
     private func newAspect(_ aspect: CGSize) {
-        findSizes(
-            aspect: aspect,
-            padding: mods.padding
-        )
-        scaleInnerImage(
-            mods.scale,
-            padding: mods.padding,
-            quality: .high
-        )
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
+        fullChain(aspect: aspect, padding: mods.padding, quality: .low)
     }
     
     private func newPadding(_ padding: CGFloat) {
-        findSizes(
-            aspect: mods.aspect,
-            padding: padding
-        )
-        scaleInnerImage(
-            mods.scale,
-            padding: padding,
-            quality: .low
-        )
-        assemble(
-            shiftPercent: mods.shift,
-            padding: padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
+        fullChain(aspect: mods.aspect, padding: padding, quality: .low)
     }
     
     private func newScale(scale: CGFloat) {
-        scaleInnerImage(
-            scale,
-            padding: mods.padding,
-            quality: .low
-        )
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
+        scaleInnerImage(scale, padding: mods.padding, quality: .high)
+        findImageOrigin(shiftPercent: mods.shift, padding: mods.padding)
+        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        overlay()
     }
     
     private func newShift(_ shift: CGPoint) {
-        assemble(
-            shiftPercent: shift,
-            padding: mods.padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
+        findImageOrigin(shiftPercent: shift, padding: mods.padding)
+        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        overlay()
     }
     
     private func toggledBackground(to enabled: Bool) {
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: enabled ? mods.background : nil,
-            rounding: mods.rounding
-        )
+        placeInFrame(background: enabled ? mods.background : nil)
+        overlay()
     }
     
     private func newBackground(_ background: CGColor) {
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: mods.useBackground ? background : nil,
-            rounding: mods.rounding
-        )
+        placeInFrame(background: mods.useBackground ? background : nil)
+        overlay()
     }
     
     private func newRounding(rounding: CGFloat) {
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: rounding
-        )
+        findMaskPath(rounding: rounding, padding: mods.padding)
+        // TODO: async PIF and shadow
+        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        makeShadow(attributes: mods.shadow)
+        overlay()
+    }
+    
+    private func newShadow(attributes: ShadowAttributes) {
+        makeShadow(attributes: attributes)
+        overlay()
     }
     
     // MARK: - Modification Selection Finish
     private func finishedPadding(_ padding: CGFloat) {
         // reapply with high interpolation quality
-        scaleInnerImage(
-            mods.scale,
-            padding: padding,
-            quality: .high
-        )
-        assemble(
-            shiftPercent: mods.shift,
-            padding: padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
+        scaleInnerImage(mods.scale, padding: padding, quality: .high)
+        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        overlay()
     }
     
     private func finishedScaling(scale: CGFloat) {
         // reapply with high interpolation quality
-        scaleInnerImage(
-            scale,
-            padding: mods.padding,
-            quality: .high
-        )
-        assemble(
-            shiftPercent: mods.shift,
-            padding: mods.padding,
-            background: mods.useBackground ? mods.background : nil,
-            rounding: mods.rounding
-        )
-    }
-    
-    private func finishedShifting(_ shift: CGPoint) {
-        // TODO: cache shifted image on blank background
-    }
-    
-    private func finishedBackground(_: CGColor) {
-        // TODO: cache shifted image with background
+        scaleInnerImage(scale, padding: mods.padding, quality: .high)
+        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        overlay()
     }
     
     // MARK: - Image Editing
@@ -183,13 +117,13 @@ class ImageModifier: ObservableObject {
         scaledImage = origImage.scaled(by: adjustedScale, quality: quality)
     }
     
-    private func assemble(shiftPercent: CGPoint, padding: CGFloat, background: CGColor?, rounding: CGFloat) {
-        // get shifted origin of the inner frame
+    private func findImageOrigin(shiftPercent: CGPoint, padding: CGFloat) {
+        // get origins inner frame and image inside the frame
         let innerFrameOrigin = CGPoint(
             x: (padding / 200) * outerSize.width,
             y: (padding / 200) * outerSize.height
         )
-        let imageOriginWithinInnerFrame = CGPoint(
+        let centeredImageOriginWithinInnerFrame = CGPoint(
             x: (innerSize.width / 2) - (CGFloat(scaledImage.width) / 2),
             y: (innerSize.height / 2) - (CGFloat(scaledImage.height) / 2)
         )
@@ -197,31 +131,54 @@ class ImageModifier: ObservableObject {
             x: (shiftPercent.x / 100) * innerSize.width,
             y: (shiftPercent.y / 100) * innerSize.height
         )
-        let shiftedInnerOrigin = innerFrameOrigin + imageOriginWithinInnerFrame + shift
         
-        // get rounding path
-        let roundingPath = getMaskPath(rounding: rounding, innerOrigin: innerFrameOrigin)
-        
-        finalImage = scaledImage.placedInFrame(
-            frame: outerSize,
-            shift: shiftedInnerOrigin,
-            background: background,
-            mask: roundingPath
-        )
+        imageOrigin = innerFrameOrigin + centeredImageOriginWithinInnerFrame + shift
     }
     
-    private func getMaskPath(rounding: CGFloat, innerOrigin: CGPoint) -> CGPath? {
+    private func findMaskPath(rounding: CGFloat, padding: CGFloat) {
+        let innerOrigin = CGPoint(
+            x: (padding / 200) * outerSize.width,
+            y: (padding / 200) * outerSize.height
+        )
         if rounding == 0 {
             if innerOrigin == .zero {
                 // in this case there is no reason to apply a mask
-                return nil
+                maskPath = nil
             } else {
                 let innerRect = CGRect(origin: innerOrigin, size: innerSize)
-                return CGPath(rect: innerRect, transform: nil)
+                maskPath = CGPath(rect: innerRect, transform: nil)
             }
         } else {
             let innerRect = CGRect(origin: innerOrigin, size: innerSize)
-            return .roundedRect(rect: innerRect, roundingPercent: rounding)
+            maskPath = .roundedRect(rect: innerRect, roundingPercent: rounding)
+        }
+    }
+    
+    private func placeInFrame(background: CGColor?) {
+        placedImage = scaledImage.placedInFrame(
+            frame: outerSize,
+            imageOrigin: imageOrigin,
+            background: background,
+            mask: maskPath
+        )
+    }
+    
+    private func makeShadow(attributes: ShadowAttributes) {
+        guard let maskPath = maskPath,
+              attributes.opacity != 0,
+              mods.padding != 0 || mods.rounding != 0
+        else {
+            shadowImage = nil
+            return
+        }
+        shadowImage = maskPath.makeShadow(frame: outerSize, attributes: attributes)
+    }
+    
+    private func overlay() {
+        if let shadowImage = shadowImage {
+            finalImage = shadowImage.overlayed(placedImage)
+        } else {
+            finalImage = placedImage
         }
     }
 
@@ -233,7 +190,7 @@ class ImageModifier: ObservableObject {
         self.mods = ImageModifications()
 
         if image.size != .zero {
-            fullChain()
+            fullChain(aspect: mods.aspect, padding: mods.padding, quality: .high)
         }
     }
 
@@ -263,6 +220,9 @@ class ImageModifier: ObservableObject {
             .store(in: &subscribers)
         paddingPub
             .sink(receiveValue: newPadding)
+            .store(in: &subscribers)
+        mods.$shadow
+            .sink(receiveValue: newShadow)
             .store(in: &subscribers)
         
         // react to finished selecting

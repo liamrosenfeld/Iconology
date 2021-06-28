@@ -81,16 +81,8 @@ struct EnabledModifications: Hashable, Codable {
     var shift: Bool
     var round: Bool
     var padding: Bool
+    var shadow: Bool
     var prefix: Bool
-
-    init(background: Bool, scale: Bool, shift: Bool, round: Bool, padding: Bool, prefix: Bool) {
-        self.background = background
-        self.scale = scale
-        self.shift = shift
-        self.round = round
-        self.padding = padding
-        self.prefix = prefix
-    }
 
     static func all() -> Self {
         EnabledModifications(
@@ -99,17 +91,19 @@ struct EnabledModifications: Hashable, Codable {
             shift: true,
             round: true,
             padding: true,
+            shadow: true,
             prefix: true
         )
     }
 
-    static func limited() -> Self {
+    static func limitedXcode() -> Self {
         EnabledModifications(
             background: true,
             scale: true,
             shift: true,
             round: false,
             padding: false,
+            shadow: false,
             prefix: true
         )
     }
@@ -121,6 +115,7 @@ struct EnabledModifications: Hashable, Codable {
             shift: true,
             round: true,
             padding: true,
+            shadow: true,
             prefix: false
         )
     }

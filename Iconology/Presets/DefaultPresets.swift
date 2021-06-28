@@ -13,7 +13,7 @@ let defaultPresets = [
         Preset(
             name: "iOS",
             type: .xcodeAsset(sizes: XcodePlatformSizes.ios, folderName: "AppIcon.appiconset"),
-            useModifications: .limited()
+            useModifications: .limitedXcode()
         ),
         Preset(
             name: "MacOS",
@@ -24,12 +24,12 @@ let defaultPresets = [
             name: "iMessage",
             type: .xcodeAsset(sizes: XcodePlatformSizes.message, folderName: "Messages Icon.stickersiconset"),
             aspect: NSSize(width: 4, height: 3),
-            useModifications: .limited()
+            useModifications: .limitedXcode()
         ),
         Preset(
             name: "Watch",
             type: .xcodeAsset(sizes: XcodePlatformSizes.watch, folderName: "AppIcon.appiconset"),
-            useModifications: .all()
+            useModifications: .limitedXcode()
         )
     ]),
     PresetGroup(name: "Files", presets: [

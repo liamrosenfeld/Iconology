@@ -30,7 +30,7 @@ extension CGImage {
         return resized(to: size, quality: quality)
     }
     
-    func placedInFrame(frame: CGSize, shift: CGPoint, background: CGColor?, mask: CGPath?) -> CGImage {
+    func placedInFrame(frame: CGSize, imageOrigin: CGPoint, background: CGColor?, mask: CGPath?) -> CGImage {
         let context = makeContext(size: frame)
         
         // mask
@@ -46,25 +46,17 @@ extension CGImage {
         }
         
         // place image
-        let imageRect = CGRect(origin: shift, size: self.size)
+        let imageRect = CGRect(origin: imageOrigin, size: self.size)
         context.draw(self, in: imageRect)
         
         return context.makeImage()!
     }
     
-    func masked(to path: CGPath) -> CGImage {
-        // make context
+    func overlayed(_ topImage: CGImage) -> CGImage {
         let context = makeContext(size: self.size)
-        
-        // mask
-        context.addPath(path)
-        context.clip()
-        
-        // add image
         let imageRect = CGRect(origin: .zero, size: self.size)
         context.draw(self, in: imageRect)
-        
+        context.draw(topImage, in: imageRect)
         return context.makeImage()!
     }
 }
-

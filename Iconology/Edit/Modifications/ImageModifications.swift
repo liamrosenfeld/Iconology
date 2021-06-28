@@ -9,6 +9,8 @@
 import AppKit
 import Combine
 
+typealias ShadowAttributes = (opacity: CGFloat, blur: CGFloat)
+
 class ImageModifications: ObservableObject {
     @Published var aspect: CGSize
     @Published var scale: CGFloat
@@ -17,6 +19,7 @@ class ImageModifications: ObservableObject {
     @Published var useBackground: Bool
     @Published var rounding: CGFloat
     @Published var padding: CGFloat
+    @Published var shadow: ShadowAttributes
 
     init() {
         aspect = CGSize(width: 1, height: 1)
@@ -26,5 +29,6 @@ class ImageModifications: ObservableObject {
         useBackground = false
         rounding = 0
         padding = 0
+        shadow = (0, 0)
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C90447F26839029005060DF /* CGPointSize+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90447E26839029005060DF /* CGPointSize+Util.swift */; };
 		0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* CGPath+Rounding.swift */; };
+		0C98601626899A27002D09D8 /* CGPath+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98601526899A27002D09D8 /* CGPath+Shadow.swift */; };
 		0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */; };
 		0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CABB91426732C3800701959 /* PresetPickerView.swift */; };
 		0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84593266EDADA0070AC87 /* IconologyApp.swift */; };
@@ -39,6 +40,7 @@
 		0C29BC9726732D7D00F3E61F /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
 		0C90447E26839029005060DF /* CGPointSize+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPointSize+Util.swift"; sourceTree = "<group>"; };
 		0C904480268396EA005060DF /* CGPath+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Rounding.swift"; sourceTree = "<group>"; };
+		0C98601526899A27002D09D8 /* CGPath+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Shadow.swift"; sourceTree = "<group>"; };
 		0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeAssetGenerator.swift; sourceTree = "<group>"; };
 		0CABB91426732C3800701959 /* PresetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPickerView.swift; sourceTree = "<group>"; };
 		0CC84590266EDADA0070AC87 /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 			children = (
 				0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */,
 				0C904480268396EA005060DF /* CGPath+Rounding.swift */,
+				0C98601526899A27002D09D8 /* CGPath+Shadow.swift */,
 				0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */,
 				0C90447E26839029005060DF /* CGPointSize+Util.swift */,
 			);
@@ -294,6 +297,7 @@
 				0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */,
 				0CFFD9E126708458007FB3FB /* ImagePreviewView.swift in Sources */,
 				0CFFDA0826713FF5007FB3FB /* PositionSelecting.swift in Sources */,
+				0C98601626899A27002D09D8 /* CGPath+Shadow.swift in Sources */,
 				0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */,
 				0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */,
 				0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */,
