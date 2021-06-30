@@ -36,8 +36,7 @@ class ImageModifier: ObservableObject {
         findImageOrigin(shiftPercent: mods.shift, padding: padding)
         findMaskPath(rounding: mods.rounding, padding: padding)
         // TODO: async PIF and shadow
-        let optBg = mods.useBackground ? mods.background : nil
-        placeInFrame(background: optBg)
+        placeInFrame(background: mods.background)
         makeShadow(attributes: mods.shadow)
         overlay()
     }
@@ -53,30 +52,25 @@ class ImageModifier: ObservableObject {
     private func newScale(scale: CGFloat) {
         scaleInnerImage(scale, padding: mods.padding, quality: .high)
         findImageOrigin(shiftPercent: mods.shift, padding: mods.padding)
-        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        placeInFrame(background: mods.background)
         overlay()
     }
     
     private func newShift(_ shift: CGPoint) {
         findImageOrigin(shiftPercent: shift, padding: mods.padding)
-        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        placeInFrame(background: mods.background)
         overlay()
     }
     
-    private func toggledBackground(to enabled: Bool) {
-        placeInFrame(background: enabled ? mods.background : nil)
-        overlay()
-    }
-    
-    private func newBackground(_ background: CGColor) {
-        placeInFrame(background: mods.useBackground ? background : nil)
+    private func newBackground(_ background: Background) {
+        placeInFrame(background: background)
         overlay()
     }
     
     private func newRounding(rounding: CGFloat) {
         findMaskPath(rounding: rounding, padding: mods.padding)
         // TODO: async PIF and shadow
-        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        placeInFrame(background: mods.background)
         makeShadow(attributes: mods.shadow)
         overlay()
     }
@@ -90,14 +84,14 @@ class ImageModifier: ObservableObject {
     private func finishedPadding(_ padding: CGFloat) {
         // reapply with high interpolation quality
         scaleInnerImage(mods.scale, padding: padding, quality: .high)
-        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        placeInFrame(background: mods.background)
         overlay()
     }
     
     private func finishedScaling(scale: CGFloat) {
         // reapply with high interpolation quality
         scaleInnerImage(scale, padding: mods.padding, quality: .high)
-        placeInFrame(background: mods.useBackground ? mods.background : nil)
+        placeInFrame(background: mods.background)
         overlay()
     }
     
@@ -154,7 +148,7 @@ class ImageModifier: ObservableObject {
         }
     }
     
-    private func placeInFrame(background: CGColor?) {
+    private func placeInFrame(background: Background) {
         placedImage = scaledImage.placedInFrame(
             frame: outerSize,
             imageOrigin: imageOrigin,
@@ -211,9 +205,6 @@ class ImageModifier: ObservableObject {
             .store(in: &subscribers)
         mods.$background
             .sink(receiveValue: newBackground)
-            .store(in: &subscribers)
-        mods.$useBackground
-            .sink(receiveValue: toggledBackground)
             .store(in: &subscribers)
         mods.$rounding
             .sink(receiveValue: newRounding)

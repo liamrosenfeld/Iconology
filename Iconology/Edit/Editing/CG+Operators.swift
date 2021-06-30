@@ -1,5 +1,5 @@
 //
-//  CGPoint:Size+Util.swift
+//  CG+Operators.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 6/23/21.
@@ -18,26 +18,6 @@ extension CGPoint {
 }
 
 extension CGSize {
-    func findFrame(aspect: CGSize) -> CGSize {
-        let aspectVal = aspect.width / aspect.height
-        let currentAspect = width / height
-        
-        if aspect.width == aspect.height {
-            let side = max(width, height)
-            return NSSize(width: side, height: side)
-        } else if currentAspect > aspectVal {
-            return NSSize(
-                width: width,
-                height: height * (aspect.height / aspect.width)
-            )
-        } else {
-            return NSSize(
-                width: height * aspectVal,
-                height: height
-            )
-        }
-    }
-    
     static func -(lhs: CGSize, rhs: CGSize) -> CGSize {
         return CGSize(
             width: lhs.width - rhs.width,

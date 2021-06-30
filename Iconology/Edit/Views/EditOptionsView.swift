@@ -22,14 +22,27 @@ struct EditOptionsView: View {
                 Group {
                     Text("Background")
                         .font(.title2)
-                    HStack(alignment: .center) {
-                        Toggle("Use Background", isOn: $mods.useBackground)
-                        
-                        ColorPicker("Background Color", selection: $mods.background)
-                            .disabled(!mods.useBackground)
+                    
+                    Picker("Background Type", selection: $mods.background) {
+                        Text("None")
+                            .tag(Background.none)
+                        Text("Color")
+                            .tag(Background.color(.white))
+                        Text("Gradient")
+                            .tag(Background.gradient(.default))
                     }
-                    .labelsHidden()
-                    .padding(.bottom)
+                    
+                    switch mods.background {
+                    case .color(_):
+                        ColorPicker("Background Color", selection: $mods.background.color)
+                            .labelsHidden()
+                    case .gradient(_):
+                        SliderAndText(name: "Angle", value: $mods.background.gradient.angle, range: -90...90, defaultVal: 0)
+                        ColorPicker("Top Color", selection: $mods.background.gradient.topColor)
+                        ColorPicker("Bottom Color", selection: $mods.background.gradient.bottomColor)
+                    case .none:
+                        EmptyView()
+                    }
                 }
             }
 

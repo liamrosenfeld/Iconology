@@ -30,19 +30,25 @@ extension CGImage {
         return resized(to: size, quality: quality)
     }
     
-    func placedInFrame(frame: CGSize, imageOrigin: CGPoint, background: CGColor?, mask: CGPath?) -> CGImage {
+    func placedInFrame(frame: CGSize, imageOrigin: CGPoint, background: Background, mask: CGPath?) -> CGImage {
         let context = makeContext(size: frame)
         
-        // mask
+        // add a mask to the context
         if let mask = mask {
             context.addPath(mask)
             context.clip()
         }
         
-        // fill the background with selected color
-        if let background = background {
-            context.setFillColor(background)
+        // draw the selected background
+        switch background {
+        case .none:
+            break
+        case .color(let color):
+            context.setFillColor(color)
             context.fill(CGRect(origin: .zero, size: frame))
+        case .gradient(let gradient):
+            let (startPoint, endPoint) = frame.intersections(ofAngleOffVertical: gradient.angle)
+            context.drawLinearGradient(gradient.cgGradient, start: startPoint, end: endPoint, options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         }
         
         // place image
