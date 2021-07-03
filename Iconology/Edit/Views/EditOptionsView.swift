@@ -13,99 +13,135 @@ struct EditOptionsView: View {
     var enabled: EnabledModifications
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 3) {
             Text("Image Adjustments")
                 .font(.title)
                 .padding(.bottom)
-
-            if enabled.background {
-                Group {
-                    Text("Background")
-                        .font(.title2)
-                    
-                    Picker("Background Type", selection: $mods.background) {
-                        Text("None")
-                            .tag(Background.none)
-                        Text("Color")
-                            .tag(Background.color(.white))
-                        Text("Gradient")
-                            .tag(Background.gradient(.default))
-                    }
-                    
-                    switch mods.background {
-                    case .color(_):
-                        ColorPicker("Background Color", selection: $mods.background.color)
-                            .labelsHidden()
-                    case .gradient(_):
-                        SliderAndText(name: "Angle", value: $mods.background.gradient.angle, range: -90...90, defaultVal: 0)
-                        ColorPicker("Top Color", selection: $mods.background.gradient.topColor)
-                        ColorPicker("Bottom Color", selection: $mods.background.gradient.bottomColor)
-                    case .none:
-                        EmptyView()
+            
+                if enabled.background {
+                    BackgroundEditor(background: $mods.background)
+                }
+                
+                if enabled.scale {
+                    Group {
+                        Text("Scale")
+                            .font(.title2)
+                            .padding(.top)
+                        SliderAndText(name: "Scale", value: $mods.scale, range: 10...200, defaultVal: 100, unit: "%")
                     }
                 }
-            }
+                
+                if enabled.shift {
+                    ShiftEditor(shift: $mods.shift, aspect: mods.aspect)
+                }
 
-            if enabled.scale {
-                Group {
-                    Text("Scale")
-                        .font(.title2)
-                    SliderAndText(name: "Scale", value: $mods.scale, range: 10...200, defaultVal: 100)
-                        .padding(.bottom)
+                if enabled.round {
+                    Group {
+                        Text("Rounding")
+                            .font(.title2)
+                            .padding(.top)
+                        SliderAndText(name: "Rounding", value: $mods.rounding, range: 0...100, defaultVal: 0, unit: "%")
+                        Text("45.3% for macOS 11+ Icons")
+                    }
+                }
+                
+                if enabled.padding {
+                    Group {
+                        Text("Padding")
+                            .font(.title2)
+                            .padding(.top)
+                        SliderAndText(name: "Padding", value: $mods.padding, range: 0...75, defaultVal: 0, unit: "%")
+                        Text("19.5% for macOS 11+ Icons")
+                    }
+                }
+                
+                if enabled.shadow {
+                    Group {
+                        Text("Shadow")
+                            .font(.title2)
+                            .padding(.top)
+                        Text("Opacity")
+                            .font(.title3)
+                        SliderAndText(name: "Opacity", value: $mods.shadow.opacity, range: 0...100, defaultVal: 0, unit: "%")
+                        Text("30% for macOS 11+ Icons")
+                        Text("Blur")
+                            .font(.title3)
+                        SliderAndText(name: "Blur", value: $mods.shadow.blur, range: 0...100, defaultVal: 0, unit: "%")
+                        Text("24% for macOS 11+ Icons")
+                    }
                 }
             }
+    }
+}
 
-            if enabled.shift {
-                Group {
-                    Text("Shift")
-                        .font(.title2)
-                    HStack {
-                        PositionSelector(position: $mods.shift)
-                            .aspectRatio(mods.aspect, contentMode: .fit)
-                        VStack {
-                            PositionInput(position: $mods.shift)
-                            Button {
-                                mods.shift = .zero
-                            } label: {
-                                Image(systemName: "arrow.counterclockwise")
-                            }
-                        }
-                        
-                    }.padding(.bottom)
-                }
-            }
+struct BackgroundEditor: View {
+    @Binding var background: Background
 
-            if enabled.round {
-                Group {
-                    Text("Rounding")
-                        .font(.title2)
-                    SliderAndText(name: "Rounding", value: $mods.rounding, range: 0...100, defaultVal: 0)
-                    Text("45.3% for macOS 11+ Icons")
-                        .padding(.bottom)
-                }
-            }
-
-            if enabled.padding {
-                Group {
-                    Text("Padding")
-                        .font(.title2)
-                    SliderAndText(name: "Padding", value: $mods.padding, range: 0...75, defaultVal: 0)
-                    Text("19.5% for macOS 11+ Icons")
-                        .padding(.bottom)
-                }
+    var body: some View {
+        Group {
+            HStack(alignment: .center) {
+                Text("Background")
+                    .font(.title2)
+                
+                Picker("Background Type", selection: $background) {
+                    Text("None")
+                        .tag(Background.none)
+                    Text("Color")
+                        .tag(Background.color(.white))
+                    Text("Gradient")
+                        .tag(Background.gradient(.default))
+                }.labelsHidden()
             }
             
-            if enabled.shadow {
-                Group {
-                    Text("Shadow")
-                        .font(.title2)
-                    Text("Opacity")
-                    SliderAndText(name: "Opacity", value: $mods.shadow.opacity, range: 0...100, defaultVal: 0)
-                    Text("30% for macOS 11+ Icons")
-                    Text("Blur")
-                    SliderAndText(name: "Blur", value: $mods.shadow.blur, range: 0...100, defaultVal: 0)
-                    Text("24% for macOS 11+ Icons")
+            switch background {
+            case .color(_):
+                ColorPicker("Background Color", selection: $background.color)
+                    .labelsHidden()
+            case .gradient(_):
+                SliderAndText(name: "Angle", value: $background.gradient.angle, range: -90...90, defaultVal: 0, unit: "°")
+                HStack {
+                    ColorPicker("Top", selection: $background.gradient.topColor)
+                    ColorPicker("Bottom", selection: $background.gradient.bottomColor)
                 }
+            case .none:
+                EmptyView()
+            }
+        }
+    }
+}
+
+struct ShiftEditor: View {
+    @Binding var shift: CGPoint
+    var aspect: CGSize
+    
+    var body: some View {
+        Group {
+            Text("Shift")
+                .font(.title2)
+                .padding(.top)
+            HStack {
+                TwoDimensionSlider(position: $shift)
+                    .aspectRatio(aspect, contentMode: .fit)
+                VStack {
+                    HStack {
+                        Text("X:")
+                        TextField("X Position", value: $shift.x, formatter: .floatFormatter) // TODO: bound to range
+                            .frame(width: 50)
+                        Text("%")
+                    }
+                    HStack {
+                        Text("Y:")
+                        TextField("Y Position", value: $shift.y, formatter: .floatFormatter )
+                            .frame(width: 50)
+                        Text("%")
+                    }
+                    Button {
+                        shift = .zero
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
+                    }
+                }
+                
             }
         }
     }
@@ -116,6 +152,7 @@ struct SliderAndText: View {
     @Binding var value: CGFloat
     let range: ClosedRange<CGFloat>
     let defaultVal: CGFloat
+    let unit: String
 
     var body: some View {
         HStack {
@@ -123,14 +160,14 @@ struct SliderAndText: View {
                 value = defaultVal
             } label: {
                 Image(systemName: "arrow.counterclockwise")
-            }
+            }.accessibility(label: Text("Reset"))
             
             Slider(value: $value, in: range)
             
             TextField(name, value: $value, formatter: .floatFormatter) // TODO: bound to range
                 .frame(width: 50)
             
-            Text("%")
+            Text(unit)
         }
     }
 }
@@ -150,7 +187,7 @@ struct EditOptions_Previews: PreviewProvider {
     static var previews: some View {
         EditOptionsView(mods: mods, enabled: enabled)
             .padding()
-            .frame(width: 300, height: 800)
+            .frame(width: 275, height: 750)
     }
 }
 

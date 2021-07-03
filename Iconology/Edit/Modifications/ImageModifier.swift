@@ -26,8 +26,8 @@ class ImageModifier: ObservableObject {
     private var shadowImage: CGImage?
     
     // MARK: - In and Out
-    public var origImage: CGImage { didSet { fullChain(aspect: mods.aspect, padding: mods.padding, quality: .high) } }
-    @Published private(set) var finalImage: CGImage
+    public var origImage: CGImage? { didSet { fullChain(aspect: mods.aspect, padding: mods.padding, quality: .high) } }
+    @Published private(set) var finalImage: CGImage?
     
     // MARK: - Modification Change Reactions
     private func fullChain(aspect: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
@@ -97,7 +97,7 @@ class ImageModifier: ObservableObject {
     
     // MARK: - Image Editing
     private func findSizes(aspect: CGSize, padding: CGFloat) {
-        outerSize = origImage.size.findFrame(aspect: aspect)
+        outerSize = origImage!.size.findFrame(aspect: aspect)
         
         let appliedPadding = CGSize(
             width: (padding / 100) * outerSize.width,
@@ -108,7 +108,7 @@ class ImageModifier: ObservableObject {
     
     private func scaleInnerImage(_ scale: CGFloat, padding: CGFloat, quality: CGInterpolationQuality) {
         let adjustedScale = scale * (1 - (padding / 100))
-        scaledImage = origImage.scaled(by: adjustedScale, quality: quality)
+        scaledImage = origImage!.scaled(by: adjustedScale, quality: quality)
     }
     
     private func findImageOrigin(shiftPercent: CGPoint, padding: CGFloat) {
@@ -177,10 +177,13 @@ class ImageModifier: ObservableObject {
     }
 
     // MARK: - Init
+    init() {
+        self.mods = ImageModifications()
+    }
+    
     init(image: CGImage) {
         origImage = image
-        finalImage = image
-
+        
         self.mods = ImageModifications()
 
         if image.size != .zero {

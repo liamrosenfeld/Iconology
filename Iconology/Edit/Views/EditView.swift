@@ -9,50 +9,40 @@
 import SwiftUI
 
 struct EditView: View {
-    @State var preset: Preset = defaultPresets.first!.presets.first!
     @StateObject var modifier: ImageModifier
-
-    @State var prefix = ""
-
-    init(image: CGImage) {
-        self._modifier = StateObject(wrappedValue: ImageModifier(image: image))
-    }
+    
+    @State private var preset: Preset = defaultPresets.first!.presets.first!
+    @State private var prefix = ""
+    
+    @State private var editShown = false
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Group {
-                Text("Preset")
-                    .font(.title)
-                    .padding(.top, 10)
-                PresetPickerView(preset: $preset)
-                    .frame(maxWidth: 200)
-                Button("Edit Custom Presets", action: {})
-            }
-
-            Group {
-                Text("Edit")
-                    .font(.title)
-                    .padding(.top, 10)
-                HStack {
-                    ImagePreviewView(image: modifier.finalImage, aspect: modifier.mods.aspect)
+        VStack(alignment: .center) {
+            HStack(alignment: .bottom) {
+                ImagePreviewView(image: modifier.finalImage!, aspect: modifier.mods.aspect)
+                Button {
+                    editShown = true
+                } label: {
+                    Image(systemName: "pencil")
+                }.accessibility(label: Text("Edit"))
+                .popover(isPresented: $editShown, arrowEdge: .trailing) {
                     EditOptionsView(mods: modifier.mods, enabled: preset.useModifications)
-                        .frame(maxWidth: 300)
-                        .padding(.horizontal)
+                        .frame(width: 275)
+                        .padding()
                 }
             }
 
-            Group {
-                Text("Export")
-                    .font(.title)
-                    .padding(.top, 10)
-                HStack {
-                    TextField("File Prefix", text: $prefix)
-                        .frame(maxWidth: 200)
-                    Button("Export", action: export)
-                }
-            }
+            PresetPickerView(preset: $preset)
+                .frame(maxWidth: 200)
+            Button("Edit Custom Presets", action: {})
+
+            Spacer()
             
-            Button("New Image", action: selectImage)
+            HStack {
+                Button("New Image", action: selectImage)
+                Spacer()
+                Button("Export", action: export)
+            }
         }
         .padding(20)
         .onChange(of: preset) { modifier.mods.aspect = $0.aspect }
@@ -66,14 +56,13 @@ struct EditView: View {
         guard let chosenFolder = folder else { return }
 
         // save
-        let savedTo = preset.save(modifier.finalImage, at: chosenFolder, with: prefix)
+        let savedTo = preset.save(modifier.finalImage!, at: chosenFolder, with: prefix)
 
         // show user where it was saved
         // TODO: Preference to toggle this
         if savedTo.isFileURL {
             NSWorkspace.shared.activateFileViewerSelecting([savedTo])
         } else {
-            print("here")
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: savedTo.path)
         }
     }
@@ -93,10 +82,12 @@ struct EditView: View {
 }
 
 struct EditView_Previews: PreviewProvider {
+    @StateObject static var modifier = ImageModifier(image: NSImage(named: "Logo")!.cgImage)
+    
     static var previews: some View {
-        EditView(image: NSImage(named: "Logo")!.cgImage)
+        EditView(modifier: modifier)
             .colorScheme(.light)
-        EditView(image: NSImage(named: "Logo")!.cgImage)
+        EditView(modifier: modifier)
             .colorScheme(.dark)
     }
 }

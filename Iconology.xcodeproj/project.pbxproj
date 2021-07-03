@@ -34,7 +34,7 @@
 		0CFFD9FA26713D5A007FB3FB /* DefaultPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9E826713D5A007FB3FB /* DefaultPresets.swift */; };
 		0CFFD9FC26713D5A007FB3FB /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9EB26713D5A007FB3FB /* Preset.swift */; };
 		0CFFDA0126713D5A007FB3FB /* CGImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFD9F126713D5A007FB3FB /* CGImage+PNG.swift */; };
-		0CFFDA0826713FF5007FB3FB /* PositionSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFDA0726713FF5007FB3FB /* PositionSelecting.swift */; };
+		0CFFDA0826713FF5007FB3FB /* TwoDimensionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFDA0726713FF5007FB3FB /* TwoDimensionSlider.swift */; };
 		0CFFDA0B267153B3007FB3FB /* XcodeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFFDA0A267153B3007FB3FB /* XcodeSize.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		0CFFD9E826713D5A007FB3FB /* DefaultPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPresets.swift; sourceTree = "<group>"; };
 		0CFFD9EB26713D5A007FB3FB /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
 		0CFFD9F126713D5A007FB3FB /* CGImage+PNG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+PNG.swift"; sourceTree = "<group>"; };
-		0CFFDA0726713FF5007FB3FB /* PositionSelecting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSelecting.swift; sourceTree = "<group>"; };
+		0CFFDA0726713FF5007FB3FB /* TwoDimensionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDimensionSlider.swift; sourceTree = "<group>"; };
 		0CFFDA0A267153B3007FB3FB /* XcodeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,7 +190,7 @@
 				0CC845AB266EE0E10070AC87 /* EditView.swift */,
 				0CABB91426732C3800701959 /* PresetPickerView.swift */,
 				0CFFD9E22670847D007FB3FB /* EditOptionsView.swift */,
-				0CFFDA0726713FF5007FB3FB /* PositionSelecting.swift */,
+				0CFFDA0726713FF5007FB3FB /* TwoDimensionSlider.swift */,
 				0CFFD9E026708458007FB3FB /* ImagePreviewView.swift */,
 			);
 			path = Views;
@@ -304,7 +304,7 @@
 				0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */,
 				0CFFD9E126708458007FB3FB /* ImagePreviewView.swift in Sources */,
 				0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */,
-				0CFFDA0826713FF5007FB3FB /* PositionSelecting.swift in Sources */,
+				0CFFDA0826713FF5007FB3FB /* TwoDimensionSlider.swift in Sources */,
 				0C98601626899A27002D09D8 /* CGPath+Shadow.swift in Sources */,
 				0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */,
 				0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */,

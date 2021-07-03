@@ -1,5 +1,5 @@
 //
-//  PositionSelecting.swift
+//  TwoDimensionSlider.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 6/9/21.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PositionSelector: View {
+struct TwoDimensionSlider: View {
     // both x and y in [-100, 100]
     @Binding var position: CGPoint
 
@@ -42,32 +42,11 @@ struct PositionSelector: View {
     }
 }
 
-struct PositionInput: View {
-    @Binding var position: CGPoint
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("X:")
-                TextField("X Position", value: $position.x, formatter: .floatFormatter) // TODO: bound to range
-                    .frame(width: 50)
-                Text("%")
-            }
-            HStack {
-                Text("Y:")
-                TextField("Y Position", value: $position.y, formatter: .floatFormatter)
-                    .frame(width: 50)
-                Text("%")
-            }
-        }
-    }
-}
-
 struct PositionSelector_Previews: PreviewProvider {
     @State static var position: CGPoint = .zero
 
     static var previews: some View {
-        PositionSelector(position: $position)
+        TwoDimensionSlider(position: $position)
             .frame(width: 200, height: 200)
     }
 }

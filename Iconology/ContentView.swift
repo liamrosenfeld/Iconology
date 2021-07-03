@@ -9,18 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var image: CGImage?
+    @StateObject private var imageMod = ImageModifier()
 
     var body: some View {
         Group {
-            if image != nil {
-                EditView(image: image!)
-                    .frame(minWidth: 800, minHeight: 800)
+            if imageMod.origImage != nil {
+                EditView(modifier: imageMod)
             } else {
-                DragView(image: $image)
-                    .frame(minWidth: 350, minHeight: 350)
+                DragView(image: $imageMod.origImage)
             }
-        }
+        }.frame(minWidth: 350, minHeight: 350)
     }
 }
 

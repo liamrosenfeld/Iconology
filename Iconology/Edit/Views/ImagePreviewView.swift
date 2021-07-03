@@ -21,11 +21,13 @@ struct ImagePreviewView: View {
                 .resizable()
                 .aspectRatio(aspect, contentMode: .fit)
                 .background(
-                    Checkerboard(rows: 70, columns: 70)
-                        .fill(Color(.sRGB, white: 0.88, opacity: 1))
+                    ZStack {
+                        Color.white
+                        Checkerboard(rows: 70, columns: 70)
+                            .fill(Color(.sRGB, white: 0.88, opacity: 1))
+                    }
+                    
                 )
-                .padding(1)
-                .background(Color.white)
         }
     }
 }
