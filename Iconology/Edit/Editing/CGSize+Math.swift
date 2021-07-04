@@ -34,8 +34,8 @@ extension CGSize {
             )
         } else {
             return (
-                CGPoint(x: 0, y: height),
-                CGPoint(x: width, y: 0)
+                CGPoint(x: angle > 0 ? width : 0, y: height),
+                CGPoint(x: angle < 0 ? width : 0, y: 0)
             )
         }
     }
