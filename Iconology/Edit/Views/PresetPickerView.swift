@@ -13,7 +13,7 @@ struct PresetPickerView: View {
     @Binding var preset: Preset
 
     var body: some View {
-        Picker("Export For:", selection: $preset) {
+        Picker("Export As", selection: $preset) {
             ForEach(presetGroups, id: \.name) { group in
                 Divider()
                 ForEach(group.presets, id: \.name) { preset in

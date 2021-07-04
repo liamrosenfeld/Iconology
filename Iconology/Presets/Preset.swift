@@ -13,43 +13,9 @@ struct Preset: Hashable, Codable {
     var type: PresetType
     var aspect: CGSize
     var useModifications: EnabledModifications
-
-    func save(_ image: CGImage, at url: URL, with prefix: String) -> URL {
-        switch type {
-        case .xcodeAsset(let sizes, let folderName):
-            let saveUrl = url.appendingPathComponent(folderName)
-            try! FileManager.default.createDirectory(at: saveUrl, withIntermediateDirectories: true, attributes: nil)
-            XcodeAssetGenerator.save(image, sizes: sizes, url: saveUrl, prefix: prefix)
-            return saveUrl
-        case .imgSet(let sizes):
-            let saveUrl = url.appendingPathComponent("Icons")
-            try! FileManager.default.createDirectory(at: saveUrl, withIntermediateDirectories: true, attributes: nil)
-            savePngs(image, at: saveUrl, with: prefix, in: sizes)
-            return saveUrl
-        case .png:
-            let fileUrl = url.appendingPathComponent("Icon.png")
-            try! image.savePng(to: fileUrl)
-            return fileUrl
-        case .icns:
-            IcnsGenerator.saveIcns(image, at: url)
-            return url.appendingPathComponent("Icon.icns")
-        case .ico(let sizes):
-            IcoGenerator.saveIco(image, in: sizes, at: url)
-            return url.appendingPathComponent("Icon.ico")
-        }
-    }
-
-    private func savePngs(_ image: CGImage, at url: URL, with prefix: String, in sizes: [ImgSetSize]) {
-        for size in sizes {
-            let resizedImage = image.resized(to: size.size, quality: .high)
-            let name = "\(prefix)\(size.name)"
-            let url = url.appendingPathComponent("\(name).png")
-            do {
-                try resizedImage.savePng(to: url)
-            } catch {
-                print("ERR: \(error)")
-            }
-        }
+    
+    func save(_ image: CGImage) -> URL? {
+        type.save(image)
     }
 
     init(name: String, type: PresetType, aspect: NSSize, useModifications: EnabledModifications) {
@@ -67,14 +33,6 @@ struct Preset: Hashable, Codable {
     }
 }
 
-enum PresetType: Hashable, Codable {
-    case xcodeAsset(sizes: [XcodeSize], folderName: String)
-    case imgSet([ImgSetSize])
-    case png
-    case icns
-    case ico([ImgSetSize])
-}
-
 struct EnabledModifications: Hashable, Codable {
     var background: Bool
     var scale: Bool
@@ -82,7 +40,6 @@ struct EnabledModifications: Hashable, Codable {
     var round: Bool
     var padding: Bool
     var shadow: Bool
-    var prefix: Bool
 
     static func all() -> Self {
         EnabledModifications(
@@ -91,8 +48,7 @@ struct EnabledModifications: Hashable, Codable {
             shift: true,
             round: true,
             padding: true,
-            shadow: true,
-            prefix: true
+            shadow: true
         )
     }
 
@@ -103,20 +59,7 @@ struct EnabledModifications: Hashable, Codable {
             shift: true,
             round: false,
             padding: false,
-            shadow: false,
-            prefix: true
-        )
-    }
-
-    static func noPrefix() -> Self {
-        EnabledModifications(
-            background: true,
-            scale: true,
-            shift: true,
-            round: true,
-            padding: true,
-            shadow: true,
-            prefix: false
+            shadow: false
         )
     }
 }

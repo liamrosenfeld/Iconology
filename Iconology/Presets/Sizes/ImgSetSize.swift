@@ -1,5 +1,5 @@
 //
-//  ImgSetSizes.swift.swift
+//  ImgSetSize.swift.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 12/23/18.

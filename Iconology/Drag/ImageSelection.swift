@@ -1,5 +1,5 @@
 //
-//  FileHandler.swift
+//  ImageSelection.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 12/22/18.
@@ -25,20 +25,6 @@ extension NSOpenPanel {
         self.allowsMultipleSelection = false
         self.canCreateDirectories = true
         self.allowedFileTypes = NSImage.extendedImageTypes
-
-        self.runModal()
-
-        return self.url
-    }
-
-    func selectSaveFolder() -> URL? {
-        self.title = "Select a folder to save your icons"
-        self.prompt = "Save"
-        self.showsResizeIndicator = true
-        self.canChooseDirectories = true
-        self.canChooseFiles = false
-        self.allowsMultipleSelection = false
-        self.canCreateDirectories = true
 
         self.runModal()
 

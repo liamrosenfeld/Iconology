@@ -9,7 +9,7 @@
 import AppKit
 
 enum XcodeAssetGenerator {
-    static func save(_ image: CGImage, sizes: [XcodeSize], url: URL, prefix: String) {
+    static func save(_ image: CGImage, sizes: [XcodeIconSize], url: URL, prefix: String) {
         // Generate + Save Images
         for xcodeSize in sizes {
             let width  = xcodeSize.size.width * CGFloat(xcodeSize.scale)
@@ -57,7 +57,7 @@ enum XcodeAssetGenerator {
             var role: String?
             var subtype: String?
 
-            init(xcodeSize: XcodeSize, prefix: String) {
+            init(xcodeSize: XcodeIconSize, prefix: String) {
                 filename = "\(prefix)\(xcodeSize.name).png"
                 size = "\(Int(xcodeSize.size.width))x\(Int(xcodeSize.size.width))"
                 scale = "\(xcodeSize.scale)x"

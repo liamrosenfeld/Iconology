@@ -27,8 +27,7 @@ enum IcoGenerator {
 
         // Save
         do {
-            let dir = url.appendingPathComponent("Icon.ico")
-            try ico.write(to: dir)
+            try ico.write(to: url)
         } catch {
             print(error)
         }

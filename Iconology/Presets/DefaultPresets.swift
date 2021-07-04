@@ -11,24 +11,24 @@ import Foundation
 let defaultPresets = [
     PresetGroup(name: "Xcode", presets: [
         Preset(
-            name: "iOS",
-            type: .xcodeAsset(sizes: XcodePlatformSizes.ios, folderName: "AppIcon.appiconset"),
+            name: "iOS Icon",
+            type: .xcodeAsset(sizes: XcodeIconSizes.ios, folderName: "AppIcon.appiconset"),
             useModifications: .limitedXcode()
         ),
         Preset(
-            name: "MacOS",
-            type: .xcodeAsset(sizes: XcodePlatformSizes.mac, folderName: "AppIcon.appiconset"),
+            name: "MacOS Icon",
+            type: .xcodeAsset(sizes: XcodeIconSizes.mac, folderName: "AppIcon.appiconset"),
             useModifications: .all()
         ),
         Preset(
-            name: "iMessage",
-            type: .xcodeAsset(sizes: XcodePlatformSizes.message, folderName: "Messages Icon.stickersiconset"),
+            name: "iMessage Icon",
+            type: .xcodeAsset(sizes: XcodeIconSizes.message, folderName: "Messages Icon.stickersiconset"),
             aspect: NSSize(width: 4, height: 3),
             useModifications: .limitedXcode()
         ),
         Preset(
-            name: "Watch",
-            type: .xcodeAsset(sizes: XcodePlatformSizes.watch, folderName: "AppIcon.appiconset"),
+            name: "Watch Icon",
+            type: .xcodeAsset(sizes: XcodeIconSizes.watch, folderName: "AppIcon.appiconset"),
             useModifications: .limitedXcode()
         )
     ]),
@@ -39,7 +39,7 @@ let defaultPresets = [
         Preset(name: "Favicon ico", type: .ico(IcoGenerator.faviconIcoSet), useModifications: .all())
     ]),
     PresetGroup(name: "Sets", presets: [
-        Preset(name: "Iconset", type: .imgSet(ImgSetSizes.macIconset), useModifications: .all()),
+        Preset(name: "Mac Iconset", type: .imgSet(ImgSetSizes.macIconset), useModifications: .all()),
         Preset(name: "Favicon PNGs", type: .imgSet(ImgSetSizes.faviconSet), useModifications: .all())
     ])
 ]

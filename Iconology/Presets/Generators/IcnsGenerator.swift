@@ -14,7 +14,7 @@ enum IcnsGenerator {
 
     static func saveIcns(_ image: CGImage, at url: URL) {
         // create temp location
-        let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent("Icons.iconset")
+        let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent("Temp.iconset")
         try! FileManager.default.createDirectory(at: tempUrl, withIntermediateDirectories: true, attributes: nil)
 
         // create with iconutil
@@ -38,9 +38,6 @@ enum IcnsGenerator {
     }
 
     private static func iconUtil(in input: URL, out output: URL) {
-        // get save location
-        let output = output.appendingPathComponent("Icon.icns")
-
         // Create a new process to run /usr/bin/iconutil
         let iconUtil = Process()
 

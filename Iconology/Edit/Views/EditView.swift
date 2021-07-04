@@ -12,7 +12,6 @@ struct EditView: View {
     @StateObject var modifier: ImageModifier
     
     @State private var preset: Preset = defaultPresets.first!.presets.first!
-    @State private var prefix = ""
     
     @State private var editShown = false
 
@@ -50,13 +49,9 @@ struct EditView: View {
     }
 
     func export() {
-        // prompt for save location
-        // TODO: save file instead of select folder if a file preset
-        let folder = NSOpenPanel().selectSaveFolder()
-        guard let chosenFolder = folder else { return }
-
         // save
-        let savedTo = preset.save(modifier.finalImage!, at: chosenFolder, with: prefix)
+        // prompts for save location within function
+        guard let savedTo = preset.save(modifier.finalImage!) else { return }
 
         // show user where it was saved
         // TODO: Preference to toggle this
