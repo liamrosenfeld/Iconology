@@ -15,6 +15,7 @@ enum PresetType: Hashable, Codable {
     case icns
     case ico([ImgSetSize])
     
+    // MARK: - Saving
     /// Save the image dependent on preset type
     /// - Returns:
     /// URL where the folder/file was saved. Nil if save is canceled
@@ -61,5 +62,26 @@ enum PresetType: Hashable, Codable {
         ImgSetGenerator.savePngs(image, at: saveUrl, with: prefix, in: sizes)
         
         return saveUrl
+    }
+    
+    // MARK: - Editing
+    var imgSizes: [ImgSetSize] {
+        get {
+            switch self {
+            case .imgSet(let sizes):
+                return sizes
+            default:
+                print("WARN: getting imgSizes when not supposed to")
+                return []
+            }
+        }
+        set {
+            switch self {
+            case .imgSet:
+                self = .imgSet(newValue)
+            default:
+                print("WARN: setting gradient when not supposed to")
+            }
+        }
     }
 }

@@ -32,8 +32,6 @@ struct EditView: View {
             }
 
             PresetPickerView(preset: $preset)
-                .frame(maxWidth: 200)
-            Button("Edit Custom Presets", action: {})
 
             Spacer()
             

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C03016726941121001A6D77 /* CustomPresetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03016626941120001A6D77 /* CustomPresetSelector.swift */; };
 		0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */; };
 		0C90447F26839029005060DF /* CG+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90447E26839029005060DF /* CG+Operators.swift */; };
 		0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* CGPath+Rounding.swift */; };
@@ -18,7 +19,7 @@
 		0CC6811C2691820E006746F2 /* ImgSetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811B2691820E006746F2 /* ImgSetGenerator.swift */; };
 		0CC6811F269182CF006746F2 /* PresetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811E269182CF006746F2 /* PresetType.swift */; };
 		0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84593266EDADA0070AC87 /* IconologyApp.swift */; };
-		0CC84596266EDADA0070AC87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84595266EDADA0070AC87 /* ContentView.swift */; };
+		0CC84596266EDADA0070AC87 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84595266EDADA0070AC87 /* MainView.swift */; };
 		0CC84598266EDADB0070AC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC84597266EDADB0070AC87 /* Assets.xcassets */; };
 		0CC8459B266EDADB0070AC87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8459A266EDADB0070AC87 /* Preview Assets.xcassets */; };
 		0CC845A2266EDF100070AC87 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A1266EDF100070AC87 /* DragView.swift */; };
@@ -28,6 +29,10 @@
 		0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */; };
 		0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */; };
 		0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */; };
+		0CE0860826924BC80055D191 /* CustomPresetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0860726924BC80055D191 /* CustomPresetsView.swift */; };
+		0CE08624269381610055D191 /* CustomPresetsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE08623269381610055D191 /* CustomPresetsStore.swift */; };
+		0CE08626269381AA0055D191 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE08625269381AA0055D191 /* Array+Identifiable.swift */; };
+		0CE08628269381C10055D191 /* CustomPresetEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE08627269381C00055D191 /* CustomPresetEditor.swift */; };
 		0CFC53282672797900ACCC22 /* IcoGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC53272672797900ACCC22 /* IcoGenerator.swift */; };
 		0CFC532A267279CA00ACCC22 /* IcnsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC5329267279CA00ACCC22 /* IcnsGenerator.swift */; };
 		0CFC532D26727E1C00ACCC22 /* ImageSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC532C26727E1C00ACCC22 /* ImageSelection.swift */; };
@@ -42,8 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C03016626941120001A6D77 /* CustomPresetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresetSelector.swift; sourceTree = "<group>"; };
 		0C29BC9726732D7D00F3E61F /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
 		0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Math.swift"; sourceTree = "<group>"; };
+		0C8C4ECB2697A1D300E21145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0C90447E26839029005060DF /* CG+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CG+Operators.swift"; sourceTree = "<group>"; };
 		0C904480268396EA005060DF /* CGPath+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Rounding.swift"; sourceTree = "<group>"; };
 		0C950127268D00ED00A7C257 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -55,7 +62,7 @@
 		0CC6811E269182CF006746F2 /* PresetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetType.swift; sourceTree = "<group>"; };
 		0CC84590266EDADA0070AC87 /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC84593266EDADA0070AC87 /* IconologyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconologyApp.swift; sourceTree = "<group>"; };
-		0CC84595266EDADA0070AC87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CC84595266EDADA0070AC87 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0CC84597266EDADB0070AC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC8459A266EDADB0070AC87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CC845A1266EDF100070AC87 /* DragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
@@ -65,6 +72,10 @@
 		0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Util.swift"; sourceTree = "<group>"; };
 		0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Edit.swift"; sourceTree = "<group>"; };
+		0CE0860726924BC80055D191 /* CustomPresetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresetsView.swift; sourceTree = "<group>"; };
+		0CE08623269381610055D191 /* CustomPresetsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresetsStore.swift; sourceTree = "<group>"; };
+		0CE08625269381AA0055D191 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
+		0CE08627269381C00055D191 /* CustomPresetEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresetEditor.swift; sourceTree = "<group>"; };
 		0CFC53272672797900ACCC22 /* IcoGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcoGenerator.swift; sourceTree = "<group>"; };
 		0CFC5329267279CA00ACCC22 /* IcnsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcnsGenerator.swift; sourceTree = "<group>"; };
 		0CFC532C26727E1C00ACCC22 /* ImageSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelection.swift; sourceTree = "<group>"; };
@@ -118,12 +129,14 @@
 			isa = PBXGroup;
 			children = (
 				0CC84593266EDADA0070AC87 /* IconologyApp.swift */,
-				0CC84595266EDADA0070AC87 /* ContentView.swift */,
+				0CC84595266EDADA0070AC87 /* MainView.swift */,
 				0CC845A3266EDF270070AC87 /* Drag */,
 				0CC845A8266EE0770070AC87 /* Edit */,
+				0CE0860626924B4E0055D191 /* CustomPresets */,
 				0CFFD9E426713D5A007FB3FB /* Presets */,
 				0CC84597266EDADB0070AC87 /* Assets.xcassets */,
 				0C29BC9726732D7D00F3E61F /* Iconology.entitlements */,
+				0C8C4ECB2697A1D300E21145 /* Info.plist */,
 				0CC84599266EDADB0070AC87 /* Preview Content */,
 			);
 			path = Iconology;
@@ -178,6 +191,18 @@
 				0C90447E26839029005060DF /* CG+Operators.swift */,
 			);
 			path = Editing;
+			sourceTree = "<group>";
+		};
+		0CE0860626924B4E0055D191 /* CustomPresets */ = {
+			isa = PBXGroup;
+			children = (
+				0CE0860726924BC80055D191 /* CustomPresetsView.swift */,
+				0C03016626941120001A6D77 /* CustomPresetSelector.swift */,
+				0CE08627269381C00055D191 /* CustomPresetEditor.swift */,
+				0CE08623269381610055D191 /* CustomPresetsStore.swift */,
+				0CE08625269381AA0055D191 /* Array+Identifiable.swift */,
+			);
+			path = CustomPresets;
 			sourceTree = "<group>";
 		};
 		0CFC5325267278F900ACCC22 /* Generators */ = {
@@ -297,11 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */,
+				0CE08624269381610055D191 /* CustomPresetsStore.swift in Sources */,
 				0CFFD9E32670847D007FB3FB /* EditOptionsView.swift in Sources */,
 				0CFC532A267279CA00ACCC22 /* IcnsGenerator.swift in Sources */,
 				0C90447F26839029005060DF /* CG+Operators.swift in Sources */,
 				0CFC53282672797900ACCC22 /* IcoGenerator.swift in Sources */,
 				0CFFD9FC26713D5A007FB3FB /* Preset.swift in Sources */,
+				0C03016726941121001A6D77 /* CustomPresetSelector.swift in Sources */,
 				0CFFD9F926713D5A007FB3FB /* ImgSetSize.swift in Sources */,
 				0CFFDA0126713D5A007FB3FB /* CGImage+PNG.swift in Sources */,
 				0CFFDA0B267153B3007FB3FB /* XcodeIconSize.swift in Sources */,
@@ -309,7 +336,8 @@
 				0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */,
 				0CFC532D26727E1C00ACCC22 /* ImageSelection.swift in Sources */,
 				0C950128268D00ED00A7C257 /* Background.swift in Sources */,
-				0CC84596266EDADA0070AC87 /* ContentView.swift in Sources */,
+				0CE08628269381C10055D191 /* CustomPresetEditor.swift in Sources */,
+				0CC84596266EDADA0070AC87 /* MainView.swift in Sources */,
 				0CFFD9FA26713D5A007FB3FB /* DefaultPresets.swift in Sources */,
 				0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */,
 				0CFFD9E126708458007FB3FB /* ImagePreviewView.swift in Sources */,
@@ -324,8 +352,10 @@
 				0CC6811C2691820E006746F2 /* ImgSetGenerator.swift in Sources */,
 				0CC6811F269182CF006746F2 /* PresetType.swift in Sources */,
 				0CC845AE266F2DA70070AC87 /* ImageModifications.swift in Sources */,
+				0CE08626269381AA0055D191 /* Array+Identifiable.swift in Sources */,
 				0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */,
 				0CC845A2266EDF100070AC87 /* DragView.swift in Sources */,
+				0CE0860826924BC80055D191 /* CustomPresetsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -438,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -463,6 +493,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Iconology/Info.plist;
 				INFOPLIST_KEY_CFBundleExecutable = Iconology;
 				INFOPLIST_KEY_CFBundleName = Iconology;
 				INFOPLIST_KEY_CFBundleVersion = 1;
@@ -471,7 +502,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -497,6 +528,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Iconology/Info.plist;
 				INFOPLIST_KEY_CFBundleExecutable = Iconology;
 				INFOPLIST_KEY_CFBundleName = Iconology;
 				INFOPLIST_KEY_CFBundleVersion = 1;
@@ -505,7 +537,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.liamrosenfeld.Iconology;
 				PRODUCT_NAME = "$(TARGET_NAME)";

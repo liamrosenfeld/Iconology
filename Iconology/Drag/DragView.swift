@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  DragView.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 6/7/21.

@@ -8,11 +8,13 @@
 
 import AppKit
 
-struct Preset: Hashable, Codable {
+struct Preset: Hashable, Codable, Identifiable {
     var name: String
     var type: PresetType
     var aspect: CGSize
     var useModifications: EnabledModifications
+    
+    var id = UUID()
     
     func save(_ image: CGImage) -> URL? {
         type.save(image)
@@ -30,6 +32,10 @@ struct Preset: Hashable, Codable {
         self.type = type
         self.aspect = CGSize(width: 1, height: 1)
         self.useModifications = useModifications
+    }
+    
+    static func newImgSet(name: String) -> Preset {
+        return Preset(name: name, type: .imgSet([]), aspect: CGSize(width: 1, height: 1), useModifications: .all())
     }
 }
 

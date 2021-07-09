@@ -10,9 +10,19 @@ import SwiftUI
 
 @main
 struct Iconology: App {
+    
+    @StateObject private var customPresetStore = CustomPresetsStore()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(customPresetStore)
         }
+        WindowGroup("Custom Presets Editor") {
+            CustomPresetsView()
+                .environmentObject(customPresetStore)
+                .handlesExternalEvents(preferring: ["custom-presets-editor"], allowing: ["custom-presets-editor"]) // activate existing window if exists
+        }
+        .handlesExternalEvents(matching: ["custom-presets-editor"]) // create new window if one doesn't exist
     }
 }

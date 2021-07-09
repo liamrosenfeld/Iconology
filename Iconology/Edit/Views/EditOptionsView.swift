@@ -176,6 +176,14 @@ extension Formatter {
     static let floatFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
+        formatter.hasThousandSeparators = false
+        return formatter
+    }()
+    
+    static let intFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        formatter.hasThousandSeparators = false
         return formatter
     }()
 }

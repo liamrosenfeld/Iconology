@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct ImgSetSize: Hashable, Codable {
+struct ImgSetSize: Hashable, Codable, Identifiable {
     var name: String
     var size: CGSize
+    
+    var id = UUID()
 
     init(name: String, w: Int, h: Int) {
         self.name = name
