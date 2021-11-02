@@ -14,7 +14,7 @@ class ImageModifications: ObservableObject {
     @Published var scale: CGFloat
     @Published var shift: CGPoint
     @Published var background: Background
-    @Published var rounding: CGFloat
+    @Published var rounding: Rounding
     @Published var padding: CGFloat
     @Published var shadow: ShadowAttributes
 
@@ -23,10 +23,18 @@ class ImageModifications: ObservableObject {
         scale = 100
         shift = .zero
         background = .none
-        rounding = 0
+        rounding = (0, .circular)
         padding = 0
         shadow = (0, 0)
     }
 }
+
+enum RoundingStyle {
+    case circular
+    case continuous
+    case squircle
+}
+
+typealias Rounding = (percent: CGFloat, style: RoundingStyle)
 
 typealias ShadowAttributes = (opacity: CGFloat, blur: CGFloat)

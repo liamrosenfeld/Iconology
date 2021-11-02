@@ -40,8 +40,16 @@ struct EditOptionsView: View {
                         Text("Rounding")
                             .font(.title2)
                             .padding(.top)
-                        SliderAndText(name: "Rounding", value: $mods.rounding, range: 0...100, defaultVal: 0, unit: "%")
-                        Text("45.3% for macOS 11+ Icons")
+                        Picker("Style", selection: $mods.rounding.style) {
+                            Text("Circular")
+                                .tag(RoundingStyle.circular)
+                            Text("Continuous")
+                                .tag(RoundingStyle.continuous)
+                            Text("Squircle")
+                                .tag(RoundingStyle.squircle)
+                        }
+                        SliderAndText(name: "Rounding", value: $mods.rounding.percent, range: 0...100, defaultVal: 0, unit: "%")
+                        Text("45% and Continuous for macOS 11+ Icons")
                     }
                 }
                 

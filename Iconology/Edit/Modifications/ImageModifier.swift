@@ -67,7 +67,7 @@ class ImageModifier: ObservableObject {
         overlay()
     }
     
-    private func newRounding(rounding: CGFloat) {
+    private func newRounding(rounding: Rounding) {
         findMaskPath(rounding: rounding, padding: mods.padding)
         // TODO: async PIF and shadow
         placeInFrame(background: mods.background)
@@ -129,12 +129,12 @@ class ImageModifier: ObservableObject {
         imageOrigin = innerFrameOrigin + centeredImageOriginWithinInnerFrame + shift
     }
     
-    private func findMaskPath(rounding: CGFloat, padding: CGFloat) {
+    private func findMaskPath(rounding: Rounding, padding: CGFloat) {
         let innerOrigin = CGPoint(
             x: (padding / 200) * outerSize.width,
             y: (padding / 200) * outerSize.height
         )
-        if rounding == 0 {
+        if rounding.percent == 0 {
             if innerOrigin == .zero {
                 // in this case there is no reason to apply a mask
                 maskPath = nil
@@ -144,7 +144,15 @@ class ImageModifier: ObservableObject {
             }
         } else {
             let innerRect = CGRect(origin: innerOrigin, size: innerSize)
-            maskPath = .roundedRect(rect: innerRect, roundingPercent: rounding)
+            switch rounding.style {
+            case .circular:
+                maskPath = .circularRoundedRect(rect: innerRect, roundingPercent: rounding.percent)
+            case .continuous:
+                maskPath = .continuousRoundedRect(rect: innerRect, roundingPercent: rounding.percent)
+            case .squircle:
+                maskPath = .squircle(rect: innerRect, roundingPercent: rounding.percent)
+            }
+            
         }
     }
     
@@ -160,7 +168,7 @@ class ImageModifier: ObservableObject {
     private func makeShadow(attributes: ShadowAttributes) {
         guard let maskPath = maskPath,
               attributes.opacity != 0,
-              mods.padding != 0 || mods.rounding != 0
+              mods.padding != 0 || mods.rounding.percent != 0
         else {
             shadowImage = nil
             return
