@@ -23,9 +23,8 @@ struct CustomPresetEditor: View {
                     Button {
                         aspectShown = true
                     } label: {
-                        Image(systemName: "aspectratio")
+                        Label("Edit Aspect Ratio", systemImage: "aspectratio")
                     }
-                    .accessibility(label: Text("Edit"))
                     .popover(isPresented: $aspectShown, arrowEdge: .bottom, content: aspectEditor)
                 }
                 ToolbarItemGroup {

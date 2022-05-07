@@ -24,9 +24,18 @@ struct CustomPresetsView: View {
                 Text("Select a Preset to Edit")
                     .navigationTitle("")
             }
-        }.onAppear {
-            selection = store.presets.first?.id
         }
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button(action: toggleSidebar, label: {
+                    Label("Toggle Sidebar", systemImage: "sidebar.leading")
+                })
+            }
+        }
+    }
+    
+    private func toggleSidebar() {
+        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
     }
 }
 
