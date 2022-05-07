@@ -24,7 +24,6 @@ struct CustomPresetSelector: View {
         }
         .focused($sidebarFocused)
         .toolbar {
-            // TODO: make these not merge with main window when sidebar is removed (or make sidebar always there)
             Button(action: addPreset) {
                 Label("New Preset", systemImage: "plus")
             }

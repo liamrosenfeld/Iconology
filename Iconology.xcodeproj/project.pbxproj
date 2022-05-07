@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C03016726941121001A6D77 /* CustomPresetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03016626941120001A6D77 /* CustomPresetSelector.swift */; };
+		0C5C4BBF2826F96F00E7CF9E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0C5C4BBE2826F96F00E7CF9E /* Introspect */; };
 		0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */; };
 		0C90447F26839029005060DF /* CG+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90447E26839029005060DF /* CG+Operators.swift */; };
 		0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* CGPath+Rounding.swift */; };
@@ -94,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C5C4BBF2826F96F00E7CF9E /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +268,9 @@
 			dependencies = (
 			);
 			name = Iconology;
+			packageProductDependencies = (
+				0C5C4BBE2826F96F00E7CF9E /* Introspect */,
+			);
 			productName = Iconology;
 			productReference = 0CC84590266EDADA0070AC87 /* Iconology.app */;
 			productType = "com.apple.product-type.application";
@@ -295,6 +300,9 @@
 				Base,
 			);
 			mainGroup = 0CC84587266EDADA0070AC87;
+			packageReferences = (
+				0C5C4BBD2826F96F00E7CF9E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = 0CC84591266EDADA0070AC87 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -571,6 +579,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C5C4BBD2826F96F00E7CF9E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C5C4BBE2826F96F00E7CF9E /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C5C4BBD2826F96F00E7CF9E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0CC84588266EDADA0070AC87 /* Project object */;
 }
