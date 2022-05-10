@@ -54,10 +54,14 @@ extension DragView: DropDelegate {
     }
 
     func dropEntered(info: DropInfo) {
-        self.isDropping = true
+        withAnimation(.easeIn(duration: 0.15)) {
+            self.isDropping = true
+        }
     }
 
     func dropExited(info: DropInfo) {
-        self.isDropping = false
+        withAnimation(.easeOut(duration: 0.50)) {
+            self.isDropping = false
+        }
     }
 }

@@ -31,6 +31,10 @@ struct DragView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 200, minHeight: 50)
                 Text(isDropping ?  "That Would Work!": "Drag Image Here")
+                    .transaction { transaction in
+                        // prevent the text from animating when changing
+                        transaction.animation = nil
+                    }
                 Text("Or")
                     .padding(.top, 10)
                 Button("Choose Image", action: selectImage)
@@ -39,7 +43,7 @@ struct DragView: View {
             }
             .padding(10)
             .frame(maxWidth: .infinity)
-            .background(isDropping ? Color.gray.opacity(0.25) : Color.clear)
+            .background(isDropping ? Color.gray.opacity(0.20) : Color.clear)
             .cornerRadius(18)
             .onDrop(of: [.fileURL], delegate: self)
         }
