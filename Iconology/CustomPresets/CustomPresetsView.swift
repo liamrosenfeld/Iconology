@@ -20,7 +20,7 @@ struct CustomPresetsView: View {
                     // prevent the sidebar from being hidden
                     (controller.delegate as? NSSplitViewController)?.splitViewItems.first?.canCollapse = false
                 }
-                .frame(minWidth: 200)
+                .frame(minWidth: 225)
             Group {
                 if store.presets.count == 0 {
                     Text("Create a Preset to Edit")

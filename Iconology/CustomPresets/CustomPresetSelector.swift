@@ -11,6 +11,8 @@ import SwiftUI
 struct CustomPresetSelector: View {
     @Binding var selection: Preset.ID?
     
+    @State private var importError = false
+    
     @EnvironmentObject var store: CustomPresetsStore
     @FocusState private var sidebarFocused: Bool
     
@@ -30,7 +32,16 @@ struct CustomPresetSelector: View {
             Button(action: removePreset) {
                 Label("Remove Preset", systemImage: "minus")
             }
+            Button(action: importPreset) {
+                Label("Import Preset", systemImage: "square.and.arrow.down")
+            }
         }
+        .alert(
+            "File Not Compatible",
+            isPresented: $importError,
+            actions: { Button("Ok", action: {})},
+            message: { Text("Please make sure the imported file was created by Iconology") }
+        )
     }
     
     func addPreset() {
@@ -58,6 +69,23 @@ struct CustomPresetSelector: View {
         } else {
             selection = nil
         }
+    }
+    
+    func importPreset() {
+        // get file
+        guard let url = NSOpenPanel().selectPresetBackup() else { return }
+        guard let data = FileManager.default.contents(atPath: url.path) else { return }
+        
+        // decode
+        let decoder = JSONDecoder()
+        guard var preset = try? decoder.decode(Preset.self, from: data) else {
+            importError = true
+            return
+        }
+        
+        // add
+        preset.id = UUID() // give new ID so an export then import does not break things
+        store.presets.append(preset)
     }
 }
 
@@ -90,5 +118,20 @@ struct PresetNameEdit: View {
         .onChange(of: fieldFocused) { newValue in
             editing = newValue
         }
+    }
+}
+
+fileprivate extension NSOpenPanel {
+    func selectPresetBackup() -> URL? {
+        self.title = "Select a Preset JSON File"
+        self.showsResizeIndicator = true
+        self.canChooseDirectories = false
+        self.canChooseFiles = true
+        self.allowsMultipleSelection = false
+        self.canCreateDirectories = true
+        self.allowedContentTypes = [.json]
+        
+        self.runModal()
+        return self.url
     }
 }

@@ -20,6 +20,9 @@ struct CustomPresetEditor: View {
         table
             .toolbar {
                 ToolbarItemGroup {
+                    Button(action: exportPreset) {
+                        Label("Export Preset", systemImage: "square.and.arrow.up")
+                    }
                     Button {
                         aspectShown = true
                     } label: {
@@ -61,6 +64,14 @@ struct CustomPresetEditor: View {
                 TextField("Vertical", value:  $store.presets[presetIndex!].aspect.height, formatter: Formatter.intFormatter)
             }
         }.padding()
+    }
+    
+    func exportPreset() {
+        guard let index = presetIndex else { return }
+        guard let url = NSSavePanel().savePreset() else { return }
+        guard let data = try? JSONEncoder().encode(store.presets[index]) else { return }
+        
+        FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
     }
     
     // MARK: - Table
@@ -119,5 +130,15 @@ struct CustomPresetEditor: View {
         } else {
             self.sizeSelection = nil
         }
+    }
+}
+
+fileprivate extension NSSavePanel {
+    func savePreset() -> URL? {
+        self.title = "Save Your Preset File"
+        self.allowedContentTypes = [.json]
+        self.isExtensionHidden = false
+        self.runModal()
+        return self.url
     }
 }
