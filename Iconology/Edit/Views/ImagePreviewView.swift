@@ -14,9 +14,6 @@ struct ImagePreviewView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Aspect: \(Int(aspect.width)):\(Int(aspect.height))")
-                .font(.title2)
-                .foregroundColor(Color.secondary)
             Image(decorative: image, scale: 1, orientation: .up)
                 .resizable()
                 .aspectRatio(aspect, contentMode: .fit)

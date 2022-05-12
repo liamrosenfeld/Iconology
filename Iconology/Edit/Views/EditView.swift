@@ -11,27 +11,27 @@ import SwiftUI
 struct EditView: View {
     @StateObject var modifier: ImageModifier
     
-    @State private var preset: Preset = defaultPresets.first!.presets.first!
-    
+    @State private var preset: Preset = defaultPresets[0].presets[0]
     @State private var editShown = false
+    @State private var aspect = CGSize(width: 1, height: 1)
 
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .bottom) {
-                ImagePreviewView(image: modifier.finalImage!, aspect: modifier.mods.aspect)
+                ImagePreviewView(image: modifier.finalImage!, aspect: aspect)
                 Button {
                     editShown = true
                 } label: {
                     Image(systemName: "pencil")
                 }.accessibility(label: Text("Edit"))
                 .popover(isPresented: $editShown, arrowEdge: .trailing) {
-                    EditOptionsView(mods: modifier.mods, enabled: preset.useModifications)
+                    EditOptionsView(mods: modifier.mods, aspect: aspect, enabled: preset.useModifications)
                         .frame(width: 275)
                         .padding()
                 }
             }
 
-            PresetPickerView(preset: $preset)
+            PresetPickerView(preset: $preset, size: $modifier.mods.size, aspect: $aspect)
 
             Spacer()
             
@@ -42,10 +42,28 @@ struct EditView: View {
             }
         }
         .padding(20)
-        .onChange(of: preset) { modifier.mods.aspect = $0.aspect }
-        .onAppear(perform: modifier.observeChanges)
+        .onChange(of: modifier.mods.size, perform: sizeChanged)
+        .onAppear {
+            modifier.observeChanges()
+            sizeChanged(modifier.mods.size)
+        }
     }
-
+    
+    func sizeChanged(_ new: CGSize) {
+        // if the selected size is too small for the image,
+        // auto scale down the image so it fits
+        guard let origSize = modifier.origImage?.size else { return }
+        
+        let widthScale = new.width / origSize.width
+        let heightScale = new.height / origSize.height
+        
+        let minScale = min(widthScale, heightScale)
+        if minScale < 1 {
+            modifier.mods.scale = max(minScale * 100, 10) // don't scale it beyond reason
+            modifier.mods.shift = .zero // bring it back to center
+        }
+    }
+    
     func export() {
         // save
         // prompts for save location within function

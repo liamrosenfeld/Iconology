@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EditOptionsView: View {
     @ObservedObject var mods: ImageModifications
+    var aspect: CGSize
     var enabled: EnabledModifications
 
     var body: some View {
@@ -32,7 +33,7 @@ struct EditOptionsView: View {
                 }
                 
                 if enabled.shift {
-                    ShiftEditor(shift: $mods.shift, aspect: mods.aspect)
+                    ShiftEditor(shift: $mods.shift, aspect: aspect)
                 }
 
                 if enabled.round {
@@ -201,7 +202,7 @@ struct EditOptions_Previews: PreviewProvider {
     @State static var enabled = EnabledModifications.all()
     
     static var previews: some View {
-        EditOptionsView(mods: mods, enabled: enabled)
+        EditOptionsView(mods: mods, aspect: .init(width: 1, height: 1), enabled: enabled)
             .padding()
             .frame(width: 275, height: 750)
     }

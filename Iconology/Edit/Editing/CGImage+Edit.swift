@@ -11,6 +11,8 @@ import CoreGraphics
 
 extension CGImage {
     func resized(to destSize: CGSize, quality: CGInterpolationQuality) -> CGImage {
+        if self.size == destSize { return self }
+        
         let context = makeContext(size: destSize)
         context.interpolationQuality = quality
         context.draw(self, in: CGRect(origin: .zero, size: destSize))

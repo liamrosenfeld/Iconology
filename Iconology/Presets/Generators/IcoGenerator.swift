@@ -111,8 +111,10 @@ enum IcoGenerator {
     // https://github.com/audreyr/favicon-cheat-sheet
     static let faviconIcoSet = [
         ImgSetSize(name: "favicon-16", w: 16, h: 16),
+        ImgSetSize(name: "favicon-24", w: 24, h: 24),
         ImgSetSize(name: "favicon-32", w: 32, h: 32),
-        ImgSetSize(name: "favicon-48", w: 48, h: 48)
+        ImgSetSize(name: "favicon-48", w: 48, h: 48),
+        ImgSetSize(name: "favicon-64", w: 64, h: 64),
     ]
 }
 

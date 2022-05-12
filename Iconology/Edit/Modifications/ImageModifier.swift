@@ -15,8 +15,8 @@ class ImageModifier: ObservableObject {
     private var subscribers = Set<AnyCancellable>()
 
     // MARK: - Intermediate Storage
-    private var outerSize: NSSize = .zero
-    private var innerSize: NSSize = .zero
+    var size: CGSize = CGSize(width: 1, height: 1)
+    private var innerSize: CGSize = .zero
     
     private var imageOrigin: CGPoint = .zero
     private var maskPath: CGPath?
@@ -26,12 +26,12 @@ class ImageModifier: ObservableObject {
     private var shadowImage: CGImage?
     
     // MARK: - In and Out
-    public var origImage: CGImage? { didSet { fullChain(aspect: mods.aspect, padding: mods.padding, quality: .high) } }
+    public var origImage: CGImage? { didSet { fullChain(size: mods.size, padding: mods.padding, quality: .high) } }
     @Published private(set) var finalImage: CGImage?
     
     // MARK: - Modification Change Reactions
-    private func fullChain(aspect: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
-        findSizes(aspect: aspect, padding: padding)
+    private func fullChain(size: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
+        findPadding(size: size, padding: padding)
         scaleInnerImage(mods.scale, padding: padding, quality: quality)
         findImageOrigin(shiftPercent: mods.shift, padding: padding)
         findMaskPath(rounding: mods.rounding, padding: padding)
@@ -41,12 +41,13 @@ class ImageModifier: ObservableObject {
         overlay()
     }
     
-    private func newAspect(_ aspect: CGSize) {
-        fullChain(aspect: aspect, padding: mods.padding, quality: .low)
+    private func newSize(_ size: CGSize) {
+        self.size = size // save here so that full chain has the correct value
+        fullChain(size: size, padding: mods.padding, quality: .low)
     }
     
     private func newPadding(_ padding: CGFloat) {
-        fullChain(aspect: mods.aspect, padding: padding, quality: .low)
+        fullChain(size: mods.size, padding: padding, quality: .low)
     }
     
     private func newScale(scale: CGFloat) {
@@ -96,14 +97,12 @@ class ImageModifier: ObservableObject {
     }
     
     // MARK: - Image Editing
-    private func findSizes(aspect: CGSize, padding: CGFloat) {
-        outerSize = origImage!.size.findFrame(aspect: aspect)
-        
+    private func findPadding(size: CGSize, padding: CGFloat) {
         let appliedPadding = CGSize(
-            width: (padding / 100) * outerSize.width,
-            height: (padding / 100) * outerSize.height
+            width: (padding / 100) * size.width,
+            height: (padding / 100) * size.height
         )
-        innerSize = outerSize - appliedPadding
+        innerSize = size - appliedPadding
     }
     
     private func scaleInnerImage(_ scale: CGFloat, padding: CGFloat, quality: CGInterpolationQuality) {
@@ -114,8 +113,8 @@ class ImageModifier: ObservableObject {
     private func findImageOrigin(shiftPercent: CGPoint, padding: CGFloat) {
         // get origins inner frame and image inside the frame
         let innerFrameOrigin = CGPoint(
-            x: (padding / 200) * outerSize.width,
-            y: (padding / 200) * outerSize.height
+            x: (padding / 200) * size.width,
+            y: (padding / 200) * size.height
         )
         let centeredImageOriginWithinInnerFrame = CGPoint(
             x: (innerSize.width / 2) - (CGFloat(scaledImage.width) / 2),
@@ -131,8 +130,8 @@ class ImageModifier: ObservableObject {
     
     private func findMaskPath(rounding: Rounding, padding: CGFloat) {
         let innerOrigin = CGPoint(
-            x: (padding / 200) * outerSize.width,
-            y: (padding / 200) * outerSize.height
+            x: (padding / 200) * size.width,
+            y: (padding / 200) * size.height
         )
         if rounding.percent == 0 {
             if innerOrigin == .zero {
@@ -158,7 +157,7 @@ class ImageModifier: ObservableObject {
     
     private func placeInFrame(background: Background) {
         placedImage = scaledImage.placedInFrame(
-            frame: outerSize,
+            frame: size,
             imageOrigin: imageOrigin,
             background: background,
             mask: maskPath
@@ -173,7 +172,7 @@ class ImageModifier: ObservableObject {
             shadowImage = nil
             return
         }
-        shadowImage = maskPath.makeShadow(frame: outerSize, attributes: attributes)
+        shadowImage = maskPath.makeShadow(frame: size, attributes: attributes)
     }
     
     private func overlay() {
@@ -195,7 +194,7 @@ class ImageModifier: ObservableObject {
         self.mods = ImageModifications()
 
         if image.size != .zero {
-            fullChain(aspect: mods.aspect, padding: mods.padding, quality: .high)
+            fullChain(size: size, padding: mods.padding, quality: .high)
         }
     }
 
@@ -205,8 +204,8 @@ class ImageModifier: ObservableObject {
         let paddingPub = mods.$padding.share()
         
         // reacting to immediate changes
-        mods.$aspect
-            .sink(receiveValue: newAspect)
+        mods.$size
+            .sink(receiveValue: newSize)
             .store(in: &subscribers)
         scalePub
             .sink(receiveValue: newScale)
@@ -239,3 +238,4 @@ class ImageModifier: ObservableObject {
             .store(in: &subscribers)
     }
 }
+

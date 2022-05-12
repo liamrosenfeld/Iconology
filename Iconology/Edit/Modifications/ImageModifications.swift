@@ -10,7 +10,7 @@ import AppKit
 import Combine
 
 class ImageModifications: ObservableObject {
-    @Published var aspect: CGSize
+    @Published var size: CGSize
     @Published var scale: CGFloat
     @Published var shift: CGPoint
     @Published var background: Background
@@ -19,7 +19,7 @@ class ImageModifications: ObservableObject {
     @Published var shadow: ShadowAttributes
 
     init() {
-        aspect = CGSize(width: 1, height: 1)
+        size = CGSize(width: 100, height: 100)
         scale = 100
         shift = .zero
         background = .none
