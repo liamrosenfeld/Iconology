@@ -9,10 +9,13 @@
 import AppKit
 import CoreGraphics
 import ImageIO
+import UniformTypeIdentifiers
 
 extension CGImage {
     func savePng(to url: URL) throws {
-        guard let destination = CGImageDestinationCreateWithURL(url as CFURL, kUTTypePNG, 1, nil) else { throw SaveError.destinationFailed }
+        guard let destination = CGImageDestinationCreateWithURL(url as CFURL, UTType.png.identifier as CFString, 1, nil) else {
+            throw SaveError.destinationFailed
+        }
         CGImageDestinationAddImage(destination, self, nil)
         if !CGImageDestinationFinalize(destination) {
             throw SaveError.saveFailed

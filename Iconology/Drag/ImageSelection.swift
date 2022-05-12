@@ -7,13 +7,14 @@
 //
 
 import Cocoa
+import UniformTypeIdentifiers
 
 extension NSImage {
-    static var extendedImageTypes: [String] {
-        var allowed = NSImage.imageTypes
-        allowed.append(contentsOf: ["com.adobe.illustrator.ai-image"])
+    static var extendedContentTypes: [UTType] = {
+        var allowed = NSImage.imageTypes.compactMap { UTType($0) }
+        allowed.append(UTType("com.adobe.illustrator.ai-image")!)
         return allowed
-    }
+    }()
 }
 
 extension NSOpenPanel {
@@ -24,7 +25,7 @@ extension NSOpenPanel {
         self.canChooseFiles = true
         self.allowsMultipleSelection = false
         self.canCreateDirectories = true
-        self.allowedFileTypes = NSImage.extendedImageTypes
+        self.allowedContentTypes = NSImage.extendedContentTypes
 
         self.runModal()
 

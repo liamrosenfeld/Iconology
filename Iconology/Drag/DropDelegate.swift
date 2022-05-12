@@ -26,8 +26,8 @@ extension DragView: DropDelegate {
         provider.loadDataRepresentation(forTypeIdentifier: UTType.fileURL.identifier) { (urlData, _) in
             if let urlData = urlData {
                 let url = URL(dataRepresentation: urlData, relativeTo: nil, isAbsolute: true)
-                if let uti = (try? url?.resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier {
-                    allowed = NSImage.extendedImageTypes.contains(uti)
+                if let uti = (try? url?.resourceValues(forKeys: [.contentTypeKey]))?.contentType {
+                    allowed = NSImage.extendedContentTypes.contains(uti)
                 }
             }
             group.leave()
