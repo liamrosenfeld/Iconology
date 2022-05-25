@@ -30,7 +30,7 @@ struct TwoDimensionSlider: View {
     }
 
     var drag: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: 0)
             .onChanged { gesture in
                 if abs(gesture.location.x) <= 100 {
                     self.position.x = gesture.location.x

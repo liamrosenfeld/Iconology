@@ -96,17 +96,16 @@ struct PresetPickerView: View {
     }
 }
 
+// prevent constant reloads
+extension PresetPickerView: Equatable {
+    static func ==(lhs: PresetPickerView, rhs: PresetPickerView) -> Bool {
+        lhs.preset == rhs.preset
+    }
+}
+
 extension CGFloat {
-    static private var intFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0
-        formatter.groupingSeparator = ""
-        return formatter
-    }()
-    
     func toIntString() -> String {
-        CGFloat.intFormatter.string(from: NSNumber(value: self)) ?? ""
+        Formatter.intFormatter.string(from: NSNumber(value: self)) ?? ""
     }
     
     static func gcd(_ m: CGFloat, _ n: CGFloat) -> CGFloat {

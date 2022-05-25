@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct EditView: View {
-    @StateObject var modifier: ImageModifier
+    @ObservedObject var modifier: ImageModifier
     
     @State private var preset: Preset = defaultPresets[0].presets[0]
     @State private var editShown = false
@@ -23,15 +23,18 @@ struct EditView: View {
                     editShown = true
                 } label: {
                     Image(systemName: "pencil")
-                }.accessibility(label: Text("Edit"))
+                }
+                .accessibility(label: Text("Edit"))
+                .dontRedraw()
                 .popover(isPresented: $editShown, arrowEdge: .trailing) {
-                    EditOptionsView(mods: modifier.mods, aspect: aspect, enabled: preset.useModifications)
+                    EditOptionsView(mods: modifier, aspect: aspect, enabled: preset.useModifications)
                         .frame(width: 275)
                         .padding()
                 }
             }
 
-            PresetPickerView(preset: $preset, size: $modifier.mods.size, aspect: $aspect)
+            PresetPickerView(preset: $preset, size: $modifier.size, aspect: $aspect)
+                .equatable()
 
             Spacer()
             
@@ -39,13 +42,13 @@ struct EditView: View {
                 Button("New Image", action: selectImage)
                 Spacer()
                 Button("Export", action: export)
-            }
+            }.dontRedraw()
         }
         .padding(20)
-        .onChange(of: modifier.mods.size, perform: sizeChanged)
+        .onChange(of: modifier.size, perform: sizeChanged)
         .onAppear {
             modifier.observeChanges()
-            sizeChanged(modifier.mods.size)
+            sizeChanged(modifier.size)
         }
     }
     
@@ -59,8 +62,8 @@ struct EditView: View {
         
         let minScale = min(widthScale, heightScale)
         if minScale < 1 {
-            modifier.mods.scale = max(minScale * 100, 10) // don't scale it beyond reason
-            modifier.mods.shift = .zero // bring it back to center
+            modifier.scale = max(minScale * 100, 10) // don't scale it beyond reason
+            modifier.shift = .zero // bring it back to center
         }
     }
     

@@ -11,11 +11,17 @@ import Combine
 
 class ImageModifier: ObservableObject {
     // MARK: - Modifications
-    var mods: ImageModifications
+    @Published var size: CGSize
+    @Published var scale: CGFloat
+    @Published var shift: CGPoint
+    @Published var background: Background
+    @Published var rounding: Rounding
+    @Published var padding: CGFloat
+    @Published var shadow: ShadowAttributes
+    
     private var subscribers = Set<AnyCancellable>()
 
     // MARK: - Intermediate Storage
-    var size: CGSize = CGSize(width: 1, height: 1)
     private var innerSize: CGSize = .zero
     
     private var imageOrigin: CGPoint = .zero
@@ -24,42 +30,41 @@ class ImageModifier: ObservableObject {
     private var scaledImage: CGImage!
     private var placedImage: CGImage!
     private var shadowImage: CGImage?
-    
+     
     // MARK: - In and Out
-    public var origImage: CGImage? { didSet { fullChain(size: mods.size, padding: mods.padding, quality: .high) } }
+    public var origImage: CGImage? { didSet { fullChain(size: size, padding: padding, quality: .high) } }
     @Published private(set) var finalImage: CGImage?
     
     // MARK: - Modification Change Reactions
     private func fullChain(size: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
         findPadding(size: size, padding: padding)
-        scaleInnerImage(mods.scale, padding: padding, quality: quality)
-        findImageOrigin(shiftPercent: mods.shift, padding: padding)
-        findMaskPath(rounding: mods.rounding, padding: padding)
+        scaleInnerImage(scale, padding: padding, quality: quality)
+        findImageOrigin(shiftPercent: shift, padding: padding)
+        findMaskPath(rounding: rounding, padding: padding)
         // TODO: async PIF and shadow
-        placeInFrame(background: mods.background)
-        makeShadow(attributes: mods.shadow)
+        placeInFrame(background: background)
+        makeShadow(attributes: shadow)
         overlay()
     }
     
     private func newSize(_ size: CGSize) {
-        self.size = size // save here so that full chain has the correct value
-        fullChain(size: size, padding: mods.padding, quality: .low)
+        fullChain(size: size, padding: padding, quality: .low)
     }
     
     private func newPadding(_ padding: CGFloat) {
-        fullChain(size: mods.size, padding: padding, quality: .low)
+        fullChain(size: size, padding: padding, quality: .low)
     }
     
     private func newScale(scale: CGFloat) {
-        scaleInnerImage(scale, padding: mods.padding, quality: .high)
-        findImageOrigin(shiftPercent: mods.shift, padding: mods.padding)
-        placeInFrame(background: mods.background)
+        scaleInnerImage(scale, padding: padding, quality: .high)
+        findImageOrigin(shiftPercent: shift, padding: padding)
+        placeInFrame(background: background)
         overlay()
     }
     
     private func newShift(_ shift: CGPoint) {
-        findImageOrigin(shiftPercent: shift, padding: mods.padding)
-        placeInFrame(background: mods.background)
+        findImageOrigin(shiftPercent: shift, padding: padding)
+        placeInFrame(background: background)
         overlay()
     }
     
@@ -69,10 +74,10 @@ class ImageModifier: ObservableObject {
     }
     
     private func newRounding(rounding: Rounding) {
-        findMaskPath(rounding: rounding, padding: mods.padding)
+        findMaskPath(rounding: rounding, padding: padding)
         // TODO: async PIF and shadow
-        placeInFrame(background: mods.background)
-        makeShadow(attributes: mods.shadow)
+        placeInFrame(background: background)
+        makeShadow(attributes: shadow)
         overlay()
     }
     
@@ -84,15 +89,15 @@ class ImageModifier: ObservableObject {
     // MARK: - Modification Selection Finish
     private func finishedPadding(_ padding: CGFloat) {
         // reapply with high interpolation quality
-        scaleInnerImage(mods.scale, padding: padding, quality: .high)
-        placeInFrame(background: mods.background)
+        scaleInnerImage(scale, padding: padding, quality: .high)
+        placeInFrame(background: background)
         overlay()
     }
     
     private func finishedScaling(scale: CGFloat) {
         // reapply with high interpolation quality
-        scaleInnerImage(scale, padding: mods.padding, quality: .high)
-        placeInFrame(background: mods.background)
+        scaleInnerImage(scale, padding: padding, quality: .high)
+        placeInFrame(background: background)
         overlay()
     }
     
@@ -167,7 +172,7 @@ class ImageModifier: ObservableObject {
     private func makeShadow(attributes: ShadowAttributes) {
         guard let maskPath = maskPath,
               attributes.opacity != 0,
-              mods.padding != 0 || mods.rounding.percent != 0
+              padding != 0 || rounding.percent != 0
         else {
             shadowImage = nil
             return
@@ -176,56 +181,68 @@ class ImageModifier: ObservableObject {
     }
     
     private func overlay() {
-        if let shadowImage = shadowImage {
-            finalImage = shadowImage.overlayed(placedImage)
+        if let shadowImage = self.shadowImage {
+            self.finalImage = shadowImage.overlayed(self.placedImage)
         } else {
-            finalImage = placedImage
+            self.finalImage = self.placedImage
         }
     }
 
     // MARK: - Init
     init() {
-        self.mods = ImageModifications()
+        size = CGSize(width: 100, height: 100)
+        scale = 100
+        shift = .zero
+        background = .none
+        rounding = (0, .circular)
+        padding = 0
+        shadow = (0, 0)
     }
     
     init(image: CGImage) {
         origImage = image
         
-        self.mods = ImageModifications()
+        size = CGSize(width: 100, height: 100)
+        scale = 100
+        shift = .zero
+        background = .none
+        rounding = (0, .circular)
+        padding = 0
+        shadow = (0, 0)
 
         if image.size != .zero {
-            fullChain(size: size, padding: mods.padding, quality: .high)
+            fullChain(size: size, padding: padding, quality: .high)
         }
     }
 
     func observeChanges() {
         // share pubs that need both immediate and after
-        let scalePub = mods.$scale.share()
-        let paddingPub = mods.$padding.share()
+        let scalePub = $scale.share()
+        let paddingPub = $padding.share()
         
         // reacting to immediate changes
-        mods.$size
+        $size
             .sink(receiveValue: newSize)
             .store(in: &subscribers)
         scalePub
             .sink(receiveValue: newScale)
             .store(in: &subscribers)
-        mods.$shift
+        $shift
             .sink(receiveValue: newShift)
             .store(in: &subscribers)
-        mods.$background
+        $background
             .sink(receiveValue: newBackground)
             .store(in: &subscribers)
-        mods.$rounding
+        $rounding
             .sink(receiveValue: newRounding)
             .store(in: &subscribers)
         paddingPub
             .sink(receiveValue: newPadding)
             .store(in: &subscribers)
-        mods.$shadow
+        $shadow
             .sink(receiveValue: newShadow)
             .store(in: &subscribers)
-        
+
         // react to finished selecting
         let debounceTime: RunLoop.SchedulerTimeType.Stride = .seconds(0.2)
         scalePub
@@ -239,3 +256,12 @@ class ImageModifier: ObservableObject {
     }
 }
 
+enum RoundingStyle {
+    case circular
+    case continuous
+    case squircle
+}
+
+typealias Rounding = (percent: CGFloat, style: RoundingStyle)
+
+typealias ShadowAttributes = (opacity: CGFloat, blur: CGFloat)

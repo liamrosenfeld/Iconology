@@ -13,47 +13,45 @@ struct ImagePreviewView: View {
     var aspect: CGSize
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Image(decorative: image, scale: 1, orientation: .up)
-                .resizable()
-                .aspectRatio(aspect, contentMode: .fit)
-                .background(
-                    ZStack {
-                        Color.white
-                        Checkerboard(rows: 70, columns: 70)
-                            .fill(Color(.sRGB, white: 0.88, opacity: 1))
-                    }
-                    
-                )
-        }
+        Image(decorative: image, scale: 1, orientation: .up)
+            .resizable()
+            .aspectRatio(aspect, contentMode: .fit)
+            .background(
+                CheckerboardView()
+            )
     }
 }
 
-struct Checkerboard: Shape {
-    let rows: Int
-    let columns: Int
+struct CheckerboardView: View {
+    let rows = 70
+    let cols = 70
+    
+    let color = Color(.sRGB, white: 0.88, opacity: 1)
+    
+    var body: some View {
+        // uses Canvas instead of Shape because Canvas updates less often (in my testing)
+        Canvas { context, size in
+            // color the background white
+            let entire = Path(CGRect(origin: .zero, size: size))
+            context.fill(entire, with: .color(.white))
 
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
+            // figure out how big each rect needs to be
+            let rowSize = size.height / CGFloat(rows)
+            let colSize = size.width / CGFloat(cols)
 
-        // figure out how big each row/column needs to be
-        let rowSize = rect.height / CGFloat(rows)
-        let columnSize = rect.width / CGFloat(columns)
+            // loop over all rows and columns, making alternating squares colored
+            for row in 0 ..< rows {
+                for col in 0 ..< cols {
+                    // only add square where it should be colored
+                    if (row + col).isMultiple(of: 2) {
+                        let startX = colSize * CGFloat(col)
+                        let startY = rowSize * CGFloat(row)
 
-        // loop over all rows and columns, making alternating squares colored
-        for row in 0 ..< rows {
-            for column in 0 ..< columns {
-                // only add square where it should be colored
-                if (row + column).isMultiple(of: 2) {
-                    let startX = columnSize * CGFloat(column)
-                    let startY = rowSize * CGFloat(row)
-
-                    let rect = CGRect(x: startX, y: startY, width: columnSize, height: rowSize)
-                    path.addRect(rect)
+                        let rect = Path(CGRect(x: startX, y: startY, width: colSize, height: rowSize))
+                        context.fill(rect, with: .color(color))
+                    }
                 }
             }
         }
-
-        return path
     }
 }

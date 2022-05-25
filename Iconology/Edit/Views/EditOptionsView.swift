@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct EditOptionsView: View {
-    @ObservedObject var mods: ImageModifications
+    @ObservedObject var mods: ImageModifier
     var aspect: CGSize
     var enabled: EnabledModifications
 
@@ -21,6 +21,7 @@ struct EditOptionsView: View {
             
                 if enabled.background {
                     BackgroundEditor(background: $mods.background)
+                        .equatable()
                 }
                 
                 if enabled.scale {
@@ -29,11 +30,12 @@ struct EditOptionsView: View {
                             .font(.title2)
                             .padding(.top)
                         SliderAndText(name: "Scale", value: $mods.scale, range: 10...200, defaultVal: 100, unit: "%")
+                            .equatable()
                     }
                 }
                 
                 if enabled.shift {
-                    ShiftEditor(shift: $mods.shift, aspect: aspect)
+                    ShiftEditor(shift: $mods.shift, aspect: aspect).equatable()
                 }
 
                 if enabled.round {
@@ -50,6 +52,7 @@ struct EditOptionsView: View {
                                 .tag(RoundingStyle.squircle)
                         }
                         SliderAndText(name: "Rounding", value: $mods.rounding.percent, range: 0...100, defaultVal: 0, unit: "%")
+                            .equatable()
                         Text("45% and Continuous for macOS 11+ Icons")
                     }
                 }
@@ -60,6 +63,7 @@ struct EditOptionsView: View {
                             .font(.title2)
                             .padding(.top)
                         SliderAndText(name: "Padding", value: $mods.padding, range: 0...75, defaultVal: 0, unit: "%")
+                            .equatable()
                         Text("19.5% for macOS 11+ Icons")
                     }
                 }
@@ -72,10 +76,12 @@ struct EditOptionsView: View {
                         Text("Opacity")
                             .font(.title3)
                         SliderAndText(name: "Opacity", value: $mods.shadow.opacity, range: 0...100, defaultVal: 0, unit: "%")
+                            .equatable()
                         Text("30% for macOS 11+ Icons")
                         Text("Blur")
                             .font(.title3)
                         SliderAndText(name: "Blur", value: $mods.shadow.blur, range: 0...100, defaultVal: 0, unit: "%")
+                            .equatable()
                         Text("24% for macOS 11+ Icons")
                     }
                 }
@@ -119,6 +125,12 @@ struct BackgroundEditor: View {
     }
 }
 
+extension BackgroundEditor: Equatable {
+    static func == (lhs: BackgroundEditor, rhs: BackgroundEditor) -> Bool {
+        lhs.background == rhs.background // TODO: this might cause issues with the custom hashable for background
+    }
+}
+
 struct ShiftEditor: View {
     @Binding var shift: CGPoint
     var aspect: CGSize
@@ -149,10 +161,17 @@ struct ShiftEditor: View {
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                     }
+                    .dontRedraw()
                 }
                 
             }
         }
+    }
+}
+
+extension ShiftEditor: Equatable {
+    static func == (lhs: ShiftEditor, rhs: ShiftEditor) -> Bool {
+        lhs.shift == rhs.shift
     }
 }
 
@@ -169,7 +188,9 @@ struct SliderAndText: View {
                 value = defaultVal
             } label: {
                 Image(systemName: "arrow.counterclockwise")
-            }.accessibility(label: Text("Reset"))
+            }
+            .accessibility(label: Text("Reset"))
+            .dontRedraw()
             
             Slider(value: $value, in: range)
             
@@ -181,26 +202,16 @@ struct SliderAndText: View {
     }
 }
 
-extension Formatter {
-    static let floatFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.hasThousandSeparators = false
-        return formatter
-    }()
-    
-    static let intFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .none
-        formatter.hasThousandSeparators = false
-        return formatter
-    }()
+extension SliderAndText: Equatable {
+    static func == (lhs: SliderAndText, rhs: SliderAndText) -> Bool {
+        lhs.value == rhs.value
+    }
 }
 
 struct EditOptions_Previews: PreviewProvider {
-    @StateObject static var mods = ImageModifications()
+    @StateObject static var mods = ImageModifier()
     @State static var enabled = EnabledModifications.all()
-    
+
     static var previews: some View {
         EditOptionsView(mods: mods, aspect: .init(width: 1, height: 1), enabled: enabled)
             .padding()

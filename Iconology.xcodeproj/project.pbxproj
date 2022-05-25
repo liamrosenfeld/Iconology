@@ -10,6 +10,8 @@
 		0C03016726941121001A6D77 /* CustomPresetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03016626941120001A6D77 /* CustomPresetSelector.swift */; };
 		0C5C4BBF2826F96F00E7CF9E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0C5C4BBE2826F96F00E7CF9E /* Introspect */; };
 		0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */; };
+		0C7FE470283EB37B0020FFD2 /* Formatter+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */; };
+		0C7FE472283EB39B0020FFD2 /* View+NoRedraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */; };
 		0C90447F26839029005060DF /* CG+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90447E26839029005060DF /* CG+Operators.swift */; };
 		0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* CGPath+Rounding.swift */; };
 		0C950128268D00ED00A7C257 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C950127268D00ED00A7C257 /* Background.swift */; };
@@ -26,7 +28,6 @@
 		0CC845A2266EDF100070AC87 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A1266EDF100070AC87 /* DragView.swift */; };
 		0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A9266EE0A80070AC87 /* DropDelegate.swift */; };
 		0CC845AC266EE0E10070AC87 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AB266EE0E10070AC87 /* EditView.swift */; };
-		0CC845AE266F2DA70070AC87 /* ImageModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AD266F2DA70070AC87 /* ImageModifications.swift */; };
 		0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */; };
 		0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */; };
 		0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */; };
@@ -51,6 +52,8 @@
 		0C03016626941120001A6D77 /* CustomPresetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresetSelector.swift; sourceTree = "<group>"; };
 		0C29BC9726732D7D00F3E61F /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
 		0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Math.swift"; sourceTree = "<group>"; };
+		0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Static.swift"; sourceTree = "<group>"; };
+		0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NoRedraw.swift"; sourceTree = "<group>"; };
 		0C8C4ECB2697A1D300E21145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0C90447E26839029005060DF /* CG+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CG+Operators.swift"; sourceTree = "<group>"; };
 		0C904480268396EA005060DF /* CGPath+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Rounding.swift"; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		0CC845A1266EDF100070AC87 /* DragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		0CC845A9266EE0A80070AC87 /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
 		0CC845AB266EE0E10070AC87 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
-		0CC845AD266F2DA70070AC87 /* ImageModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifications.swift; sourceTree = "<group>"; };
 		0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Util.swift"; sourceTree = "<group>"; };
 		0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Edit.swift"; sourceTree = "<group>"; };
@@ -102,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7FE46E283EB3510020FFD2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */,
+				0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		0CC6811D269182BB006746F2 /* Saving */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +147,7 @@
 				0CC845A8266EE0770070AC87 /* Edit */,
 				0CE0860626924B4E0055D191 /* CustomPresets */,
 				0CFFD9E426713D5A007FB3FB /* Presets */,
+				0C7FE46E283EB3510020FFD2 /* Util */,
 				0CC84597266EDADB0070AC87 /* Assets.xcassets */,
 				0C29BC9726732D7D00F3E61F /* Iconology.entitlements */,
 				0C8C4ECB2697A1D300E21145 /* Info.plist */,
@@ -176,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */,
-				0CC845AD266F2DA70070AC87 /* ImageModifications.swift */,
 				0C950127268D00ED00A7C257 /* Background.swift */,
 			);
 			path = Modifications;
@@ -331,6 +342,7 @@
 			files = (
 				0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */,
 				0CE08624269381610055D191 /* CustomPresetsStore.swift in Sources */,
+				0C7FE472283EB39B0020FFD2 /* View+NoRedraw.swift in Sources */,
 				0CFFD9E32670847D007FB3FB /* EditOptionsView.swift in Sources */,
 				0CFC532A267279CA00ACCC22 /* IcnsGenerator.swift in Sources */,
 				0C90447F26839029005060DF /* CG+Operators.swift in Sources */,
@@ -343,6 +355,7 @@
 				0CC6811A26918161006746F2 /* SavePanel.swift in Sources */,
 				0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */,
 				0CFC532D26727E1C00ACCC22 /* ImageSelection.swift in Sources */,
+				0C7FE470283EB37B0020FFD2 /* Formatter+Static.swift in Sources */,
 				0C950128268D00ED00A7C257 /* Background.swift in Sources */,
 				0CE08628269381C10055D191 /* CustomPresetEditor.swift in Sources */,
 				0CC84596266EDADA0070AC87 /* MainView.swift in Sources */,
@@ -359,7 +372,6 @@
 				0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */,
 				0CC6811C2691820E006746F2 /* ImgSetGenerator.swift in Sources */,
 				0CC6811F269182CF006746F2 /* PresetType.swift in Sources */,
-				0CC845AE266F2DA70070AC87 /* ImageModifications.swift in Sources */,
 				0CE08626269381AA0055D191 /* Array+Identifiable.swift in Sources */,
 				0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */,
 				0CC845A2266EDF100070AC87 /* DragView.swift in Sources */,
