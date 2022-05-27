@@ -12,10 +12,11 @@
 		0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */; };
 		0C7FE470283EB37B0020FFD2 /* Formatter+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */; };
 		0C7FE472283EB39B0020FFD2 /* View+NoRedraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */; };
+		0C7FE474283EBBEC0020FFD2 /* ImageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE473283EBBEC0020FFD2 /* ImageEditor.swift */; };
 		0C90447F26839029005060DF /* CG+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90447E26839029005060DF /* CG+Operators.swift */; };
-		0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* CGPath+Rounding.swift */; };
+		0C904481268396EA005060DF /* Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C904480268396EA005060DF /* Rounding.swift */; };
 		0C950128268D00ED00A7C257 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C950127268D00ED00A7C257 /* Background.swift */; };
-		0C98601626899A27002D09D8 /* CGPath+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98601526899A27002D09D8 /* CGPath+Shadow.swift */; };
+		0C98601626899A27002D09D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98601526899A27002D09D8 /* Shadow.swift */; };
 		0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */; };
 		0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CABB91426732C3800701959 /* PresetPickerView.swift */; };
 		0CC6811A26918161006746F2 /* SavePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811926918161006746F2 /* SavePanel.swift */; };
@@ -54,11 +55,12 @@
 		0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Math.swift"; sourceTree = "<group>"; };
 		0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Static.swift"; sourceTree = "<group>"; };
 		0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NoRedraw.swift"; sourceTree = "<group>"; };
+		0C7FE473283EBBEC0020FFD2 /* ImageEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditor.swift; sourceTree = "<group>"; };
 		0C8C4ECB2697A1D300E21145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0C90447E26839029005060DF /* CG+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CG+Operators.swift"; sourceTree = "<group>"; };
-		0C904480268396EA005060DF /* CGPath+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Rounding.swift"; sourceTree = "<group>"; };
+		0C904480268396EA005060DF /* Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rounding.swift; sourceTree = "<group>"; };
 		0C950127268D00ED00A7C257 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		0C98601526899A27002D09D8 /* CGPath+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Shadow.swift"; sourceTree = "<group>"; };
+		0C98601526899A27002D09D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeAssetGenerator.swift; sourceTree = "<group>"; };
 		0CABB91426732C3800701959 /* PresetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPickerView.swift; sourceTree = "<group>"; };
 		0CC6811926918161006746F2 /* SavePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePanel.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */,
+				0C7FE473283EBBEC0020FFD2 /* ImageEditor.swift */,
 				0C950127268D00ED00A7C257 /* Background.swift */,
 			);
 			path = Modifications;
@@ -197,8 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */,
-				0C904480268396EA005060DF /* CGPath+Rounding.swift */,
-				0C98601526899A27002D09D8 /* CGPath+Shadow.swift */,
+				0C904480268396EA005060DF /* Rounding.swift */,
+				0C98601526899A27002D09D8 /* Shadow.swift */,
 				0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */,
 				0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */,
 				0C90447E26839029005060DF /* CG+Operators.swift */,
@@ -364,8 +367,8 @@
 				0CFFD9E126708458007FB3FB /* ImagePreviewView.swift in Sources */,
 				0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */,
 				0CFFDA0826713FF5007FB3FB /* TwoDimensionSlider.swift in Sources */,
-				0C98601626899A27002D09D8 /* CGPath+Shadow.swift in Sources */,
-				0C904481268396EA005060DF /* CGPath+Rounding.swift in Sources */,
+				0C98601626899A27002D09D8 /* Shadow.swift in Sources */,
+				0C904481268396EA005060DF /* Rounding.swift in Sources */,
 				0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */,
 				0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */,
 				0CC845AC266EE0E10070AC87 /* EditView.swift in Sources */,
@@ -375,6 +378,7 @@
 				0CE08626269381AA0055D191 /* Array+Identifiable.swift in Sources */,
 				0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */,
 				0CC845A2266EDF100070AC87 /* DragView.swift in Sources */,
+				0C7FE474283EBBEC0020FFD2 /* ImageEditor.swift in Sources */,
 				0CE0860826924BC80055D191 /* CustomPresetsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

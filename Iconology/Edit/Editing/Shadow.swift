@@ -8,8 +8,8 @@
 
 import CoreGraphics
 
-extension CGPath {
-    func makeShadow(frame: CGSize, attributes: ShadowAttributes) -> CGImage {
+extension CGImage {
+    static func makeShadow(path: CGPath, frame: CGSize, attributes: ShadowAttributes) -> CGImage {
         let context = CGContext(
             data: nil,
             width: Int(frame.width),
@@ -24,7 +24,7 @@ extension CGPath {
         // allows it to not add a background to background-less images
         let boundingRect = context.boundingBoxOfClipPath
         context.addRect(boundingRect)
-        context.addPath(self)
+        context.addPath(path)
         context.clip(using: .evenOdd)
         
         // get shadow attributes
@@ -33,7 +33,7 @@ extension CGPath {
         let adjustedBlur = (frame.height / 1000) * attributes.blur // make blur consistent between different sizes
         
         // draw shadow
-        context.addPath(self)
+        context.addPath(path)
         context.setShadow(offset: offset, blur: adjustedBlur, color: shadowColor)
         context.setBlendMode(.normal)
         context.fillPath()
