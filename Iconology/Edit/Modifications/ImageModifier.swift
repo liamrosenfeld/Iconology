@@ -18,12 +18,13 @@ class ImageModifier: ObservableObject {
     @Published var rounding: Rounding
     @Published var padding: CGFloat
     @Published var shadow: ShadowAttributes
+    @Published var colorSpace: CGColorSpace
     
     private var subscribers = Set<AnyCancellable>()
     private var editor: ImageEditor!
      
     // MARK: - In and Out
-    public var origImage: CGImage? { didSet { editor.fullChain(size: size, padding: padding, quality: .high) } }
+    @Published var origImage: CGImage?
     @Published var finalImage: CGImage?
 
     // MARK: - Init
@@ -35,6 +36,7 @@ class ImageModifier: ObservableObject {
         rounding = (0, .circular)
         padding = 0
         shadow = (0, 0)
+        colorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
         editor = ImageEditor(self)
     }
     
@@ -43,7 +45,7 @@ class ImageModifier: ObservableObject {
         
         origImage = image
         if image.size != .zero {
-            editor.fullChain(size: size, padding: padding, quality: .high)
+            editor.newImage(image)
         }
     }
 
@@ -53,6 +55,9 @@ class ImageModifier: ObservableObject {
         let paddingPub = $padding.share()
         
         // reacting to immediate changes
+        $origImage
+            .sink(receiveValue: editor.newImage)
+            .store(in: &subscribers)
         $size
             .sink(receiveValue: editor.newSize)
             .store(in: &subscribers)
@@ -73,6 +78,9 @@ class ImageModifier: ObservableObject {
             .store(in: &subscribers)
         $shadow
             .sink(receiveValue: editor.newShadow)
+            .store(in: &subscribers)
+        $colorSpace
+            .sink(receiveValue: editor.newColorSpace)
             .store(in: &subscribers)
 
         // react to finished selecting

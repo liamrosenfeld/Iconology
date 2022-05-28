@@ -17,6 +17,8 @@ class ImageEditor {
     }
     
     // MARK: - Intermediate Storage
+    private var origImage: CGImage!
+    
     private var innerSize: CGSize = .zero
     
     private var imageOrigin: CGPoint = .zero
@@ -27,6 +29,18 @@ class ImageEditor {
     private var shadowImage: CGImage?
     
     // MARK: - Modification Change Reactions
+    func newImage(_ image: CGImage?) {
+        guard let new = image?.copy(colorSpace: mods.colorSpace) else { return }
+        origImage = new
+        fullChain(size: mods.size, padding: mods.padding, quality: .high)
+    }
+    
+    func newColorSpace(_ colorSpace: CGColorSpace) {
+        guard let new = mods.origImage?.copy(colorSpace: colorSpace) else { return }
+        origImage = new
+        fullChain(size: mods.size, padding: mods.padding, quality: .high)
+    }
+    
     func fullChain(size: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
         findPadding(size: size, padding: padding)
         scaleInnerImage(mods.scale, padding: padding, quality: quality)
@@ -103,7 +117,7 @@ class ImageEditor {
     
     private func scaleInnerImage(_ scale: CGFloat, padding: CGFloat, quality: CGInterpolationQuality) {
         let adjustedScale = scale * (1 - (padding / 100))
-        scaledImage = mods.origImage!.scaled(by: adjustedScale, quality: quality)
+        scaledImage = origImage.scaled(by: adjustedScale, quality: quality)
     }
     
     private func findImageOrigin(shiftPercent: CGPoint, padding: CGFloat) {
@@ -168,7 +182,7 @@ class ImageEditor {
             shadowImage = nil
             return
         }
-        shadowImage = CGImage.makeShadow(path: maskPath, frame: mods.size, attributes: attributes)
+        shadowImage = CGImage.makeShadow(path: maskPath, frame: mods.size, attributes: attributes, colorSpace: mods.colorSpace)
     }
     
     private func overlay() {

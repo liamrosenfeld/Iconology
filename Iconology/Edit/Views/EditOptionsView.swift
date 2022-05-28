@@ -85,6 +85,8 @@ struct EditOptionsView: View {
                         Text("24% for macOS 11+ Icons")
                     }
                 }
+            
+            ColorSpaceEditor(colorSpace: $mods.colorSpace)
             }
     }
 }
@@ -207,6 +209,27 @@ extension SliderAndText: Equatable {
         lhs.value == rhs.value
     }
 }
+
+struct ColorSpaceEditor: View {
+    @Binding var colorSpace: CGColorSpace
+    
+    var body: some View {
+        Group {
+            Text("Color Space")
+                .font(.title2)
+            
+            Picker("Background Type", selection: $colorSpace) {
+                Text("sRGB")
+                    .tag(CGColorSpace(name: CGColorSpace.sRGB)!)
+                Text("Display P3")
+                    .tag(CGColorSpace(name: CGColorSpace.displayP3)!)
+                Text("Adobe RGB")
+                    .tag(CGColorSpace(name: CGColorSpace.adobeRGB1998)!)
+            }.labelsHidden()
+        }
+    }
+}
+
 
 struct EditOptions_Previews: PreviewProvider {
     @StateObject static var mods = ImageModifier()

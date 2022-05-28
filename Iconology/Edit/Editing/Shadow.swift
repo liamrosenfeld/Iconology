@@ -9,16 +9,8 @@
 import CoreGraphics
 
 extension CGImage {
-    static func makeShadow(path: CGPath, frame: CGSize, attributes: ShadowAttributes) -> CGImage {
-        let context = CGContext(
-            data: nil,
-            width: Int(frame.width),
-            height: Int(frame.height),
-            bitsPerComponent: 8,
-            bytesPerRow: 0,
-            space: CGColorSpaceCreateDeviceRGB(),
-            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
-        )!
+    static func makeShadow(path: CGPath, frame: CGSize, attributes: ShadowAttributes, colorSpace: CGColorSpace) -> CGImage {
+        let context = CGImage.makeContext(size: frame, colorSpace: colorSpace)
         
         // gets rid of the inside
         // allows it to not add a background to background-less images

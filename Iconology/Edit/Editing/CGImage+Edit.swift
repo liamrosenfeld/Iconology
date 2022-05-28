@@ -13,7 +13,7 @@ extension CGImage {
     func resized(to destSize: CGSize, quality: CGInterpolationQuality) -> CGImage {
         if self.size == destSize { return self }
         
-        let context = makeContext(size: destSize)
+        let context = CGImage.makeContext(size: destSize, colorSpace: self.colorSpace!)
         context.interpolationQuality = quality
         context.draw(self, in: CGRect(origin: .zero, size: destSize))
         
@@ -33,7 +33,7 @@ extension CGImage {
     }
     
     func placedInFrame(frame: CGSize, imageOrigin: CGPoint, background: Background, mask: CGPath?) -> CGImage {
-        let context = makeContext(size: frame)
+        let context = CGImage.makeContext(size: frame, colorSpace: self.colorSpace!)
         
         // add a mask to the context
         if let mask = mask {
@@ -61,7 +61,7 @@ extension CGImage {
     }
     
     func overlayed(_ topImage: CGImage) -> CGImage {
-        let context = makeContext(size: self.size)
+        let context = CGImage.makeContext(size: self.size, colorSpace: self.colorSpace!)
         let imageRect = CGRect(origin: .zero, size: self.size)
         context.draw(self, in: imageRect)
         context.draw(topImage, in: imageRect)

@@ -20,14 +20,14 @@ extension CGImage {
         CGSize(width: width, height: height)
     }
     
-    @inline(__always) func makeContext(size: CGSize) -> CGContext {
+    @inline(__always) static func makeContext(size: CGSize, colorSpace: CGColorSpace) -> CGContext {
         return CGContext(
             data: nil,
             width: Int(size.width),
             height: Int(size.height),
-            bitsPerComponent: self.bitsPerComponent,
+            bitsPerComponent: 8,
             bytesPerRow: 0,
-            space: self.colorSpace!,
+            space: colorSpace,
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
         )!
     }

@@ -18,7 +18,9 @@ struct EditView: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .bottom) {
-                ImagePreviewView(image: modifier.finalImage!, aspect: aspect)
+                if let image = modifier.finalImage {
+                    ImagePreviewView(image: image, aspect: aspect)
+                }
                 Button {
                     editShown = true
                 } label: {
