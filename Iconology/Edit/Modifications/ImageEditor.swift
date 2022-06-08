@@ -29,19 +29,19 @@ class ImageEditor {
     private var shadowImage: CGImage?
     
     // MARK: - Modification Change Reactions
-    func newImage(_ image: CGImage?) {
-        guard let new = image?.copy(colorSpace: mods.colorSpace) else { return }
+    func newImage(_ image: CGImage?) -> CGImage? {
+        guard let new = image?.copy(colorSpace: mods.colorSpace) else { return nil }
         origImage = new
-        fullChain(size: mods.size, padding: mods.padding, quality: .high)
+        return fullChain(size: mods.size, padding: mods.padding, quality: .high)
     }
     
-    func newColorSpace(_ colorSpace: CGColorSpace) {
-        guard let new = mods.origImage?.copy(colorSpace: colorSpace) else { return }
+    func newColorSpace(_ colorSpace: CGColorSpace) -> CGImage? {
+        guard let new = mods.origImage?.copy(colorSpace: colorSpace) else { return nil }
         origImage = new
-        fullChain(size: mods.size, padding: mods.padding, quality: .high)
+        return fullChain(size: mods.size, padding: mods.padding, quality: .high)
     }
     
-    func fullChain(size: CGSize, padding: CGFloat, quality: CGInterpolationQuality) {
+    func fullChain(size: CGSize, padding: CGFloat, quality: CGInterpolationQuality) -> CGImage {
         findPadding(size: size, padding: padding)
         scaleInnerImage(mods.scale, padding: padding, quality: quality)
         findImageOrigin(shiftPercent: mods.shift, padding: padding)
@@ -49,61 +49,61 @@ class ImageEditor {
         // TODO: async PIF and shadow
         placeInFrame(background: mods.background)
         makeShadow(attributes: mods.shadow)
-        overlay()
+        return overlay()
     }
     
-    func newSize(_ size: CGSize) {
-        fullChain(size: size, padding: mods.padding, quality: .low)
+    func newSize(_ size: CGSize) -> CGImage {
+        return fullChain(size: size, padding: mods.padding, quality: .low)
     }
     
-    func newPadding(_ padding: CGFloat) {
-        fullChain(size: mods.size, padding: padding, quality: .low)
+    func newPadding(_ padding: CGFloat) -> CGImage {
+        return fullChain(size: mods.size, padding: padding, quality: .low)
     }
     
-    func newScale(scale: CGFloat) {
+    func newScale(scale: CGFloat) -> CGImage {
         scaleInnerImage(scale, padding: mods.padding, quality: .high)
         findImageOrigin(shiftPercent: mods.shift, padding: mods.padding)
         placeInFrame(background: mods.background)
-        overlay()
+        return overlay()
     }
     
-    func newShift(_ shift: CGPoint) {
-        findImageOrigin(shiftPercent: shift, padding: mods.padding)
+    func newShift(_ shift: CGPoint) -> CGImage {
+        findImageOrigin(shiftPercent: shift, padding: mods.padding) // could move this into the inside of place in frame
         placeInFrame(background: mods.background)
-        overlay()
+        return overlay()
     }
     
-    func newBackground(_ background: Background) {
+    func newBackground(_ background: Background) -> CGImage {
         placeInFrame(background: background)
-        overlay()
+        return overlay()
     }
     
-    func newRounding(rounding: Rounding) {
+    func newRounding(rounding: Rounding) -> CGImage {
         findMaskPath(rounding: rounding, padding: mods.padding)
         // TODO: async PIF and shadow
         placeInFrame(background: mods.background)
         makeShadow(attributes: mods.shadow)
-        overlay()
+        return overlay()
     }
     
-    func newShadow(attributes: ShadowAttributes) {
+    func newShadow(attributes: ShadowAttributes) -> CGImage {
         makeShadow(attributes: attributes)
-        overlay()
+        return overlay()
     }
     
     // MARK: - Modification Selection Finish
-    func finishedPadding(_ padding: CGFloat) {
+    func finishedPadding(_ padding: CGFloat) -> CGImage {
         // reapply with high interpolation quality
         scaleInnerImage(mods.scale, padding: padding, quality: .high)
         placeInFrame(background: mods.background)
-        overlay()
+        return overlay()
     }
     
-    func finishedScaling(scale: CGFloat) {
+    func finishedScaling(scale: CGFloat) -> CGImage {
         // reapply with high interpolation quality
         scaleInnerImage(scale, padding: mods.padding, quality: .high)
         placeInFrame(background: mods.background)
-        overlay()
+        return overlay()
     }
     
     // MARK: - Image Editing
@@ -185,11 +185,11 @@ class ImageEditor {
         shadowImage = CGImage.makeShadow(path: maskPath, frame: mods.size, attributes: attributes, colorSpace: mods.colorSpace)
     }
     
-    private func overlay() {
+    private func overlay() -> CGImage {
         if let shadowImage = self.shadowImage {
-            mods.finalImage = shadowImage.overlayed(self.placedImage)
+            return shadowImage.overlayed(self.placedImage)
         } else {
-            mods.finalImage = self.placedImage
+            return self.placedImage
         }
     }
 }

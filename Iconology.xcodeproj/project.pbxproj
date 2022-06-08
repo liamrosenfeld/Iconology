@@ -19,6 +19,7 @@
 		0C98601626899A27002D09D8 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C98601526899A27002D09D8 /* Shadow.swift */; };
 		0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */; };
 		0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CABB91426732C3800701959 /* PresetPickerView.swift */; };
+		0CBADF24284EF3C70020015A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AB266EE0E10070AC87 /* EditView.swift */; };
 		0CC6811A26918161006746F2 /* SavePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811926918161006746F2 /* SavePanel.swift */; };
 		0CC6811C2691820E006746F2 /* ImgSetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811B2691820E006746F2 /* ImgSetGenerator.swift */; };
 		0CC6811F269182CF006746F2 /* PresetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811E269182CF006746F2 /* PresetType.swift */; };
@@ -28,7 +29,6 @@
 		0CC8459B266EDADB0070AC87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8459A266EDADB0070AC87 /* Preview Assets.xcassets */; };
 		0CC845A2266EDF100070AC87 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A1266EDF100070AC87 /* DragView.swift */; };
 		0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A9266EE0A80070AC87 /* DropDelegate.swift */; };
-		0CC845AC266EE0E10070AC87 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AB266EE0E10070AC87 /* EditView.swift */; };
 		0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */; };
 		0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */; };
 		0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */; };
@@ -297,7 +297,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Liam Rosenfeld";
 				TargetAttributes = {
 					0CC8458F266EDADA0070AC87 = {
@@ -368,10 +368,10 @@
 				0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */,
 				0CFFDA0826713FF5007FB3FB /* TwoDimensionSlider.swift in Sources */,
 				0C98601626899A27002D09D8 /* Shadow.swift in Sources */,
+				0CBADF24284EF3C70020015A /* EditView.swift in Sources */,
 				0C904481268396EA005060DF /* Rounding.swift in Sources */,
 				0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */,
 				0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */,
-				0CC845AC266EE0E10070AC87 /* EditView.swift in Sources */,
 				0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */,
 				0CC6811C2691820E006746F2 /* ImgSetGenerator.swift in Sources */,
 				0CC6811F269182CF006746F2 /* PresetType.swift in Sources */,
@@ -420,6 +420,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -481,6 +482,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -511,6 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Iconology/Preview Content\"";
 				DEVELOPMENT_TEAM = 28V7PPHDHC;
 				ENABLE_APP_SANDBOX = YES;
@@ -547,6 +550,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Iconology/Preview Content\"";
 				DEVELOPMENT_TEAM = 28V7PPHDHC;
 				ENABLE_APP_SANDBOX = YES;

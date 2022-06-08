@@ -20,12 +20,11 @@ class ImageModifier: ObservableObject {
     @Published var shadow: ShadowAttributes
     @Published var colorSpace: CGColorSpace
     
-    private var subscribers = Set<AnyCancellable>()
     private var editor: ImageEditor!
      
     // MARK: - In and Out
     @Published var origImage: CGImage?
-    @Published var finalImage: CGImage?
+    @Published private(set) var finalImage: CGImage?
 
     // MARK: - Init
     init() {
@@ -45,7 +44,7 @@ class ImageModifier: ObservableObject {
         
         origImage = image
         if image.size != .zero {
-            editor.newImage(image)
+            finalImage = editor.newImage(image)
         }
     }
 
@@ -56,43 +55,47 @@ class ImageModifier: ObservableObject {
         
         // reacting to immediate changes
         $origImage
-            .sink(receiveValue: editor.newImage)
-            .store(in: &subscribers)
+            .map(editor.newImage)
+            .assign(to: &$finalImage)
         $size
-            .sink(receiveValue: editor.newSize)
-            .store(in: &subscribers)
-        scalePub
-            .sink(receiveValue: editor.newScale)
-            .store(in: &subscribers)
-        $shift
-            .sink(receiveValue: editor.newShift)
-            .store(in: &subscribers)
-        $background
-            .sink(receiveValue: editor.newBackground)
-            .store(in: &subscribers)
-        $rounding
-            .sink(receiveValue: editor.newRounding)
-            .store(in: &subscribers)
-        paddingPub
-            .sink(receiveValue: editor.newPadding)
-            .store(in: &subscribers)
-        $shadow
-            .sink(receiveValue: editor.newShadow)
-            .store(in: &subscribers)
+            .map(editor.newSize)
+            .assign(to: &$finalImage)
         $colorSpace
-            .sink(receiveValue: editor.newColorSpace)
-            .store(in: &subscribers)
-
-        // react to finished selecting
-        let debounceTime: RunLoop.SchedulerTimeType.Stride = .seconds(0.2)
+            .map(editor.newColorSpace)
+            .assign(to: &$finalImage)
+        
+        // throttled changes
         scalePub
-            .debounce(for: debounceTime, scheduler: RunLoop.main, options: nil)
-            .sink(receiveValue: editor.finishedScaling)
-            .store(in: &subscribers)
+            .map(editor.newScale)
+            .assign(to: &$finalImage)
+        $shift
+            .map(editor.newShift)
+            .assign(to: &$finalImage)
+        $background
+            .map(editor.newBackground)
+            .assign(to: &$finalImage)
+        $rounding
+            .map(editor.newRounding)
+            .assign(to: &$finalImage)
         paddingPub
-            .debounce(for: debounceTime, scheduler: RunLoop.main, options: nil)
-            .sink(receiveValue: editor.finishedPadding)
-            .store(in: &subscribers)
+            .map(editor.newPadding)
+            .assign(to: &$finalImage)
+        $shadow
+            .map(editor.newShadow)
+            .assign(to: &$finalImage)
+        
+        // react to finished selecting
+        let subs = DispatchQueue(label: "Sub", qos: .default)
+        scalePub
+            .debounce(for: .seconds(0.2), scheduler: subs, options: nil)
+            .map(editor.finishedScaling)
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$finalImage)
+        paddingPub
+            .debounce(for: .seconds(0.2), scheduler: subs, options: nil)
+            .map(editor.finishedPadding)
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$finalImage)
     }
 }
 

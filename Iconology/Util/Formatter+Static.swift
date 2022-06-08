@@ -13,6 +13,7 @@ extension Formatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.hasThousandSeparators = false
+        formatter.maximumFractionDigits = 3
         return formatter
     }()
     

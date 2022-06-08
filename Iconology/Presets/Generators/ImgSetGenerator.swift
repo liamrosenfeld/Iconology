@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 enum ImgSetGenerator {
     static func savePngs(_ image: CGImage, at url: URL, with prefix: String, in sizes: [ImgSetSize]) {
