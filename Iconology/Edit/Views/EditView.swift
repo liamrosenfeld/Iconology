@@ -17,6 +17,8 @@ struct EditView: View {
 
     var body: some View {
         VStack(alignment: .center) {
+            Spacer()
+            
             HStack(alignment: .bottom) {
                 if let image = modifier.finalImage {
                     ImagePreviewView(image: image, aspect: aspect)
@@ -34,11 +36,12 @@ struct EditView: View {
                         .padding()
                 }
             }
+            
+            Spacer()
 
             PresetPickerView(preset: $preset, size: $modifier.size, aspect: $aspect)
                 .equatable()
-
-            Spacer()
+                .padding(.bottom, 10)
             
             HStack {
                 Button("New Image", action: selectImage)

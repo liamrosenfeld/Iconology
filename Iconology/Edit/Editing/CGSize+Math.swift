@@ -9,34 +9,45 @@
 import CoreGraphics
 
 extension CGSize {
-    /// get the points where a line that is an angle offset a vertical line intersects the bounding rectangle
+    /// Finds the points where a line (offset clockwise from a vertical line) intersects the bounding rectangle.
+    /// Range: [0, 360]
     func intersections(ofAngleOffVertical angle: CGFloat) -> (top: CGPoint, bottom: CGPoint) {
-        let absAngle = abs(angle)
-        if absAngle < 45 {
+        if angle < 45 || (angle >= 315 && angle <= 360) {
+            // lands on the top
             let angleRadians = angle * (.pi / 180)
             let tangent = tan(angleRadians)
             return (
                 CGPoint(x: (width / 2) * (1 + tangent), y: height),
                 CGPoint(x: (width / 2) * (1 - tangent), y: 0)
             )
-        } else if absAngle > 45 {
-            let complimentAngleRads = (90 - absAngle) * (.pi / 180)
+        } else if angle < 135 {
+            // lands on the right
+            let complimentAngleRads = (90 - angle) * (.pi / 180)
             let tangent = tan(complimentAngleRads)
             return (
-                CGPoint(
-                    x: angle > 0 ? width : 0,
-                    y: (height / 2) * (1 + tangent)
-                ),
-                CGPoint(
-                    x: angle < 0 ? width : 0,
-                    y: (height / 2) * (1 - tangent)
-                )
+                CGPoint(x: width, y: (height / 2) * (1 + tangent)),
+                CGPoint(x: 0, y: (height / 2) * (1 - tangent))
             )
-        } else {
+        } else if angle < 225 {
+            // lands on the bottom
+            let angleRadians = angle * (.pi / 180)
+            let tangent = tan(angleRadians)
             return (
-                CGPoint(x: angle > 0 ? width : 0, y: height),
-                CGPoint(x: angle < 0 ? width : 0, y: 0)
+                CGPoint(x: (width / 2) * (1 - tangent), y: 0),
+                CGPoint(x: (width / 2) * (1 + tangent), y: height)
             )
+        } else if angle < 315 {
+            // lands on the left
+            let complimentAngleRads = (270 - angle) * (.pi / 180)
+            let tangent = tan(complimentAngleRads)
+            return (
+                CGPoint(x: 0, y: (height / 2) * (1 - tangent)),
+                CGPoint(x: width, y: (height / 2) * (1 + tangent))
+            )
+        }
+        else {
+            // out of range
+            preconditionFailure("angle out of range")
         }
     }
     

@@ -22,7 +22,7 @@ struct PresetPickerView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            HStack {
+            VStack {
                 Picker("Export As", selection: $preset) {
                     ForEach(presetGroups, id: \.name) { group in
                         Divider()
