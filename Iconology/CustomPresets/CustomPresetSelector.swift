@@ -42,6 +42,14 @@ struct CustomPresetSelector: View {
             actions: { Button("Ok", action: {})},
             message: { Text("Please make sure the imported file was created by Iconology") }
         )
+        .onReceive(
+            NotificationCenter.default.publisher(for: .menuPresetNew),
+            perform: { _ in addPreset()}
+        )
+        .onReceive(
+            NotificationCenter.default.publisher(for: .menuPresetImport),
+            perform: { _ in importPreset()}
+        )
     }
     
     func addPreset() {

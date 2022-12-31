@@ -14,15 +14,40 @@ struct Iconology: App {
     @StateObject private var customPresetStore = CustomPresetsStore()
     
     var body: some Scene {
-        WindowGroup {
+        Window("Iconology", id: WindowID.main) {
             MainView()
                 .environmentObject(customPresetStore)
+                .focusedSceneValue(\.focusedWindow, WindowID.main)
+        }.commands {
+            CustomMenuCommands()
         }
-        WindowGroup("Custom Presets Editor") {
+        
+        Window("Custom Presets Editor", id: WindowID.presetEditor) {
             CustomPresetsView()
                 .environmentObject(customPresetStore)
-                .handlesExternalEvents(preferring: ["custom-presets-editor"], allowing: ["custom-presets-editor"]) // activate existing window if exists
+                .focusedSceneValue(\.focusedWindow, WindowID.presetEditor)
         }
-        .handlesExternalEvents(matching: ["custom-presets-editor"]) // create new window if one doesn't exist
+        
+        Window("Settings", id: WindowID.settings) {
+            EmptyView()
+                .focusedSceneValue(\.focusedWindow, WindowID.settings)
+        }
+    }
+}
+
+enum WindowID {
+    static let main = "image-editor"
+    static let presetEditor = "custom-presets-editor"
+    static let settings = "settings"
+}
+
+struct FocusedWindow: FocusedValueKey {
+    typealias Value = String
+}
+
+extension FocusedValues {
+    var focusedWindow: FocusedWindow.Value? {
+        get { self[FocusedWindow.self] }
+        set { self[FocusedWindow.self] = newValue }
     }
 }

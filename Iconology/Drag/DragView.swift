@@ -49,6 +49,10 @@ struct DragView: View {
         }
         .padding(35)
         .onChange(of: imageUrl, perform: imageFromUrl)
+        .onReceive(
+            NotificationCenter.default.publisher(for: .menuImageOpen),
+            perform: { _ in selectImage() }
+        )
     }
 
     func selectImage() {

@@ -46,6 +46,14 @@ struct CustomPresetEditor: View {
             .onChange(of: presetSelection) { newValue in
                 presetIndex = store.presets.firstIndex { $0.id == newValue }
             }
+            .onReceive(
+                NotificationCenter.default.publisher(for: .menuPresetNewSize),
+                perform: { _ in addSize()}
+            )
+            .onReceive(
+                NotificationCenter.default.publisher(for: .menuPresetExport),
+                perform: { _ in exportPreset()}
+            )
     }
     
     var name: String {

@@ -18,14 +18,22 @@ struct CustomPresetsView: View {
                 .preventSidebarCollapse()
                 .frame(minWidth: 225)
             Group {
-                if store.presets.count == 0 {
-                    Text("Create a Preset to Edit")
-                        .navigationTitle("")
-                } else if let selection = selection {
+                if let selection = selection {
                     CustomPresetEditor(presetSelection: selection)
                 } else {
-                    Text("Select a Preset to Edit")
-                        .navigationTitle("")
+                    Text(store.presets.count == 0
+                         ? "Create a Preset to Edit"
+                         : "Select a Preset to Edit"
+                    )
+                    .navigationTitle("")
+                    .onAppear {
+                        // send notif to disable menu items
+                        NotificationCenter.default.post(Notification(name: .editPresetSelected, object: false))
+                    }
+                    .onDisappear {
+                        // send notif to enable menu items
+                        NotificationCenter.default.post(Notification(name: .editPresetSelected, object: true))
+                    }
                 }
             }.frame(minWidth: 300)
         }

@@ -54,7 +54,18 @@ struct EditView: View {
         .onAppear {
             modifier.observeChanges()
             sizeChanged(modifier.size)
+            
+            // enable menu bar buttons for image editing
+            NotificationCenter.default.post(Notification(name: .imageProvided))
         }
+        .onReceive(
+            NotificationCenter.default.publisher(for: .menuImageOpen),
+            perform: { _ in selectImage() }
+        )
+        .onReceive(
+            NotificationCenter.default.publisher(for: .menuImageExport),
+            perform: { _ in export() }
+        )
     }
     
     func sizeChanged(_ new: CGSize) {

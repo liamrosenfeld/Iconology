@@ -18,7 +18,7 @@ struct PresetPickerView: View {
     @State private var customSize = false
     
     @EnvironmentObject var store: CustomPresetsStore
-    @Environment(\.openURL) var openURL
+    @Environment(\.openWindow) var openWindow
 
     var body: some View {
         VStack(alignment: .center) {
@@ -91,8 +91,7 @@ struct PresetPickerView: View {
     }
 
     func openPresetEditor() {
-        // workaround to open a new window until that functionality gets added to swiftui
-        openURL(URL(string: "iconology://custom-presets-editor")!)
+        openWindow(id: WindowID.presetEditor)
     }
 }
 
