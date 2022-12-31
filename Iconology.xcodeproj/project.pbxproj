@@ -32,8 +32,8 @@
 		0CC84596266EDADA0070AC87 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84595266EDADA0070AC87 /* MainView.swift */; };
 		0CC84598266EDADB0070AC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC84597266EDADB0070AC87 /* Assets.xcassets */; };
 		0CC8459B266EDADB0070AC87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8459A266EDADB0070AC87 /* Preview Assets.xcassets */; };
-		0CC845A2266EDF100070AC87 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A1266EDF100070AC87 /* DragView.swift */; };
-		0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A9266EE0A80070AC87 /* DropDelegate.swift */; };
+		0CC845A2266EDF100070AC87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A1266EDF100070AC87 /* HomeView.swift */; };
+		0CC845AA266EE0A80070AC87 /* ImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845A9266EE0A80070AC87 /* ImageRetriever.swift */; };
 		0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */; };
 		0CC845B4266F2EF70070AC87 /* CGImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */; };
 		0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */; };
@@ -82,8 +82,8 @@
 		0CC84595266EDADA0070AC87 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0CC84597266EDADB0070AC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC8459A266EDADB0070AC87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0CC845A1266EDF100070AC87 /* DragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
-		0CC845A9266EE0A80070AC87 /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
+		0CC845A1266EDF100070AC87 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0CC845A9266EE0A80070AC87 /* ImageRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRetriever.swift; sourceTree = "<group>"; };
 		0CC845AB266EE0E10070AC87 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Util.swift"; sourceTree = "<group>"; };
@@ -118,6 +118,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C320C5B295FFFE800D0EA3D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0CC84593266EDADA0070AC87 /* IconologyApp.swift */,
+				0C4BD8EF295EC7DC0085D0D3 /* Menus.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0C320C5C295FFFF200D0EA3D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0CC84595266EDADA0070AC87 /* MainView.swift */,
+				0CC845A3266EDF270070AC87 /* Drag */,
+				0CC845A8266EE0770070AC87 /* Edit */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		0C7FE46E283EB3510020FFD2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,11 +175,8 @@
 		0CC84592266EDADA0070AC87 /* Iconology */ = {
 			isa = PBXGroup;
 			children = (
-				0CC84593266EDADA0070AC87 /* IconologyApp.swift */,
-				0C4BD8EF295EC7DC0085D0D3 /* Menus.swift */,
-				0CC84595266EDADA0070AC87 /* MainView.swift */,
-				0CC845A3266EDF270070AC87 /* Drag */,
-				0CC845A8266EE0770070AC87 /* Edit */,
+				0C320C5B295FFFE800D0EA3D /* App */,
+				0C320C5C295FFFF200D0EA3D /* Main */,
 				0CE0860626924B4E0055D191 /* CustomPresets */,
 				0CFFD9E426713D5A007FB3FB /* Presets */,
 				0C7FE46E283EB3510020FFD2 /* Util */,
@@ -184,8 +200,8 @@
 		0CC845A3266EDF270070AC87 /* Drag */ = {
 			isa = PBXGroup;
 			children = (
-				0CC845A1266EDF100070AC87 /* DragView.swift */,
-				0CC845A9266EE0A80070AC87 /* DropDelegate.swift */,
+				0CC845A1266EDF100070AC87 /* HomeView.swift */,
+				0CC845A9266EE0A80070AC87 /* ImageRetriever.swift */,
 				0CFC532C26727E1C00ACCC22 /* ImageSelection.swift */,
 			);
 			path = Drag;
@@ -243,6 +259,7 @@
 				0CE8E668295E8CEF00CC3B5E /* GradientEditor.swift */,
 				0C4BD8E9295E94930085D0D3 /* ShiftEditor.swift */,
 				0C4BD8EB295E94B00085D0D3 /* SliderAndText.swift */,
+				0CFFDA0726713FF5007FB3FB /* TwoDimensionSlider.swift */,
 			);
 			path = Options;
 			sourceTree = "<group>";
@@ -272,10 +289,9 @@
 			isa = PBXGroup;
 			children = (
 				0CC845AB266EE0E10070AC87 /* EditView.swift */,
-				0CE8E665295E8CBE00CC3B5E /* Options */,
-				0CABB91426732C3800701959 /* PresetPickerView.swift */,
-				0CFFDA0726713FF5007FB3FB /* TwoDimensionSlider.swift */,
 				0CFFD9E026708458007FB3FB /* ImagePreviewView.swift */,
+				0CABB91426732C3800701959 /* PresetPickerView.swift */,
+				0CE8E665295E8CBE00CC3B5E /* Options */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,7 +400,7 @@
 				0CFFDA0126713D5A007FB3FB /* CGImage+PNG.swift in Sources */,
 				0CFFDA0B267153B3007FB3FB /* XcodeIconSize.swift in Sources */,
 				0CC6811A26918161006746F2 /* SavePanel.swift in Sources */,
-				0CC845AA266EE0A80070AC87 /* DropDelegate.swift in Sources */,
+				0CC845AA266EE0A80070AC87 /* ImageRetriever.swift in Sources */,
 				0CFC532D26727E1C00ACCC22 /* ImageSelection.swift in Sources */,
 				0C7FE470283EB37B0020FFD2 /* Formatter+Static.swift in Sources */,
 				0C950128268D00ED00A7C257 /* Background.swift in Sources */,
@@ -409,7 +425,7 @@
 				0CE08626269381AA0055D191 /* Array+Identifiable.swift in Sources */,
 				0CC845B5266F2EF70070AC87 /* CGImage+Edit.swift in Sources */,
 				0C4BD8F0295EC7DC0085D0D3 /* Menus.swift in Sources */,
-				0CC845A2266EDF100070AC87 /* DragView.swift in Sources */,
+				0CC845A2266EDF100070AC87 /* HomeView.swift in Sources */,
 				0C7FE474283EBBEC0020FFD2 /* ImageEditor.swift in Sources */,
 				0CE0860826924BC80055D191 /* CustomPresetsView.swift in Sources */,
 			);

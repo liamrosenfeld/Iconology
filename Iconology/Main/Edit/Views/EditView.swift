@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct EditView: View {
-    @ObservedObject var modifier: ImageModifier
+    @ObservedObject var imageRetriever: ImageRetriever
+    @StateObject private var modifier = ImageModifier()
     
     @State private var preset: Preset = defaultPresets[0].presets[0]
     @State private var editShown = false
     @State private var aspect = CGSize(width: 1, height: 1)
+    @State private var isDropping = false
 
     var body: some View {
         VStack(alignment: .center) {
@@ -22,6 +24,8 @@ struct EditView: View {
             HStack(alignment: .bottom) {
                 if let image = modifier.finalImage {
                     ImagePreviewView(image: image, aspect: aspect)
+                        .opacity(imageRetriever.isDropping ? 0.5 : 1)
+                        .onDrop(of: ImageRetriever.dragTypes, delegate: imageRetriever)
                 }
                 Button {
                     editShown = true
@@ -44,31 +48,44 @@ struct EditView: View {
                 .padding(.bottom, 10)
             
             HStack {
-                Button("New Image", action: selectImage)
+                Button("New Image", action: imageRetriever.selectImage)
                 Spacer()
                 Button("Export", action: export)
             }.dontRedraw()
         }
         .padding(20)
-        .onChange(of: modifier.size, perform: sizeChanged)
+        
+        // respond to preset change
+        .onChange(of: modifier.size, perform: scaleToFit)
+        
+        // set up modifier
         .onAppear {
+            // set up modifier
+            modifier.origImage = imageRetriever.image
             modifier.observeChanges()
-            sizeChanged(modifier.size)
+            scaleToFit(modifier.size)
             
             // enable menu bar buttons for image editing
             NotificationCenter.default.post(Notification(name: .imageProvided))
         }
+        .onChange(of: imageRetriever.image) { newImage in
+            modifier.origImage = newImage
+            scaleToFit(modifier.size)
+        }
+        
+        // menu notifications
         .onReceive(
             NotificationCenter.default.publisher(for: .menuImageOpen),
-            perform: { _ in selectImage() }
+            perform: { _ in imageRetriever.selectImage() }
         )
         .onReceive(
             NotificationCenter.default.publisher(for: .menuImageExport),
             perform: { _ in export() }
         )
+
     }
     
-    func sizeChanged(_ new: CGSize) {
+    func scaleToFit(_ new: CGSize) {
         // if the selected size is too small for the image,
         // auto scale down the image so it fits
         guard let origSize = modifier.origImage?.size else { return }
@@ -96,28 +113,15 @@ struct EditView: View {
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: savedTo.path)
         }
     }
-    
-    func selectImage() {
-        imageFromUrl(url: NSOpenPanel().selectImage())
-    }
-    
-    func imageFromUrl(url: URL?) {
-        guard let url = url else { return }
-        guard let image = NSImage(contentsOf: url) else {
-            // TODO: show error
-            return
-        }
-        self.modifier.origImage = image.cgImage
-    }
 }
 
 struct EditView_Previews: PreviewProvider {
-    @StateObject static var modifier = ImageModifier(image: NSImage(named: "Logo")!.cgImage)
+    @StateObject static var retriever = ImageRetriever(image: NSImage(named: "Logo")!.cgImage)
     
     static var previews: some View {
-        EditView(modifier: modifier)
+        EditView(imageRetriever: retriever)
             .colorScheme(.light)
-        EditView(modifier: modifier)
+        EditView(imageRetriever: retriever)
             .colorScheme(.dark)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DropDelegate.swift
+//  ImageRetriever.swift
 //  Iconology
 //
 //  Created by Liam Rosenfeld on 6/7/21.
@@ -9,8 +9,39 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-extension DragView: DropDelegate {
+class ImageRetriever: DropDelegate, ObservableObject {
+    @Published private(set) var image: CGImage?
+    @Published private(set) var isDropping: Bool
+    
+    static let dragTypes: [UTType] = [.fileURL]
+    
+    init() {
+        self.image = nil
+        self.isDropping = false
+    }
+    
+    init(image: CGImage) {
+        self.image = image
+        self.isDropping = false
+    }
+    
+    // MARK: - From URL
+    func selectImage() {
+        imageFromUrl(NSOpenPanel().selectImage())
+    }
 
+    private func imageFromUrl(_ url: URL?) {
+        guard let url = url else { return }
+        guard let image = NSImage(contentsOf: url) else {
+            // TODO: throw so error can be shown
+            return
+        }
+        DispatchQueue.main.async {
+            self.image = image.cgImage
+        }
+    }
+    
+    // MARK: - Drop Delegate
     func validateDrop(info: DropInfo) -> Bool {
         // get provider
         let providers = info.itemProviders(for: [.fileURL])
@@ -46,7 +77,7 @@ extension DragView: DropDelegate {
         // wait on provider to load and then get UTI
         provider.loadDataRepresentation(forTypeIdentifier: UTType.fileURL.identifier) { (urlData, _) in
             if let urlData = urlData {
-                self.imageUrl = URL(dataRepresentation: urlData, relativeTo: nil, isAbsolute: true)
+                self.imageFromUrl(URL(dataRepresentation: urlData, relativeTo: nil, isAbsolute: true))
             }
         }
 

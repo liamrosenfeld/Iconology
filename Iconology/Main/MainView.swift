@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var imageMod = ImageModifier()
+    @StateObject private var imageRetriever = ImageRetriever()
 
     var body: some View {
         Group {
-            if imageMod.origImage != nil {
-                EditView(modifier: imageMod)
+            if imageRetriever.image != nil {
+                EditView(imageRetriever: imageRetriever)
             } else {
-                DragView(image: $imageMod.origImage)
+                HomeView(imageRetriever: imageRetriever)
             }
-        }.frame(minWidth: 350, minHeight: 350)
+        }
+        .frame(minWidth: 350, minHeight: 350)
     }
 }
 
@@ -27,3 +28,4 @@ struct MainView_Previews: PreviewProvider {
         MainView()
     }
 }
+
