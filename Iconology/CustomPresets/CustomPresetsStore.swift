@@ -11,7 +11,7 @@ import Combine
 
 class CustomPresetsStore: ObservableObject {
     
-    @Published var presets: [Preset] = []
+    @Published var presets: [ImgSetPreset] = []
     private var changedSub: AnyCancellable?
     
     init() {
@@ -28,9 +28,9 @@ class CustomPresetsStore: ObservableObject {
             .sink(receiveValue: save)
     }
     
-    private static let includedCustom = Preset(
+    private static let includedCustom = ImgSetPreset(
         name: "Powers of Two",
-        type: .imgSet([
+        sizes: [
             ImgSetSize(name: "16", w: 16, h: 16),
             ImgSetSize(name: "24", w: 24, h: 24),
             ImgSetSize(name: "32", w: 32, h: 32),
@@ -41,13 +41,13 @@ class CustomPresetsStore: ObservableObject {
             ImgSetSize(name: "512", w: 512, h: 512),
             ImgSetSize(name: "1024", w: 1024, h: 1024),
             ImgSetSize(name: "2048", w: 2048, h: 2048)
-        ]),
-        aspect: CGSize(width: 1, height: 1),
-        useModifications: .all()
+        ],
+        aspect: .unit,
+        enabledModifications: .all
     )
     
     // MARK: - Persistance
-    func save(presets: [Preset]) {
+    func save(presets: [ImgSetPreset]) {
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(presets)
@@ -60,11 +60,12 @@ class CustomPresetsStore: ObservableObject {
         }
     }
     
-    private func load(from storeFileData: Data) -> [Preset] {
+    private func load(from storeFileData: Data) -> [ImgSetPreset] {
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode([Preset].self, from: storeFileData)
+            return try decoder.decode([ImgSetPreset].self, from: storeFileData)
         } catch {
+            // TODO: try decoding the 1.0 way and then resave
             print("ERR: Load Failed \(error)")
             return []
         }

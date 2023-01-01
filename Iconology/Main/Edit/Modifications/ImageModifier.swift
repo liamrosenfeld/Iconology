@@ -97,6 +97,21 @@ class ImageModifier: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$finalImage)
     }
+    
+    /// if the selected size is too small for the image,
+    /// auto scale down the image so it fits
+    func scaleToFit() {
+        guard let imgSize = origImage?.size else { return }
+        
+        let widthScale  = size.width / imgSize.width
+        let heightScale = size.height / imgSize.height
+        
+        let minScale = min(widthScale, heightScale)
+        if minScale < 1 {
+            scale = max(minScale * 100, 10) // don't scale it beyond reason
+            shift = .zero // bring it back to center
+        }
+    }
 }
 
 enum RoundingStyle {

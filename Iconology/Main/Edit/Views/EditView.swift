@@ -11,10 +11,9 @@ import SwiftUI
 struct EditView: View {
     @ObservedObject var imageRetriever: ImageRetriever
     @StateObject private var modifier = ImageModifier()
+    @StateObject private var presetSelection = PresetSelection()
     
-    @State private var preset: Preset = defaultPresets[0].presets[0]
     @State private var editShown = false
-    @State private var aspect = CGSize(width: 1, height: 1)
     @State private var isDropping = false
 
     var body: some View {
@@ -23,7 +22,7 @@ struct EditView: View {
             
             HStack(alignment: .bottom) {
                 if let image = modifier.finalImage {
-                    ImagePreviewView(image: image, aspect: aspect)
+                    ImagePreviewView(image: image, aspect: presetSelection.aspect)
                         .opacity(imageRetriever.isDropping ? 0.5 : 1)
                         .onDrop(of: ImageRetriever.dragTypes, delegate: imageRetriever)
                 }
@@ -35,7 +34,11 @@ struct EditView: View {
                 .accessibility(label: Text("Edit"))
                 .dontRedraw()
                 .popover(isPresented: $editShown, arrowEdge: .trailing) {
-                    EditOptionsView(mods: modifier, aspect: aspect, enabled: preset.useModifications)
+                    EditOptionsView(
+                        mods: modifier,
+                        aspect: presetSelection.aspect,
+                        enabled: presetSelection.preset.enabledModifications
+                    )
                         .frame(width: 275)
                         .padding()
                 }
@@ -43,8 +46,7 @@ struct EditView: View {
             
             Spacer()
 
-            PresetPickerView(preset: $preset, size: $modifier.size, aspect: $aspect)
-                .equatable()
+            PresetPickerView(selection: presetSelection)
                 .padding(.bottom, 10)
             
             HStack {
@@ -56,21 +58,25 @@ struct EditView: View {
         .padding(20)
         
         // respond to preset change
-        .onChange(of: modifier.size, perform: scaleToFit)
+        .onChange(of: presetSelection.size, perform: { newSize in
+            modifier.size = newSize
+            modifier.scaleToFit()
+        })
         
         // set up modifier
         .onAppear {
             // set up modifier
             modifier.origImage = imageRetriever.image
             modifier.observeChanges()
-            scaleToFit(modifier.size)
+            modifier.size = presetSelection.size
+            modifier.scaleToFit()
             
             // enable menu bar buttons for image editing
             NotificationCenter.default.post(Notification(name: .imageProvided))
         }
         .onChange(of: imageRetriever.image) { newImage in
             modifier.origImage = newImage
-            scaleToFit(modifier.size)
+            modifier.scaleToFit()
         }
         
         // menu notifications
@@ -82,28 +88,12 @@ struct EditView: View {
             NotificationCenter.default.publisher(for: .menuImageExport),
             perform: { _ in export() }
         )
-
-    }
-    
-    func scaleToFit(_ new: CGSize) {
-        // if the selected size is too small for the image,
-        // auto scale down the image so it fits
-        guard let origSize = modifier.origImage?.size else { return }
-        
-        let widthScale = new.width / origSize.width
-        let heightScale = new.height / origSize.height
-        
-        let minScale = min(widthScale, heightScale)
-        if minScale < 1 {
-            modifier.scale = max(minScale * 100, 10) // don't scale it beyond reason
-            modifier.shift = .zero // bring it back to center
-        }
     }
     
     func export() {
         // save
         // prompts for save location within function
-        guard let savedTo = preset.save(modifier.finalImage!) else { return }
+        guard let savedTo = presetSelection.preset.save(modifier.finalImage!) else { return }
 
         // show user where it was saved
         // TODO: Preference to toggle this

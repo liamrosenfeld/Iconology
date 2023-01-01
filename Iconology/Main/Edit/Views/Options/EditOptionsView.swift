@@ -91,7 +91,7 @@ struct ScaleEditor: View {
     
     var body: some View {
         Group {
-            Text("Scale")
+            Text("Image Scale")
                 .font(.title2)
                 .padding(.top)
             SliderAndText(name: "Scale", value: $scale, range: 10...200, defaultVal: 100, unit: "%")
@@ -189,10 +189,9 @@ struct ShadowEditor: View {
 
 struct EditOptions_Previews: PreviewProvider {
     @StateObject static var mods = ImageModifier()
-    @State static var enabled = EnabledModifications.all()
 
     static var previews: some View {
-        EditOptionsView(mods: mods, aspect: .init(width: 1, height: 1), enabled: enabled)
+        EditOptionsView(mods: mods, aspect: .init(width: 1, height: 1), enabled: .all)
             .padding()
             .frame(width: 275, height: 750)
     }

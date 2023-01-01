@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomPresetsView: View {
     @EnvironmentObject var store: CustomPresetsStore
-    @State private var selection: Preset.ID?
+    @State private var selection: ImgSetPreset.ID?
     
     var body: some View {
         NavigationView {

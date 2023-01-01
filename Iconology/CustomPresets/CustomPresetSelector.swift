@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CustomPresetSelector: View {
-    @Binding var selection: Preset.ID?
+    @Binding var selection: ImgSetPreset.ID?
     
     @State private var importError = false
     
@@ -54,13 +54,15 @@ struct CustomPresetSelector: View {
     
     func addPreset() {
         var n = 1
-        while true {
-            if !store.presets.contains(where: { $0.name == "New Preset \(n)" }) {
-                break
-            }
+        while store.presets.contains(where: { $0.name == "Preset \(n)" }) {
             n += 1
         }
-        store.presets.append(Preset.newImgSet(name: "New Preset \(n)"))
+        let newPreset = ImgSetPreset(
+            name: "Preset \(n)",
+            sizes: [ImgSetSize(name: "Size 1", size: .unit)],
+            aspect: .unit
+        )
+        store.presets.append(newPreset)
     }
     
     func removePreset() {
@@ -86,7 +88,7 @@ struct CustomPresetSelector: View {
         
         // decode
         let decoder = JSONDecoder()
-        guard var preset = try? decoder.decode(Preset.self, from: data) else {
+        guard var preset = try? decoder.decode(ImgSetPreset.self, from: data) else {
             importError = true
             return
         }
@@ -98,8 +100,8 @@ struct CustomPresetSelector: View {
 }
 
 struct PresetNameEdit: View {
-    @Binding var preset: Preset
-    @Binding var selection: Preset.ID?
+    @Binding var preset: ImgSetPreset
+    @Binding var selection: ImgSetPreset.ID?
     var sidebarFocused: FocusState<Bool>.Binding
     
     // internal

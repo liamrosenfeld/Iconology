@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomPresetEditor: View {
     @EnvironmentObject var store: CustomPresetsStore
-    var presetSelection: Preset.ID
+    var presetSelection: ImgSetPreset.ID
     
     @State private var sizeSelection: ImgSetSize.ID?
     @State private var aspectShown = false
@@ -103,12 +103,12 @@ struct CustomPresetEditor: View {
         guard let presetIndex = presetIndex else {
             return Binding.constant(ImgSetSize.init(name: "filler", size: .zero))
         }
-        return $store.presets[presetIndex].type.imgSizes[imgSizes.indexWithId(id)]
+        return $store.presets[presetIndex].sizes[imgSizes.indexWithId(id)]
     }
     
     var imgSizes: [ImgSetSize] {
         guard let presetIndex = presetIndex, store.presets.count > 0 else { return [] }
-        return store.presets[presetIndex].type.imgSizes
+        return store.presets[presetIndex].sizes
     }
     
     // MARK: - Actions
@@ -116,28 +116,29 @@ struct CustomPresetEditor: View {
         guard let presetIndex = presetIndex else { return }
         var n = 1
         while true {
-            if !imgSizes.contains(where: { $0.name == "New Size \(n)" }) {
+            if !imgSizes.contains(where: { $0.name == "Size \(n)" }) {
                 break
             }
             n += 1
         }
-        store.presets[presetIndex].type.imgSizes.append(ImgSetSize(name: "New Size \(n)", w: 1, h: 1))
+        store.presets[presetIndex].sizes.append(ImgSetSize(name: "Size \(n)", size: .unit))
     }
     
     func removeSize() {
+        // do not allow to delete the last size
+        if imgSizes.count == 1 {
+            return
+        }
+        
         // delete
         guard let sizeSelection = sizeSelection, let presetIndex = presetIndex else {
             return
         }
         let sizeIndex = imgSizes.indexWithId(sizeSelection)
-        store.presets[presetIndex].type.imgSizes.remove(at: sizeIndex)
+        store.presets[presetIndex].sizes.remove(at: sizeIndex)
         
         // adapt selection
-        if imgSizes.count > 0 {
-            self.sizeSelection = imgSizes[max(sizeIndex - 1, 0)].id
-        } else {
-            self.sizeSelection = nil
-        }
+        self.sizeSelection = imgSizes[max(sizeIndex - 1, 0)].id
     }
 }
 
