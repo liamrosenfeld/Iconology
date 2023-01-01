@@ -157,6 +157,7 @@
 				0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */,
 				0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */,
 				0C4BD8E7295E90500085D0D3 /* SwiftUI+Introspect.swift */,
+				0CE08625269381AA0055D191 /* Array+Identifiable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -252,7 +253,6 @@
 				0C03016626941120001A6D77 /* CustomPresetSelector.swift */,
 				0CE08627269381C00055D191 /* CustomPresetEditor.swift */,
 				0CE08623269381610055D191 /* CustomPresetsStore.swift */,
-				0CE08625269381AA0055D191 /* Array+Identifiable.swift */,
 			);
 			path = CustomPresets;
 			sourceTree = "<group>";

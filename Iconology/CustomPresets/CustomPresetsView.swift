@@ -10,7 +10,9 @@ import SwiftUI
 
 struct CustomPresetsView: View {
     @EnvironmentObject var store: CustomPresetsStore
+    
     @State private var selection: ImgSetPreset.ID?
+    @State private var selectedIndex: Int?
     
     var body: some View {
         NavigationView {
@@ -18,8 +20,8 @@ struct CustomPresetsView: View {
                 .preventSidebarCollapse()
                 .frame(minWidth: 225)
             Group {
-                if let selection = selection {
-                    CustomPresetEditor(presetSelection: selection)
+                if let selectedIndex, selectedIndex < store.presets.count {
+                    CustomPresetEditor(preset: $store.presets[selectedIndex])
                 } else {
                     Text(store.presets.count == 0
                          ? "Create a Preset to Edit"
@@ -38,6 +40,13 @@ struct CustomPresetsView: View {
             }.frame(minWidth: 300)
         }
         .frame(minWidth: 600, minHeight: 325)
+        .onChange(of: selection) { id in
+            if let id {
+                selectedIndex = store.presets.indexWithId(id)
+            } else {
+                selectedIndex = nil
+            }
+        }
     }
 }
 

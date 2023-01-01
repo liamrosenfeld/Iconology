@@ -67,18 +67,16 @@ struct CustomPresetSelector: View {
     
     func removePreset() {
         guard let id = selection else { return }
-        
-        // remove
         let index = store.presets.indexWithId(id)
-        store.presets.remove(at: index)
         
         // adapt selection
         if store.presets.count > 0 {
-            // FIXME: not triggering onchange in edit view when last row
             selection = store.presets[max(index - 1, 0)].id
         } else {
             selection = nil
         }
+        
+        store.presets.remove(at: index)
     }
     
     func importPreset() {
@@ -94,7 +92,7 @@ struct CustomPresetSelector: View {
         }
         
         // add
-        preset.id = UUID() // give new ID so an export then import does not break things
+        preset.id = UUID() // give new ID so multiple imports do not break things
         store.presets.append(preset)
     }
 }
