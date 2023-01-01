@@ -21,11 +21,21 @@ struct CustomPresetEditor: View {
             }
             
             TableColumn("Width") { $imgSize in
-                TextField("Width", value: $imgSize.size.width, formatter: .floatFormatter)
+                TextField(
+                    "Width",
+                    value: $imgSize.size.width,
+                    formatter: .intFormatter,
+                    onCommit: widthUpdated
+                )
             }
             
             TableColumn("Height") { $imgSize in
-                TextField("Height", value: $imgSize.size.height, formatter: .floatFormatter)
+                TextField(
+                    "Height",
+                    value: $imgSize.size.height,
+                    formatter: .intFormatter,
+                    onCommit: heightUpdated
+                )
             }
         }
         .toolbar {
@@ -64,11 +74,65 @@ struct CustomPresetEditor: View {
         return VStack {
             Text("Aspect Ratio")
             HStack {
-                TextField("Horizontal", value: $preset.aspect.width, formatter: Formatter.intFormatter)
+                TextField(
+                    "Horizontal",
+                    value: $preset.aspect.width,
+                    formatter: .intFormatter,
+                    onCommit: aspectWidthUpdated
+                )
                 Text(":")
-                TextField("Vertical", value:  $preset.aspect.height, formatter: Formatter.intFormatter)
+                TextField(
+                    "Vertical",
+                    value: $preset.aspect.height,
+                    formatter: .intFormatter,
+                    onCommit: aspectHeightUpdated
+                )
             }
         }.padding()
+    }
+    
+    // MARK: - Aspect Enforcement
+    func widthUpdated() {
+        guard let sizeSelection else { return }
+        let index = preset.sizes.indexWithId(sizeSelection)
+        
+        let aspect = preset.aspect
+        let width = preset.sizes[index].size.width
+        
+        let newHeight = ((width / aspect.width) * aspect.height).rounded()
+        preset.sizes[index].size.height = newHeight
+    }
+    
+    func heightUpdated() {
+        guard let sizeSelection else { return }
+        let index = preset.sizes.indexWithId(sizeSelection)
+        
+        let aspect = preset.aspect
+        let height = preset.sizes[index].size.height
+        
+        let newWidth = ((height / aspect.height) * aspect.width).rounded()
+        preset.sizes[index].size.width = newWidth
+    }
+    
+    // Locks the other dimension so that updating feels more natural.
+    func aspectWidthUpdated() {
+        let aspect = preset.aspect
+        
+        for index in 0..<preset.sizes.count {
+            let height = preset.sizes[index].size.height
+            let newWidth = ((height / aspect.height) * aspect.width).rounded()
+            preset.sizes[index].size.width = newWidth
+        }
+    }
+    
+    func aspectHeightUpdated() {
+        let aspect = preset.aspect
+        
+        for index in 0..<preset.sizes.count {
+            let width = preset.sizes[index].size.width
+            let newHeight = ((width / aspect.width) * aspect.height).rounded()
+            preset.sizes[index].size.height = newHeight
+        }
     }
     
     // MARK: - Actions
@@ -77,7 +141,7 @@ struct CustomPresetEditor: View {
         while preset.sizes.contains(where: { $0.name == "Size \(n)" }) {
             n += 1
         }
-        preset.sizes.append(ImgSetSize(name: "Size \(n)", size: .unit))
+        preset.sizes.append(ImgSetSize(name: "Size \(n)", size: preset.aspect))
     }
     
     func removeSize() {
