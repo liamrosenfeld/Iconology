@@ -79,7 +79,8 @@ class PresetSelection: ObservableObject {
             self.customSize = false
             self.aspect = preset.aspect
         } else {
-            // TODO: should this set the size to some reasonable default (and reset aspect)
+            self.size = CGSize(width: 500, height: 500)
+            self.aspect = .unit
             self.customSize = true
         }
     }

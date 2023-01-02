@@ -37,7 +37,8 @@ struct EditView: View {
                     EditOptionsView(
                         mods: modifier,
                         aspect: presetSelection.aspect,
-                        enabled: presetSelection.preset.enabledModifications
+                        enabled: presetSelection.preset.enabledMods,
+                        defaultMods: presetSelection.preset.defaultMods
                     )
                         .frame(width: 275)
                         .padding()
@@ -58,18 +59,24 @@ struct EditView: View {
         .padding(20)
         
         // respond to preset change
-        .onChange(of: presetSelection.size, perform: { newSize in
+        .onChange(of: presetSelection.size) { newSize in
             modifier.size = newSize
             modifier.scaleToFit()
-        })
+        }
+        .onReceive(presetSelection.$preset) { newPreset in
+            modifier.applyDefaults(newPreset.defaultMods)
+        }
         
         // set up modifier
         .onAppear {
             // set up modifier
             modifier.origImage = imageRetriever.image
             modifier.observeChanges()
+            
+            // apply initial preset properties
             modifier.size = presetSelection.size
             modifier.scaleToFit()
+            modifier.applyDefaults(presetSelection.preset.defaultMods)
             
             // enable menu bar buttons for image editing
             NotificationCenter.default.post(Notification(name: .imageProvided))

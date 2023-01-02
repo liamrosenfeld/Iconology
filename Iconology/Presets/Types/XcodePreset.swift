@@ -14,7 +14,8 @@ struct XcodePreset: Preset {
     var sizes: [XcodeIconSize]
     var folderName: String
     var aspect: CGSize
-    var enabledModifications: EnabledModifications
+    var enabledMods: EnabledModifications
+    var defaultMods: DefaultModifications
     
     var maxSize: CGSize? {
         let max = sizes.max(by: { a, b in
@@ -37,7 +38,7 @@ struct XcodePreset: Preset {
     }
 }
 
-struct XcodeIconSize: Hashable, Codable {
+struct XcodeIconSize {
     var name: String
     var size: CGSize
     var scale: Int

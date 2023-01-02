@@ -9,10 +9,12 @@
 import CoreGraphics
 import Foundation
 
-protocol Preset: Identifiable, Hashable {
+protocol Preset: Identifiable {
     var name: String { get set }
     var aspect: CGSize { get set }
-    var enabledModifications: EnabledModifications { get set }
+    
+    var enabledMods: EnabledModifications { get }
+    var defaultMods: DefaultModifications { get }
     
     /// max size that preset will generate. nil if size provided by generator
     var maxSize: CGSize? { get }
@@ -22,7 +24,7 @@ protocol Preset: Identifiable, Hashable {
     func save(_ image: CGImage) -> URL?
 }
 
-struct EnabledModifications: Hashable, Codable {
+struct EnabledModifications {
     var background: Bool
     var scale: Bool
     var shift: Bool
@@ -46,6 +48,34 @@ struct EnabledModifications: Hashable, Codable {
         round: false,
         padding: false,
         shadow: false
+    )
+}
+
+struct DefaultModifications {
+    var background: Background
+    var round: Rounding
+    var padding: CGFloat
+    var shadow: ShadowAttributes
+    
+    static let zeros = DefaultModifications(
+        background: .none,
+        round: (percent: 0, style: .circular),
+        padding: 0,
+        shadow: (opacity: 0, blur: 0)
+    )
+    
+    static let macOS = DefaultModifications(
+        background: .color(.white),
+        round: (percent: 45, style: .continuous),
+        padding: 19.5,
+        shadow: (opacity: 30, blur: 24)
+    )
+    
+    static let background = DefaultModifications(
+        background: .color(.white),
+        round: (percent: 0, style: .circular),
+        padding: 0,
+        shadow: (opacity: 0, blur: 0)
     )
 }
 

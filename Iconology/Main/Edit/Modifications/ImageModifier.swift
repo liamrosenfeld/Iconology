@@ -98,6 +98,8 @@ class ImageModifier: ObservableObject {
             .assign(to: &$finalImage)
     }
     
+    // MARK: - Actions
+    
     /// if the selected size is too small for the image,
     /// auto scale down the image so it fits
     func scaleToFit() {
@@ -108,9 +110,16 @@ class ImageModifier: ObservableObject {
         
         let minScale = min(widthScale, heightScale)
         if minScale < 1 {
-            scale = max(minScale * 100, 10) // don't scale it beyond reason
+            scale = minScale * 100
             shift = .zero // bring it back to center
         }
+    }
+    
+    func applyDefaults(_ defaults: DefaultModifications) {
+        self.background = defaults.background
+        self.rounding   = defaults.round
+        self.padding    = defaults.padding
+        self.shadow     = defaults.shadow
     }
 }
 

@@ -14,7 +14,9 @@ struct ImgSetPreset: Preset {
     var sizes: [ImgSetSize]
     var aspect: CGSize
     
-    var enabledModifications: EnabledModifications = .all
+    var enabledMods: EnabledModifications { .all }
+    var defaultMods: DefaultModifications { .zeros }
+    
     var maxSize: CGSize? {
         sizes.max(by: { $0.size.width < $1.size.width })!.size
     }

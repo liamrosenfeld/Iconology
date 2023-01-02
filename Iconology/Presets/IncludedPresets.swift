@@ -15,28 +15,32 @@ let includedPresets = [
             sizes: XcodeIconSizes.ios,
             folderName: "AppIcon.appiconset",
             aspect: .unit,
-            enabledModifications: .limitedXcode
+            enabledMods: .limitedXcode,
+            defaultMods: .background
         ),
         XcodePreset(
             name: "MacOS Icon",
             sizes: XcodeIconSizes.mac,
             folderName: "AppIcon.appiconset",
             aspect: .unit,
-            enabledModifications: .all
+            enabledMods: .all,
+            defaultMods: .macOS
         ),
         XcodePreset(
             name: "iMessage Icon",
             sizes: XcodeIconSizes.message,
             folderName: "Messages Icon.stickersiconset",
             aspect: .init(width: 4, height: 3),
-            enabledModifications: .limitedXcode
+            enabledMods: .limitedXcode,
+            defaultMods: .background
         ),
         XcodePreset(
             name: "Watch Icon",
             sizes: XcodeIconSizes.watch,
             folderName: "AppIcon.appiconset",
             aspect: .unit,
-            enabledModifications: .limitedXcode
+            enabledMods: .limitedXcode,
+            defaultMods: .background
         )
     ]),
     PresetGroup(name: "Files", presets: [
@@ -49,14 +53,12 @@ let includedPresets = [
         ImgSetPreset(
             name: "Mac Iconset",
             sizes: ImgSetSizes.macIconset,
-            aspect: .unit,
-            enabledModifications: .all
+            aspect: .unit
         ),
         ImgSetPreset(
             name: "Favicon PNGs",
             sizes: ImgSetSizes.faviconSet,
-            aspect: .unit,
-            enabledModifications: .all
+            aspect: .unit
         )
     ])
 ]

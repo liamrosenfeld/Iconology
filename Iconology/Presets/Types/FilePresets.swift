@@ -11,7 +11,8 @@ import Foundation
 
 struct PngPreset: Preset {
     var name: String = "png"
-    var enabledModifications: EnabledModifications = .all
+    var enabledMods: EnabledModifications = .all
+    var defaultMods: DefaultModifications = .zeros
     
     // png uses user defined size
     var aspect: CGSize = .zero
@@ -29,7 +30,8 @@ struct PngPreset: Preset {
 struct IcnsPreset: Preset {
     var name: String = "icns"
     var aspect: CGSize = .unit
-    var enabledModifications: EnabledModifications = .all
+    var enabledMods: EnabledModifications = .all
+    var defaultMods: DefaultModifications = .zeros
     
     var maxSize: CGSize? = CGSize(width: 1024, height: 1024)
     
@@ -45,7 +47,8 @@ struct IcnsPreset: Preset {
 struct IcoPreset: Preset {
     var name: String
     var aspect: CGSize = .unit
-    var enabledModifications: EnabledModifications = .all
+    var enabledMods: EnabledModifications = .all
+    var defaultMods: DefaultModifications = .zeros
     
     var maxSize: CGSize? { sizes.max(by: { $0.size.width < $1 .size.width })!.size }
     

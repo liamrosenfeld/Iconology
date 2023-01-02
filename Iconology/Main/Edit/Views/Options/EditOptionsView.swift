@@ -12,6 +12,7 @@ struct EditOptionsView: View {
     @ObservedObject var mods: ImageModifier
     var aspect: CGSize
     var enabled: EnabledModifications
+    var defaultMods: DefaultModifications
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -94,7 +95,7 @@ struct ScaleEditor: View {
             Text("Image Scale")
                 .font(.title2)
                 .padding(.top)
-            SliderAndText(name: "Scale", value: $scale, range: 10...200, defaultVal: 100, unit: "%")
+            SliderAndText(name: "Scale", value: $scale, range: 1...200, defaultVal: 100, unit: "%")
                 .equatable()
         }
     }
@@ -118,7 +119,6 @@ struct RoundingEditor: View {
             }
             SliderAndText(name: "Rounding", value: $rounding.percent, range: 0...100, defaultVal: 0, unit: "%")
                 .equatable()
-            Text("45% and Continuous for macOS 11+ Icons")
         }
     }
 }
@@ -133,7 +133,6 @@ struct PaddingEditor: View {
                 .padding(.top)
             SliderAndText(name: "Padding", value: $padding, range: 0...75, defaultVal: 0, unit: "%")
                 .equatable()
-            Text("19.5% for macOS 11+ Icons")
         }
     }
 }
@@ -174,14 +173,11 @@ struct ShadowEditor: View {
             SliderAndText(name: "Opacity", value: $shadow.opacity, range: 0...100, defaultVal: 0, unit: "%")
                 .equatable()
             
-            Text("30% for macOS 11+ Icons")
             Text("Blur")
                 .font(.title3)
             
             SliderAndText(name: "Blur", value: $shadow.blur, range: 0...100, defaultVal: 0, unit: "%")
                 .equatable()
-            
-            Text("24% for macOS 11+ Icons")
         }
     }
 }
@@ -191,9 +187,14 @@ struct EditOptions_Previews: PreviewProvider {
     @StateObject static var mods = ImageModifier()
 
     static var previews: some View {
-        EditOptionsView(mods: mods, aspect: .init(width: 1, height: 1), enabled: .all)
-            .padding()
-            .frame(width: 275, height: 750)
+        EditOptionsView(
+            mods: mods,
+            aspect: .init(width: 1, height: 1),
+            enabled: .all,
+            defaultMods: .zeros
+        )
+        .padding()
+        .frame(width: 275, height: 750)
     }
 }
 

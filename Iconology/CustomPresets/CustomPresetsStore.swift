@@ -42,8 +42,7 @@ class CustomPresetsStore: ObservableObject {
             ImgSetSize(name: "1024", w: 1024, h: 1024),
             ImgSetSize(name: "2048", w: 2048, h: 2048)
         ],
-        aspect: .unit,
-        enabledModifications: .all
+        aspect: .unit
     )
     
     // MARK: - Persistance
