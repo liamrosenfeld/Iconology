@@ -12,14 +12,14 @@ struct MainView: View {
     @StateObject private var imageRetriever = ImageRetriever()
 
     var body: some View {
-        Group {
+        NavigationStack {
             if imageRetriever.image != nil {
                 EditView(imageRetriever: imageRetriever)
             } else {
                 HomeView(imageRetriever: imageRetriever)
             }
         }
-        .frame(minWidth: 350, minHeight: 350)
+        .frame(minWidth: 750, minHeight: 750)
     }
 }
 

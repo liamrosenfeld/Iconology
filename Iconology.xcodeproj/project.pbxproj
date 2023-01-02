@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,9 +17,9 @@
 		0C4BD8EC295E94B00085D0D3 /* SliderAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BD8EB295E94B00085D0D3 /* SliderAndText.swift */; };
 		0C4BD8EE295EC33F0085D0D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0C4BD8ED295EC33F0085D0D3 /* Credits.rtf */; };
 		0C4BD8F0295EC7DC0085D0D3 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BD8EF295EC7DC0085D0D3 /* Menus.swift */; };
-		0C5C4BBF2826F96F00E7CF9E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0C5C4BBE2826F96F00E7CF9E /* Introspect */; };
 		0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FD294268D1C8F00B03FC0 /* CGSize+Math.swift */; };
 		0C6EBB4E296101EA0053E4A0 /* IncludedSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6EBB4D296101EA0053E4A0 /* IncludedSizes.swift */; };
+		0C6EBB512962B0400053E4A0 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0C6EBB502962B0400053E4A0 /* Introspect */; };
 		0C7FE470283EB37B0020FFD2 /* Formatter+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE46F283EB37B0020FFD2 /* Formatter+Static.swift */; };
 		0C7FE472283EB39B0020FFD2 /* View+NoRedraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE471283EB39B0020FFD2 /* View+NoRedraw.swift */; };
 		0C7FE474283EBBEC0020FFD2 /* ImageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FE473283EBBEC0020FFD2 /* ImageEditor.swift */; };
@@ -115,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C5C4BBF2826F96F00E7CF9E /* Introspect in Frameworks */,
+				0C6EBB512962B0400053E4A0 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +151,13 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
+		0C6EBB4F2962B0400053E4A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0C7FE46E283EB3510020FFD2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +174,7 @@
 			children = (
 				0CC84592266EDADA0070AC87 /* Iconology */,
 				0CC84591266EDADA0070AC87 /* Products */,
+				0C6EBB4F2962B0400053E4A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,7 +331,7 @@
 			);
 			name = Iconology;
 			packageProductDependencies = (
-				0C5C4BBE2826F96F00E7CF9E /* Introspect */,
+				0C6EBB502962B0400053E4A0 /* Introspect */,
 			);
 			productName = Iconology;
 			productReference = 0CC84590266EDADA0070AC87 /* Iconology.app */;
@@ -346,7 +354,7 @@
 				};
 			};
 			buildConfigurationList = 0CC8458B266EDADA0070AC87 /* Build configuration list for PBXProject "Iconology" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -558,6 +566,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Iconology/Iconology.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -595,6 +604,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Iconology/Iconology.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -660,7 +670,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0C5C4BBE2826F96F00E7CF9E /* Introspect */ = {
+		0C6EBB502962B0400053E4A0 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0C5C4BBD2826F96F00E7CF9E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;

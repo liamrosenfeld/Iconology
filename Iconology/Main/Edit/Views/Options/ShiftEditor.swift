@@ -16,23 +16,23 @@ struct ShiftEditor: View {
         Group {
             HStack {
                 Text("Shift")
-                    .font(.title2)
-                    .padding(.top)
+                    .fontWeight(.semibold)
                 Spacer()
             }
             
             HStack {
                 TwoDimensionSlider(position: $shift)
                     .aspectRatio(aspect, contentMode: .fit)
+                    .frame(maxWidth: 125, maxHeight: 125)
                 VStack {
-                    HStack {
-                        Text("X:")
+                    HStack(spacing: 1) {
+                        Text("X: ")
                         TextField("X Position", value: $shift.x, formatter: .floatFormatter) // TODO: bound to range
                             .frame(width: 50)
                         Text("%")
                     }
-                    HStack {
-                        Text("Y:")
+                    HStack(spacing: 1) {
+                        Text("Y: ")
                         TextField("Y Position", value: $shift.y, formatter: .floatFormatter )
                             .frame(width: 50)
                         Text("%")
@@ -52,6 +52,6 @@ struct ShiftEditor: View {
 
 extension ShiftEditor: Equatable {
     static func == (lhs: ShiftEditor, rhs: ShiftEditor) -> Bool {
-        lhs.shift == rhs.shift
+        lhs.shift == rhs.shift && lhs.aspect == rhs.aspect
     }
 }

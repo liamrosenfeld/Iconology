@@ -18,7 +18,7 @@ struct TwoDimensionSlider: View {
                 Color.white
                     .cornerRadius(5)
                 Color.accentColor
-                    .frame(width: geometry.size.width / 15, height: geometry.size.width / 15)
+                    .frame(width: 11, height: 11)
                     .mask(Circle())
                     .offset(
                         x: position.x * (geometry.size.width / 2) / 100,

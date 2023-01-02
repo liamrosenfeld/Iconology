@@ -12,31 +12,28 @@ struct SliderAndText: View {
     let name: String
     @Binding var value: CGFloat
     let range: ClosedRange<CGFloat>
-    let defaultVal: CGFloat
-    let unit: String
-
+    let bold: Bool
+    
     var body: some View {
-        HStack {
-            Button {
-                value = defaultVal
-            } label: {
-                Image(systemName: "arrow.counterclockwise")
+        Group {
+            // aligned top because that feels more balanced in this layout
+            HStack(alignment: .top) {
+                Text(name)
+                    .fontWeight(bold ? .semibold : nil)
+            
+                Spacer()
+                
+                HStack(spacing: 1) {
+                    TextField(name, value: $value, formatter: .floatFormatter)
+                        .frame(width: 50)
+                    Text("%")
+                }
             }
-            .accessibility(label: Text("Reset"))
-            .dontRedraw()
+            .padding(.bottom, bold ? 2 : 0)
+            
             
             Slider(value: $value, in: range)
-            
-            TextField(name, value: $value, formatter: .floatFormatter) // TODO: bound to range
-                .frame(width: 50)
-            
-            Text(unit)
+                .controlSize(.mini)
         }
-    }
-}
-
-extension SliderAndText: Equatable {
-    static func == (lhs: SliderAndText, rhs: SliderAndText) -> Bool {
-        lhs.value == rhs.value
     }
 }

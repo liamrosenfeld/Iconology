@@ -13,51 +13,53 @@ struct EditView: View {
     @StateObject private var modifier = ImageModifier()
     @StateObject private var presetSelection = PresetSelection()
     
-    @State private var editShown = false
+    @State private var adjustmentsShown = true
     @State private var isDropping = false
+    
+    @Environment(\.openWindow) var openWindow
 
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
-            
-            HStack(alignment: .bottom) {
+        HStack(spacing: 0) {
+            VStack(alignment: .center) {
+                PresetPickerView(selection: presetSelection)
+                    .padding(.top, 10)
+                
+                Spacer()
+                
                 if let image = modifier.finalImage {
                     ImagePreviewView(image: image, aspect: presetSelection.aspect)
                         .opacity(imageRetriever.isDropping ? 0.5 : 1)
                         .onDrop(of: ImageRetriever.dragTypes, delegate: imageRetriever)
-                }
-                Button {
-                    editShown = true
-                } label: {
-                    Image(systemName: "pencil")
-                }
-                .accessibility(label: Text("Edit"))
-                .dontRedraw()
-                .popover(isPresented: $editShown, arrowEdge: .trailing) {
-                    EditOptionsView(
-                        mods: modifier,
-                        aspect: presetSelection.aspect,
-                        enabled: presetSelection.preset.enabledMods,
-                        defaultMods: presetSelection.preset.defaultMods
-                    )
-                        .frame(width: 275)
                         .padding()
                 }
+                
+                Spacer()
+                
+                Button("Export", action: export)
+                    .padding(.bottom, 10)
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background { Color("GeneratorBg") }
+            
+            if adjustmentsShown {
+                EditOptionsView(
+                    mods: modifier,
+                    aspect: presetSelection.aspect,
+                    enabled: presetSelection.preset.enabledMods,
+                    defaultMods: presetSelection.preset.defaultMods
+                )
+                .padding()
+                .frame(width: 275)
+                .background { Color("InspectorBg") }
+                .padding(.leading, 1)
+                .background { Color("Divider") }
+                .transition(.move(edge: .trailing))
             }
             
-            Spacer()
-
-            PresetPickerView(selection: presetSelection)
-                .padding(.bottom, 10)
-            
-            HStack {
-                Button("New Image", action: imageRetriever.selectImage)
-                Spacer()
-                Button("Export", action: export)
-            }.dontRedraw()
         }
-        .padding(20)
-        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         // respond to preset change
         .onChange(of: presetSelection.size) { newSize in
             modifier.size = newSize
@@ -95,6 +97,27 @@ struct EditView: View {
             NotificationCenter.default.publisher(for: .menuImageExport),
             perform: { _ in export() }
         )
+        
+        .toolbar {
+            Button(action: { openWindow(id: WindowID.presetEditor) }) {
+                Label("Edit Custom Presets", systemImage: "folder.fill.badge.person.crop")
+                    .help("Edit Custom Presets")
+            }
+            
+            Button(action: imageRetriever.selectImage) {
+                Label("New Image", systemImage: "photo.on.rectangle.angled")
+                    .help("New Image")
+            }
+            
+            Button(action: {
+                withAnimation {
+                    adjustmentsShown.toggle()
+                }
+            }) {
+                Label("Toggle Adjustments Panel", systemImage: "sidebar.right")
+                    .help("Toggle Adjustments Panel")
+            }
+        }
     }
     
     func export() {
@@ -114,11 +137,14 @@ struct EditView: View {
 
 struct EditView_Previews: PreviewProvider {
     @StateObject static var retriever = ImageRetriever(image: NSImage(named: "Logo")!.cgImage)
+    @StateObject static var customPresetStore = CustomPresetsStore()
     
     static var previews: some View {
         EditView(imageRetriever: retriever)
             .colorScheme(.light)
+            .environmentObject(customPresetStore)
         EditView(imageRetriever: retriever)
             .colorScheme(.dark)
+            .environmentObject(customPresetStore)
     }
 }

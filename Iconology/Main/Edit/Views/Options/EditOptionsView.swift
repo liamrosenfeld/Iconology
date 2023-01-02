@@ -17,34 +17,47 @@ struct EditOptionsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             Text("Image Adjustments")
-                .font(.title)
-                .padding(.bottom)
+                .font(.title3.bold())
             
-                if enabled.background {
-                    BackgroundEditor(background: $mods.background)
-                }
+            Group {
+                Divider().padding([.top, .bottom], 10)
                 
-                if enabled.scale {
-                    ScaleEditor(scale: $mods.scale)
-                }
+                BackgroundEditor(background: $mods.background)
+                    .disabled(!enabled.background)
                 
-                if enabled.shift {
-                    ShiftEditor(shift: $mods.shift, aspect: aspect).equatable()
-                }
+                Divider().padding([.top, .bottom], 10)
+                
+                SliderAndText(name: "Image Scale", value: $mods.scale, range: 1...200, bold: true)
+                    .disabled(!enabled.scale)
+                
+                Divider().padding([.top, .bottom], 10)
+                
+                ShiftEditor(shift: $mods.shift, aspect: aspect).equatable()
+                    .disabled(!enabled.shift)
+            }
+            
+            Group {
+                Divider().padding([.top, .bottom], 10)
 
-                if enabled.round {
-                    RoundingEditor(rounding: $mods.rounding)
-                }
+                RoundingEditor(rounding: $mods.rounding)
+                    .disabled(!enabled.round)
                 
-                if enabled.padding {
-                    PaddingEditor(padding: $mods.padding)
-                }
+                Divider().padding([.top, .bottom], 10)
                 
-                if enabled.shadow {
-                    ShadowEditor(shadow: $mods.shadow)
-                }
+                SliderAndText(name: "Padding", value: $mods.padding, range: 0...75, bold: true)
+                    .disabled(!enabled.padding)
+                
+                Divider().padding([.top, .bottom], 10)
+                
+                ShadowEditor(shadow: $mods.shadow)
+                    .disabled(!enabled.shadow)
+            }
+            
+            Divider().padding([.top, .bottom], 10)
             
             ColorSpaceEditor(colorSpace: $mods.colorSpace)
+            
+            Spacer()
         }
     }
 }
@@ -53,10 +66,10 @@ struct BackgroundEditor: View {
     @Binding var background: Background
 
     var body: some View {
-        Group {
+        VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Text("Background")
-                    .font(.title2)
+                    .fontWeight(.semibold)
                 
                 Picker("Background Type", selection: $background) {
                     Text("None")
@@ -68,36 +81,21 @@ struct BackgroundEditor: View {
                 }.labelsHidden()
             }
             
+            Spacer()
+            
             switch background {
             case .color(_):
-                HStack {
-                    Spacer()
-                    ColorPicker("Background Color", selection: $background.color)
-                        .labelsHidden()
-                    Spacer()
-                }.padding(.top, 10)
+                ColorPicker("Background Color", selection: $background.color)
+                    .labelsHidden()
             case .gradient(_):
                 GradientEditor(gradient: $background.gradient)
-                    .padding(.top, 10)
             case .none:
-                EmptyView()
+                ColorPicker("Background Color", selection: Binding.constant(CGColor(red: 1, green: 1, blue: 1, alpha: 0)))
+                    .labelsHidden()
+                    .disabled(true)
             }
         }
-    }
-}
-
-
-struct ScaleEditor: View {
-    @Binding var scale: CGFloat
-    
-    var body: some View {
-        Group {
-            Text("Image Scale")
-                .font(.title2)
-                .padding(.top)
-            SliderAndText(name: "Scale", value: $scale, range: 1...200, defaultVal: 100, unit: "%")
-                .equatable()
-        }
+        .frame(height: 55) // keep things from shifting when mode switches
     }
 }
 
@@ -106,9 +104,8 @@ struct RoundingEditor: View {
     
     var body: some View {
         Group {
-            Text("Rounding")
-                .font(.title2)
-                .padding(.top)
+            SliderAndText(name: "Rounding", value: $rounding.percent, range: 0...100, bold: true)
+
             Picker("Style", selection: $rounding.style) {
                 Text("Circular")
                     .tag(RoundingStyle.circular)
@@ -116,44 +113,7 @@ struct RoundingEditor: View {
                     .tag(RoundingStyle.continuous)
                 Text("Squircle")
                     .tag(RoundingStyle.squircle)
-            }
-            SliderAndText(name: "Rounding", value: $rounding.percent, range: 0...100, defaultVal: 0, unit: "%")
-                .equatable()
-        }
-    }
-}
-
-struct PaddingEditor: View {
-    @Binding var padding: CGFloat
-    
-    var body: some View {
-        Group {
-            Text("Padding")
-                .font(.title2)
-                .padding(.top)
-            SliderAndText(name: "Padding", value: $padding, range: 0...75, defaultVal: 0, unit: "%")
-                .equatable()
-        }
-    }
-}
-
-struct ColorSpaceEditor: View {
-    @Binding var colorSpace: CGColorSpace
-    
-    var body: some View {
-        Group {
-            Text("Color Space")
-                .font(.title2)
-                .padding(.top)
-            
-            Picker("Background Type", selection: $colorSpace) {
-                Text("sRGB")
-                    .tag(CGColorSpace(name: CGColorSpace.sRGB)!)
-                Text("Display P3")
-                    .tag(CGColorSpace(name: CGColorSpace.displayP3)!)
-                Text("Adobe RGB")
-                    .tag(CGColorSpace(name: CGColorSpace.adobeRGB1998)!)
-            }.labelsHidden()
+            }.padding(.top, 5)
         }
     }
 }
@@ -164,20 +124,33 @@ struct ShadowEditor: View {
     var body: some View {
         Group {
             Text("Shadow")
-                .font(.title2)
-                .padding(.top)
+                .fontWeight(.semibold)
+                .padding(.bottom, 4)
             
-            Text("Opacity")
-                .font(.title3)
+            SliderAndText(name: "Opacity", value: $shadow.opacity, range: 0...100, bold: false)
             
-            SliderAndText(name: "Opacity", value: $shadow.opacity, range: 0...100, defaultVal: 0, unit: "%")
-                .equatable()
+            SliderAndText(name: "Blur", value: $shadow.blur, range: 0...100, bold: false)
+        }
+    }
+}
+
+struct ColorSpaceEditor: View {
+    @Binding var colorSpace: CGColorSpace
+    
+    var body: some View {
+        Group {
+            Text("Color Space")
+                .fontWeight(.semibold)
+                .padding(.bottom, 5)
             
-            Text("Blur")
-                .font(.title3)
-            
-            SliderAndText(name: "Blur", value: $shadow.blur, range: 0...100, defaultVal: 0, unit: "%")
-                .equatable()
+            Picker("Background Type", selection: $colorSpace) {
+                Text("sRGB")
+                    .tag(CGColorSpace(name: CGColorSpace.sRGB)!)
+                Text("Display P3")
+                    .tag(CGColorSpace(name: CGColorSpace.displayP3)!)
+                Text("Adobe RGB")
+                    .tag(CGColorSpace(name: CGColorSpace.adobeRGB1998)!)
+            }.labelsHidden()
         }
     }
 }

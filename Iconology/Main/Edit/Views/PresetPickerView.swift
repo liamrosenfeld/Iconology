@@ -11,12 +11,10 @@ import SwiftUI
 struct PresetPickerView: View {
     @ObservedObject var selection: PresetSelection
     @EnvironmentObject var customPresets: CustomPresetsStore
-    
-    @Environment(\.openWindow) var openWindow
 
     var body: some View {
         VStack(alignment: .center) {
-            VStack {
+            HStack {
                 Picker("Export As", selection: $selection.selection) {
                     ForEach(includedPresets, id: \.name) { group in
                         Divider()
@@ -43,18 +41,13 @@ struct PresetPickerView: View {
                         Text("px")
                     }.frame(maxWidth: 175)
                 } else {
-                    Text("Largest Size: \(selection.size.width.toIntString())\(Image(systemName: "xmark"))\(selection.size.height.toIntString()) (\(selection.preset.aspect.width.toIntString()):\(selection.preset.aspect.height.toIntString()))")
+                    Text("(Largest Size: \(selection.size.width.toIntString())×\(selection.size.height.toIntString()))")
                 }
             }
-            Button("Edit Custom Presets", action: openPresetEditor)
         }
         .onAppear {
             selection.customPresets = customPresets
         }
-    }
-
-    func openPresetEditor() {
-        openWindow(id: WindowID.presetEditor)
     }
 }
 

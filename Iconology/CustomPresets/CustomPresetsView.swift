@@ -15,10 +15,11 @@ struct CustomPresetsView: View {
     @State private var selectedIndex: Int?
     
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             CustomPresetSelector(selection: $selection)
                 .preventSidebarCollapse()
                 .frame(minWidth: 225)
+        } detail: {
             Group {
                 if let selectedIndex, selectedIndex < store.presets.count {
                     CustomPresetEditor(preset: $store.presets[selectedIndex])
