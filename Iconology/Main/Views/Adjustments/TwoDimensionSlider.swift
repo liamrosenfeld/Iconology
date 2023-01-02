@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TwoDimensionSlider: View {
-    // both x and y in [-100, 100]
+    /// both x and y in [-100, 100]
     @Binding var position: CGPoint
 
     var body: some View {

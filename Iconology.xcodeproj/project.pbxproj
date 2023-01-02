@@ -134,9 +134,9 @@
 		0C320C5C295FFFF200D0EA3D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0CC84595266EDADA0070AC87 /* MainView.swift */,
-				0CC845A3266EDF270070AC87 /* Drag */,
-				0CC845A8266EE0770070AC87 /* Edit */,
+				0CFFD9DF2670842A007FB3FB /* Views */,
+				0CC845A3266EDF270070AC87 /* SelectionModels */,
+				0CC845B1266F2DBE0070AC87 /* ImageModifier */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -211,37 +211,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		0CC845A3266EDF270070AC87 /* Drag */ = {
+		0CC845A3266EDF270070AC87 /* SelectionModels */ = {
 			isa = PBXGroup;
 			children = (
-				0CC845A1266EDF100070AC87 /* HomeView.swift */,
+				0C320C662960F42C00D0EA3D /* PresetSelection.swift */,
 				0CC845A9266EE0A80070AC87 /* ImageRetriever.swift */,
 				0CFC532C26727E1C00ACCC22 /* ImageSelection.swift */,
 			);
-			path = Drag;
+			path = SelectionModels;
 			sourceTree = "<group>";
 		};
-		0CC845A8266EE0770070AC87 /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				0CFFD9DF2670842A007FB3FB /* Views */,
-				0CC845B1266F2DBE0070AC87 /* Modifications */,
-				0CC845B6266F2F0F0070AC87 /* Editing */,
-			);
-			path = Edit;
-			sourceTree = "<group>";
-		};
-		0CC845B1266F2DBE0070AC87 /* Modifications */ = {
+		0CC845B1266F2DBE0070AC87 /* ImageModifier */ = {
 			isa = PBXGroup;
 			children = (
 				0CC845AF266F2DBC0070AC87 /* ImageModifier.swift */,
 				0C7FE473283EBBEC0020FFD2 /* ImageEditor.swift */,
 				0C950127268D00ED00A7C257 /* Background.swift */,
+				0CC845B6266F2F0F0070AC87 /* Gen */,
 			);
-			path = Modifications;
+			path = ImageModifier;
 			sourceTree = "<group>";
 		};
-		0CC845B6266F2F0F0070AC87 /* Editing */ = {
+		0CC845B6266F2F0F0070AC87 /* Gen */ = {
 			isa = PBXGroup;
 			children = (
 				0CC845B3266F2EF70070AC87 /* CGImage+Edit.swift */,
@@ -251,7 +242,7 @@
 				0CC845B2266F2EF70070AC87 /* CGImage+Util.swift */,
 				0C90447E26839029005060DF /* CG+Operators.swift */,
 			);
-			path = Editing;
+			path = Gen;
 			sourceTree = "<group>";
 		};
 		0CE0860626924B4E0055D191 /* CustomPresets */ = {
@@ -265,7 +256,7 @@
 			path = CustomPresets;
 			sourceTree = "<group>";
 		};
-		0CE8E665295E8CBE00CC3B5E /* Options */ = {
+		0CE8E665295E8CBE00CC3B5E /* Adjustments */ = {
 			isa = PBXGroup;
 			children = (
 				0CFFD9E22670847D007FB3FB /* EditOptionsView.swift */,
@@ -274,7 +265,7 @@
 				0C4BD8EB295E94B00085D0D3 /* SliderAndText.swift */,
 				0CFFDA0726713FF5007FB3FB /* TwoDimensionSlider.swift */,
 			);
-			path = Options;
+			path = Adjustments;
 			sourceTree = "<group>";
 		};
 		0CFC5325267278F900ACCC22 /* Generators */ = {
@@ -292,11 +283,12 @@
 		0CFFD9DF2670842A007FB3FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0CC84595266EDADA0070AC87 /* MainView.swift */,
+				0CC845A1266EDF100070AC87 /* HomeView.swift */,
 				0CC845AB266EE0E10070AC87 /* EditView.swift */,
 				0CFFD9E026708458007FB3FB /* ImagePreviewView.swift */,
 				0CABB91426732C3800701959 /* PresetPickerView.swift */,
-				0C320C662960F42C00D0EA3D /* PresetSelection.swift */,
-				0CE8E665295E8CBE00CC3B5E /* Options */,
+				0CE8E665295E8CBE00CC3B5E /* Adjustments */,
 			);
 			path = Views;
 			sourceTree = "<group>";
