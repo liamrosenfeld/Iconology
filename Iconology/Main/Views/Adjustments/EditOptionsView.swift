@@ -22,11 +22,6 @@ struct EditOptionsView: View {
             Group {
                 Divider().padding([.top, .bottom], 10)
                 
-                BackgroundEditor(background: $mods.background)
-                    .disabled(!enabled.background)
-                
-                Divider().padding([.top, .bottom], 10)
-                
                 SliderAndText(name: "Image Scale", value: $mods.scale, range: 1...200, bold: true)
                     .disabled(!enabled.scale)
                 
@@ -37,6 +32,11 @@ struct EditOptionsView: View {
             }
             
             Group {
+                Divider().padding([.top, .bottom], 10)
+                
+                BackgroundEditor(background: $mods.background)
+                    .disabled(!enabled.background)
+                
                 Divider().padding([.top, .bottom], 10)
 
                 RoundingEditor(rounding: $mods.rounding)
