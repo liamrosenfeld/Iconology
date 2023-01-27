@@ -20,6 +20,19 @@ struct OnCommitTextField<V>: View where V: Equatable {
 
     @State private var internalValue: V
     
+    init(
+        _ name: String,
+        num: Binding<V>,
+        formatter: Formatter,
+        onCommit: @escaping UpdateHandler<V>
+    ) {
+        self.name = name
+        self._value = num
+        self._internalValue = State(initialValue: num.wrappedValue)
+        self.formatter = formatter
+        self.onCommit = onCommit
+    }
+    
     var body: some View {
         TextField(
             name,
@@ -38,16 +51,6 @@ struct OnCommitTextField<V>: View where V: Equatable {
             value = internalValue
             onCommit(old, internalValue)
         }
-    }
-}
-
-extension OnCommitTextField where V == CGFloat {
-    init(_ name: String, num: Binding<CGFloat>, onCommit: @escaping UpdateHandler<CGFloat>) {
-        self.name = name
-        self._value = num
-        self._internalValue = State(initialValue: num.wrappedValue)
-        self.onCommit = onCommit
-        self.formatter = .intFormatter
     }
 }
 

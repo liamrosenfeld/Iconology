@@ -11,6 +11,8 @@ import SwiftUI
 struct GradientEditor: View {
     @Binding var gradient: Gradient
     
+    static let angleFormatter = Formatter.boundDecimal(min: 0, max: 360)
+    
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
@@ -32,8 +34,7 @@ struct GradientEditor: View {
                     .dialSliderStyle()
                     .frame(maxWidth: 30)
                 
-                // TODO: bound to range
-                TextField("Gradient Angle", value: $gradient.angle, formatter: .floatFormatter)
+                TextField("Gradient Angle", value: $gradient.angle, formatter: Self.angleFormatter)
                     .frame(width: 50)
                 
                 Text("°")

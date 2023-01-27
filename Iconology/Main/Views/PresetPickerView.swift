@@ -35,9 +35,9 @@ struct PresetPickerView: View {
                 if selection.customSize {
                     HStack {
                         Text("@")
-                        TextField("Width", value: $selection.size.width, formatter: .floatFormatter)
+                        TextField("Width", value: $selection.size.width, formatter: .posInt)
                         Image(systemName: "xmark")
-                        TextField("Height", value: $selection.size.height, formatter: .floatFormatter)
+                        TextField("Height", value: $selection.size.height, formatter: .posInt)
                         Text("px")
                     }.frame(maxWidth: 175)
                 } else {
@@ -53,7 +53,7 @@ struct PresetPickerView: View {
 
 extension CGFloat {
     func toIntString() -> String {
-        Formatter.intFormatter.string(from: NSNumber(value: self)) ?? ""
+        Formatter.posInt.string(from: NSNumber(value: self)) ?? ""
     }
     
     static func gcd(_ m: CGFloat, _ n: CGFloat) -> CGFloat {

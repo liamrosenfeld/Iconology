@@ -12,6 +12,8 @@ struct ShiftEditor: View {
     @Binding var shift: CGPoint
     var aspect: CGSize
     
+    static let shiftFormatter = Formatter.boundDecimal(min: -100, max: 100)
+    
     var body: some View {
         Group {
             HStack {
@@ -27,13 +29,13 @@ struct ShiftEditor: View {
                 VStack {
                     HStack(spacing: 1) {
                         Text("X: ")
-                        TextField("X Position", value: $shift.x, formatter: .floatFormatter) // TODO: bound to range
+                        TextField("X Position", value: $shift.x, formatter: Self.shiftFormatter)
                             .frame(width: 50)
                         Text("%")
                     }
                     HStack(spacing: 1) {
                         Text("Y: ")
-                        TextField("Y Position", value: $shift.y, formatter: .floatFormatter )
+                        TextField("Y Position", value: $shift.y, formatter: Self.shiftFormatter)
                             .frame(width: 50)
                         Text("%")
                     }

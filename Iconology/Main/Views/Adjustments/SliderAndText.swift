@@ -14,6 +14,21 @@ struct SliderAndText: View {
     let range: ClosedRange<CGFloat>
     let bold: Bool
     
+    let formatter: Formatter
+    
+    init(name: String, value: Binding<CGFloat>, range: ClosedRange<CGFloat>, bold: Bool) {
+        self.name = name
+        self._value = value
+        self.range = range
+        self.bold = bold
+        
+        // initialize here instead of body to prevent memory usage from exploding on typing
+        self.formatter = .boundDecimal(
+            min: range.lowerBound,
+            max: range.upperBound
+        )
+    }
+    
     var body: some View {
         Group {
             // aligned top because that feels more balanced in this layout
@@ -24,7 +39,7 @@ struct SliderAndText: View {
                 Spacer()
                 
                 HStack(spacing: 1) {
-                    TextField(name, value: $value, formatter: .floatFormatter)
+                    TextField(name, value: $value, formatter: formatter)
                         .frame(width: 50)
                     Text("%")
                 }

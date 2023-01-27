@@ -32,6 +32,7 @@ struct CustomPresetEditor: View {
                 OnCommitTextField(
                     "Width",
                     num: $imgSize.size.width,
+                    formatter: .posInt,
                     onCommit: { (old, new) in widthUpdated(old: old, new: new) }
                 )
             }
@@ -40,6 +41,7 @@ struct CustomPresetEditor: View {
                 OnCommitTextField(
                     "Height",
                     num: $imgSize.size.height,
+                    formatter: .posInt,
                     onCommit: { (old, new) in heightUpdated(old: old, new: new) }
                 )
             }
@@ -84,12 +86,14 @@ struct CustomPresetEditor: View {
                 OnCommitTextField(
                     "Horizontal",
                     num: $preset.aspect.width,
+                    formatter: .posInt,
                     onCommit: { (old, new) in aspectWidthUpdated(old: old, new: new) }
                 )
                 Text(":")
                 OnCommitTextField(
                     "Vertical",
                     num: $preset.aspect.height,
+                    formatter: .posInt,
                     onCommit: { (old, new) in aspectHeightUpdated(old: old, new: new) }
                 )
             }

@@ -9,18 +9,21 @@
 import Foundation
 
 extension Formatter {
-    static let floatFormatter: NumberFormatter = {
+    static func boundDecimal(min: Double, max: Double) -> Formatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.hasThousandSeparators = false
-        formatter.maximumFractionDigits = 3
+        formatter.maximumFractionDigits = 2
+        formatter.minimum = min as NSNumber
+        formatter.maximum = max as NSNumber
         return formatter
-    }()
+    }
     
-    static let intFormatter: NumberFormatter = {
+    static let posInt: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
         formatter.hasThousandSeparators = false
+        formatter.minimum = 1
         return formatter
     }()
 }
