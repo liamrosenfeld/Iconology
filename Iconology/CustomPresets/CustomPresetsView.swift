@@ -10,18 +10,17 @@ import SwiftUI
 
 struct CustomPresetsView: View {
     @EnvironmentObject var store: CustomPresetsStore
-    
-    @State private var selection: ImgSetPreset.ID?
-    @State private var selectedIndex: Int?
+
+    @Environment(\.undoManager) var undoManager
     
     var body: some View {
         NavigationSplitView {
-            CustomPresetSelector(selection: $selection)
+            CustomPresetSelector()
                 .preventSidebarCollapse()
                 .frame(minWidth: 225)
         } detail: {
             Group {
-                if let selectedIndex, selectedIndex < store.presets.count {
+                if let selectedIndex = store.presetIndex, selectedIndex < store.presets.count {
                     CustomPresetEditor(preset: $store.presets[selectedIndex])
                 } else {
                     Text(store.presets.count == 0
@@ -41,12 +40,11 @@ struct CustomPresetsView: View {
             }.frame(minWidth: 300)
         }
         .frame(minWidth: 600, minHeight: 325)
-        .onChange(of: selection) { id in
-            if let id {
-                selectedIndex = store.presets.indexWithId(id)
-            } else {
-                selectedIndex = nil
-            }
+        .onAppear {
+            store.undoManager = undoManager
+        }
+        .onChange(of: undoManager) { manager in
+            store.undoManager = manager
         }
     }
 }

@@ -33,6 +33,23 @@ struct ImgSetPreset: Preset {
         
         return saveUrl
     }
+    
+    // MARK: - Additional Helpers
+    mutating func applyAspectKeepHeight() {
+        for index in 0..<sizes.count {
+            let height = sizes[index].size.height
+            let newWidth = ((height / aspect.height) * aspect.width).rounded()
+            sizes[index].size.width = newWidth
+        }
+    }
+    
+    mutating func applyAspectKeepWidth() {
+        for index in 0..<sizes.count {
+            let width = sizes[index].size.width
+            let newHeight = ((width / aspect.width) * aspect.height).rounded()
+            sizes[index].size.height = newHeight
+        }
+    }
 }
 
 extension ImgSetPreset: Codable { }

@@ -12,7 +12,13 @@ import Combine
 class CustomPresetsStore: ObservableObject {
     
     @Published var presets: [ImgSetPreset] = []
-    private var changedSub: AnyCancellable?
+    
+    @Published var presetSelection: ImgSetPreset.ID?
+    @Published var sizeSelection: ImgSetSize.ID?
+    
+    private(set) var presetIndex: Int?
+    
+    private var subs = Set<AnyCancellable>()
     
     init() {
         // load or set to default if first time
@@ -22,10 +28,22 @@ class CustomPresetsStore: ObservableObject {
             presets = [Self.includedCustom]
         }
         
-        // save after 1 second of changing
-        changedSub = $presets
-            .debounce(for: .seconds(1), scheduler: RunLoop.main, options: nil)
+        // save after 3 second of not changing
+        $presets
+            .debounce(for: .seconds(3), scheduler: RunLoop.main, options: nil)
             .sink(receiveValue: save)
+            .store(in: &subs)
+        
+        // sync index
+        $presetSelection
+            .sink { id in
+                if let id {
+                    self.presetIndex = self.presets.indexWithId(id)
+                } else {
+                    self.presetIndex = nil
+                }
+            }
+            .store(in: &subs)
     }
     
     private static let includedCustom = ImgSetPreset(
@@ -44,6 +62,246 @@ class CustomPresetsStore: ObservableObject {
         ],
         aspect: .unit
     )
+    
+    // MARK: - Creation/Removal
+    func addPreset() {
+        // find name that does not conflict
+        var n = 1
+        while presets.contains(where: { $0.name == "Preset \(n)" }) {
+            n += 1
+        }
+        
+        let newPreset = ImgSetPreset(
+            name: "Preset \(n)",
+            sizes: [ImgSetSize(name: "Size 1", size: .unit)],
+            aspect: .unit
+        )
+        
+        addPreset(newPreset)
+    }
+    
+    func addPreset(_ preset: ImgSetPreset) {
+        // insert
+        let index = {
+            if let selection = presetSelection,
+               let selectionIndex = presets.indexWithId(selection) {
+                return selectionIndex + 1
+            } else {
+                return presets.count
+            }
+        }()
+        
+        presets.insert(preset, at: index)
+        
+        // adjust selection
+        presetSelection = preset.id
+        
+        // register undo
+        registerNewPresetUndo(newPresetIndex: index)
+    }
+    
+    func removePreset() {
+        guard let index = presetIndex else { return }
+        removePreset(at: index)
+    }
+    
+    private func removePreset(at index: Int) {
+        let removed = presets.remove(at: index)
+        
+        // adapt selection
+        if presets.count > 0 {
+            presetSelection = presets[max(index - 1, 0)].id
+        } else {
+            presetSelection = nil
+        }
+        
+        registerRemovePresetUndo(presetIndex: index, removed: removed)
+    }
+    
+    func addSize() {
+        guard let index = presetIndex else { return }
+        addSize(to: &presets[index])
+    }
+    
+    func addSize(to preset: inout ImgSetPreset) {
+        // find name that does not conflict
+        var n = 1
+        while preset.sizes.contains(where: { $0.name == "Size \(n)" }) {
+            n += 1
+        }
+        
+        // add
+        let new = ImgSetSize(name: "Size \(n)", size: preset.aspect)
+        let sizeIndex = {
+            if let sizeSelection,
+               let selectionIndex = preset.sizes.indexWithId(sizeSelection)
+            {
+                return selectionIndex + 1
+            } else {
+                return preset.sizes.count
+            }
+        }()
+        
+        preset.sizes.insert(new, at: sizeIndex)
+        sizeSelection = new.id
+        
+        // register undo
+        registerNewSizeUndo(preset: preset.id, sizeIndex: sizeIndex)
+    }
+    
+    func removeSize() {
+        guard let presetIndex,
+              let sizeSelection,
+              let sizeIndex = presets[presetIndex].sizes.indexWithId(sizeSelection)
+        else { return }
+        
+        removeSize(index: sizeIndex, preset: &presets[presetIndex])
+    }
+    
+    private func removeSize(index: Int, preset: inout ImgSetPreset) {
+        // do not allow to delete the last size
+        if preset.sizes.count == 1 {
+            return
+        }
+        
+        // delete
+        let removed = preset.sizes.remove(at: index)
+        self.sizeSelection = preset.sizes[max(index - 1, 0)].id
+        
+        // register undo
+        registerRemoveSizeUndo(preset: preset.id, sizeIndex: index, removed: removed)
+    }
+    
+    // MARK: - Undo/Redo
+    var undoManager: UndoManager?
+    
+    func registerNewPresetUndo(newPresetIndex: Int) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // also registers redo
+            handler.removePreset(at: newPresetIndex)
+        }
+    }
+    
+    func registerRemovePresetUndo(presetIndex: Int, removed: ImgSetPreset) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            handler.presets.insert(removed, at: presetIndex)
+            
+            // set selection to reinserted element
+            handler.presetSelection = removed.id
+            
+            // enable redo
+            handler.registerNewPresetUndo(newPresetIndex: presetIndex)
+        }
+    }
+    
+    func registerPresetRename(preset: UUID, old: String, new: String) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            guard let presetIndex = handler.presets.indexWithId(preset) else { return }
+            handler.presets[presetIndex].name = old
+            
+            // select modified preset
+            handler.presetSelection = preset
+            
+            // enable redo
+            handler.registerPresetRename(preset: preset, old: new, new: old)
+        }
+    }
+    
+    func registerNewSizeUndo(preset: UUID, sizeIndex: Int) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // focus preset that will change
+            handler.presetSelection = preset
+            
+            // apply undo
+            // also registers redo
+            guard let presetIndex = handler.presets.indexWithId(preset) else { return }
+            handler.removeSize(index: sizeIndex, preset: &handler.presets[presetIndex])
+        }
+    }
+    
+    func registerRemoveSizeUndo(preset: UUID, sizeIndex: Int, removed: ImgSetSize) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            guard let presetIndex = handler.presets.indexWithId(preset) else { return }
+            handler.presets[presetIndex].sizes.insert(removed, at: sizeIndex)
+            
+            // set selection to reinserted element
+            handler.presetSelection = preset
+            handler.sizeSelection = removed.id
+            
+            // enable redo
+            handler.registerNewSizeUndo(preset: preset, sizeIndex: sizeIndex)
+        }
+    }
+    
+    func registerSizeDimUndo(preset: UUID, size: UUID, old: CGSize, new: CGSize) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            guard let presetIndex = handler.presets.indexWithId(preset),
+                  let sizeIndex = handler.presets[presetIndex].sizes.indexWithId(size) else { return }
+            handler.presets[presetIndex].sizes[sizeIndex].size = old
+            
+            // set selection to modified size
+            handler.presetSelection = preset
+            handler.sizeSelection = size
+            
+            // enable redo
+            handler.registerSizeDimUndo(preset: preset, size: size, old: new, new: old)
+        }
+    }
+    
+    func registerSizeNameUndo(preset: UUID, size: UUID, old: String, new: String) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            guard let presetIndex = handler.presets.indexWithId(preset),
+                  let sizeIndex = handler.presets[presetIndex].sizes.indexWithId(size) else { return }
+            handler.presets[presetIndex].sizes[sizeIndex].name = old
+            
+            // set selection to modified size
+            handler.presetSelection = preset
+            handler.sizeSelection = size
+            
+            // enable redo
+            handler.registerSizeNameUndo(preset: preset, size: size, old: new, new: old)
+        }
+    }
+    
+    func registerAspectWidthUndo(preset: UUID, old: CGFloat, new: CGFloat) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            guard let presetIndex = handler.presets.indexWithId(preset) else { return }
+            handler.presets[presetIndex].aspect.width = old
+            
+            // set selection to modified preset
+            handler.presetSelection = preset
+            // TODO: maybe open the aspect editor too
+            
+            // enable redo
+            handler.registerAspectWidthUndo(preset: preset, old: new, new: old)
+            
+            // update sizes to match
+            handler.presets[presetIndex].applyAspectKeepHeight()
+        }
+    }
+    
+    func registerAspectHeightUndo(preset: UUID, old: CGFloat, new: CGFloat) {
+        undoManager?.registerUndo(withTarget: self) { handler in
+            // apply undo
+            guard let presetIndex = handler.presets.indexWithId(preset) else { return }
+            handler.presets[presetIndex].aspect.height = old
+            
+            // set selection to modified preset
+            handler.presetSelection = preset
+            
+            // enable redo
+            handler.registerAspectHeightUndo(preset: preset, old: new, new: old)
+            
+            // update sizes to match
+            handler.presets[presetIndex].applyAspectKeepWidth()
+        }
+    }
     
     // MARK: - Persistance
     func save(presets: [ImgSetPreset]) {

@@ -11,30 +11,36 @@ import SwiftUI
 struct CustomPresetEditor: View {
     @Binding var preset: ImgSetPreset
     
-    @State private var sizeSelection: ImgSetSize.ID?
     @State private var aspectShown = false
     
+    @EnvironmentObject var store: CustomPresetsStore
+    
     var body: some View {
-        Table($preset.sizes, selection: $sizeSelection) {
+        Table($preset.sizes, selection: $store.sizeSelection) {
             TableColumn("Name") { $imgSize in
-                TextField("Name", text: $imgSize.name)
+                OnCommitTextField(
+                    "Name",
+                    text: $imgSize.name,
+                    onCommit: { (old, new) in
+                        guard let sizeSelection = store.sizeSelection else { return }
+                        store.registerSizeNameUndo(preset: preset.id, size: sizeSelection, old: old, new: new)
+                    }
+                )
             }
             
             TableColumn("Width") { $imgSize in
-                TextField(
+                OnCommitTextField(
                     "Width",
-                    value: $imgSize.size.width,
-                    formatter: .intFormatter,
-                    onCommit: widthUpdated
+                    num: $imgSize.size.width,
+                    onCommit: { (old, new) in widthUpdated(old: old, new: new) }
                 )
             }
             
             TableColumn("Height") { $imgSize in
-                TextField(
+                OnCommitTextField(
                     "Height",
-                    value: $imgSize.size.height,
-                    formatter: .intFormatter,
-                    onCommit: heightUpdated
+                    num: $imgSize.size.height,
+                    onCommit: { (old, new) in heightUpdated(old: old, new: new) }
                 )
             }
         }
@@ -51,18 +57,19 @@ struct CustomPresetEditor: View {
                 .popover(isPresented: $aspectShown, arrowEdge: .bottom, content: aspectEditor)
             }
             ToolbarItemGroup {
-                Button(action: addSize) {
+                Button(action: store.addSize) {
                     Label("Add Size", systemImage: "plus")
                 }
-                Button(action: removeSize) {
+                Button(action: store.removeSize) {
                     Label("Remove Size", systemImage: "minus")
                 }
+                .disabled(preset.sizes.count == 1 || store.sizeSelection == nil)
             }
         }
         .navigationTitle("\(preset.name)'s Sizes")
         .onReceive(
             NotificationCenter.default.publisher(for: .menuPresetNewSize),
-            perform: { _ in addSize()}
+            perform: { _ in store.addSize()}
         )
         .onReceive(
             NotificationCenter.default.publisher(for: .menuPresetExport),
@@ -74,93 +81,72 @@ struct CustomPresetEditor: View {
         return VStack {
             Text("Aspect Ratio")
             HStack {
-                TextField(
+                OnCommitTextField(
                     "Horizontal",
-                    value: $preset.aspect.width,
-                    formatter: .intFormatter,
-                    onCommit: aspectWidthUpdated
+                    num: $preset.aspect.width,
+                    onCommit: { (old, new) in aspectWidthUpdated(old: old, new: new) }
                 )
                 Text(":")
-                TextField(
+                OnCommitTextField(
                     "Vertical",
-                    value: $preset.aspect.height,
-                    formatter: .intFormatter,
-                    onCommit: aspectHeightUpdated
+                    num: $preset.aspect.height,
+                    onCommit: { (old, new) in aspectHeightUpdated(old: old, new: new) }
                 )
             }
         }.padding()
     }
     
     // MARK: - Aspect Enforcement
-    func widthUpdated() {
-        guard let sizeSelection else { return }
-        let index = preset.sizes.indexWithId(sizeSelection)
+    func widthUpdated(old oldWidth: CGFloat, new newWidth: CGFloat) {
+        guard let sizeSelection = store.sizeSelection,
+              let index = preset.sizes.indexWithId(sizeSelection) else { return }
         
+        // adjust height to preserve aspect
         let aspect = preset.aspect
-        let width = preset.sizes[index].size.width
-        
-        let newHeight = ((width / aspect.width) * aspect.height).rounded()
+        let oldHeight = preset.sizes[index].size.height
+        let newHeight = ((newWidth / aspect.width) * aspect.height).rounded()
         preset.sizes[index].size.height = newHeight
+        
+        // register undo
+        let old = CGSize(width: oldWidth, height: oldHeight)
+        let new = CGSize(width: newWidth, height: newHeight)
+        store.registerSizeDimUndo(preset: preset.id, size: sizeSelection, old: old, new: new)
     }
     
-    func heightUpdated() {
-        guard let sizeSelection else { return }
-        let index = preset.sizes.indexWithId(sizeSelection)
+    func heightUpdated(old oldHeight: CGFloat, new newHeight: CGFloat) {
+        guard let sizeSelection = store.sizeSelection,
+              let index = preset.sizes.indexWithId(sizeSelection) else { return }
         
+        // adjust width to preserve aspect
         let aspect = preset.aspect
-        let height = preset.sizes[index].size.height
-        
-        let newWidth = ((height / aspect.height) * aspect.width).rounded()
+        let oldWidth = preset.sizes[index].size.width
+        let newWidth = ((newHeight / aspect.height) * aspect.width).rounded()
         preset.sizes[index].size.width = newWidth
+        
+        // register undo
+        let old = CGSize(width: oldWidth, height: oldHeight)
+        let new = CGSize(width: newWidth, height: newHeight)
+        store.registerSizeDimUndo(preset: preset.id, size: sizeSelection, old: old, new: new)
     }
     
-    // Locks the other dimension so that updating feels more natural.
-    func aspectWidthUpdated() {
-        let aspect = preset.aspect
+    func aspectWidthUpdated(old: CGFloat, new: CGFloat) {
+        // update sizes to new aspect
+        // locks the other dimension so that updating feels more natural
+        preset.applyAspectKeepHeight()
         
-        for index in 0..<preset.sizes.count {
-            let height = preset.sizes[index].size.height
-            let newWidth = ((height / aspect.height) * aspect.width).rounded()
-            preset.sizes[index].size.width = newWidth
-        }
+        // register undo
+        store.registerAspectWidthUndo(preset: preset.id, old: old, new: new)
     }
     
-    func aspectHeightUpdated() {
-        let aspect = preset.aspect
+    func aspectHeightUpdated(old: CGFloat, new: CGFloat) {
+        // update sizes to new aspect
+        preset.applyAspectKeepWidth()
         
-        for index in 0..<preset.sizes.count {
-            let width = preset.sizes[index].size.width
-            let newHeight = ((width / aspect.width) * aspect.height).rounded()
-            preset.sizes[index].size.height = newHeight
-        }
+        // register undo
+        store.registerAspectHeightUndo(preset: preset.id, old: old, new: new)
     }
     
     // MARK: - Actions
-    func addSize() {
-        var n = 1
-        while preset.sizes.contains(where: { $0.name == "Size \(n)" }) {
-            n += 1
-        }
-        preset.sizes.append(ImgSetSize(name: "Size \(n)", size: preset.aspect))
-    }
-    
-    func removeSize() {
-        // do not allow to delete the last size
-        if preset.sizes.count == 1 {
-            return
-        }
-        
-        // delete
-        guard let sizeSelection = sizeSelection else {
-            return
-        }
-        let sizeIndex = preset.sizes.indexWithId(sizeSelection)
-        preset.sizes.remove(at: sizeIndex)
-        
-        // adapt selection
-        self.sizeSelection = preset.sizes[max(sizeIndex - 1, 0)].id
-    }
-    
     func exportPreset() {
         guard let url = NSSavePanel().savePreset() else { return }
         guard let data = try? JSONEncoder().encode(preset) else { return }

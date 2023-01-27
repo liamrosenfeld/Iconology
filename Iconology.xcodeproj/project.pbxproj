@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C03016726941121001A6D77 /* CustomPresetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03016626941120001A6D77 /* CustomPresetSelector.swift */; };
+		0C074D812973B5A50080D297 /* OnCommitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C074D802973B5A50080D297 /* OnCommitTextField.swift */; };
 		0C320C5F2960C7A700D0EA3D /* XcodePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C320C5E2960C7A700D0EA3D /* XcodePreset.swift */; };
 		0C320C612960C7CF00D0EA3D /* ImgSetPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C320C602960C7CF00D0EA3D /* ImgSetPreset.swift */; };
 		0C320C652960C9F200D0EA3D /* FilePresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C320C642960C9F200D0EA3D /* FilePresets.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		0C03016626941120001A6D77 /* CustomPresetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresetSelector.swift; sourceTree = "<group>"; };
+		0C074D802973B5A50080D297 /* OnCommitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCommitTextField.swift; sourceTree = "<group>"; };
 		0C29BC9726732D7D00F3E61F /* Iconology.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iconology.entitlements; sourceTree = "<group>"; };
 		0C320C5E2960C7A700D0EA3D /* XcodePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePreset.swift; sourceTree = "<group>"; };
 		0C320C602960C7CF00D0EA3D /* ImgSetPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgSetPreset.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				0C03016626941120001A6D77 /* CustomPresetSelector.swift */,
 				0CE08627269381C00055D191 /* CustomPresetEditor.swift */,
 				0CE08623269381610055D191 /* CustomPresetsStore.swift */,
+				0C074D802973B5A50080D297 /* OnCommitTextField.swift */,
 			);
 			path = CustomPresets;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				0CFFD9FA26713D5A007FB3FB /* IncludedPresets.swift in Sources */,
 				0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */,
 				0C4BD8EA295E94930085D0D3 /* ShiftEditor.swift in Sources */,
+				0C074D812973B5A50080D297 /* OnCommitTextField.swift in Sources */,
 				0CFFD9E126708458007FB3FB /* ImagePreviewView.swift in Sources */,
 				0C320C5F2960C7A700D0EA3D /* XcodePreset.swift in Sources */,
 				0C5FD295268D1C8F00B03FC0 /* CGSize+Math.swift in Sources */,
