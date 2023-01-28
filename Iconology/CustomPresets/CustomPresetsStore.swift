@@ -21,12 +21,7 @@ class CustomPresetsStore: ObservableObject {
     private var subs = Set<AnyCancellable>()
     
     init() {
-        // load or set to default if first time
-        if let data = FileManager.default.contents(atPath: databaseFileUrl.path) {
-            presets = load(from: data)
-        } else {
-            presets = [Self.includedCustom]
-        }
+        load()
         
         // save after 3 second of not changing
         $presets
@@ -317,22 +312,67 @@ class CustomPresetsStore: ObservableObject {
         }
     }
     
-    private func load(from storeFileData: Data) -> [ImgSetPreset] {
+    private func load() {
+        // load persistent data
+        if let data = FileManager.default.contents(atPath: databaseFileUrl.path) {
+            presets = decode(from: data)
+        }
+        // fallback: load from v1 (on initial update)
+        else if let oldData = FileManager.default.contents(atPath: databaseOldFileUrl.path) {
+            presets = decodeOld(from: oldData)
+        }
+        // fallback: set to default (on first run)
+        else {
+            presets = [Self.includedCustom]
+        }
+    }
+    
+    private func decode(from data: Data) -> [ImgSetPreset] {
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode([ImgSetPreset].self, from: storeFileData)
+            return try decoder.decode([ImgSetPreset].self, from: data)
         } catch {
-            // TODO: try decoding the 1.0 way and then resave
             print("ERR: Load Failed \(error)")
             return []
         }
     }
     
+    private func decodeOld(from data: Data) -> [ImgSetPreset] {
+        // this is how v1 does it
+        struct OldCustomPreset: Codable {
+            var name: String
+            var sizes: [OldSize]
+            var aspect: CGSize
+
+            struct OldSize: Codable {
+                var name: String
+                var size: CGSize
+            }
+        }
+        
+        do {
+            let unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! Data
+            let oldPresets = try PropertyListDecoder().decode([OldCustomPreset].self, from: unarchived)
+            return oldPresets.map { old in
+                ImgSetPreset(
+                    name: old.name,
+                    sizes: old.sizes.map { oldSize in
+                        ImgSetSize(name: oldSize.name, size: oldSize.size)
+                    },
+                    aspect: old.aspect
+                )
+            }
+        } catch {
+            print("ERR: Load OLD Failed \(error)")
+            return []
+        }
+    }
+    
     private let databaseFileUrl = FileManager.applicationSupportDir.appendingPathComponent("custom_presets.json")
+    private let databaseOldFileUrl = FileManager.documentDir.appendingPathComponent("Data")
 }
 
 extension FileManager {
-    static var applicationSupportDir: URL {
-        FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-    }
+    static var applicationSupportDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+    static var documentDir           = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 }
