@@ -17,6 +17,7 @@ struct EditView: View {
     @State private var isDropping = false
     
     @Environment(\.openWindow) var openWindow
+    @Environment(\.controlActiveState) var controlActiveState
 
     var body: some View {
         HStack(spacing: 0) {
@@ -81,22 +82,20 @@ struct EditView: View {
             modifier.applyDefaults(presetSelection.preset.defaultMods)
             
             // enable menu bar buttons for image editing
-            NotificationCenter.default.post(Notification(name: .imageProvided))
+            NotificationCenter.default.post(Notification(name: .imageSelected, object: true))
         }
         .onChange(of: imageRetriever.image) { newImage in
             modifier.origImage = newImage
             modifier.scaleToFit()
         }
         
-        // menu notifications
-        .onReceive(
-            NotificationCenter.default.publisher(for: .menuImageOpen),
-            perform: { _ in imageRetriever.selectImage() }
-        )
-        .onReceive(
-            NotificationCenter.default.publisher(for: .menuImageExport),
-            perform: { _ in export() }
-        )
+        // export menu button
+        .onReceive(NotificationCenter.default.publisher(for: .menuImageExport)) { _ in
+            // only trigger if window focused
+            if controlActiveState == .key {
+                export()
+            }
+        }
         
         .toolbar {
             Button(action: { openWindow(id: WindowID.presetEditor) }) {

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var imageRetriever = ImageRetriever()
+    
+    @Environment(\.controlActiveState) var controlActiveState
 
     var body: some View {
         NavigationStack {
@@ -20,6 +22,23 @@ struct MainView: View {
             }
         }
         .frame(minWidth: 750, minHeight: 750)
+        
+        // enable/disable the export menu item when window is focused
+        .onChange(of: controlActiveState) { state in
+            if state == .key {
+                let hasImage = imageRetriever.image != nil
+                NotificationCenter.default.post(Notification(name: .imageSelected, object: hasImage))
+            }
+        }
+        
+        // open new image menu button
+        .onReceive(NotificationCenter.default.publisher(for: .menuImageOpen)) { _ in
+            // only trigger if window focused
+            if controlActiveState == .key {
+                imageRetriever.selectImage()
+            }
+        }
+        
     }
 }
 

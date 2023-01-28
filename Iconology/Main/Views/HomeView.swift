@@ -46,10 +46,6 @@ struct HomeView: View {
             .onDrop(of: ImageRetriever.dragTypes, delegate: imageRetriever)
         }
         .padding(35)
-        .onReceive(
-            NotificationCenter.default.publisher(for: .menuImageOpen),
-            perform: { _ in imageRetriever.selectImage() }
-        )
     }
 }
 

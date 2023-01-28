@@ -14,13 +14,16 @@ struct CustomMenuCommands: Commands {
     
     @FocusedValue(\.focusedWindow) var focusedWindow
     
-    // image can only be provided once so it can just be toggled once
-    let imageProvidedPub = NotificationCenter.default.publisher(for: .imageProvided)
-    @State private var imageWasProvided = false
+    // if the current editor window has an image
+    let imageSelectedPub = NotificationCenter.default.publisher(for: .imageSelected)
+    @State private var imageSelected = false
     
     // if there is a preset selected (default to true because the none selected view sends the notif)
     let editPresetSelectedPub = NotificationCenter.default.publisher(for: .editPresetSelected)
     @State private var editPresetSelected = true
+    
+    // handled by the menu so it is always listening
+    let openMainWindowPub = NotificationCenter.default.publisher(for: .openMainWindow)
     
     var body: some Commands {
         // Add opening settings to Iconology Tab
@@ -36,8 +39,9 @@ struct CustomMenuCommands: Commands {
             .keyboardShortcut(KeyboardShortcut(",", modifiers: [.command, .shift]))
         }
         
-        // Add open/saving to file (depending on the focused window)
+        
         CommandGroup(replacing: .newItem) {
+            // Add open/export (depending on the focused window)
             if focusedWindow == WindowID.main {
                 Button("Open Image…") {
                     NotificationCenter.default.post(Notification(name: .menuImageOpen))
@@ -48,7 +52,7 @@ struct CustomMenuCommands: Commands {
                     NotificationCenter.default.post(Notification(name: .menuImageExport))
                 }
                 .keyboardShortcut(KeyboardShortcut("e"))
-                .disabled(!imageWasProvided)
+                .disabled(!imageSelected)
             } else if focusedWindow == WindowID.presetEditor {
                 Button("New Preset") {
                     NotificationCenter.default.post(Notification(name: .menuPresetNew))
@@ -75,6 +79,14 @@ struct CustomMenuCommands: Commands {
                 .keyboardShortcut(KeyboardShortcut("e"))
                 .disabled(!editPresetSelected)
             }
+            
+            Divider()
+            
+            // always allow opening a new editor
+            Button("New Editor Window") {
+                openWindow(id: WindowID.main)
+            }
+            .keyboardShortcut(KeyboardShortcut("n", modifiers: [.command, .option]))
         }
         
         // Sending feedback in help
@@ -84,11 +96,14 @@ struct CustomMenuCommands: Commands {
             }
             
             // stick the notification listening here so it always listens
-            .onReceive(imageProvidedPub) { _ in
-                imageWasProvided = true
+            .onReceive(imageSelectedPub) { notif in
+                imageSelected = notif.object as? Bool ?? false
             }
             .onReceive(editPresetSelectedPub) { notif in
                 editPresetSelected = notif.object as? Bool ?? false
+            }
+            .onReceive(openMainWindowPub) { _ in
+                openWindow(id: WindowID.main)
             }
         }
     }
@@ -96,7 +111,7 @@ struct CustomMenuCommands: Commands {
 
 extension Notification.Name {
     // app -> menu
-    static let imageProvided      = Notification.Name(rawValue: "Menu_Image_Provided")
+    static let imageSelected      = Notification.Name(rawValue: "Menu_Image_Selected")
     static let editPresetSelected = Notification.Name(rawValue: "Menu_Preset_Selected")
     
     // menu -> app
@@ -107,4 +122,7 @@ extension Notification.Name {
     static let menuPresetNewSize = Notification.Name(rawValue: "Menu_Preset_NewSize")
     static let menuPresetImport  = Notification.Name(rawValue: "Menu_Preset_Import")
     static let menuPresetExport  = Notification.Name(rawValue: "Menu_Preset_Export")
+    
+    // app delegate -> menu
+    static let openMainWindow    = Notification.Name(rawValue: "AppDelegate_Open_Main_Window")
 }

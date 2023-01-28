@@ -11,10 +11,12 @@ import SwiftUI
 @main
 struct Iconology: App {
     
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject private var customPresetStore = CustomPresetsStore()
     
     var body: some Scene {
-        Window("Iconology", id: WindowID.main) {
+        WindowGroup("Iconology", id: WindowID.main) {
             MainView()
                 .environmentObject(customPresetStore)
                 .focusedSceneValue(\.focusedWindow, WindowID.main)
@@ -51,3 +53,22 @@ extension FocusedValues {
         set { self[FocusedWindow.self] = newValue }
     }
 }
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    // when dock icon pressed,
+    // open new main window if there is not already one
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        let mainOpen = NSApp.windows.first(where: { window in
+            // identifier for window group in form "[id]-AppWindow-[num]"
+            (window.identifier?.rawValue.hasPrefix(WindowID.main) ?? false) && window.isVisible
+        }) != nil
+        
+        if !mainOpen {
+            // this is handled by Menus so it always listens
+            NotificationCenter.default.post(Notification(name: .openMainWindow))
+        }
+        
+        return true
+    }
+}
+
