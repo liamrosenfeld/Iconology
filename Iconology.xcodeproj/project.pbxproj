@@ -31,6 +31,7 @@
 		0C9D9DE8267484DA002A4652 /* XcodeAssetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */; };
 		0CABB91526732C3800701959 /* PresetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CABB91426732C3800701959 /* PresetPickerView.swift */; };
 		0CBADF24284EF3C70020015A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC845AB266EE0E10070AC87 /* EditView.swift */; };
+		0CC506C02985D92200BDDE7E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC506BF2985D92200BDDE7E /* SettingsView.swift */; };
 		0CC6811A26918161006746F2 /* SavePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811926918161006746F2 /* SavePanel.swift */; };
 		0CC6811C2691820E006746F2 /* ImgSetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6811B2691820E006746F2 /* ImgSetGenerator.swift */; };
 		0CC84594266EDADA0070AC87 /* IconologyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC84593266EDADA0070AC87 /* IconologyApp.swift */; };
@@ -83,6 +84,7 @@
 		0C98601526899A27002D09D8 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		0C9D9DE7267484DA002A4652 /* XcodeAssetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeAssetGenerator.swift; sourceTree = "<group>"; };
 		0CABB91426732C3800701959 /* PresetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPickerView.swift; sourceTree = "<group>"; };
+		0CC506BF2985D92200BDDE7E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0CC6811926918161006746F2 /* SavePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePanel.swift; sourceTree = "<group>"; };
 		0CC6811B2691820E006746F2 /* ImgSetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgSetGenerator.swift; sourceTree = "<group>"; };
 		0CC84590266EDADA0070AC87 /* Iconology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iconology.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 			children = (
 				0CC84593266EDADA0070AC87 /* IconologyApp.swift */,
 				0C4BD8EF295EC7DC0085D0D3 /* Menus.swift */,
+				0CC506BF2985D92200BDDE7E /* SettingsView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC845B0266F2DBC0070AC87 /* ImageModifier.swift in Sources */,
+				0CC506C02985D92200BDDE7E /* SettingsView.swift in Sources */,
 				0CE08624269381610055D191 /* CustomPresetsStore.swift in Sources */,
 				0C7FE472283EB39B0020FFD2 /* View+NoRedraw.swift in Sources */,
 				0CE8E669295E8CEF00CC3B5E /* GradientEditor.swift in Sources */,

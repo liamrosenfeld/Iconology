@@ -41,6 +41,10 @@ class CustomPresetsStore: ObservableObject {
             .store(in: &subs)
     }
     
+    func reset() {
+        presets = [Self.includedCustom]
+    }
+    
     private static let includedCustom = ImgSetPreset(
         name: "Powers of Two",
         sizes: [

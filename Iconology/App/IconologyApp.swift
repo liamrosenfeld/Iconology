@@ -31,9 +31,11 @@ struct Iconology: App {
         }
         
         Window("Settings", id: WindowID.settings) {
-            EmptyView()
+            SettingsView()
+                .environmentObject(customPresetStore)
                 .focusedSceneValue(\.focusedWindow, WindowID.settings)
         }
+        .windowResizability(.contentSize)
     }
 }
 

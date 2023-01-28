@@ -123,13 +123,18 @@ struct EditView: View {
         // save
         // prompts for save location within function
         guard let savedTo = presetSelection.preset.save(modifier.finalImage!) else { return }
+        
+        // see if should show save location
+        UserDefaults.standard.register(defaults: [SettingsKeys.openOnSave : true]) // default value true if not set
+        let openOnSave = UserDefaults.standard.bool(forKey: SettingsKeys.openOnSave)
 
         // show user where it was saved
-        // TODO: Preference to toggle this
-        if savedTo.isFileURL {
-            NSWorkspace.shared.activateFileViewerSelecting([savedTo])
-        } else {
-            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: savedTo.path)
+        if openOnSave {
+            if savedTo.isFileURL {
+                NSWorkspace.shared.activateFileViewerSelecting([savedTo])
+            } else {
+                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: savedTo.path)
+            }
         }
     }
 }
