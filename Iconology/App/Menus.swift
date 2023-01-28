@@ -90,9 +90,13 @@ struct CustomMenuCommands: Commands {
         }
         
         // Sending feedback in help
-        CommandGroup(before: .help) {
+        CommandGroup(replacing: .help) {
             Button("Send Feedback") {
                 openURL(URL(string: "https://github.com/liamrosenfeld/Iconology/issues")!)
+            }
+            
+            Button("Iconology Help") {
+                openURL(URL(string: "https://github.com/liamrosenfeld/Iconology/discussions")!)
             }
             
             // stick the notification listening here so it always listens
