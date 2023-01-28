@@ -27,6 +27,14 @@ struct TwoDimensionSlider: View {
                     .gesture(drag)
             }
         }
+        .accessibilityLabel("Position selector")
+        .accessibilityValue("\(position.x.toIntString()) x, \(position.y.toIntString()) y")
+        .accessibilityActions {
+            Button("Move up")    { position.y = min(100,  position.y + 10) }
+            Button("Move down")  { position.y = max(-100, position.y - 10) }
+            Button("Move right") { position.x = min(100,  position.x + 10) }
+            Button("Move left")  { position.x = max(-100, position.x - 10) }
+        }
     }
 
     var drag: some Gesture {

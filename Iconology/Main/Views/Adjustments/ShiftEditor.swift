@@ -42,7 +42,8 @@ struct ShiftEditor: View {
                     Button {
                         shift = .zero
                     } label: {
-                        Image(systemName: "arrow.counterclockwise")
+                        Label("Reset", systemImage: "arrow.counterclockwise")
+                            .labelStyle(.iconOnly)
                     }
                     .dontRedraw()
                 }
