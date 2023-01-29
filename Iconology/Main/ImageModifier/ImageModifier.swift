@@ -36,7 +36,7 @@ class ImageModifier: ObservableObject {
         padding = 0
         shadow = (0, 0)
         colorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
-        editor = ImageEditor(self)
+        editor = ImageEditor()
     }
     
     convenience init(image: CGImage) {
@@ -44,7 +44,7 @@ class ImageModifier: ObservableObject {
         
         origImage = image
         if image.size != .zero {
-            finalImage = editor.newImage(image)
+            finalImage = editor.newImage(image, mods: mods())
         }
     }
 
@@ -55,47 +55,102 @@ class ImageModifier: ObservableObject {
         
         // reacting to immediate changes
         $origImage
-            .map(editor.newImage)
+            .map { newCS in
+                return self.editor.newImage(self.origImage, mods: self.mods())
+            }
             .assign(to: &$finalImage)
         $size
-            .map(editor.newSize)
+            .map { newSize in
+                var mods = self.mods()
+                mods.size = newSize
+                return self.editor.newSize(mods: mods)
+            }
             .assign(to: &$finalImage)
         $colorSpace
-            .map(editor.newColorSpace)
+            .map { newCS in
+                var mods = self.mods()
+                mods.colorSpace = newCS
+                return self.editor.newImage(self.origImage, mods: mods)
+            }
             .assign(to: &$finalImage)
         
         // throttled changes
         scalePub
-            .map(editor.newScale)
+            .map { newScale in
+                var mods = self.mods()
+                mods.scale = newScale
+                return self.editor.newScale(mods: mods)
+            }
             .assign(to: &$finalImage)
         $shift
-            .map(editor.newShift)
+            .map { newShift in
+                var mods = self.mods()
+                mods.shift = newShift
+                return self.editor.newShift(mods: mods)
+            }
             .assign(to: &$finalImage)
         $background
-            .map(editor.newBackground)
+            .map { newBackground in
+                var mods = self.mods()
+                mods.background = newBackground
+                return self.editor.newBackground(mods: mods)
+            }
             .assign(to: &$finalImage)
         $rounding
-            .map(editor.newRounding)
+            .map { newRounding in
+                var mods = self.mods()
+                mods.rounding = newRounding
+                return self.editor.newRounding(mods: mods)
+            }
             .assign(to: &$finalImage)
         paddingPub
-            .map(editor.newPadding)
+            .map { newPadding in
+                var mods = self.mods()
+                mods.padding = newPadding
+                return self.editor.newPadding(mods: mods)
+            }
             .assign(to: &$finalImage)
         $shadow
-            .map(editor.newShadow)
+            .map { newShadow in
+                var mods = self.mods()
+                mods.shadow = newShadow
+                return self.editor.newShadow(mods: mods)
+            }
             .assign(to: &$finalImage)
         
         // react to finished selecting
         let subs = DispatchQueue(label: "Sub", qos: .default)
         scalePub
             .debounce(for: .seconds(0.2), scheduler: subs, options: nil)
-            .map(editor.finishedScaling)
+            .map { newScale in
+                var mods = self.mods()
+                mods.scale = newScale
+                return self.editor.finishedScaling(mods: mods)
+            }
             .receive(on: DispatchQueue.main)
             .assign(to: &$finalImage)
         paddingPub
             .debounce(for: .seconds(0.2), scheduler: subs, options: nil)
-            .map(editor.finishedPadding)
+            .map { newPadding in
+                var mods = self.mods()
+                mods.padding = newPadding
+                return self.editor.finishedPadding(mods: mods)
+            }
             .receive(on: DispatchQueue.main)
             .assign(to: &$finalImage)
+    }
+    
+    func mods() -> ImageModifications {
+        ImageModifications(
+            size: self.size,
+            scale: self.scale,
+            shift: self.shift,
+            background: self.background,
+            rounding: self.rounding,
+            padding: self.padding,
+            shadow: self.shadow,
+            colorSpace: self.colorSpace
+        )
     }
     
     // MARK: - Actions
