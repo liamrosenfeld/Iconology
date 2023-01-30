@@ -45,4 +45,4 @@ All in a lightweight and simple UI that is 100% native for macOS
 
 ## Demo
 
-![Demo](demo.gif)
+https://user-images.githubusercontent.com/25254638/215594334-ee5b6aad-af09-41ef-8051-c07397ae27f2.mov
