@@ -2,8 +2,6 @@
 
 Easily import, modify, and export icons!
 
-The main branch is currently an unpublished rewrite. The current version on the App Store is the v1 branch.
-
 [![Download on App Store](https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg)](https://apps.apple.com/us/app/iconology/id1463452867)
 
 ## Features
@@ -45,4 +43,4 @@ All in a lightweight and simple UI that is 100% native for macOS
 
 ## Demo
 
-https://user-images.githubusercontent.com/25254638/215594334-ee5b6aad-af09-41ef-8051-c07397ae27f2.mov
+https://user-images.githubusercontent.com/25254638/215616714-19d30a10-bc91-4162-9c17-2dc542349be0.mov
