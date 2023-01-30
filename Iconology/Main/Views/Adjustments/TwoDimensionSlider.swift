@@ -18,13 +18,26 @@ struct TwoDimensionSlider: View {
                 Color.white
                     .cornerRadius(5)
                 Color.accentColor
-                    .frame(width: 11, height: 11)
+                    .frame(width: 10, height: 10)
                     .mask(Circle())
                     .offset(
                         x: position.x * (geometry.size.width / 2) / 100,
                         y: position.y * (geometry.size.height / 2) / -100
                     )
-                    .gesture(drag)
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { gesture in
+                                // scale from pixel to percent
+                                let newXPos = (gesture.location.x - 5) / (geometry.size.width / 2) * 100
+                                let newYPos = (5 - gesture.location.y) / (geometry.size.height / 2) * 100
+                                
+                                // limit to [-100, 100]
+                                self.position = CGPoint(
+                                    x: (newXPos / abs(newXPos)) * min(abs(newXPos), 100),
+                                    y: (newYPos / abs(newYPos)) * min(abs(newYPos), 100)
+                                )
+                            }
+                    )
             }
         }
         .accessibilityLabel("Position selector")
@@ -36,21 +49,9 @@ struct TwoDimensionSlider: View {
             Button("Move left")  { position.x = max(-100, position.x - 10) }
         }
     }
-
-    var drag: some Gesture {
-        DragGesture(minimumDistance: 0)
-            .onChanged { gesture in
-                if abs(gesture.location.x) <= 100 {
-                    self.position.x = gesture.location.x
-                }
-                if abs(gesture.location.y) <= 100 {
-                    self.position.y = -gesture.location.y
-                }
-            }
-    }
 }
 
-struct PositionSelector_Previews: PreviewProvider {
+struct TwoDimensionSlider_Previews: PreviewProvider {
     @State static var position: CGPoint = .zero
 
     static var previews: some View {
