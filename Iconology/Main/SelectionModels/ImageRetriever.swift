@@ -35,14 +35,14 @@ class ImageRetriever: DropDelegate, ObservableObject {
 
     private func imageFromUrl(_ url: URL?) {
         guard let url = url else { return }
-        guard let image = NSImage(contentsOf: url) else {
+        guard let image = NSImage(contentsOf: url)?.cgImage else {
             DispatchQueue.main.async {
                 self.imageError = true
             }
             return
         }
         DispatchQueue.main.async {
-            self.image = image.cgImage
+            self.image = image
         }
     }
     

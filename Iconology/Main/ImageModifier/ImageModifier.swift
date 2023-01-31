@@ -55,8 +55,8 @@ class ImageModifier: ObservableObject {
         
         // reacting to immediate changes
         $origImage
-            .map { newCS in
-                return self.editor.newImage(self.origImage, mods: self.mods())
+            .map { newImage in
+                return self.editor.newImage(newImage, mods: self.mods())
             }
             .assign(to: &$finalImage)
         $size
@@ -163,11 +163,12 @@ class ImageModifier: ObservableObject {
         let widthScale  = size.width / imgSize.width
         let heightScale = size.height / imgSize.height
         
+        // only scale down
         let minScale = min(widthScale, heightScale)
-        if minScale < 1 {
-            scale = minScale * 100
-            shift = .zero // bring it back to center
-        }
+        scale = min(minScale, 1) * 100
+        
+        // bring it back to center
+        shift = .zero
     }
     
     func applyDefaults(_ defaults: DefaultModifications) {
