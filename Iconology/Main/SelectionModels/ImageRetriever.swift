@@ -12,17 +12,20 @@ import UniformTypeIdentifiers
 class ImageRetriever: DropDelegate, ObservableObject {
     @Published private(set) var image: CGImage?
     @Published private(set) var isDropping: Bool
+    @Published var imageError: Bool
     
     static let dragTypes: [UTType] = [.fileURL]
     
     init() {
         self.image = nil
         self.isDropping = false
+        self.imageError = false
     }
     
     init(image: CGImage) {
         self.image = image
         self.isDropping = false
+        self.imageError = false
     }
     
     // MARK: - From URL
@@ -33,7 +36,9 @@ class ImageRetriever: DropDelegate, ObservableObject {
     private func imageFromUrl(_ url: URL?) {
         guard let url = url else { return }
         guard let image = NSImage(contentsOf: url) else {
-            // TODO: throw so error can be shown
+            DispatchQueue.main.async {
+                self.imageError = true
+            }
             return
         }
         DispatchQueue.main.async {

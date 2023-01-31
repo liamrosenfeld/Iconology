@@ -192,7 +192,6 @@ extension CGPath {
         // Scale the percentage so 0 is square and 1 is circle
         // circle is when corner radius equals half of side length
         // everything else is a percentage of the two
-        // TODO: need to check on not square aspect ratios
         return (sideLength * percent) / 200
     }
 }

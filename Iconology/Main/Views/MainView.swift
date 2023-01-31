@@ -23,6 +23,13 @@ struct MainView: View {
         }
         .frame(minWidth: 750, minHeight: 750)
         
+        // notify if select image failure
+        .alert("Unable to Use Image", isPresented: $imageRetriever.imageError) {
+            Button("Ok") {
+                imageRetriever.imageError = false
+            }
+        }
+        
         // enable/disable the export menu item when window is focused
         .onChange(of: controlActiveState) { state in
             if state == .key {

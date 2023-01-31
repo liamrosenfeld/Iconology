@@ -22,7 +22,7 @@ struct ImageModifications {
 
 class ImageEditor {
     // MARK: - Intermediate Storage
-    private var origImage: CGImage!
+    private var origImage: CGImage?
     
     private var innerSize: CGSize = .zero
     
@@ -110,7 +110,7 @@ class ImageEditor {
     
     private func scaleInnerImage(_ scale: CGFloat, padding: CGFloat, quality: CGInterpolationQuality) {
         let adjustedScale = scale * (1 - (padding / 100))
-        scaledImage = origImage.scaled(by: adjustedScale, quality: quality)
+        scaledImage = origImage?.scaled(by: adjustedScale, quality: quality)
     }
     
     private func findImageOrigin(imgSize: CGSize, mods: ImageModifications) -> CGPoint {
